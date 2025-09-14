@@ -20,10 +20,14 @@ screen_matrix[t:screen_matrix.shape[0]-t:, t:screen_matrix.shape[1]-t:] = 1"""
     screen_matrix[0: i:, screen_matrix.shape[1] // 2 + i : screen_matrix.shape[1]:] = 1
     screen_matrix[-i-1::, screen_matrix.shape[1] // 2 + i+1 : screen_matrix.shape[1]:] = 1
 """
-for x in range(1 , screen_matrix.shape[1], 4):
-    for y in range(1 , screen_matrix.shape[1], 4):
-        screen_matrix[y-1:y+2:, x:x+1:] = 1
-        screen_matrix[x:x+1:, y-1:y+2:] = 1
+
+x = 4
+y = 3
+c = 4
+w = 2
+h = 6
+screen_matrix[y:y+h:1, x:x+w:1] = c
+
 print(screen_matrix)
 #pygame
 TILE_SIZE = 32
@@ -49,7 +53,13 @@ while run:
         if event.type == pygame.QUIT:
             run = False
     #drawing
-
+    x = numpy.random.randint(0, screen_matrix.shape[1])
+    y = numpy.random.randint(0, screen_matrix.shape[0])
+    c = numpy.random.randint(0, 5)
+    w = numpy.random.randint(1, screen_matrix.shape[1] - x+1)
+    h = numpy.random.randint(1, screen_matrix.shape[0] - y+1)
+    screen_matrix[y:y + h:1, x:x + w:1] = c
+    print(screen_matrix)
     for y in range(TILE_Y):
         for x in range(TILE_X):
             pygame.draw.rect(screen, colors[screen_matrix[y,x]], (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
