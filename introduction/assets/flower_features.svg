@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1000" height="600" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1000" height="600"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-600)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1000" height="600" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="350.712705078125" y="554.6776" style="font-family: ArialBold; font-size: 30.36px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,1109) scale(1,-1)">From flowers to data</text>
+			<text x="70.5292236328125" y="501.962" style="font-family: ArialBold; font-size: 20.7px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,1003) scale(1,-1)">1  Objects</text>
+			<text x="282.187939453125" y="501.962" style="font-family: ArialBold; font-size: 20.7px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,1003) scale(1,-1)">2  Measure one petal</text>
+			<text x="677.4418701171875" y="501.962" style="font-family: ArialBold; font-size: 20.7px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,1003) scale(1,-1)">3  Collect the features</text>
+			<rect x="582" y="331" width="389" height="106" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,97%); fill-rule: evenodd;"/>
+			<path d="M 582,489 L 971,489 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 582,439 L 971,439 Z" style="stroke: rgb(77%,83%,86%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 582,326 L 971,326 Z" style="stroke: rgb(77%,83%,86%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 582,209 L 971,209 Z" style="stroke: rgb(77%,83%,86%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 582,86 L 971,86 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<text x="591.31640625" y="457.3696" style="font-family: ArialBold; font-size: 16.56px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,914) scale(1,-1)">Flower</text>
+			<text x="706.07326171875" y="463.3696" style="font-family: ArialBold; font-size: 16.56px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,926) scale(1,-1)">Petal length</text>
+			<text x="860.2955078125" y="463.3696" style="font-family: ArialBold; font-size: 16.56px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,926) scale(1,-1)">Petal width</text>
+			<text x="739.20673828125" y="444.308" style="font-family: Arial; font-size: 13.799999999999999px;fill: rgb(32%,38%,42%); stroke:none;" transform="translate(0,888) scale(1,-1)">(cm)</text>
+			<text x="890.20673828125" y="444.308" style="font-family: Arial; font-size: 13.799999999999999px;fill: rgb(32%,38%,42%); stroke:none;" transform="translate(0,888) scale(1,-1)">(cm)</text>
+			<text x="30.5289697265625" y="376.0236" style="font-family: ArialBold; font-size: 23.459999999999997px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,752) scale(1,-1)">A</text>
+			<path d="M 118,335 L 118,391 Z" style="stroke: rgb(32%,51%,43%); stroke-linecap: butt; stroke-width: 2.8;"/>
+			<g transform=" matrix(0.882948,-0.469472,0.469472,0.882948,107,353)">
+				<ellipse cx="0.0" cy="0.0" rx="15.0" ry="6.0" style="stroke: rgb(32%,51%,43%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(84%,90%,85%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(0.882948,0.469472,-0.469472,0.882948,129,365)">
+				<ellipse cx="0.0" cy="0.0" rx="15.0" ry="6.0" style="stroke: rgb(32%,51%,43%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(84%,90%,85%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(1,0,0,1,139,396)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(72%,65%,84%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(0.5,0.866025,-0.866025,0.5,128.5,414.186533)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(72%,65%,84%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(-0.5,0.866025,-0.866025,-0.5,107.5,414.186533)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(72%,65%,84%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(-1,0,-0,-1,97,396)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(72%,65%,84%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(-0.5,-0.866025,0.866025,-0.5,107.5,377.813467)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(72%,65%,84%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(0.5,-0.866025,0.866025,0.5,128.5,377.813467)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(72%,65%,84%); fill-rule: evenodd;"/>
+			</g>
+			<circle cx="118" cy="396" r="10" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(90%,78%,47%); fill-rule: evenodd;"/>
+			<path d="M 177,384 L 242,384 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="242 384, 233 387.36, 233 380.64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<path d="M 363 428 C 385 428 385 340 363 340 C 341 340 341 428 363 428 Z " style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(72%,65%,84%); fill-rule: evenodd;"/>
+			<path d="M 363,345 L 363,422 Z" style="stroke: rgb(46%,50%,54%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 387.5,340 L 437,340 Z" style="stroke: rgb(77%,83%,86%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 387.5,428 L 437,428 Z" style="stroke: rgb(77%,83%,86%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 431,340 L 431,428 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="431 428, 428.48 421.25, 433.52 421.25" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<polygon points="431 340, 433.52 346.75, 428.48 346.75" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<text x="446" y="378.3696" style="font-family: Arial; font-size: 16.56px;fill: rgb(15%,42%,53%); stroke:none;" transform="translate(0,756) scale(1,-1)">4.0 cm</text>
+			<path d="M 346.5,384 L 379.5,384 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="379.5 384, 373.5 386.24, 373.5 381.76" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<polygon points="346.5 384, 352.5 381.76, 352.5 386.24" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<text x="283.803828125" y="378.3696" style="font-family: Arial; font-size: 16.56px;fill: rgb(15%,42%,53%); stroke:none;" transform="translate(0,756) scale(1,-1)">1.5 cm</text>
+			<path d="M 526,384 L 567,384 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="567 384, 558 387.36, 558 380.64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<text x="610.027265625" y="376.4928" style="font-family: ArialBold; font-size: 22.08px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,752) scale(1,-1)">A</text>
+			<text x="735.734501953125" y="375.5544" style="font-family: Arial; font-size: 24.839999999999996px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,751) scale(1,-1)">4.0</text>
+			<text x="886.734501953125" y="375.5544" style="font-family: Arial; font-size: 24.839999999999996px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,751) scale(1,-1)">1.5</text>
+			<text x="30.5289697265625" y="259.0236" style="font-family: ArialBold; font-size: 23.459999999999997px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,518) scale(1,-1)">B</text>
+			<path d="M 118,218 L 118,274 Z" style="stroke: rgb(32%,51%,43%); stroke-linecap: butt; stroke-width: 2.8;"/>
+			<g transform=" matrix(0.882948,-0.469472,0.469472,0.882948,107,236)">
+				<ellipse cx="0.0" cy="0.0" rx="15.0" ry="6.0" style="stroke: rgb(32%,51%,43%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(84%,90%,85%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(0.882948,0.469472,-0.469472,0.882948,129,248)">
+				<ellipse cx="0.0" cy="0.0" rx="15.0" ry="6.0" style="stroke: rgb(32%,51%,43%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(84%,90%,85%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(1,0,0,1,139,279)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(92%,74%,52%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(0.5,0.866025,-0.866025,0.5,128.5,297.186533)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(92%,74%,52%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(-0.5,0.866025,-0.866025,-0.5,107.5,297.186533)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(92%,74%,52%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(-1,0,-0,-1,97,279)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(92%,74%,52%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(-0.5,-0.866025,0.866025,-0.5,107.5,260.813467)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(92%,74%,52%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(0.5,-0.866025,0.866025,0.5,128.5,260.813467)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(92%,74%,52%); fill-rule: evenodd;"/>
+			</g>
+			<circle cx="118" cy="279" r="10" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(90%,78%,47%); fill-rule: evenodd;"/>
+			<path d="M 177,267 L 242,267 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="242 267, 233 270.36, 233 263.64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<path d="M 363 300 C 377.666667 300 377.666667 234 363 234 C 348.333333 234 348.333333 300 363 300 Z " style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(92%,74%,52%); fill-rule: evenodd;"/>
+			<path d="M 363,239 L 363,294 Z" style="stroke: rgb(46%,50%,54%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 382,234 L 437,234 Z" style="stroke: rgb(77%,83%,86%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 382,300 L 437,300 Z" style="stroke: rgb(77%,83%,86%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 431,234 L 431,300 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="431 300, 428.48 293.25, 433.52 293.25" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<polygon points="431 234, 433.52 240.75, 428.48 240.75" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<text x="446" y="261.3696" style="font-family: Arial; font-size: 16.56px;fill: rgb(15%,42%,53%); stroke:none;" transform="translate(0,522) scale(1,-1)">3.0 cm</text>
+			<path d="M 352,267 L 374,267 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="374 267, 368 269.24, 368 264.76" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<polygon points="352 267, 358 264.76, 358 269.24" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<text x="289.303828125" y="261.3696" style="font-family: Arial; font-size: 16.56px;fill: rgb(15%,42%,53%); stroke:none;" transform="translate(0,522) scale(1,-1)">1.0 cm</text>
+			<path d="M 526,267 L 567,267 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="567 267, 558 270.36, 558 263.64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<text x="610.027265625" y="259.4928" style="font-family: ArialBold; font-size: 22.08px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,518) scale(1,-1)">B</text>
+			<text x="735.734501953125" y="258.5544" style="font-family: Arial; font-size: 24.839999999999996px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,517) scale(1,-1)">3.0</text>
+			<text x="886.734501953125" y="258.5544" style="font-family: Arial; font-size: 24.839999999999996px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,517) scale(1,-1)">1.0</text>
+			<text x="30.5289697265625" y="142.0236" style="font-family: ArialBold; font-size: 23.459999999999997px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,284) scale(1,-1)">C</text>
+			<path d="M 118,101 L 118,157 Z" style="stroke: rgb(32%,51%,43%); stroke-linecap: butt; stroke-width: 2.8;"/>
+			<g transform=" matrix(0.882948,-0.469472,0.469472,0.882948,107,119)">
+				<ellipse cx="0.0" cy="0.0" rx="15.0" ry="6.0" style="stroke: rgb(32%,51%,43%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(84%,90%,85%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(0.882948,0.469472,-0.469472,0.882948,129,131)">
+				<ellipse cx="0.0" cy="0.0" rx="15.0" ry="6.0" style="stroke: rgb(32%,51%,43%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(84%,90%,85%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(1,0,0,1,139,162)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(60%,78%,80%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(0.5,0.866025,-0.866025,0.5,128.5,180.186533)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(60%,78%,80%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(-0.5,0.866025,-0.866025,-0.5,107.5,180.186533)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(60%,78%,80%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(-1,0,-0,-1,97,162)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(60%,78%,80%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(-0.5,-0.866025,0.866025,-0.5,107.5,143.813467)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(60%,78%,80%); fill-rule: evenodd;"/>
+			</g>
+			<g transform=" matrix(0.5,-0.866025,0.866025,0.5,128.5,143.813467)">
+				<ellipse cx="0.0" cy="0.0" rx="19.5" ry="9.5" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(60%,78%,80%); fill-rule: evenodd;"/>
+			</g>
+			<circle cx="118" cy="162" r="10" style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(90%,78%,47%); fill-rule: evenodd;"/>
+			<path d="M 177,150 L 242,150 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="242 150, 233 153.36, 233 146.64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<path d="M 363 205 C 392.333333 205 392.333333 95 363 95 C 333.666667 95 333.666667 205 363 205 Z " style="stroke: rgb(9%,13%,17%); stroke-linecap: butt; stroke-width: 1.8; fill: rgb(60%,78%,80%); fill-rule: evenodd;"/>
+			<path d="M 363,100 L 363,199 Z" style="stroke: rgb(46%,50%,54%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 393,95 L 437,95 Z" style="stroke: rgb(77%,83%,86%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 393,205 L 437,205 Z" style="stroke: rgb(77%,83%,86%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<path d="M 431,95 L 431,205 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="431 205, 428.48 198.25, 433.52 198.25" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<polygon points="431 95, 433.52 101.75, 428.48 101.75" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<text x="446" y="144.3696" style="font-family: Arial; font-size: 16.56px;fill: rgb(15%,42%,53%); stroke:none;" transform="translate(0,288) scale(1,-1)">5.0 cm</text>
+			<path d="M 341,150 L 385,150 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="385 150, 379 152.24, 379 147.76" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<polygon points="341 150, 347 147.76, 347 152.24" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<text x="278.303828125" y="144.3696" style="font-family: Arial; font-size: 16.56px;fill: rgb(15%,42%,53%); stroke:none;" transform="translate(0,288) scale(1,-1)">2.0 cm</text>
+			<path d="M 526,150 L 567,150 Z" style="stroke: rgb(15%,42%,53%); stroke-linecap: butt; stroke-width: 1.8;"/>
+			<polygon points="567 150, 558 153.36, 558 146.64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,42%,53%); fill-rule: evenodd;"/>
+			<text x="610.027265625" y="142.4928" style="font-family: ArialBold; font-size: 22.08px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,284) scale(1,-1)">C</text>
+			<text x="735.734501953125" y="141.5544" style="font-family: Arial; font-size: 24.839999999999996px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,283) scale(1,-1)">5.0</text>
+			<text x="886.734501953125" y="141.5544" style="font-family: Arial; font-size: 24.839999999999996px;fill: rgb(9%,13%,17%); stroke:none;" transform="translate(0,283) scale(1,-1)">2.0</text>
+			<text x="77.96248046875" y="61.3696" style="font-family: Arial; font-size: 16.56px;fill: rgb(32%,38%,42%); stroke:none;" transform="translate(0,122) scale(1,-1)">One flower</text>
+			<text x="304.29529296875" y="61.3696" style="font-family: Arial; font-size: 16.56px;fill: rgb(32%,38%,42%); stroke:none;" transform="translate(0,122) scale(1,-1)">Two measurements</text>
+			<text x="638.39755859375" y="56.3696" style="font-family: Arial; font-size: 16.56px;fill: rgb(15%,42%,53%); stroke:none;" transform="translate(0,112) scale(1,-1)">Rows = objects    Columns = features</text>
+			<text x="368.856201171875" y="17.308" style="font-family: Arial; font-size: 13.799999999999999px;fill: rgb(32%,38%,42%); stroke:none;" transform="translate(0,34) scale(1,-1)">Illustrative measurements; stylized flowers.</text>
+		</g>
+	</g>
+</svg>
