@@ -1,24 +1,24 @@
-# Введение · Matrix Thinking
+# Introduction · Matrix Thinking
 
-Здесь собраны дополнительные материалы к введению книги **Matrix Thinking**. Ссылка и QR-код в конце введения ведут на эту страницу.
+This page contains companion materials for the introduction to **Matrix Thinking**. The link and QR code at the end of the introduction lead here.
 
-## От цветка к таблице
+## From flowers to data
 
-Один цветок можно описать несколькими числами — например, длиной и шириной лепестка. Если записать измерения нескольких цветков в таблицу, каждому цветку будет соответствовать строка, а каждому признаку — столбец.
+We can describe a flower with a few numbers, such as the length and width of a petal. If we arrange measurements from several flowers in a table, each row represents a flower and each column represents a feature.
 
 ![From flowers to data: petal measurements arranged in a table.](assets/flower_features.svg)
 
-Числа на схеме условные и приведены в сантиметрах. Они помогают увидеть, как перейти от реального объекта к его числовому описанию.
+The measurements in the diagram are illustrative and are given in centimetres. They show how we can move from a real object to a numerical description of it.
 
-[Открыть схему отдельно](assets/flower_features.svg)
+[Open the diagram](assets/flower_features.svg)
 
-## Справочники
+## Reference guides
 
-- [NumPy: руководство для начинающих](https://numpy.org/doc/stable/user/absolute_beginners.html) — знакомство с массивами и действиями над ними.
-- [Pygame: документация](https://www.pygame.org/docs/) — справочник по библиотеке, с помощью которой мы будем показывать результаты вычислений на экране.
+- [NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html) — an introduction to arrays and operations on them.
+- [Pygame documentation](https://www.pygame.org/docs/) — a reference for the library we will use to display the results of our calculations.
 
-Изучать эти справочники целиком перед началом книги не нужно. Мы будем обращаться к новым возможностям постепенно, когда они понадобятся для очередной задачи.
+You do not need to read these guides from cover to cover before starting the book. We will explore new tools gradually, as we need them for each task.
 
-## Материалы следующих модулей
+## Materials for later modules
 
-У каждого модуля будет своя папка и такая же страница с пояснениями: какие файлы понадобятся, какую программу запустить и как переходить от одной версии к следующей. Материалы будут добавляться по мере подготовки модулей. Здесь, на странице введения, будут появляться дополнительные пояснения и уточнения к нему.
+Each module will have its own folder and a page like this one, explaining which files you need, which program to run, and how to move from one version to the next. Materials will be added as the modules are prepared. Further explanations and corrections for the introduction will appear here.
