@@ -1,0 +1,56 @@
+import pygame as pg
+
+pg.init()
+
+# Create the window.
+width = 800
+height = 600
+screen = pg.display.set_mode((width, height))
+pg.display.set_caption("Staggered brick wall")
+
+# The background remains visible in the gaps.
+BACKGROUND = (200, 200, 200)
+BRICK = (180, 80, 50)
+
+BRICK_WIDTH = 100
+BRICK_HEIGHT = 40
+ROWS = height // BRICK_HEIGHT
+COLS = width // BRICK_WIDTH + 1
+
+screen.fill(BACKGROUND)
+
+for row in range(ROWS):
+    y = row * BRICK_HEIGHT
+
+    # Choose the starting position once for this row.
+    if row % 2 == 0:
+        x_start = 0
+    else:
+        x_start = -(BRICK_WIDTH // 2)
+
+    if row % 3 == 0:
+        inset = 2
+    elif row % 3 == 1:
+        inset = 1
+    else:
+        inset = 4
+
+    for col in range(COLS):
+        x = x_start + col * BRICK_WIDTH
+
+        # Use the selected inset on every side of the cell.
+        rect = (
+            x + inset,
+            y + inset,
+            BRICK_WIDTH - 2 * inset,
+            BRICK_HEIGHT - 2 * inset
+        )
+        pg.draw.rect(screen, BRICK, rect)
+
+# Show the completed wall.
+pg.display.update()
+
+# Process pending events once, then keep the image visible.
+pg.event.pump()
+pg.time.wait(5000)
+pg.quit()
