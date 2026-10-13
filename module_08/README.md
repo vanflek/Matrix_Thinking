@@ -19,6 +19,14 @@ python collector.py
 In PyCharm, select the interpreter with these packages and run the chosen file.
 Every script is standalone; no saved images or other data files are required.
 
+## Run every learning step
+
+The [steps folder](steps/) contains **32 independent runnable files** in chapter order.
+Each checkpoint in the chapter names its file and describes the expected result.
+Start with console experiments, then check real keyboard input, array transformations,
+image previews, the grid, and the complete game. Each file resets its own data;
+do not concatenate the experiments. See the [step index](steps/README.md).
+
 ## Chapter versions
 
 | File | Purpose |

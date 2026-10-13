@@ -1,0 +1,17 @@
+# A matrix of indices becomes an array of RGB vectors.
+import numpy as np
+
+COLORS = np.array([
+    [245, 245, 245], [0, 0, 0], [255, 255, 255],
+    [255, 0, 0], [0, 255, 0], [0, 0, 255],
+], dtype=np.uint8)
+matrix = np.array([[0, 3, 0], [5, 0, 3]], dtype=np.uint8)
+
+rgb_small = COLORS[matrix]
+print(matrix.shape)
+print(rgb_small.shape)
+print(rgb_small[0, 1])
+print(rgb_small[0, 1, 0])
+# A boolean mask selects positions, while integer indices select palette rows.
+mask = matrix == 3
+print(matrix[mask])
