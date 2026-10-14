@@ -1,0 +1,162 @@
+[
+  {
+    "file": "steps/01_coordinates.py",
+    "title": "Coordinate matrix, tail and head",
+    "mode": "console"
+  },
+  {
+    "file": "steps/02_vstack.py",
+    "title": "Join matrices by rows",
+    "mode": "console"
+  },
+  {
+    "file": "steps/03_hstack.py",
+    "title": "Join matrices by columns",
+    "mode": "console"
+  },
+  {
+    "file": "steps/04_append_row.py",
+    "title": "Append a coordinate vector as one row",
+    "mode": "console"
+  },
+  {
+    "file": "steps/05_move.py",
+    "title": "Add a head and remove the old tail",
+    "mode": "console"
+  },
+  {
+    "file": "steps/06_growth.py",
+    "title": "Keep the tail when eating an apple",
+    "mode": "console"
+  },
+  {
+    "file": "steps/07_no_growth.py",
+    "title": "Preserve length when the apple is elsewhere",
+    "mode": "console"
+  },
+  {
+    "file": "steps/08_free_mask.py",
+    "title": "Mark free cells with a Boolean mask",
+    "mode": "console"
+  },
+  {
+    "file": "steps/09_argwhere_where.py",
+    "title": "Compare coordinate representations",
+    "mode": "console"
+  },
+  {
+    "file": "steps/10_random_apple.py",
+    "title": "Choose a free cell after checking the result",
+    "mode": "console"
+  },
+  {
+    "file": "steps/11_empty_field.py",
+    "title": "Handle a field with no free cells",
+    "mode": "console"
+  },
+  {
+    "file": "steps/12_spawn_function.py",
+    "title": "Return coordinates or None",
+    "mode": "console"
+  },
+  {
+    "file": "steps/13_coordinates_to_field.py",
+    "title": "Use paired coordinate indices",
+    "mode": "console"
+  },
+  {
+    "file": "steps/14_field_and_apple.py",
+    "title": "Build occupancy before choosing an apple",
+    "mode": "console"
+  },
+  {
+    "file": "steps/15_collision_arrays.py",
+    "title": "Reduce component matches to a collision flag",
+    "mode": "console"
+  },
+  {
+    "file": "steps/16_collision_function.py",
+    "title": "Check free cells, body and departing tail",
+    "mode": "console"
+  },
+  {
+    "file": "steps/17_single_step.py",
+    "title": "Combine movement, growth and collision",
+    "mode": "console"
+  },
+  {
+    "file": "steps/18_win.py",
+    "title": "Fill the last free cell",
+    "mode": "console"
+  },
+  {
+    "file": "steps/19_respawn.py",
+    "title": "Grow and place the next apple",
+    "mode": "console"
+  },
+  {
+    "file": "steps/20_wrap.py",
+    "title": "Check all four boundaries on a rectangular field",
+    "mode": "console"
+  },
+  {
+    "file": "steps/21_wrapped_step.py",
+    "title": "Integrate edge wrapping into a movement step",
+    "mode": "console"
+  },
+  {
+    "file": "steps/22_opposite_direction.py",
+    "title": "Reject the opposite direction",
+    "mode": "console"
+  },
+  {
+    "file": "steps/23_two_turn_problem.py",
+    "title": "Reproduce two turns before a movement step",
+    "mode": "console"
+  },
+  {
+    "file": "steps/24_turn_permission.py",
+    "title": "Allow one turn per completed step",
+    "mode": "console"
+  },
+  {
+    "file": "steps/25_arrow_events.py",
+    "title": "Translate two key events into a single permitted turn",
+    "mode": "console"
+  },
+  {
+    "file": "steps/26_frame_counter.py",
+    "title": "Move every six frames",
+    "mode": "console"
+  },
+  {
+    "file": "steps/27_snake.py",
+    "title": "Complete Snake game",
+    "mode": "pygame"
+  },
+  {
+    "file": "solutions/26_colored_head.py",
+    "title": "Colored Head",
+    "mode": "pygame"
+  },
+  {
+    "file": "solutions/27_score.py",
+    "title": "Score",
+    "mode": "pygame"
+  },
+  {
+    "file": "solutions/28_speed.py",
+    "title": "Speed",
+    "mode": "pygame"
+  },
+  {
+    "file": "solutions/29_walls.py",
+    "title": "Walls",
+    "mode": "pygame"
+  },
+  {
+    "file": "solutions/30_restart.py",
+    "title": "Restart",
+    "mode": "pygame"
+  }
+]
