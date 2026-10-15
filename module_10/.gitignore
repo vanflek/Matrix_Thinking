@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.venv/
+life_world.npy
+life_torus.npy
