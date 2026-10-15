@@ -49,3 +49,5 @@ Each file in `solutions` is standalone. Task 28 includes the counter from task 2
 ## Illustrations
 
 Diagrams in `illustrations` explain synchronous generations, shifts, elementwise addition, masks, broadcasting and repeated-index accumulation. All labels are in English.
+
+The windowed examples display a thin gray grid. The transparent grid surface is built once and drawn over the cells; the cursor frame is drawn last. Grid lines do not change the world matrix.

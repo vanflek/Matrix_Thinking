@@ -33,12 +33,34 @@ def matrix_to_surface(matrix, palette, cell_size):
     return pg.surfarray.make_surface(image.swapaxes(0, 1))
 
 
+def build_grid_surface(rows, cols, cell_size, grid_color):
+    width = cols * cell_size
+    height = rows * cell_size
+    grid_surface = pg.Surface((width, height), pg.SRCALPHA)
+
+    # Build the unchanged transparent grid once.
+    for col in range(1, cols):
+        x = col * cell_size
+        pg.draw.line(grid_surface, grid_color,
+                     (x, 0), (x, height - 1))
+
+    for row in range(1, rows):
+        y = row * cell_size
+        pg.draw.line(grid_surface, grid_color,
+                     (0, y), (width - 1, y))
+
+    pg.draw.rect(grid_surface, grid_color,
+                 (0, 0, width, height), 1)
+    return grid_surface
+
+
 pg.init()
 
 ROWS = 15
 COLS = 21
 CELL_SIZE = 32
 FPS = 60
+GRID_COLOR = (185, 198, 206)
 
 COLORS = np.array([
     [245, 247, 250],
@@ -57,6 +79,10 @@ screen = pg.display.set_mode((
     ROWS * CELL_SIZE,
 ))
 pg.display.set_caption("Game of Life | Space: run/pause | N: step")
+
+grid_surface = build_grid_surface(
+    ROWS, COLS, CELL_SIZE, GRID_COLOR
+)
 
 clock = pg.time.Clock()
 running = True
@@ -100,6 +126,7 @@ while running:
 
     surface = matrix_to_surface(matrix, COLORS, CELL_SIZE)
     screen.blit(surface, (0, 0))
+    screen.blit(grid_surface, (0, 0))
 
     pg.display.flip()
     clock.tick(FPS)
