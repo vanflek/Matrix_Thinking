@@ -1,5 +1,5 @@
---- b01_gray_loops.py
-+++ b02_gray_numpy.py
+--- iteration_12_14_gray_loops.py
++++ iteration_12_15_gray_numpy.py
 @@ -4,20 +4,11 @@
  
  

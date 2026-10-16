@@ -1,5 +1,5 @@
---- b13_draw_color.py
-+++ b14_color_numpy.py
+--- iteration_12_26_draw_color.py
++++ iteration_12_27_color_numpy.py
 @@ -70,24 +70,19 @@
      columns = pixels.shape[0] // cell_width
      rows = pixels.shape[1] // cell_height

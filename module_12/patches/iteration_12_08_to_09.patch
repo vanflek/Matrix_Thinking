@@ -1,5 +1,5 @@
---- a07_normalize_loops.py
-+++ a08_normalize_numpy.py
+--- iteration_12_08_normalize_loops.py
++++ iteration_12_09_normalize_numpy.py
 @@ -35,30 +35,17 @@
  
  

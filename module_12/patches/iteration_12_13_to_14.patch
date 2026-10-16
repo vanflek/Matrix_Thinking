@@ -1,5 +1,5 @@
---- b00_load_image.py
-+++ b01_gray_loops.py
+--- iteration_12_13_load_image.py
++++ iteration_12_14_gray_loops.py
 @@ -3,19 +3,37 @@
  
  

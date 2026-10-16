@@ -1,5 +1,5 @@
---- b12_color_means.py
-+++ b13_draw_color.py
+--- iteration_12_25_color_means.py
++++ iteration_12_26_draw_color.py
 @@ -116,7 +116,7 @@
  surface.fill((255, 255, 255))
  for x in range(columns):

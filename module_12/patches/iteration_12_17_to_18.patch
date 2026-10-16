@@ -1,5 +1,5 @@
---- b04_blocks_mean.py
-+++ b05_blocks_reshape.py
+--- iteration_12_17_blocks_mean.py
++++ iteration_12_18_blocks_reshape.py
 @@ -28,21 +28,18 @@
  def get_block_averages(gray, cell_width, cell_height):
      columns = gray.shape[0] // cell_width

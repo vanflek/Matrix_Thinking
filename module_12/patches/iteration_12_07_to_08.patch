@@ -1,5 +1,5 @@
---- a06_paired_arrays.py
-+++ a07_normalize_loops.py
+--- iteration_12_07_paired_arrays.py
++++ iteration_12_08_normalize_loops.py
 @@ -34,6 +34,33 @@
      return brightness
  

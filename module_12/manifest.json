@@ -1,119 +1,119 @@
 {
   "files": [
     {
-      "file": "iterations/a00_chr_ord.py",
+      "file": "steps/iteration_12_01_chr_ord.py",
       "purpose": "Character codes and string conversion"
     },
     {
-      "file": "iterations/a01_ascii_codes.py",
+      "file": "steps/iteration_12_02_ascii_codes.py",
       "purpose": "Collect all 95 printable ASCII symbols"
     },
     {
-      "file": "iterations/a02_render_symbol.py",
+      "file": "steps/iteration_12_03_render_symbol.py",
       "purpose": "Render a symbol offscreen and inspect pixels"
     },
     {
-      "file": "iterations/a03_brightness_loops.py",
+      "file": "steps/iteration_12_04_brightness_loops.py",
       "purpose": "Mean brightness using two loops"
     },
     {
-      "file": "iterations/a04_brightness_numpy.py",
+      "file": "steps/iteration_12_05_brightness_numpy.py",
       "purpose": "Mean brightness using NumPy"
     },
     {
-      "file": "iterations/a05_all_symbols_list.py",
+      "file": "steps/iteration_12_06_all_symbols_list.py",
       "purpose": "Measure all symbols"
     },
     {
-      "file": "iterations/a06_paired_arrays.py",
+      "file": "steps/iteration_12_07_paired_arrays.py",
       "purpose": "Store symbols and brightness in arrays"
     },
     {
-      "file": "iterations/a07_normalize_loops.py",
+      "file": "steps/iteration_12_08_normalize_loops.py",
       "purpose": "Normalize using loops"
     },
     {
-      "file": "iterations/a08_normalize_numpy.py",
+      "file": "steps/iteration_12_09_normalize_numpy.py",
       "purpose": "Normalize using NumPy"
     },
     {
-      "file": "iterations/a09_sort_loops.py",
+      "file": "steps/iteration_12_10_sort_loops.py",
       "purpose": "Move paired data with a loop"
     },
     {
-      "file": "iterations/a10_sort_numpy.py",
+      "file": "steps/iteration_12_11_sort_numpy.py",
       "purpose": "Apply the index permutation directly"
     },
     {
-      "file": "iterations/a11_save_palette.py",
+      "file": "steps/iteration_12_12_save_palette.py",
       "purpose": "Save named arrays to NPZ"
     },
     {
-      "file": "iterations/b00_load_image.py",
+      "file": "steps/iteration_12_13_load_image.py",
       "purpose": "Load image"
     },
     {
-      "file": "iterations/b01_gray_loops.py",
+      "file": "steps/iteration_12_14_gray_loops.py",
       "purpose": "Gray loops"
     },
     {
-      "file": "iterations/b02_gray_numpy.py",
+      "file": "steps/iteration_12_15_gray_numpy.py",
       "purpose": "Gray numpy"
     },
     {
-      "file": "iterations/b03_blocks_four_loops.py",
+      "file": "steps/iteration_12_16_blocks_four_loops.py",
       "purpose": "Blocks four loops"
     },
     {
-      "file": "iterations/b04_blocks_mean.py",
+      "file": "steps/iteration_12_17_blocks_mean.py",
       "purpose": "Blocks mean"
     },
     {
-      "file": "iterations/b05_blocks_reshape.py",
+      "file": "steps/iteration_12_18_blocks_reshape.py",
       "purpose": "Blocks reshape"
     },
     {
-      "file": "iterations/b06_mosaic_repeat.py",
+      "file": "steps/iteration_12_19_mosaic_repeat.py",
       "purpose": "Mosaic repeat"
     },
     {
-      "file": "iterations/b07_single_block_function.py",
+      "file": "steps/iteration_12_20_single_block_function.py",
       "purpose": "Single block function"
     },
     {
-      "file": "iterations/b08_select_symbols.py",
+      "file": "steps/iteration_12_21_select_symbols.py",
       "purpose": "Select symbols"
     },
     {
-      "file": "iterations/b09_draw_ascii.py",
+      "file": "steps/iteration_12_22_draw_ascii.py",
       "purpose": "Draw ascii"
     },
     {
-      "file": "iterations/b10_searchsorted.py",
+      "file": "steps/iteration_12_23_searchsorted.py",
       "purpose": "Searchsorted"
     },
     {
-      "file": "iterations/b11_select_numpy.py",
+      "file": "steps/iteration_12_24_select_numpy.py",
       "purpose": "Select numpy"
     },
     {
-      "file": "iterations/b12_color_means.py",
+      "file": "steps/iteration_12_25_color_means.py",
       "purpose": "Color means"
     },
     {
-      "file": "iterations/b13_draw_color.py",
+      "file": "steps/iteration_12_26_draw_color.py",
       "purpose": "Draw color"
     },
     {
-      "file": "iterations/b14_color_numpy.py",
+      "file": "steps/iteration_12_27_color_numpy.py",
       "purpose": "Color numpy"
     },
     {
-      "file": "iterations/b15_resize.py",
+      "file": "steps/iteration_12_28_resize.py",
       "purpose": "Resize"
     },
     {
-      "file": "iterations/b16_color_toggle.py",
+      "file": "steps/iteration_12_29_color_toggle.py",
       "purpose": "Color toggle"
     },
     {
@@ -125,123 +125,119 @@
       "purpose": "Final interactive renderer"
     },
     {
-      "file": "examples/example_015.py",
+      "file": "examples/example_12_01_channel_mean.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_023.py",
+      "file": "examples/example_12_02_paired_arrays.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_026.py",
+      "file": "examples/example_12_03_normalize_loops.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_033.py",
+      "file": "examples/example_12_04_normalize_numpy.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_034.py",
+      "file": "examples/example_12_05_argsort.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_035.py",
+      "file": "examples/example_12_06_reorder_loops.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_038.py",
+      "file": "examples/example_12_07_reorder_numpy.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_044.py",
+      "file": "examples/example_12_08_savez_load.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_050.py",
+      "file": "examples/example_12_09_reshape_matrix.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_069.py",
+      "file": "examples/example_12_10_image_coordinates.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_070.py",
+      "file": "examples/example_12_11_block_address.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_073.py",
+      "file": "examples/example_12_12_select_block.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_075.py",
+      "file": "examples/example_12_13_mean_axes.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_078.py",
+      "file": "examples/example_12_14_block_averages.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_082.py",
+      "file": "examples/example_12_15_nearest_symbol.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_083.py",
+      "file": "examples/example_12_16_symbol_matrix.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_089.py",
+      "file": "examples/example_12_17_searchsorted_scalar.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_094.py",
+      "file": "examples/example_12_18_nearest_sorted.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_096.py",
+      "file": "examples/example_12_19_searchsorted_matrix.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_097.py",
+      "file": "examples/example_12_20_rgb_means.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_117.py",
+      "file": "examples/example_12_21_exercise_paired_arrays.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_126.py",
+      "file": "examples/example_12_22_exercise_argsort.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_128.py",
+      "file": "examples/example_12_23_exercise_broken_pairs.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_129.py",
+      "file": "examples/example_12_24_exercise_block_address.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_133.py",
+      "file": "examples/example_12_25_exercise_mean_axes.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_134.py",
+      "file": "examples/example_12_26_exercise_searchsorted.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_135.py",
+      "file": "examples/example_12_27_exercise_where.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_136.py",
+      "file": "examples/example_12_28_compare_averages.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "examples/example_150.py",
-      "purpose": "Standalone console example from the manuscript"
-    },
-    {
-      "file": "examples/example_151.py",
+      "file": "examples/example_12_29_keep_rgb_axis.py",
       "purpose": "Standalone console example from the manuscript"
     },
     {
@@ -266,32 +262,32 @@
     }
   ],
   "patches": [
-    "a00_chr_ord_to_a01_ascii_codes.patch",
-    "a01_ascii_codes_to_a02_render_symbol.patch",
-    "a02_render_symbol_to_a03_brightness_loops.patch",
-    "a03_brightness_loops_to_a04_brightness_numpy.patch",
-    "a04_brightness_numpy_to_a05_all_symbols_list.patch",
-    "a05_all_symbols_list_to_a06_paired_arrays.patch",
-    "a06_paired_arrays_to_a07_normalize_loops.patch",
-    "a07_normalize_loops_to_a08_normalize_numpy.patch",
-    "a08_normalize_numpy_to_a09_sort_loops.patch",
-    "a09_sort_loops_to_a10_sort_numpy.patch",
-    "a10_sort_numpy_to_a11_save_palette.patch",
-    "b00_load_image_to_b01_gray_loops.patch",
-    "b01_gray_loops_to_b02_gray_numpy.patch",
-    "b02_gray_numpy_to_b03_blocks_four_loops.patch",
-    "b03_blocks_four_loops_to_b04_blocks_mean.patch",
-    "b04_blocks_mean_to_b05_blocks_reshape.patch",
-    "b05_blocks_reshape_to_b06_mosaic_repeat.patch",
-    "b06_mosaic_repeat_to_b07_single_block_function.patch",
-    "b07_single_block_function_to_b08_select_symbols.patch",
-    "b08_select_symbols_to_b09_draw_ascii.patch",
-    "b09_draw_ascii_to_b10_searchsorted.patch",
-    "b10_searchsorted_to_b11_select_numpy.patch",
-    "b11_select_numpy_to_b12_color_means.patch",
-    "b12_color_means_to_b13_draw_color.patch",
-    "b13_draw_color_to_b14_color_numpy.patch",
-    "b14_color_numpy_to_b15_resize.patch",
-    "b15_resize_to_b16_color_toggle.patch"
+    "iteration_12_01_to_02.patch",
+    "iteration_12_02_to_03.patch",
+    "iteration_12_03_to_04.patch",
+    "iteration_12_04_to_05.patch",
+    "iteration_12_05_to_06.patch",
+    "iteration_12_06_to_07.patch",
+    "iteration_12_07_to_08.patch",
+    "iteration_12_08_to_09.patch",
+    "iteration_12_09_to_10.patch",
+    "iteration_12_10_to_11.patch",
+    "iteration_12_11_to_12.patch",
+    "iteration_12_13_to_14.patch",
+    "iteration_12_14_to_15.patch",
+    "iteration_12_15_to_16.patch",
+    "iteration_12_16_to_17.patch",
+    "iteration_12_17_to_18.patch",
+    "iteration_12_18_to_19.patch",
+    "iteration_12_19_to_20.patch",
+    "iteration_12_20_to_21.patch",
+    "iteration_12_21_to_22.patch",
+    "iteration_12_22_to_23.patch",
+    "iteration_12_23_to_24.patch",
+    "iteration_12_24_to_25.patch",
+    "iteration_12_25_to_26.patch",
+    "iteration_12_26_to_27.patch",
+    "iteration_12_27_to_28.patch",
+    "iteration_12_28_to_29.patch"
   ]
 }

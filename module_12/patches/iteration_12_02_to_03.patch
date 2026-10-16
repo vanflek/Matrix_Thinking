@@ -1,5 +1,5 @@
---- a01_ascii_codes.py
-+++ a02_render_symbol.py
+--- iteration_12_02_ascii_codes.py
++++ iteration_12_03_render_symbol.py
 @@ -1,6 +1,44 @@
 -symbols = []
 -for code in range(32, 127):

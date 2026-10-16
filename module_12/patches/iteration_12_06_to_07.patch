@@ -1,5 +1,5 @@
---- a05_all_symbols_list.py
-+++ a06_paired_arrays.py
+--- iteration_12_06_all_symbols_list.py
++++ iteration_12_07_paired_arrays.py
 @@ -45,6 +45,8 @@
  for code in range(32, 127):
      symbols.append(chr(code))

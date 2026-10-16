@@ -1,5 +1,5 @@
---- b03_blocks_four_loops.py
-+++ b04_blocks_mean.py
+--- iteration_12_16_blocks_four_loops.py
++++ iteration_12_17_blocks_mean.py
 @@ -40,12 +40,7 @@
                  top:top + cell_height
              ]

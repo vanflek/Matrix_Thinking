@@ -1,5 +1,5 @@
---- a04_brightness_numpy.py
-+++ a05_all_symbols_list.py
+--- iteration_12_05_brightness_numpy.py
++++ iteration_12_06_all_symbols_list.py
 @@ -1,46 +1,53 @@
 +import numpy as np
  import pygame as pg

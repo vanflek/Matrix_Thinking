@@ -1,5 +1,5 @@
---- b11_select_numpy.py
-+++ b12_color_means.py
+--- iteration_12_24_select_numpy.py
++++ iteration_12_25_color_means.py
 @@ -66,6 +66,30 @@
      return symbols[indices]
  

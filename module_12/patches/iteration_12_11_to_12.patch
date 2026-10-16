@@ -1,5 +1,5 @@
---- a10_sort_numpy.py
-+++ a11_save_palette.py
+--- iteration_12_11_sort_numpy.py
++++ iteration_12_12_save_palette.py
 @@ -3,6 +3,7 @@
  
  FONT_NAME = "consolas"

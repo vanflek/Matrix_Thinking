@@ -1,5 +1,5 @@
---- b14_color_numpy.py
-+++ b15_resize.py
+--- iteration_12_27_color_numpy.py
++++ iteration_12_28_resize.py
 @@ -90,8 +90,6 @@
  if font_path is None:
      pg.quit()

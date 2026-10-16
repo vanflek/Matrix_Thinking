@@ -1,5 +1,5 @@
---- a08_normalize_numpy.py
-+++ a09_sort_loops.py
+--- iteration_12_09_normalize_numpy.py
++++ iteration_12_10_sort_loops.py
 @@ -64,6 +64,15 @@
  brightness = measure_brightness(font, symbols)
  brightness = normalize_brightness(brightness)

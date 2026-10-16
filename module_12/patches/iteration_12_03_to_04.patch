@@ -1,5 +1,5 @@
---- a02_render_symbol.py
-+++ a03_brightness_loops.py
+--- iteration_12_03_render_symbol.py
++++ iteration_12_04_brightness_loops.py
 @@ -41,4 +41,11 @@
  pg.image.save(cell, "symbol_sample.png")
  print("Saved symbol_sample.png without opening a window.")

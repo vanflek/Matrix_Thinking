@@ -1,5 +1,5 @@
---- b08_select_symbols.py
-+++ b09_draw_ascii.py
+--- iteration_12_21_select_symbols.py
++++ iteration_12_22_draw_ascii.py
 @@ -86,12 +86,18 @@
  surface.fill((255, 255, 255))
  for x in range(columns):

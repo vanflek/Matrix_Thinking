@@ -1,5 +1,5 @@
---- b09_draw_ascii.py
-+++ b10_searchsorted.py
+--- iteration_12_22_draw_ascii.py
++++ iteration_12_23_searchsorted.py
 @@ -44,17 +44,25 @@
  
  

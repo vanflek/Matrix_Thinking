@@ -1,5 +1,5 @@
---- a09_sort_loops.py
-+++ a10_sort_numpy.py
+--- iteration_12_10_sort_loops.py
++++ iteration_12_11_sort_numpy.py
 @@ -65,13 +65,8 @@
  brightness = normalize_brightness(brightness)
  

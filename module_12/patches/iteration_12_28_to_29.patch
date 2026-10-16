@@ -1,5 +1,5 @@
---- b15_resize.py
-+++ b16_color_toggle.py
+--- iteration_12_28_resize.py
++++ iteration_12_29_color_toggle.py
 @@ -104,6 +104,7 @@
  screen = pg.display.set_mode(image.get_size())
  clock = pg.time.Clock()

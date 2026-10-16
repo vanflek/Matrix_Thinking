@@ -1,5 +1,5 @@
---- b02_gray_numpy.py
-+++ b03_blocks_four_loops.py
+--- iteration_12_15_gray_numpy.py
++++ iteration_12_16_blocks_four_loops.py
 @@ -1,6 +1,8 @@
  import numpy as np
  import pygame as pg

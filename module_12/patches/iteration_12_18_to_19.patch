@@ -1,5 +1,5 @@
---- b05_blocks_reshape.py
-+++ b06_mosaic_repeat.py
+--- iteration_12_18_blocks_reshape.py
++++ iteration_12_19_mosaic_repeat.py
 @@ -54,17 +54,16 @@
  pixels = pg.surfarray.array3d(image)
  gray = get_gray(pixels)

@@ -1,5 +1,5 @@
---- b06_mosaic_repeat.py
-+++ b07_single_block_function.py
+--- iteration_12_19_mosaic_repeat.py
++++ iteration_12_20_single_block_function.py
 @@ -42,6 +42,20 @@
      return blocks.mean(axis=(1, 3))
  
