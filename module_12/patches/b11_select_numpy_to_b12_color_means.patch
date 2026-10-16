@@ -1,0 +1,51 @@
+--- b11_select_numpy.py
++++ b12_color_means.py
+@@ -66,6 +66,30 @@
+     return symbols[indices]
+ 
+ 
++def get_color_averages(pixels, cell_width, cell_height):
++    columns = pixels.shape[0] // cell_width
++    rows = pixels.shape[1] // cell_height
++
++    colors = np.zeros((columns, rows, 3), dtype=float)
++
++    for x in range(columns):
++        for y in range(rows):
++            left = x * cell_width
++            top = y * cell_height
++
++            block = pixels[
++                left:left + cell_width,
++                top:top + cell_height
++            ]
++
++            for channel in range(3):
++                colors[x, y, channel] = (
++                    block[:, :, channel].mean()
++                )
++
++    return colors
++
++
+ pg.init()
+ font_path = pg.font.match_font(FONT_NAME)
+ if font_path is None:
+@@ -84,6 +108,8 @@
+ pixels = pg.surfarray.array3d(image)
+ gray = get_gray(pixels)
+ averages = get_block_averages(gray, cell_width, cell_height)
++colors = get_color_averages(pixels, cell_width, cell_height)
++draw_colors = colors.astype(np.uint8)
+ ascii_symbols = blocks_to_ascii(averages, symbols, brightness)
+ columns, rows = averages.shape
+ surface = pg.Surface(image.get_size())
+@@ -101,7 +127,7 @@
+         surface.blit(symbol_image, position)
+ 
+ screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B11")
++pg.display.set_caption("ASCII learning step B12")
+ clock = pg.time.Clock()
+ running = True
+ while running:

@@ -1,0 +1,25 @@
+--- b08_select_symbols.py
++++ b09_draw_ascii.py
+@@ -86,12 +86,18 @@
+ surface.fill((255, 255, 255))
+ for x in range(columns):
+     for y in range(rows):
+-        value = int(averages[x, y])
+-        rectangle = (x * cell_width, y * cell_height, cell_width, cell_height)
+-        pg.draw.rect(surface, (value, value, value), rectangle)
++        color = (0, 0, 0)
++        symbol_image = font.render(
++            ascii_symbols[x, y], True, color, (255, 255, 255)
++        )
++        cell_rect = pg.Rect(
++            x * cell_width, y * cell_height, cell_width, cell_height
++        )
++        position = symbol_image.get_rect(center=cell_rect.center)
++        surface.blit(symbol_image, position)
+ 
+ screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B08")
++pg.display.set_caption("ASCII learning step B09")
+ clock = pg.time.Clock()
+ running = True
+ while running:

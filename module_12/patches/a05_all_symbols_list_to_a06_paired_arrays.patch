@@ -1,0 +1,11 @@
+--- a05_all_symbols_list.py
++++ a06_paired_arrays.py
+@@ -45,6 +45,8 @@
+ for code in range(32, 127):
+     symbols.append(chr(code))
+ 
++symbols = np.array(symbols, dtype="<U1")
++
+ brightness = measure_brightness(font, symbols)
+ 
+ for index, symbol in enumerate(symbols):

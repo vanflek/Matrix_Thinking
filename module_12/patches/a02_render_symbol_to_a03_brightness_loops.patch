@@ -1,0 +1,14 @@
+--- a02_render_symbol.py
++++ a03_brightness_loops.py
+@@ -41,4 +41,11 @@
+ pg.image.save(cell, "symbol_sample.png")
+ print("Saved symbol_sample.png without opening a window.")
+ 
++total = 0
++for x in range(width):
++    for y in range(height):
++        total += int(pixels[x, y, 0])
++brightness = total / (width * height)
++print("Mean brightness:", brightness)
++
+ pg.font.quit()

@@ -1,0 +1,42 @@
+--- b04_blocks_mean.py
++++ b05_blocks_reshape.py
+@@ -28,21 +28,18 @@
+ def get_block_averages(gray, cell_width, cell_height):
+     columns = gray.shape[0] // cell_width
+     rows = gray.shape[1] // cell_height
+-    averages = np.zeros((columns, rows), dtype=float)
+ 
+-    for x in range(columns):
+-        for y in range(rows):
+-            left = x * cell_width
+-            top = y * cell_height
++    cropped = gray[
++        :columns * cell_width,
++        :rows * cell_height
++    ]
+ 
+-            block = gray[
+-                left:left + cell_width,
+-                top:top + cell_height
+-            ]
++    blocks = cropped.reshape(
++        columns, cell_width,
++        rows, cell_height
++    )
+ 
+-            averages[x, y] = block.mean()
+-
+-    return averages
++    return blocks.mean(axis=(1, 3))
+ 
+ 
+ pg.init()
+@@ -67,7 +64,7 @@
+         pg.draw.rect(surface, (value, value, value), rectangle)
+ 
+ screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B04")
++pg.display.set_caption("ASCII learning step B05")
+ clock = pg.time.Clock()
+ running = True
+ while running:

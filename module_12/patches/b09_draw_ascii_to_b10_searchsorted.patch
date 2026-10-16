@@ -1,0 +1,45 @@
+--- b09_draw_ascii.py
++++ b10_searchsorted.py
+@@ -44,17 +44,25 @@
+ 
+ 
+ def block_to_ascii(block, symbols, brightness):
+-    best_index = 0
+-    best_distance = abs(block - brightness[0])
++    right = np.searchsorted(
++        brightness, block, side="right"
++    )
+ 
+-    for index in range(1, len(brightness)):
+-        distance = abs(block - brightness[index])
++    if right == 0:
++        return symbols[0]
+ 
+-        if distance < best_distance:
+-            best_distance = distance
+-            best_index = index
++    if right == len(brightness):
++        return symbols[-1]
+ 
+-    return symbols[best_index]
++    left = right - 1
++
++    left_distance = block - brightness[left]
++    right_distance = brightness[right] - block
++
++    if left_distance <= right_distance:
++        return symbols[left]
++
++    return symbols[right]
+ 
+ 
+ pg.init()
+@@ -97,7 +105,7 @@
+         surface.blit(symbol_image, position)
+ 
+ screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B09")
++pg.display.set_caption("ASCII learning step B10")
+ clock = pg.time.Clock()
+ running = True
+ while running:

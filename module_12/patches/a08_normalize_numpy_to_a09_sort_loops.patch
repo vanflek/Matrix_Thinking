@@ -1,0 +1,18 @@
+--- a08_normalize_numpy.py
++++ a09_sort_loops.py
+@@ -64,6 +64,15 @@
+ brightness = measure_brightness(font, symbols)
+ brightness = normalize_brightness(brightness)
+ 
++order = np.argsort(brightness, kind="stable")
++sorted_brightness = np.zeros_like(brightness)
++sorted_symbols = np.empty_like(symbols)
++for new_index, old_index in enumerate(order):
++    sorted_brightness[new_index] = brightness[old_index]
++    sorted_symbols[new_index] = symbols[old_index]
++brightness = sorted_brightness
++symbols = sorted_symbols
++
+ for index, symbol in enumerate(symbols):
+     print(ord(symbol), repr(symbol), brightness[index])
+ print("Measured symbols:", len(brightness))

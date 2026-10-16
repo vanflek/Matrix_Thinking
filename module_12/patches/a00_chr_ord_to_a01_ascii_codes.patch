@@ -1,0 +1,17 @@
+--- a00_chr_ord.py
++++ a01_ascii_codes.py
+@@ -1,8 +1,6 @@
+-print(chr(65))
+-print(chr(97))
+-print(chr(48))
+-print(ord("A"))
+-print(ord("a"))
+-print(ord("0"))
+-print(chr(65), str(65))
+-print(len(chr(65)), len(str(65)))
++symbols = []
++for code in range(32, 127):
++    symbol = chr(code)
++    symbols.append(symbol)
++    print(code, repr(symbol))
++print("Printable symbols:", len(symbols))

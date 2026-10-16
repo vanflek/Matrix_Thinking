@@ -1,0 +1,46 @@
+--- b15_resize.py
++++ b16_color_toggle.py
+@@ -104,6 +104,7 @@
+ screen = pg.display.set_mode(image.get_size())
+ clock = pg.time.Clock()
+ font_size = FONT_SIZE
++use_color = True
+ redraw = True
+ running = True
+ 
+@@ -119,6 +120,9 @@
+                 redraw = True
+             if event.key == pg.K_DOWN and font_size > 1:
+                 font_size -= 1
++                redraw = True
++            if event.key == pg.K_c:
++                use_color = not use_color
+                 redraw = True
+ 
+     if not running:
+@@ -137,7 +141,9 @@
+         surface.fill((255, 255, 255))
+         for x in range(columns):
+             for y in range(rows):
+-                color = tuple(draw_colors[x, y])
++                color = (0, 0, 0)
++                if use_color:
++                    color = tuple(draw_colors[x, y])
+                 symbol_image = font.render(
+                     ascii_symbols[x, y], True, color, (255, 255, 255)
+                 )
+@@ -147,7 +153,13 @@
+                 position = symbol_image.get_rect(center=cell_rect.center)
+                 surface.blit(symbol_image, position)
+         print("Font size:", font_size, "Blocks:", averages.shape)
+-        pg.display.set_caption("ASCII | Up/Down: size | Esc: quit")
++        mode = "Monochrome"
++        if use_color:
++            mode = "Color"
++        pg.display.set_caption(
++            "ASCII | " + mode + " | Up/Down: size | C: color | Esc: quit"
++        )
++        print("Mode:", mode)
+         redraw = False
+ 
+     screen.blit(surface, (0, 0))

@@ -1,0 +1,20 @@
+--- b12_color_means.py
++++ b13_draw_color.py
+@@ -116,7 +116,7 @@
+ surface.fill((255, 255, 255))
+ for x in range(columns):
+     for y in range(rows):
+-        color = (0, 0, 0)
++        color = tuple(draw_colors[x, y])
+         symbol_image = font.render(
+             ascii_symbols[x, y], True, color, (255, 255, 255)
+         )
+@@ -127,7 +127,7 @@
+         surface.blit(symbol_image, position)
+ 
+ screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B12")
++pg.display.set_caption("ASCII learning step B13")
+ clock = pg.time.Clock()
+ running = True
+ while running:

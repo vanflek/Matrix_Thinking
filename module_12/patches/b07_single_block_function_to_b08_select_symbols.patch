@@ -1,0 +1,42 @@
+--- b07_single_block_function.py
++++ b08_select_symbols.py
+@@ -3,6 +3,7 @@
+ 
+ FONT_NAME = "consolas"
+ FONT_SIZE = 10
++PALETTE_FILE = "symbol_palette.npz"
+ 
+ 
+ def get_gray(pixels):
+@@ -64,10 +65,22 @@
+ font = pg.font.Font(font_path, FONT_SIZE)
+ cell_width, cell_height = get_cell_size(font)
+ 
++data = np.load(PALETTE_FILE)
++symbols = data["symbols"]
++brightness = data["brightness"]
++data.close()
++print("Palette shapes:", symbols.shape, brightness.shape)
++
+ image = pg.image.load("cat.png")
+ pixels = pg.surfarray.array3d(image)
+ gray = get_gray(pixels)
+ averages = get_block_averages(gray, cell_width, cell_height)
++columns, rows = averages.shape
++ascii_symbols = np.empty((columns, rows), dtype="<U1")
++for x in range(columns):
++    for y in range(rows):
++        ascii_symbols[x, y] = block_to_ascii(averages[x, y], symbols, brightness)
++print("ASCII array shape:", ascii_symbols.shape)
+ columns, rows = averages.shape
+ surface = pg.Surface(image.get_size())
+ surface.fill((255, 255, 255))
+@@ -78,7 +91,7 @@
+         pg.draw.rect(surface, (value, value, value), rectangle)
+ 
+ screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B07")
++pg.display.set_caption("ASCII learning step B08")
+ clock = pg.time.Clock()
+ running = True
+ while running:

@@ -1,0 +1,8 @@
+print(chr(65))
+print(chr(97))
+print(chr(48))
+print(ord("A"))
+print(ord("a"))
+print(ord("0"))
+print(chr(65), str(65))
+print(len(chr(65)), len(str(65)))

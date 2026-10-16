@@ -1,0 +1,94 @@
+--- b14_color_numpy.py
++++ b15_resize.py
+@@ -90,8 +90,6 @@
+ if font_path is None:
+     pg.quit()
+     raise FileNotFoundError("Install Consolas or choose the analyzer font.")
+-font = pg.font.Font(font_path, FONT_SIZE)
+-cell_width, cell_height = get_cell_size(font)
+ 
+ data = np.load(PALETTE_FILE)
+ symbols = data["symbols"]
+@@ -102,29 +100,13 @@
+ image = pg.image.load("cat.png")
+ pixels = pg.surfarray.array3d(image)
+ gray = get_gray(pixels)
+-averages = get_block_averages(gray, cell_width, cell_height)
+-colors = get_color_averages(pixels, cell_width, cell_height)
+-draw_colors = colors.astype(np.uint8)
+-ascii_symbols = blocks_to_ascii(averages, symbols, brightness)
+-columns, rows = averages.shape
+ surface = pg.Surface(image.get_size())
+-surface.fill((255, 255, 255))
+-for x in range(columns):
+-    for y in range(rows):
+-        color = tuple(draw_colors[x, y])
+-        symbol_image = font.render(
+-            ascii_symbols[x, y], True, color, (255, 255, 255)
+-        )
+-        cell_rect = pg.Rect(
+-            x * cell_width, y * cell_height, cell_width, cell_height
+-        )
+-        position = symbol_image.get_rect(center=cell_rect.center)
+-        surface.blit(symbol_image, position)
++screen = pg.display.set_mode(image.get_size())
++clock = pg.time.Clock()
++font_size = FONT_SIZE
++redraw = True
++running = True
+ 
+-screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B14")
+-clock = pg.time.Clock()
+-running = True
+ while running:
+     for event in pg.event.get():
+         if event.type == pg.QUIT:
+@@ -132,8 +114,44 @@
+         if event.type == pg.KEYDOWN:
+             if event.key == pg.K_ESCAPE:
+                 running = False
+-    if running:
+-        screen.blit(surface, (0, 0))
+-        pg.display.flip()
++            if event.key == pg.K_UP:
++                font_size += 1
++                redraw = True
++            if event.key == pg.K_DOWN and font_size > 1:
++                font_size -= 1
++                redraw = True
++
++    if not running:
++        break
++
++    # Rebuild from the original pixels only when settings change.
++    if redraw:
++        font = pg.font.Font(font_path, font_size)
++        cell_width, cell_height = get_cell_size(font)
++        averages = get_block_averages(gray, cell_width, cell_height)
++        colors = get_color_averages(pixels, cell_width, cell_height)
++        draw_colors = colors.astype(np.uint8)
++        ascii_symbols = blocks_to_ascii(averages, symbols, brightness)
++        columns, rows = averages.shape
++        surface = pg.Surface(image.get_size())
++        surface.fill((255, 255, 255))
++        for x in range(columns):
++            for y in range(rows):
++                color = tuple(draw_colors[x, y])
++                symbol_image = font.render(
++                    ascii_symbols[x, y], True, color, (255, 255, 255)
++                )
++                cell_rect = pg.Rect(
++                    x * cell_width, y * cell_height, cell_width, cell_height
++                )
++                position = symbol_image.get_rect(center=cell_rect.center)
++                surface.blit(symbol_image, position)
++        print("Font size:", font_size, "Blocks:", averages.shape)
++        pg.display.set_caption("ASCII | Up/Down: size | Esc: quit")
++        redraw = False
++
++    screen.blit(surface, (0, 0))
++    pg.display.flip()
+     clock.tick(60)
++
+ pg.quit()

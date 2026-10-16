@@ -1,0 +1,18 @@
+--- a09_sort_loops.py
++++ a10_sort_numpy.py
+@@ -65,13 +65,8 @@
+ brightness = normalize_brightness(brightness)
+ 
+ order = np.argsort(brightness, kind="stable")
+-sorted_brightness = np.zeros_like(brightness)
+-sorted_symbols = np.empty_like(symbols)
+-for new_index, old_index in enumerate(order):
+-    sorted_brightness[new_index] = brightness[old_index]
+-    sorted_symbols[new_index] = symbols[old_index]
+-brightness = sorted_brightness
+-symbols = sorted_symbols
++brightness = brightness[order]
++symbols = symbols[order]
+ 
+ for index, symbol in enumerate(symbols):
+     print(ord(symbol), repr(symbol), brightness[index])

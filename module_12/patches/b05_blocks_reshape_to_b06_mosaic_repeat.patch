@@ -1,0 +1,26 @@
+--- b05_blocks_reshape.py
++++ b06_mosaic_repeat.py
+@@ -54,17 +54,16 @@
+ pixels = pg.surfarray.array3d(image)
+ gray = get_gray(pixels)
+ averages = get_block_averages(gray, cell_width, cell_height)
+-columns, rows = averages.shape
++mosaic = np.repeat(averages, cell_width, axis=0)
++mosaic = np.repeat(mosaic, cell_height, axis=1)
++mosaic_rgb = np.repeat(mosaic[:, :, np.newaxis], 3, axis=2)
++mosaic_surface = pg.surfarray.make_surface(mosaic_rgb.astype(np.uint8))
+ surface = pg.Surface(image.get_size())
+ surface.fill((255, 255, 255))
+-for x in range(columns):
+-    for y in range(rows):
+-        value = int(averages[x, y])
+-        rectangle = (x * cell_width, y * cell_height, cell_width, cell_height)
+-        pg.draw.rect(surface, (value, value, value), rectangle)
++surface.blit(mosaic_surface, (0, 0))
+ 
+ screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B05")
++pg.display.set_caption("ASCII learning step B06")
+ clock = pg.time.Clock()
+ running = True
+ while running:

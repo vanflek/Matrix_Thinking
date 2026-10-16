@@ -1,0 +1,42 @@
+--- a07_normalize_loops.py
++++ a08_normalize_numpy.py
+@@ -35,30 +35,17 @@
+ 
+ 
+ def normalize_brightness(brightness):
+-    # Start with an actual value from the nonempty array.
+-    minimum = brightness[0]
+-    maximum = brightness[0]
++    minimum = brightness.min()
++    maximum = brightness.max()
+ 
+-    for value in brightness:
+-        if value < minimum:
+-            minimum = value
+-        if value > maximum:
+-            maximum = value
++    if maximum == minimum:
++        return np.zeros_like(brightness)
+ 
+-    normalized = np.zeros(len(brightness), dtype=float)
+-
+-    # Equal measurements have no range to stretch.
+-    if maximum == minimum:
+-        return normalized
+-
+-    for index in range(len(brightness)):
+-        normalized[index] = (
+-            (brightness[index] - minimum)
+-            / (maximum - minimum)
+-            * 255
+-        )
+-
+-    return normalized
++    return (
++        (brightness - minimum)
++        / (maximum - minimum)
++        * 255
++    )
+ 
+ 
+ pg.font.init()

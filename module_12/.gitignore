@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+symbol_sample.png
+palette_example.npz
+palette_four.npz
+ascii_result.png

@@ -1,0 +1,44 @@
+--- b00_load_image.py
++++ b01_gray_loops.py
+@@ -3,19 +3,37 @@
+ 
+ 
+ 
++def get_gray(pixels):
++    width, height = pixels.shape[:2]
++    gray = np.zeros((width, height), dtype=float)
+ 
++    for x in range(width):
++        for y in range(height):
++            red, green, blue = pixels[x, y]
++
++            gray[x, y] = (
++                0.299 * red
++                + 0.587 * green
++                + 0.114 * blue
++            )
++
++    return gray
+ 
+ 
+ pg.init()
+ 
+ image = pg.image.load("cat.png")
+ pixels = pg.surfarray.array3d(image)
+-print("Image array shape (X, Y, RGB):", pixels.shape)
+-print("Pixel data type:", pixels.dtype)
+-surface = pg.surfarray.make_surface(pixels)
++gray = get_gray(pixels)
++gray_rgb = np.zeros_like(pixels)
++for x in range(gray.shape[0]):
++    for y in range(gray.shape[1]):
++        value = gray[x, y]
++        gray_rgb[x, y] = (value, value, value)
++surface = pg.surfarray.make_surface(gray_rgb)
+ 
+ screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B00")
++pg.display.set_caption("ASCII learning step B01")
+ clock = pg.time.Clock()
+ running = True
+ while running:

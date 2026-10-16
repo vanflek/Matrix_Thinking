@@ -1,0 +1,20 @@
+--- a10_sort_numpy.py
++++ a11_save_palette.py
+@@ -3,6 +3,7 @@
+ 
+ FONT_NAME = "consolas"
+ FONT_SIZE = 512
++PALETTE_FILE = "symbol_palette.npz"
+ 
+ 
+ def measure_brightness(font, symbols):
+@@ -68,6 +69,9 @@
+ brightness = brightness[order]
+ symbols = symbols[order]
+ 
++np.savez(PALETTE_FILE, symbols=symbols, brightness=brightness)
++print("Saved:", PALETTE_FILE)
++
+ for index, symbol in enumerate(symbols):
+     print(ord(symbol), repr(symbol), brightness[index])
+ print("Measured symbols:", len(brightness))

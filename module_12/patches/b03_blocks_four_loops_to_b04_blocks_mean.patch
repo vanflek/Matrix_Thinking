@@ -1,0 +1,25 @@
+--- b03_blocks_four_loops.py
++++ b04_blocks_mean.py
+@@ -40,12 +40,7 @@
+                 top:top + cell_height
+             ]
+ 
+-            total = 0.0
+-            for local_x in range(cell_width):
+-                for local_y in range(cell_height):
+-                    total += block[local_x, local_y]
+-
+-            averages[x, y] = total / (cell_width * cell_height)
++            averages[x, y] = block.mean()
+ 
+     return averages
+ 
+@@ -72,7 +67,7 @@
+         pg.draw.rect(surface, (value, value, value), rectangle)
+ 
+ screen = pg.display.set_mode(surface.get_size())
+-pg.display.set_caption("ASCII learning step B03")
++pg.display.set_caption("ASCII learning step B04")
+ clock = pg.time.Clock()
+ running = True
+ while running:
