@@ -99,3 +99,11 @@ Task 30 prints measurements; observations about recognizability are the reader's
 ## Illustrations
 
 The 19 diagrams and example images in `assets/illustrations/` accompany the chapter. Labels are in English. The source photograph `cat.png` was generated for this book.
+
+## Solution files
+
+- `solutions/exercise_26.py` — Exercise 26.
+- `solutions/exercise_27.py` — Exercise 27.
+- `solutions/exercise_28.py` — Exercise 28.
+- `solutions/exercise_29.py` — Exercise 29.
+- `solutions/exercise_30.py` — Exercise 30.
