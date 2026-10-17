@@ -1,0 +1,80 @@
+--- steps/iteration_14_01_skeleton.py
++++ steps/iteration_14_02_arrow_controls.py
+@@ -71,6 +71,56 @@
+     return True
+ 
+ 
++def build_shift_operators(cols, rows):
++    """Build cyclic shifts for both field axes."""
++    Cx_right = np.zeros((cols, cols), dtype=np.uint8)
++    j = np.arange(cols)
++    Cx_right[j, (j + 1) % cols] = 1
++
++    Cy_down = np.zeros((rows, rows), dtype=np.uint8)
++    i = np.arange(rows)
++    Cy_down[(i + 1) % rows, i] = 1
++
++    Cx_left = Cx_right.T
++    Cy_up = Cy_down.T
++    return Cx_left, Cx_right, Cy_up, Cy_down
++
++
++def handle_controls(events):
++    """Return the first arrow command without modifying the world."""
++    for event in events:
++        if event.type == pg.KEYDOWN:
++            if event.key == pg.K_LEFT:
++                return "LEFT"
++            elif event.key == pg.K_RIGHT:
++                return "RIGHT"
++            elif event.key == pg.K_UP:
++                return "UP"
++            elif event.key == pg.K_DOWN:
++                return "DOWN"
++    return None
++
++
++def apply_action(world_3d, action,
++                 Cx_left, Cx_right, Cy_up, Cy_down):
++    """Apply one movement command to the player layer only."""
++    if action is None:
++        return
++
++    player = world_3d[:, :, LAYER_PLAYER]
++
++    if action == "LEFT":
++        player = player @ Cx_left
++    elif action == "RIGHT":
++        player = player @ Cx_right
++    elif action == "UP":
++        player = Cy_up @ player
++    elif action == "DOWN":
++        player = Cy_down @ player
++
++    world_3d[:, :, LAYER_PLAYER] = player
++
++
+ def compose_screen_indices(world_3d):
+     """Build display indices without changing the world."""
+     player = world_3d[:, :, LAYER_PLAYER]
+@@ -102,6 +152,10 @@
+     screen.blit(grid_surface, (0, 0))
+ 
+ 
++Cx_left, Cx_right, Cy_up, Cy_down = build_shift_operators(
++    COLS, ROWS
++)
++
+ grid_surface = build_grid_surface(
+     ROWS, COLS, CELL_SIZE, GRID_COLOR
+ )
+@@ -111,6 +165,9 @@
+     events = pg.event.get()
+     running = handle_quit(events)
+ 
++    action = handle_controls(events)
++    apply_action(world, action, Cx_left, Cx_right, Cy_up, Cy_down)
++
+     render(screen, world, grid_surface, CELL_SIZE)
+     pg.display.flip()
+     clock.tick(FPS)

@@ -1,0 +1,55 @@
+--- steps/iteration_14_02_arrow_controls.py
++++ steps/iteration_14_03_capture.py
+@@ -87,7 +87,7 @@
+ 
+ 
+ def handle_controls(events):
+-    """Return the first arrow command without modifying the world."""
++    """Return the first supported command without modifying the world."""
+     for event in events:
+         if event.type == pg.KEYDOWN:
+             if event.key == pg.K_LEFT:
+@@ -98,12 +98,30 @@
+                 return "UP"
+             elif event.key == pg.K_DOWN:
+                 return "DOWN"
++            elif event.key == pg.K_SPACE:
++                return "SPACE"
+     return None
++
++
++def respawn_bug(world_3d):
++    """Place the bug in a random cell not occupied by the player."""
++    player = world_3d[:, :, LAYER_PLAYER]
++    bug = world_3d[:, :, LAYER_BUG]
++
++    free_cells = np.argwhere(player == 0)
++    if len(free_cells) == 0:
++        return
++
++    index = np.random.randint(len(free_cells))
++    row, col = free_cells[index]
++
++    bug.fill(0)
++    bug[row, col] = 1
+ 
+ 
+ def apply_action(world_3d, action,
+                  Cx_left, Cx_right, Cy_up, Cy_down):
+-    """Apply one movement command to the player layer only."""
++    """Move the player or attempt a capture on Space."""
+     if action is None:
+         return
+ 
+@@ -117,6 +135,11 @@
+         player = Cy_up @ player
+     elif action == "DOWN":
+         player = Cy_down @ player
++    elif action == "SPACE":
++        bug = world_3d[:, :, LAYER_BUG]
++        overlap = player * bug
++        if overlap.any():
++            respawn_bug(world_3d)
+ 
+     world_3d[:, :, LAYER_PLAYER] = player
+ 
