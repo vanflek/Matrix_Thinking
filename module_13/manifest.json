@@ -1,0 +1,261 @@
+{
+  "module": 13,
+  "title": "Maze as a Matrix",
+  "iterations": 11,
+  "examples": 10,
+  "solutions": 5,
+  "patches": 10,
+  "illustrations": 9,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 43,
+      "sha256": "ed39ba03891d7b427563add65a12b75ba23e457e8e4b7d36fc0d9891993dcbc4"
+    },
+    {
+      "path": "assets/illustrations/dfs_trace.png",
+      "bytes": 56369,
+      "sha256": "c692120b0fff6e333c3fc2de99883afdca7c9d4004e5089e61de55eeafba9e6d"
+    },
+    {
+      "path": "assets/illustrations/local_growth_rule.png",
+      "bytes": 43695,
+      "sha256": "9f43e4cd5718d69a0a4c9e070825e9e299cc53cd2709231ed495ca6e967aeb74"
+    },
+    {
+      "path": "assets/illustrations/maze_frontier_display.png",
+      "bytes": 41299,
+      "sha256": "2da752071d771f931014e2aa441b5aed69fa9a68be6f2b7fe6233c1dc28f63f3"
+    },
+    {
+      "path": "assets/illustrations/numpy_edge_slices.png",
+      "bytes": 59061,
+      "sha256": "c9701bf1a67568c7537ff9221eafd557b0e7aec097e0b208514249dddd1ddced"
+    },
+    {
+      "path": "assets/illustrations/numpy_frontier_counts.png",
+      "bytes": 66495,
+      "sha256": "6dd20b234b0abae235426957299e27a80dd8710e9d9ed27b3617054d9bcde25a"
+    },
+    {
+      "path": "assets/illustrations/practice_dead_ends.png",
+      "bytes": 36442,
+      "sha256": "104dd7902c6e3df1962fadf8dee717b89ed31032e4852a7f3845e6c0a0544c2f"
+    },
+    {
+      "path": "assets/illustrations/practice_reachable_regions.png",
+      "bytes": 45805,
+      "sha256": "429d428f57940638dfdccd0beebad843dff5a1cc2cdf523aeb9d35fa37952853"
+    },
+    {
+      "path": "assets/illustrations/skeleton.png",
+      "bytes": 3601,
+      "sha256": "932f165e6761a55d36cd547bed09a403940be705440854c5174d74154edaf2e9"
+    },
+    {
+      "path": "assets/illustrations/tree_cycle_disconnected.png",
+      "bytes": 47937,
+      "sha256": "5f2c4c2e25fd9ea20899e8d0ebec16e201953e4c2dd21bbcf2279a6778f71e01"
+    },
+    {
+      "path": "examples/example_13_01_neighbors.py",
+      "bytes": 1043,
+      "sha256": "8145ffbc6a23833a6d7788a768a5618c02a22d41856c1208bfe67aa2b8067b81"
+    },
+    {
+      "path": "examples/example_13_02_opening_rule.py",
+      "bytes": 1576,
+      "sha256": "7821eedb21b4a6e43069eae80f589066b47d9ce02a2b9865945fadffb4f80ab0"
+    },
+    {
+      "path": "examples/example_13_03_frontier.py",
+      "bytes": 1714,
+      "sha256": "26a3a8ba227b8e31cdefbc364194d9ff82f897e964d1ef8927759926b4baad0e"
+    },
+    {
+      "path": "examples/example_13_04_growth_step.py",
+      "bytes": 2820,
+      "sha256": "5b82f6a2f8cb0097b7ebb41a10aaabdb721790b40423db4dbe75ab02e9d61e56"
+    },
+    {
+      "path": "examples/example_13_05_stack_and_set.py",
+      "bytes": 731,
+      "sha256": "d989d62b6508b4b24b518bb4277a0800fd483434202fabf9ef63c467218c459b"
+    },
+    {
+      "path": "examples/example_13_06_connectivity.py",
+      "bytes": 1952,
+      "sha256": "58fd47113ca97356dd9e5703a6ff4af1c8e5baaeb3e581e4f67db103f2af6370"
+    },
+    {
+      "path": "examples/example_13_07_perfect_maze.py",
+      "bytes": 2788,
+      "sha256": "a745f323d203c2399462bb785d21b6fd73ec7140859726b4c5dddee940ed4b7c"
+    },
+    {
+      "path": "examples/example_13_08_numpy_coordinates.py",
+      "bytes": 2302,
+      "sha256": "d5fcf5807e2b7804440094b4f0754dad262b62c0aff1ae35b5736c70221efd31"
+    },
+    {
+      "path": "examples/example_13_09_numpy_edges.py",
+      "bytes": 887,
+      "sha256": "e1a2c795668c92cfe0a7a75f5d774fb1d7c92f02b08ce557514138c09c5e210a"
+    },
+    {
+      "path": "examples/example_13_10_numpy_frontier.py",
+      "bytes": 1101,
+      "sha256": "31d1ec4e1e6d8b610f9c5492e475b67211e526dc80b302fb2e2cfe36542a29ca"
+    },
+    {
+      "path": "final/maze_generator.py",
+      "bytes": 14616,
+      "sha256": "29aff29d2e840dc56020bd0e8a40efec3df69ae6bbe53d1ffd7117f748960c8d"
+    },
+    {
+      "path": "patches/iteration_13_01_to_02.patch",
+      "bytes": 2338,
+      "sha256": "34eed9001d54de061aeeff4d983a81484c85b174f8cc3eef12473fa968a7983d"
+    },
+    {
+      "path": "patches/iteration_13_02_to_03.patch",
+      "bytes": 2147,
+      "sha256": "b1650b5b15cca59067f717123986f8dbab0d36e8d11fc382e7894b5b270e8f39"
+    },
+    {
+      "path": "patches/iteration_13_03_to_04.patch",
+      "bytes": 973,
+      "sha256": "bd1b57a6f5207cc263b773932c9df5d374bb7416ed60d2535006be03fb6e712d"
+    },
+    {
+      "path": "patches/iteration_13_04_to_05.patch",
+      "bytes": 2744,
+      "sha256": "2ffae538b8d5a7fc8f1f80f6c9c14d299371f5bc97676d9f5a2f3facb3353edb"
+    },
+    {
+      "path": "patches/iteration_13_05_to_06.patch",
+      "bytes": 2540,
+      "sha256": "769ba1b68e285fae248d2eaeb20ff6a66690b2b73d35ec3e9529c5138b9a6058"
+    },
+    {
+      "path": "patches/iteration_13_06_to_07.patch",
+      "bytes": 2907,
+      "sha256": "92c6102e12b86b04091f54b2a4b5259e17dd4c458c065a3afc2c8cbef04d47b1"
+    },
+    {
+      "path": "patches/iteration_13_07_to_08.patch",
+      "bytes": 4939,
+      "sha256": "050a6a5bba55e1d92abaece34f3bc61e4220b391602d276a1ba713d6e0c67876"
+    },
+    {
+      "path": "patches/iteration_13_08_to_09.patch",
+      "bytes": 1184,
+      "sha256": "1bbafa21adee287df2a190fb3f5ddd6ce73dd5d18b5a614d32c76501d7531eee"
+    },
+    {
+      "path": "patches/iteration_13_09_to_10.patch",
+      "bytes": 1014,
+      "sha256": "10c6a71029705b6dbbd8e1e619a50350ee28a6d46d18b568c285e63b3467b54a"
+    },
+    {
+      "path": "patches/iteration_13_10_to_11.patch",
+      "bytes": 1096,
+      "sha256": "a74736f8c72146dbb483f7ce665bfd69976d10c1a916b614f9a83e44f8ca72f6"
+    },
+    {
+      "path": "patches/manifest.json",
+      "bytes": 1685,
+      "sha256": "a3f4c4eda5ef767e39fefc3d2a29e29faa46f383941810fd8ce227d17abb0ff9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5441,
+      "sha256": "8c852827a39668d9d29f7d30808f1e1484cbeebf0deb33e2a8a872db0d312a91"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 25,
+      "sha256": "52babb793f7a38fbd9a08864ec4ec752b2bf7106a73e97741e1ba71f9b91ef2b"
+    },
+    {
+      "path": "solutions/exercise_26.py",
+      "bytes": 14781,
+      "sha256": "78d5077048bda7033e81765144be1810bba7a4f4f59e24685883eba0f3024699"
+    },
+    {
+      "path": "solutions/exercise_27.py",
+      "bytes": 14981,
+      "sha256": "88adabdcffb1457cd6f20314249cfc66f5ea1a9f1ae1f42cbcdc46a96e968316"
+    },
+    {
+      "path": "solutions/exercise_28.py",
+      "bytes": 15075,
+      "sha256": "c302ae16bfcd81c429725296611a10d84f0ed7c539dda7cd95ceb7c55c0696ca"
+    },
+    {
+      "path": "solutions/exercise_29.py",
+      "bytes": 15838,
+      "sha256": "d7015f99817636341b0a596b1da586fa2019a91a31df5689378dc3f6a9b18431"
+    },
+    {
+      "path": "solutions/exercise_30.py",
+      "bytes": 16062,
+      "sha256": "82c956c7fa11bdeb3a15d519a51ccc549ff6b02acb64e5f6a183f2bee7d73d9a"
+    },
+    {
+      "path": "steps/iteration_13_01_skeleton.py",
+      "bytes": 3046,
+      "sha256": "0a7f3f07d61e340fcaacd334414b17f8116a361812c6198489929f2f36777524"
+    },
+    {
+      "path": "steps/iteration_13_02_manual_building.py",
+      "bytes": 4473,
+      "sha256": "6aa5a5c6a951cd6085153c8bc46f027635b6dc4033c89c5bfdd91d7570fb2a60"
+    },
+    {
+      "path": "steps/iteration_13_03_local_rule.py",
+      "bytes": 5698,
+      "sha256": "67a7b722452a9477d0a275678ccb6d20139ab09594262f5ea980ada059163fb5"
+    },
+    {
+      "path": "steps/iteration_13_04_cursor_feedback.py",
+      "bytes": 5862,
+      "sha256": "9d50b531b2ddfe566c13a27b9a2c8961171c540d8b621241c144ced7831f9bac"
+    },
+    {
+      "path": "steps/iteration_13_05_frontier_display.py",
+      "bytes": 6553,
+      "sha256": "fc72aec79112a1653c09494db422e2461e4b51a80108b1161bf85163916d59df"
+    },
+    {
+      "path": "steps/iteration_13_06_automatic_growth.py",
+      "bytes": 7910,
+      "sha256": "8651c5cc594a6b7ffe5ceff95f9deb9f96fca3ee674c3302594435002bbf2c6b"
+    },
+    {
+      "path": "steps/iteration_13_07_save_load.py",
+      "bytes": 9604,
+      "sha256": "c24b4507172b3db21d826c63b2f0086e81069f0248d913e47683b0c6a1ec89e9"
+    },
+    {
+      "path": "steps/iteration_13_08_check_maze.py",
+      "bytes": 12197,
+      "sha256": "97cbc095ed918170fcca5de7449dfbfb287a1c2cd5da44de87bd1bc70440a6ad"
+    },
+    {
+      "path": "steps/iteration_13_09_numpy_coordinates.py",
+      "bytes": 12098,
+      "sha256": "6ce50df670b3ccb10ef31c6c4d51ac19ea6258a1591e09748aa815598a5ed00a"
+    },
+    {
+      "path": "steps/iteration_13_10_numpy_edges.py",
+      "bytes": 12030,
+      "sha256": "7d0700d2dd2d987a320fa69d2baf79c3fe7c69b07a31fc370cc76234cc891450"
+    },
+    {
+      "path": "steps/iteration_13_11_numpy_frontier.py",
+      "bytes": 12300,
+      "sha256": "93019874733d0faace1998eb7db44b7bda1d82d8bea5f65282b94d891ac2bcd3"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+--- iteration_13_07_save_load.py
++++ iteration_13_08_check_maze.py
+@@ -78,6 +78,7 @@
+     state["clear"] = False
+     state["save"] = False
+     state["load"] = False
++    state["check"] = False
+ 
+     for event in events:
+         if event.type == pg.MOUSEBUTTONDOWN:
+@@ -100,6 +101,9 @@
+                 state["save"] = True
+             elif event.key == pg.K_l:
+                 state["load"] = True
++            elif event.key == pg.K_p:
++                state["check"] = True
++                state["auto_grow"] = False
+ 
+ 
+ def get_neighbors4(row, col, rows, cols):
+@@ -236,17 +240,89 @@
+     return loaded
+ 
+ 
++def get_path_cells(maze):
++    """Collect all passage coordinates without changing the maze."""
++    rows, cols = maze.shape
++    cells = []
++
++    for row in range(rows):
++        for col in range(cols):
++            if maze[row, col] == 1:
++                cells.append((row, col))
++
++    return cells
++
++
++def is_connected_paths(maze):
++    """Check whether all passages are reachable from one starting cell."""
++    path_cells = get_path_cells(maze)
++    if len(path_cells) == 0:
++        return False
++
++    rows, cols = maze.shape
++    start = path_cells[0]
++    stack = [start]
++    visited = {start}
++
++    while stack:
++        row, col = stack.pop()
++        for neighbor in get_neighbors4(row, col, rows, cols):
++            neighbor_row, neighbor_col = neighbor
++            if maze[neighbor_row, neighbor_col] == 1 and neighbor not in visited:
++                visited.add(neighbor)
++                stack.append(neighbor)
++
++    return len(visited) == len(path_cells)
++
++
++def count_edges_between_paths(maze):
++    """Count each connection once by looking only down and right."""
++    rows, cols = maze.shape
++    edges = 0
++
++    for row in range(rows):
++        for col in range(cols):
++            if maze[row, col] != 1:
++                continue
++
++            if row + 1 < rows and maze[row + 1, col] == 1:
++                edges += 1
++            if col + 1 < cols and maze[row, col + 1] == 1:
++                edges += 1
++
++    return edges
++
++
++def is_perfect_maze(maze):
++    """A nonempty connected passage graph is a tree when E = V - 1."""
++    vertices = len(get_path_cells(maze))
++    if vertices == 0:
++        return False
++
++    if not is_connected_paths(maze):
++        return False
++
++    edges = count_edges_between_paths(maze)
++    return edges == vertices - 1
++
++
+ def apply_actions(maze, state):
+-    """Apply commands; open a passage only when the local rule allows it."""
++    """Apply manual commands and return whether maze values changed."""
+     col, row = state["cell"]
++    changed = False
+ 
+     if state["clear"]:
++        changed = np.any(maze == 1)
+         maze[:] = 0
+     elif state["paint_wall"]:
++        changed = maze[row, col] == 1
+         maze[row, col] = 0
+     elif state["paint_path"]:
+         if can_open_by_local_rule(maze, row, col):
+             maze[row, col] = 1
++            changed = True
++
++    return changed
+ 
+ 
+ def build_frame_indices(maze, frontier):
+@@ -286,7 +362,7 @@
+ 
+ 
+ screen = pg.display.set_mode((WIDTH, HEIGHT))
+-pg.display.set_caption("Maze | Auto: OFF")
++pg.display.set_caption("Maze | Auto: OFF | Perfect: NOT CHECKED")
+ clock = pg.time.Clock()
+ 
+ # The maze stores walls and passages; the cursor has its own state.
+@@ -298,6 +374,8 @@
+     "clear": False,
+     "save": False,
+     "load": False,
++    "check": False,
++    "check_result": None,
+     "auto_grow": False,
+ }
+ 
+@@ -310,7 +388,9 @@
+     running = handle_quit(events)
+     update_cursor(state, CELL_SIZE, ROWS, COLS)
+     handle_controls(events, state, CELL_SIZE, ROWS, COLS)
+-    apply_actions(maze, state)
++    changed = apply_actions(maze, state)
++    if changed:
++        state["check_result"] = None
+ 
+     if state["save"]:
+         save_maze(maze, MAZE_FILE)
+@@ -319,19 +399,30 @@
+         if loaded is not None:
+             maze = loaded
+             state["auto_grow"] = False
++            state["check_result"] = None
+ 
+     frontier = build_frontier(maze)
+     if state["auto_grow"]:
+         grew = growth_step(maze, frontier)
+         if grew:
++            state["check_result"] = None
+             frontier = build_frontier(maze)
+         else:
+             state["auto_grow"] = False
++
++    if state["check"]:
++        state["check_result"] = is_perfect_maze(maze)
+ 
+     if state["auto_grow"]:
+         title = "Maze | Auto: ON"
+     else:
+         title = "Maze | Auto: OFF"
++    if state["check_result"] is None:
++        title += " | Perfect: NOT CHECKED"
++    elif state["check_result"]:
++        title += " | Perfect: YES"
++    else:
++        title += " | Perfect: NO"
+     pg.display.set_caption(title)
+ 
+     render(screen, maze, frontier, grid_surface, state, CELL_SIZE)

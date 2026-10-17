@@ -1,0 +1,72 @@
+--- iteration_13_01_skeleton.py
++++ iteration_13_02_manual_building.py
+@@ -68,6 +68,40 @@
+     return True
+ 
+ 
++def handle_controls(events, state, cell_size, rows, cols):
++    """Translate input events into commands for the current frame."""
++    state["paint_path"] = False
++    state["paint_wall"] = False
++    state["clear"] = False
++
++    for event in events:
++        if event.type == pg.MOUSEBUTTONDOWN:
++            if event.button == 1 or event.button == 3:
++                # Use the click position, even if the mouse has moved since.
++                x, y = event.pos
++                col = x // cell_size
++                row = y // cell_size
++                state["cell"] = clamp_cell(col, row, rows, cols)
++                state["paint_path"] = event.button == 1
++                state["paint_wall"] = event.button == 3
++
++        if event.type == pg.KEYDOWN:
++            if event.key == pg.K_c:
++                state["clear"] = True
++
++
++def apply_actions(maze, state):
++    """Change maze values according to the current commands."""
++    col, row = state["cell"]
++
++    if state["clear"]:
++        maze[:] = 0
++    elif state["paint_wall"]:
++        maze[row, col] = 0
++    elif state["paint_path"]:
++        maze[row, col] = 1
++
++
+ def indices_to_surface_fast(indices, palette, cell_size):
+     """Map indices to RGB and enlarge each cell into a pixel block."""
+     rgb = palette[indices]
+@@ -92,12 +126,17 @@
+ 
+ 
+ screen = pg.display.set_mode((WIDTH, HEIGHT))
+-pg.display.set_caption("Maze: starting program")
++pg.display.set_caption("Maze: manual building")
+ clock = pg.time.Clock()
+ 
+ # The maze stores walls and passages; the cursor has its own state.
+ maze = np.zeros((ROWS, COLS), dtype=np.uint8)
+-state = {"cell": (0, 0)}
++state = {
++    "cell": (0, 0),
++    "paint_path": False,
++    "paint_wall": False,
++    "clear": False,
++}
+ 
+ grid_surface = build_grid_surface(ROWS, COLS, CELL_SIZE, GRID_COLOR)
+ pg.mouse.set_visible(False)
+@@ -107,6 +146,8 @@
+     events = pg.event.get()
+     running = handle_quit(events)
+     update_cursor(state, CELL_SIZE, ROWS, COLS)
++    handle_controls(events, state, CELL_SIZE, ROWS, COLS)
++    apply_actions(maze, state)
+ 
+     render(screen, maze, grid_surface, state, CELL_SIZE)
+     pg.display.flip()

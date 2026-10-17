@@ -1,0 +1,75 @@
+--- iteration_13_02_manual_building.py
++++ iteration_13_03_local_rule.py
+@@ -90,8 +90,52 @@
+                 state["clear"] = True
+ 
+ 
++def get_neighbors4(row, col, rows, cols):
++    """Return valid neighbors in the order: up, down, left, right."""
++    neighbors = []
++
++    if row > 0:
++        neighbors.append((row - 1, col))
++    if row < rows - 1:
++        neighbors.append((row + 1, col))
++    if col > 0:
++        neighbors.append((row, col - 1))
++    if col < cols - 1:
++        neighbors.append((row, col + 1))
++
++    return neighbors
++
++
++def count_path_neighbors(maze, row, col):
++    """Count passages among valid neighbors of the selected cell."""
++    rows, cols = maze.shape
++    count = 0
++
++    for neighbor_row, neighbor_col in get_neighbors4(row, col, rows, cols):
++        if maze[neighbor_row, neighbor_col] == 1:
++            count += 1
++
++    return count
++
++
++def has_any_path_cells(maze):
++    """Return True if the maze contains at least one passage."""
++    return np.any(maze == 1)
++
++
++def can_open_by_local_rule(maze, row, col):
++    """Check a valid cell without changing the maze."""
++    if maze[row, col] != 0:
++        return False
++
++    if not has_any_path_cells(maze):
++        return True
++
++    return count_path_neighbors(maze, row, col) == 1
++
++
+ def apply_actions(maze, state):
+-    """Change maze values according to the current commands."""
++    """Apply commands; open a passage only when the local rule allows it."""
+     col, row = state["cell"]
+ 
+     if state["clear"]:
+@@ -99,7 +143,8 @@
+     elif state["paint_wall"]:
+         maze[row, col] = 0
+     elif state["paint_path"]:
+-        maze[row, col] = 1
++        if can_open_by_local_rule(maze, row, col):
++            maze[row, col] = 1
+ 
+ 
+ def indices_to_surface_fast(indices, palette, cell_size):
+@@ -126,7 +171,7 @@
+ 
+ 
+ screen = pg.display.set_mode((WIDTH, HEIGHT))
+-pg.display.set_caption("Maze: manual building")
++pg.display.set_caption("Maze: local growth rule")
+ clock = pg.time.Clock()
+ 
+ # The maze stores walls and passages; the cursor has its own state.

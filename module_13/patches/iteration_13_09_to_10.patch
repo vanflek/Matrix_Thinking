@@ -1,0 +1,32 @@
+--- iteration_13_09_numpy_coordinates.py
++++ iteration_13_10_numpy_edges.py
+@@ -268,21 +268,14 @@
+ 
+ 
+ def count_edges_between_paths(maze):
+-    """Count each connection once by looking only down and right."""
+-    rows, cols = maze.shape
+-    edges = 0
+-
+-    for row in range(rows):
+-        for col in range(cols):
+-            if maze[row, col] != 1:
+-                continue
+-
+-            if row + 1 < rows and maze[row + 1, col] == 1:
+-                edges += 1
+-            if col + 1 < cols and maze[row, col + 1] == 1:
+-                edges += 1
+-
+-    return edges
++    """Count vertical and horizontal passage pairs using aligned slices."""
++    path_mask = maze == 1
++    vertical_pairs = path_mask[:-1, :] & path_mask[1:, :]
++    horizontal_pairs = path_mask[:, :-1] & path_mask[:, 1:]
++
++    vertical_edges = np.sum(vertical_pairs)
++    horizontal_edges = np.sum(horizontal_pairs)
++    return int(vertical_edges + horizontal_edges)
+ 
+ 
+ def is_perfect_maze(maze):

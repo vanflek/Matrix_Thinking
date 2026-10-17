@@ -1,0 +1,52 @@
+[
+  {
+    "patch": "iteration_13_01_to_02.patch",
+    "before": "steps/iteration_13_01_skeleton.py",
+    "after": "steps/iteration_13_02_manual_building.py"
+  },
+  {
+    "patch": "iteration_13_02_to_03.patch",
+    "before": "steps/iteration_13_02_manual_building.py",
+    "after": "steps/iteration_13_03_local_rule.py"
+  },
+  {
+    "patch": "iteration_13_03_to_04.patch",
+    "before": "steps/iteration_13_03_local_rule.py",
+    "after": "steps/iteration_13_04_cursor_feedback.py"
+  },
+  {
+    "patch": "iteration_13_04_to_05.patch",
+    "before": "steps/iteration_13_04_cursor_feedback.py",
+    "after": "steps/iteration_13_05_frontier_display.py"
+  },
+  {
+    "patch": "iteration_13_05_to_06.patch",
+    "before": "steps/iteration_13_05_frontier_display.py",
+    "after": "steps/iteration_13_06_automatic_growth.py"
+  },
+  {
+    "patch": "iteration_13_06_to_07.patch",
+    "before": "steps/iteration_13_06_automatic_growth.py",
+    "after": "steps/iteration_13_07_save_load.py"
+  },
+  {
+    "patch": "iteration_13_07_to_08.patch",
+    "before": "steps/iteration_13_07_save_load.py",
+    "after": "steps/iteration_13_08_check_maze.py"
+  },
+  {
+    "patch": "iteration_13_08_to_09.patch",
+    "before": "steps/iteration_13_08_check_maze.py",
+    "after": "steps/iteration_13_09_numpy_coordinates.py"
+  },
+  {
+    "patch": "iteration_13_09_to_10.patch",
+    "before": "steps/iteration_13_09_numpy_coordinates.py",
+    "after": "steps/iteration_13_10_numpy_edges.py"
+  },
+  {
+    "patch": "iteration_13_10_to_11.patch",
+    "before": "steps/iteration_13_10_numpy_edges.py",
+    "after": "steps/iteration_13_11_numpy_frontier.py"
+  }
+]

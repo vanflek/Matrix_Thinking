@@ -1,0 +1,36 @@
+--- iteration_13_03_local_rule.py
++++ iteration_13_04_cursor_feedback.py
+@@ -19,7 +19,8 @@
+     dtype=np.uint8
+ )
+ GRID_COLOR = (185, 198, 206)
+-CURSOR_COLOR = (0, 200, 0)
++CURSOR_OK = (0, 200, 0)
++CURSOR_NO = (220, 60, 60)
+ 
+ 
+ def build_grid_surface(rows, cols, cell_size, grid_color):
+@@ -162,16 +163,21 @@
+     screen.blit(grid_surface, (0, 0))
+ 
+     col, row = state["cell"]
++    if can_open_by_local_rule(maze, row, col):
++        outline_color = CURSOR_OK
++    else:
++        outline_color = CURSOR_NO
++
+     pg.draw.rect(
+         screen,
+-        CURSOR_COLOR,
++        outline_color,
+         (col * cell_size, row * cell_size, cell_size, cell_size),
+         3
+     )
+ 
+ 
+ screen = pg.display.set_mode((WIDTH, HEIGHT))
+-pg.display.set_caption("Maze: local growth rule")
++pg.display.set_caption("Maze: allowed and blocked cells")
+ clock = pg.time.Clock()
+ 
+ # The maze stores walls and passages; the cursor has its own state.
