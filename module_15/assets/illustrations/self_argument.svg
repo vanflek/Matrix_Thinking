@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1450" height="700" viewBox="0 0 1450 700">
+<rect width="1450" height="700" fill="#FFFFFF"/>
+<text x="65" y="35" font-family="Segoe UI, sans-serif" font-size="44" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">How an instance becomes self</text>
+<line x1="65" y1="105" x2="1385" y2="105" stroke="#057F99" stroke-width="4"/>
+<text x="65" y="129" font-family="Segoe UI, sans-serif" font-size="26" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">These two calls perform the same update for this class.</text>
+<rect x="70" y="205" width="610" height="125" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="90" y="223" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">Through the instance</text>
+<text x="90" y="273" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">first.move(0, 1)</text>
+<rect x="770" y="205" width="610" height="125" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="790" y="223" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">Through the class</text>
+<text x="790" y="273" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">Marker.move(first, 0, 1)</text>
+<text x="70" y="390" font-family="Segoe UI, sans-serif" font-size="30" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">Method parameters</text>
+<rect x="70" y="450" width="390" height="135" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="90" y="468" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">self</text>
+<text x="90" y="518" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">first</text>
+<rect x="530" y="450" width="390" height="135" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="550" y="468" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">drow</text>
+<text x="550" y="518" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">0</text>
+<rect x="990" y="450" width="390" height="135" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="1010" y="468" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">dcol</text>
+<text x="1010" y="518" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">1</text>
+<line x1="1070" y1="340" x2="265" y2="440" stroke="#057F99" stroke-width="5"/>
+<polygon points="265,440 278.8003794513315,430.0727885587508 280.8098372272738,446.248923655087" fill="#057F99"/>
+<text x="70" y="625" font-family="Segoe UI, sans-serif" font-size="28" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">self.position and first.position refer to the same array.</text>
+</svg>

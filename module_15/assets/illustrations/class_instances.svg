@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1450" height="650" viewBox="0 0 1450 650">
+<rect width="1450" height="650" fill="#FFFFFF"/>
+<text x="65" y="35" font-family="Segoe UI, sans-serif" font-size="44" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">One class, two independent instances</text>
+<line x1="65" y1="105" x2="1385" y2="105" stroke="#057F99" stroke-width="4"/>
+<text x="65" y="129" font-family="Segoe UI, sans-serif" font-size="26" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">Each call creates a new object and a separate position array.</text>
+<rect x="490" y="200" width="470" height="150" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="510" y="218" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">Marker</text>
+<text x="510" y="268" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">position; move(drow, dcol)</text>
+<rect x="80" y="430" width="530" height="150" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="100" y="448" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">first = Marker(2, 3)</text>
+<text x="100" y="498" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">position: [2, 3] -&gt; [3, 4]</text>
+<rect x="840" y="430" width="530" height="150" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="860" y="448" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">second = Marker(5, 1)</text>
+<text x="860" y="498" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">position: [5, 1] (unchanged)</text>
+<line x1="600" y1="355" x2="360" y2="420" stroke="#057F99" stroke-width="5"/>
+<polygon points="360,420 372.2695218093932,408.23314678561746 376.530716487911,423.9667886755293" fill="#057F99"/>
+<line x1="850" y1="355" x2="1090" y2="420" stroke="#057F99" stroke-width="5"/>
+<polygon points="1090,420 1073.469283512089,423.9667886755293 1077.7304781906068,408.23314678561746" fill="#057F99"/>
+</svg>

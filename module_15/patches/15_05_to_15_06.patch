@@ -1,0 +1,19 @@
+--- iteration_15_05_bullet_collision.py
++++ iteration_15_06_full_rows.py
+@@ -148,8 +148,14 @@
+         )
+ 
+     def clear_full_rows(self, model):
+-        # Later: remove full rows and move upper rows down.
+-        pass
++        blocks = model.layers[BLOCKS_LAYER]
++        full_rows = np.all(blocks == 1, axis=1)
++        if not full_rows.any():
++            return
++
++        removed = full_rows.sum()
++        empty_rows = np.zeros((removed, model.cols), dtype=np.uint8)
++        model.layers[BLOCKS_LAYER] = np.vstack((empty_rows, blocks[~full_rows]))
+ 
+     def check_game_over(self, model):
+         # Later: end the game if a block overlaps the player.

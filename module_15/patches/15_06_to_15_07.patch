@@ -1,0 +1,15 @@
+--- iteration_15_06_full_rows.py
++++ iteration_15_07_game_over.py
+@@ -158,8 +158,10 @@
+         model.layers[BLOCKS_LAYER] = np.vstack((empty_rows, blocks[~full_rows]))
+ 
+     def check_game_over(self, model):
+-        # Later: end the game if a block overlaps the player.
+-        pass
++        player = model.layers[PLAYER_LAYER]
++        blocks = model.layers[BLOCKS_LAYER]
++        if (player * blocks).any():
++            model.game_over = True
+ 
+ 
+ class GameView:

@@ -1,0 +1,22 @@
+--- iteration_15_04_falling_blocks.py
++++ iteration_15_05_bullet_collision.py
+@@ -115,8 +115,17 @@
+         model.layers[BULLET_LAYER] = np.roll(bullet, -1, axis=0)
+ 
+     def resolve_bullet_collision(self, model):
+-        # Later: place a block below the block hit by the bullet.
+-        pass
++        bullet = model.layers[BULLET_LAYER]
++        blocks = model.layers[BLOCKS_LAYER]
++        collision = bullet * blocks
++        if not collision.any():
++            return
++
++        new_blocks = np.zeros_like(blocks)
++        new_blocks[1:] = collision[:-1]
++        model.layers[BLOCKS_LAYER] = np.maximum(blocks, new_blocks)
++        bullet.fill(0)
++        model.shooting_permission = True
+ 
+     def place_bullet_at_top(self, model):
+         bullet = model.layers[BULLET_LAYER]

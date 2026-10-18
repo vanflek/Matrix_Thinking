@@ -1,0 +1,46 @@
+--- iteration_15_02_player_movement.py
++++ iteration_15_03_bullet_movement.py
+@@ -92,7 +92,10 @@
+     def apply_action(self, model, actions):
+         player = model.layers[PLAYER_LAYER]
+ 
+-        if actions["move_left"]:
++        if actions["shoot"] and model.shooting_permission:
++            model.layers[BULLET_LAYER] = player
++            model.shooting_permission = False
++        elif actions["move_left"]:
+             model.layers[PLAYER_LAYER] = np.roll(player, -1, axis=1)
+         elif actions["move_right"]:
+             model.layers[PLAYER_LAYER] = np.roll(player, 1, axis=1)
+@@ -102,16 +105,27 @@
+             model.layers[PLAYER_LAYER] = np.roll(player, 1, axis=0)
+ 
+     def move_bullet(self, model):
+-        # Later: advance the active bullet upward.
+-        pass
++        if model.shooting_permission:
++            return
++
++        bullet = model.layers[BULLET_LAYER]
++        if bullet[0].any():
++            return
++
++        model.layers[BULLET_LAYER] = np.roll(bullet, -1, axis=0)
+ 
+     def resolve_bullet_collision(self, model):
+         # Later: place a block below the block hit by the bullet.
+         pass
+ 
+     def place_bullet_at_top(self, model):
+-        # Later: turn a bullet in the top row into a block.
+-        pass
++        bullet = model.layers[BULLET_LAYER]
++        if bullet[0].any():
++            model.layers[BLOCKS_LAYER, 0] = np.maximum(
++                model.layers[BLOCKS_LAYER, 0], bullet[0]
++            )
++            bullet.fill(0)
++            model.shooting_permission = True
+ 
+     def move_blocks(self, model):
+         # Later: move blocks down and generate a new top row.

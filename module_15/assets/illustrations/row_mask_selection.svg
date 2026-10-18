@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="720" viewBox="0 0 1500 720">
+<rect width="1500" height="720" fill="#FFFFFF"/>
+<text x="65" y="35" font-family="Segoe UI, sans-serif" font-size="44" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">A one-dimensional mask selects whole rows</text>
+<line x1="65" y1="105" x2="1435" y2="105" stroke="#057F99" stroke-width="4"/>
+<text x="65" y="129" font-family="Segoe UI, sans-serif" font-size="26" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">The same (4, 5) matrix as in example_15_04; one answer per row.</text>
+<text x="80" y="210" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">blocks: shape (4, 5)</text>
+<rect x="80" y="280" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="145" y="280" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="210" y="280" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="275" y="280" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="340" y="280" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="80" y="345" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="145" y="345" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="210" y="345" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="275" y="345" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="340" y="345" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="80" y="410" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="145" y="410" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="210" y="410" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="275" y="410" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="340" y="410" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="80" y="475" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="145" y="475" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="210" y="475" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="275" y="475" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="340" y="475" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<line x1="80" y1="280" x2="405" y2="280" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="80" y1="345" x2="405" y2="345" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="80" y1="410" x2="405" y2="410" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="80" y1="475" x2="405" y2="475" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="80" y1="540" x2="405" y2="540" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="80" y1="280" x2="80" y2="540" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="145" y1="280" x2="145" y2="540" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="210" y1="280" x2="210" y2="540" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="275" y1="280" x2="275" y2="540" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="340" y1="280" x2="340" y2="540" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="405" y1="280" x2="405" y2="540" stroke="#CEDBE3" stroke-width="2"/>
+<text x="470" y="210" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">keep = ~full_rows</text>
+<text x="500" y="295" font-family="Segoe UI, sans-serif" font-size="29" font-weight="400" fill="#057F99" dominant-baseline="text-before-edge">True</text>
+<text x="500" y="360" font-family="Segoe UI, sans-serif" font-size="29" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">False</text>
+<text x="500" y="425" font-family="Segoe UI, sans-serif" font-size="29" font-weight="400" fill="#057F99" dominant-baseline="text-before-edge">True</text>
+<text x="500" y="490" font-family="Segoe UI, sans-serif" font-size="29" font-weight="400" fill="#057F99" dominant-baseline="text-before-edge">True</text>
+<text x="890" y="210" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">blocks[keep]: shape (3, 5)</text>
+<rect x="890" y="280" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="955" y="280" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1020" y="280" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1085" y="280" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1150" y="280" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="890" y="345" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="955" y="345" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1020" y="345" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="1085" y="345" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1150" y="345" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="890" y="410" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="955" y="410" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1020" y="410" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1085" y="410" width="65" height="65" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1150" y="410" width="65" height="65" fill="#377ED1" stroke="none" stroke-width="1"/>
+<line x1="890" y1="280" x2="1215" y2="280" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="890" y1="345" x2="1215" y2="345" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="890" y1="410" x2="1215" y2="410" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="890" y1="475" x2="1215" y2="475" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="890" y1="280" x2="890" y2="475" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="955" y1="280" x2="955" y2="475" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1020" y1="280" x2="1020" y2="475" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1085" y1="280" x2="1085" y2="475" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1150" y1="280" x2="1150" y2="475" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1215" y1="280" x2="1215" y2="475" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="665" y1="310" x2="870" y2="310" stroke="#057F99" stroke-width="3"/>
+<polygon points="870,310 855.0810964478636,318.15023415627144 855.0810964478636,301.84976584372856" fill="#057F99"/>
+<line x1="665" y1="440" x2="870" y2="375" stroke="#057F99" stroke-width="3"/>
+<polygon points="870,375 858.2422022904994,387.27819990969624 853.3154858159454,371.7400941053334" fill="#057F99"/>
+<line x1="665" y1="505" x2="870" y2="440" stroke="#057F99" stroke-width="3"/>
+<polygon points="870,440 858.2422022904994,452.27819990969624 853.3154858159454,436.7400941053334" fill="#057F99"/>
+<text x="80" y="630" font-family="Segoe UI, sans-serif" font-size="28" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">Blue = 1; white = 0. The selected rows retain their original order.</text>
+</svg>

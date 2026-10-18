@@ -1,0 +1,21 @@
+--- iteration_15_01_skeleton.py
++++ iteration_15_02_player_movement.py
+@@ -90,8 +90,16 @@
+         self.check_game_over(model)
+ 
+     def apply_action(self, model, actions):
+-        # Later: move the player or start a shot.
+-        pass
++        player = model.layers[PLAYER_LAYER]
++
++        if actions["move_left"]:
++            model.layers[PLAYER_LAYER] = np.roll(player, -1, axis=1)
++        elif actions["move_right"]:
++            model.layers[PLAYER_LAYER] = np.roll(player, 1, axis=1)
++        elif actions["move_up"]:
++            model.layers[PLAYER_LAYER] = np.roll(player, -1, axis=0)
++        elif actions["move_down"]:
++            model.layers[PLAYER_LAYER] = np.roll(player, 1, axis=0)
+ 
+     def move_bullet(self, model):
+         # Later: advance the active bullet upward.

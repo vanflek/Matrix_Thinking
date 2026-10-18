@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="950" viewBox="0 0 1500 950">
+<rect width="1500" height="950" fill="#FFFFFF"/>
+<text x="65" y="35" font-family="Segoe UI, sans-serif" font-size="44" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">Five components, one frame</text>
+<line x1="65" y1="105" x2="1435" y2="105" stroke="#057F99" stroke-width="4"/>
+<text x="65" y="129" font-family="Segoe UI, sans-serif" font-size="26" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">GameApp creates the components and coordinates their calls.</text>
+<rect x="510" y="205" width="480" height="125" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="530" y="223" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">GameApp</text>
+<text x="530" y="273" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">run(): coordinate the frame</text>
+<rect x="70" y="430" width="440" height="155" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="90" y="448" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">InputController</text>
+<text x="90" y="498" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">get_actions()</text>
+<text x="90" y="536" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">returns actions</text>
+<rect x="560" y="430" width="390" height="155" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="580" y="448" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">GameLogic</text>
+<text x="580" y="498" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">step(model, actions)</text>
+<text x="580" y="536" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">updates the model</text>
+<rect x="1000" y="430" width="430" height="155" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="1020" y="448" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">GameView</text>
+<text x="1020" y="498" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">draw(model.layers)</text>
+<text x="1020" y="536" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">prepares the image</text>
+<rect x="560" y="725" width="390" height="145" fill="#FFFFFF" stroke="#CEDBE3" stroke-width="2"/>
+<text x="580" y="743" font-family="Segoe UI, sans-serif" font-size="29" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">GameModel</text>
+<text x="580" y="793" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">layers, counters, flags</text>
+<line x1="510" y1="500" x2="550" y2="500" stroke="#057F99" stroke-width="5"/>
+<polygon points="550,500 535.0810964478636,508.15023415627144 535.0810964478636,491.84976584372856" fill="#057F99"/>
+<line x1="960" y1="500" x2="990" y2="500" stroke="#057F99" stroke-width="5"/>
+<polygon points="990,500 975.0810964478636,508.15023415627144 975.0810964478636,491.84976584372856" fill="#057F99"/>
+<line x1="755" y1="330" x2="755" y2="420" stroke="#057F99" stroke-width="5"/>
+<polygon points="755,420 746.8497658437285,405.0810964478637 763.1502341562715,405.0810964478637" fill="#057F99"/>
+<line x1="720" y1="600" x2="720" y2="715" stroke="#057F99" stroke-width="5"/>
+<polygon points="720,715 711.8497658437285,700.0810964478636 728.1502341562715,700.0810964478636" fill="#057F99"/>
+<line x1="790" y1="715" x2="790" y2="600" stroke="#057F99" stroke-width="5"/>
+<polygon points="790,600 798.1502341562715,614.9189035521364 781.8497658437285,614.9189035521364" fill="#057F99"/>
+<line x1="960" y1="790" x2="1215" y2="600" stroke="#057F99" stroke-width="5"/>
+<polygon points="1215,600 1207.9064001173842,615.4492990360519 1198.1671747520584,602.3782334141673" fill="#057F99"/>
+<text x="1010" y="750" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">reads layers</text>
+<text x="75" y="900" font-family="Segoe UI, sans-serif" font-size="27" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">Arrows show data flow; GameApp performs the calls.</text>
+</svg>

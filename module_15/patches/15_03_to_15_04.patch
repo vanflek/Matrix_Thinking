@@ -1,0 +1,20 @@
+--- iteration_15_03_bullet_movement.py
++++ iteration_15_04_falling_blocks.py
+@@ -128,8 +128,15 @@
+             model.shooting_permission = True
+ 
+     def move_blocks(self, model):
+-        # Later: move blocks down and generate a new top row.
+-        pass
++        model.block_tick = (model.block_tick + 1) % model.block_period
++        if model.block_tick != 0:
++            return
++
++        blocks = model.layers[BLOCKS_LAYER]
++        model.layers[BLOCKS_LAYER] = np.roll(blocks, 1, axis=0)
++        model.layers[BLOCKS_LAYER, 0] = np.random.randint(
++            0, 2, size=model.cols, dtype=np.uint8
++        )
+ 
+     def clear_full_rows(self, model):
+         # Later: remove full rows and move upper rows down.
