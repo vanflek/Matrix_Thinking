@@ -1,0 +1,3 @@
+# Runtime dependencies; chapter artwork needs no extra packages to run the game.
+numpy>=2.1
+pygame>=2.6.1

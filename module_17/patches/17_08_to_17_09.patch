@@ -1,0 +1,108 @@
+--- a/tetris.py
++++ b/tetris.py
+@@ -86,6 +86,7 @@
+     def __init__(self, rows=ROWS, cols=COLS):
+         self.glass = np.zeros((2, rows, cols), dtype=np.uint8)
+         self.score = 0
++        self.game_over = False
+         self.new_tetromino()
+ 
+     def new_tetromino(self):
+@@ -204,6 +205,20 @@
+         model.score += 100 * cleared * cleared
+         return cleared
+ 
++    def initialize_current_tetromino(self, model):
++        candidate_layer = self.create_piece_layer(model)
++        if not self.layer_is_free(model, candidate_layer):
++            model.glass[ACTIVE_LAYER].fill(0)
++            model.game_over = True
++            return False
++
++        self.update_active_layer(model, candidate_layer)
++        return True
++
++    def spawn_new_tetromino(self, model):
++        model.new_tetromino()
++        return self.initialize_current_tetromino(model)
++
+     def lock_tetromino(self, model):
+         fixed_layer = model.glass[FIXED_LAYER]
+         active_layer = model.glass[ACTIVE_LAYER]
+@@ -212,11 +227,11 @@
+         fixed_layer[mask] = active_layer[mask]
+ 
+         self.clear_full_rows(model)
+-        model.new_tetromino()
+-        self.update_active_layer(model)
++        self.spawn_new_tetromino(model)
+ 
+     def step(self, model, actions, delta_time):
+-        self.update_active_layer(model)
++        if model.game_over:
++            return
+ 
+         if actions["move_left"]:
+             self.try_transform(model, dx=-1)
+@@ -248,6 +263,7 @@
+         self.screen = screen
+         self.cell_size = cell_size
+         self.grid = self.make_grid()
++        self.message_font = pg.font.SysFont("Arial", 34, bold=True)
+ 
+     def make_grid(self):
+         width, height = self.screen.get_size()
+@@ -262,7 +278,7 @@
+         pg.draw.rect(grid, GRID_COLOR, (0, 0, width, height), 1)
+         return grid
+ 
+-    def draw(self, glass, score):
++    def draw(self, glass, score, game_over):
+         fixed = glass[FIXED_LAYER]
+         active = glass[ACTIVE_LAYER]
+         cells = np.where(active != 0, active, fixed)
+@@ -274,6 +290,19 @@
+         pg.surfarray.blit_array(self.screen, np.swapaxes(pixels, 0, 1))
+         self.screen.blit(self.grid, (0, 0))
+         pg.display.set_caption(f"Matrix Tetris | Score: {score}")
++
++        if game_over:
++            self.draw_game_over()
++
++    def draw_game_over(self):
++        overlay = pg.Surface(self.screen.get_size(), pg.SRCALPHA)
++        overlay.fill((0, 0, 0, 145))
++        self.screen.blit(overlay, (0, 0))
++
++        message = self.message_font.render("GAME OVER", True, (255, 255, 255))
++        screen_rect = self.screen.get_rect()
++        message_rect = message.get_rect(center=screen_rect.center)
++        self.screen.blit(message, message_rect)
+ 
+ 
+ class GameApp:
+@@ -287,11 +316,12 @@
+         self.screen = pg.display.set_mode(
+             (cols * CELL_SIZE, rows * CELL_SIZE)
+         )
+-        pg.display.set_caption("Matrix Tetris - Skeleton")
++        pg.display.set_caption("Matrix Tetris")
+ 
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+         self.running = True
++        self.logic.initialize_current_tetromino(self.model)
+ 
+     def run(self):
+         while self.running:
+@@ -302,7 +332,9 @@
+                 self.running = False
+             else:
+                 self.logic.step(self.model, actions, delta_time)
+-                self.view.draw(self.model.glass, self.model.score)
++                self.view.draw(
++                    self.model.glass, self.model.score, self.model.game_over
++                )
+                 pg.display.flip()
+ 
+         pg.quit()

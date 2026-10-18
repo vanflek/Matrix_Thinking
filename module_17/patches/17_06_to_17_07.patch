@@ -1,0 +1,102 @@
+--- a/tetris.py
++++ b/tetris.py
+@@ -6,6 +6,8 @@
+ COLS = 10
+ CELL_SIZE = 30
+ FPS = 60
++NORMAL_FALL_INTERVAL = 0.50
++FAST_FALL_INTERVAL = 0.06
+ 
+ FIXED_LAYER = 0
+ ACTIVE_LAYER = 1
+@@ -98,9 +100,8 @@
+         actions = {
+             "move_left": False,
+             "move_right": False,
+-            "move_down": False,
+             "rotate": False,
+-            "lock": False,
++            "fast": False,
+             "quit": False,
+         }
+ 
+@@ -114,18 +115,19 @@
+                     actions["move_left"] = True
+                 elif event.key == pg.K_RIGHT:
+                     actions["move_right"] = True
+-                elif event.key == pg.K_DOWN:
+-                    actions["move_down"] = True
+                 elif event.key == pg.K_UP:
+                     actions["rotate"] = True
+-                elif event.key == pg.K_SPACE:
+-                    # Temporary manual locking for this learning stage.
+-                    actions["lock"] = True
+-
++
++        keys = pg.key.get_pressed()
++        actions["fast"] = keys[pg.K_DOWN]
+         return actions
+ 
+ 
+ class GameLogic:
++    def __init__(self):
++        self.fall_timer = 0.0
++        self.fall_interval = NORMAL_FALL_INTERVAL
++
+     def create_piece_layer(self, model):
+         piece = model.current_tetromino
+         matrix = piece.get_matrix()
+@@ -194,19 +196,32 @@
+         model.new_tetromino()
+         self.update_active_layer(model)
+ 
+-    def step(self, model, actions):
++    def step(self, model, actions, delta_time):
+         self.update_active_layer(model)
+ 
+         if actions["move_left"]:
+             self.try_transform(model, dx=-1)
+         if actions["move_right"]:
+             self.try_transform(model, dx=1)
+-        if actions["move_down"]:
+-            self.try_transform(model, dy=1)
+         if actions["rotate"]:
+             self.try_transform(model, rotate=True)
+-        if actions["lock"]:
+-            self.lock_tetromino(model)
++
++        interval = (
++            FAST_FALL_INTERVAL if actions["fast"]
++            else NORMAL_FALL_INTERVAL
++        )
++        if interval != self.fall_interval:
++            self.fall_interval = interval
++            self.fall_timer = 0.0
++
++        self.fall_timer += delta_time
++        while self.fall_timer >= self.fall_interval:
++            self.fall_timer -= self.fall_interval
++
++            if not self.try_transform(model, dy=1):
++                self.lock_tetromino(model)
++                self.fall_timer = 0.0
++                break
+ 
+ 
+ class GameView:
+@@ -260,13 +275,13 @@
+ 
+     def run(self):
+         while self.running:
+-            self.clock.tick(FPS)
++            delta_time = self.clock.tick(FPS) / 1000
+             actions = self.controller.get_actions()
+ 
+             if actions["quit"]:
+                 self.running = False
+             else:
+-                self.logic.step(self.model, actions)
++                self.logic.step(self.model, actions, delta_time)
+                 self.view.draw(self.model.glass)
+                 pg.display.flip()
+ 

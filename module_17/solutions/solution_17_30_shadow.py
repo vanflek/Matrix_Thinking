@@ -1,0 +1,394 @@
+import numpy as np
+import pygame as pg
+
+
+ROWS = 20
+COLS = 10
+CELL_SIZE = 30
+FPS = 60
+NORMAL_FALL_INTERVAL = 0.50
+FAST_FALL_INTERVAL = 0.06
+
+FIXED_LAYER = 0
+ACTIVE_LAYER = 1
+GRID_COLOR = (200, 210, 220, 110)
+
+COLORS = np.array([
+    [255, 255, 255],  # 0 - empty
+    [0, 240, 240],    # 1 - I
+    [240, 240, 0],    # 2 - O
+    [170, 70, 220],   # 3 - T
+    [255, 150, 0],    # 4 - L
+    [0, 90, 230],     # 5 - J
+    [0, 200, 80],     # 6 - S
+    [230, 50, 50],    # 7 - Z
+], dtype=np.uint8)
+
+
+TETROMINOES = {
+    "I": np.array([
+        [1, 1, 1, 1],
+    ], dtype=np.uint8),
+
+    "O": np.array([
+        [2, 2],
+        [2, 2],
+    ], dtype=np.uint8),
+
+    "T": np.array([
+        [0, 3, 0],
+        [3, 3, 3],
+    ], dtype=np.uint8),
+
+    "L": np.array([
+        [4, 0],
+        [4, 0],
+        [4, 4],
+    ], dtype=np.uint8),
+
+    "J": np.array([
+        [0, 5],
+        [0, 5],
+        [5, 5],
+    ], dtype=np.uint8),
+
+    "S": np.array([
+        [0, 6, 6],
+        [6, 6, 0],
+    ], dtype=np.uint8),
+
+    "Z": np.array([
+        [7, 7, 0],
+        [0, 7, 7],
+    ], dtype=np.uint8),
+}
+
+
+class Tetromino:
+    # Store a shape, its cell coordinates, and its rotation index.
+
+    def __init__(self, matrix, x=0, y=0, rotation=0):
+        # Keep each instance independent of the shape catalog.
+        self.matrix = matrix.copy()
+        self.x = x
+        self.y = y
+        self.rotation = rotation
+
+    def move(self, dx, dy):
+        self.x += dx
+        self.y += dy
+
+    def rotate(self):
+        self.rotation = (self.rotation + 1) % 4
+
+    def get_matrix(self):
+        return np.rot90(self.matrix, self.rotation)
+
+
+class GameModel:
+    # Store the field, score, game status, and current figure.
+
+    def __init__(self, rows=ROWS, cols=COLS):
+        self.glass = np.zeros((2, rows, cols), dtype=np.uint8)
+        self.score = 0
+        self.game_over = False
+        self.new_tetromino()
+
+    def new_tetromino(self):
+        name = np.random.choice(list(TETROMINOES))
+        matrix = TETROMINOES[name]
+        cols = self.glass.shape[2]
+        x = (cols - matrix.shape[1]) // 2
+        self.current_tetromino = Tetromino(matrix, x=x, y=0)
+
+
+class InputController:
+    # Translate keyboard events and held keys into game actions.
+
+    def get_actions(self):
+        actions = {
+            "move_left": False,
+            "move_right": False,
+            "rotate": False,
+            "fast": False,
+            "quit": False,
+        }
+
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                actions["quit"] = True
+            elif event.type == pg.KEYDOWN:
+                if event.key == pg.K_ESCAPE:
+                    actions["quit"] = True
+                elif event.key == pg.K_LEFT:
+                    actions["move_left"] = True
+                elif event.key == pg.K_RIGHT:
+                    actions["move_right"] = True
+                elif event.key == pg.K_UP:
+                    actions["rotate"] = True
+
+        # Down is a continuous action; other controls use key events.
+        keys = pg.key.get_pressed()
+        actions["fast"] = keys[pg.K_DOWN]
+        return actions
+
+
+class GameLogic:
+    # Apply placement rules and advance the game using elapsed seconds.
+
+    def __init__(self):
+        self.fall_timer = 0.0
+        self.fall_interval = NORMAL_FALL_INTERVAL
+
+    def create_piece_layer(self, model, piece=None):
+        # Build a placement for the current figure or an independent probe.
+        if piece is None:
+            piece = model.current_tetromino
+        matrix = piece.get_matrix()
+        height, width = matrix.shape
+        rows, cols = model.glass.shape[1:]
+
+        if piece.x < 0 or piece.y < 0:
+            return None
+        if piece.x + width > cols or piece.y + height > rows:
+            return None
+
+        layer = np.zeros_like(model.glass[FIXED_LAYER])
+        layer[
+            piece.y:piece.y + height,
+            piece.x:piece.x + width,
+        ] = matrix
+        return layer
+
+    def layer_is_free(self, model, candidate_layer):
+        if candidate_layer is None:
+            return False
+
+        fixed_layer = model.glass[FIXED_LAYER]
+        # Color indices are 0..7, so their products fit in uint8.
+        overlap = fixed_layer * candidate_layer
+        return not np.any(overlap)
+
+    def update_active_layer(self, model, candidate_layer=None):
+        if candidate_layer is None:
+            candidate_layer = self.create_piece_layer(model)
+
+        active_layer = model.glass[ACTIVE_LAYER]
+        if candidate_layer is None:
+            active_layer.fill(0)
+            return False
+
+        # Replace the whole layer, including the empty cells.
+        active_layer[:] = candidate_layer
+        return True
+
+    def try_transform(self, model, dx=0, dy=0, rotate=False):
+        piece = model.current_tetromino
+        # Save the accepted state before trying a transformation.
+        old_x = piece.x
+        old_y = piece.y
+        old_rotation = piece.rotation
+
+        piece.move(dx, dy)
+        if rotate:
+            piece.rotate()
+
+        candidate_layer = self.create_piece_layer(model)
+        if not self.layer_is_free(model, candidate_layer):
+            piece.x = old_x
+            piece.y = old_y
+            piece.rotation = old_rotation
+            return False
+
+        self.update_active_layer(model, candidate_layer)
+        return True
+
+    def clear_full_rows(self, model):
+        fixed_layer = model.glass[FIXED_LAYER]
+        full_rows = np.all(fixed_layer != 0, axis=1)
+        cleared = np.count_nonzero(full_rows)
+
+        if cleared == 0:
+            return 0
+
+        # Keep row order and restore field height with empty rows on top.
+        remaining_rows = fixed_layer[~full_rows]
+        empty_rows = np.zeros(
+            (cleared, fixed_layer.shape[1]),
+            dtype=fixed_layer.dtype,
+        )
+        # Write through the view to preserve the model's array.
+        fixed_layer[:] = np.vstack((empty_rows, remaining_rows))
+        model.score += 100 * cleared * cleared
+        return cleared
+
+    def initialize_current_tetromino(self, model):
+        candidate_layer = self.create_piece_layer(model)
+        if not self.layer_is_free(model, candidate_layer):
+            # A blocked new figure must not cover the final board.
+            model.glass[ACTIVE_LAYER].fill(0)
+            model.game_over = True
+            return False
+
+        self.update_active_layer(model, candidate_layer)
+        return True
+
+    def spawn_new_tetromino(self, model):
+        model.new_tetromino()
+        return self.initialize_current_tetromino(model)
+
+    def lock_tetromino(self, model):
+        fixed_layer = model.glass[FIXED_LAYER]
+        active_layer = model.glass[ACTIVE_LAYER]
+
+        # Copy occupied cells without erasing blocks beneath shape holes.
+        mask = active_layer != 0
+        fixed_layer[mask] = active_layer[mask]
+
+        self.clear_full_rows(model)
+        self.spawn_new_tetromino(model)
+
+    def get_shadow_layer(self, model):
+        if model.game_over:
+            return np.zeros_like(model.glass[FIXED_LAYER])
+
+        piece = model.current_tetromino
+        probe = Tetromino(
+            piece.matrix, x=piece.x, y=piece.y, rotation=piece.rotation
+        )
+        shadow_layer = self.create_piece_layer(model, probe)
+
+        # Advance an independent object and keep its last valid placement.
+        while True:
+            probe.move(0, 1)
+            candidate = self.create_piece_layer(model, probe)
+            if not self.layer_is_free(model, candidate):
+                return shadow_layer
+            shadow_layer = candidate
+
+    def step(self, model, actions, delta_time):
+        if model.game_over:
+            return
+
+        if actions["move_left"]:
+            self.try_transform(model, dx=-1)
+        if actions["move_right"]:
+            self.try_transform(model, dx=1)
+        if actions["rotate"]:
+            self.try_transform(model, rotate=True)
+
+        interval = (
+            FAST_FALL_INTERVAL if actions["fast"]
+            else NORMAL_FALL_INTERVAL
+        )
+        # Start a fresh interval when the falling mode changes.
+        if interval != self.fall_interval:
+            self.fall_interval = interval
+            self.fall_timer = 0.0
+
+        self.fall_timer += delta_time
+        # Catch up after a slow frame, checking every downward step.
+        while self.fall_timer >= self.fall_interval:
+            self.fall_timer -= self.fall_interval
+
+            if not self.try_transform(model, dy=1):
+                self.lock_tetromino(model)
+                # Give the new figure its own falling timer.
+                self.fall_timer = 0.0
+                break
+
+
+class GameView:
+    # Render the field and game status without changing model data.
+
+    def __init__(self, screen, cell_size=CELL_SIZE):
+        self.screen = screen
+        self.cell_size = cell_size
+        self.grid = self.make_grid()
+        self.message_font = pg.font.SysFont("Arial", 34, bold=True)
+
+    def make_grid(self):
+        width, height = self.screen.get_size()
+        grid = pg.Surface((width, height), pg.SRCALPHA)
+        grid.fill((0, 0, 0, 0))
+
+        for y in range(0, height, self.cell_size):
+            pg.draw.line(grid, GRID_COLOR, (0, y), (width - 1, y))
+        for x in range(0, width, self.cell_size):
+            pg.draw.line(grid, GRID_COLOR, (x, 0), (x, height - 1))
+
+        pg.draw.rect(grid, GRID_COLOR, (0, 0, width, height), 1)
+        return grid
+
+    def draw(self, glass, score, game_over, shadow_layer):
+        fixed = glass[FIXED_LAYER]
+        active = glass[ACTIVE_LAYER]
+        cells = np.where(active != 0, active, fixed)
+
+        pixels = COLORS[cells]
+        shadow_mask = (shadow_layer != 0) & (cells == 0)
+        pixels[shadow_mask] = [205, 205, 205]
+        pixels = np.repeat(pixels, self.cell_size, axis=0)
+        pixels = np.repeat(pixels, self.cell_size, axis=1)
+
+        # Convert (row, column, channel) into (x, y, channel).
+        pixels_for_pygame = np.transpose(pixels, (1, 0, 2))
+        pg.surfarray.blit_array(self.screen, pixels_for_pygame)
+        self.screen.blit(self.grid, (0, 0))
+        pg.display.set_caption(f"Matrix Tetris | Score: {score}")
+
+        if game_over:
+            self.draw_game_over()
+
+    def draw_game_over(self):
+        overlay = pg.Surface(self.screen.get_size(), pg.SRCALPHA)
+        overlay.fill((0, 0, 0, 145))
+        self.screen.blit(overlay, (0, 0))
+
+        message = self.message_font.render("GAME OVER", True, (255, 255, 255))
+        screen_rect = self.screen.get_rect()
+        message_rect = message.get_rect(center=screen_rect.center)
+        self.screen.blit(message, message_rect)
+
+
+class GameApp:
+    # Connect input, rules, model state, and rendering.
+
+    def __init__(self):
+        pg.init()
+        self.model = GameModel()
+        self.controller = InputController()
+        self.logic = GameLogic()
+
+        rows, cols = self.model.glass.shape[1:]
+        self.screen = pg.display.set_mode(
+            (cols * CELL_SIZE, rows * CELL_SIZE)
+        )
+        pg.display.set_caption("Matrix Tetris")
+
+        self.view = GameView(self.screen)
+        self.clock = pg.time.Clock()
+        self.running = True
+        self.logic.initialize_current_tetromino(self.model)
+
+    def run(self):
+        while self.running:
+            delta_time = self.clock.tick(FPS) / 1000
+            actions = self.controller.get_actions()
+
+            if actions["quit"]:
+                self.running = False
+            else:
+                self.logic.step(self.model, actions, delta_time)
+                shadow_layer = self.logic.get_shadow_layer(self.model)
+                self.view.draw(
+                    self.model.glass, self.model.score, self.model.game_over,
+                    shadow_layer,
+                )
+                pg.display.flip()
+
+        pg.quit()
+
+
+app = GameApp()
+app.run()
