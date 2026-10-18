@@ -1,0 +1,54 @@
+--- a/matrix_invaders.py
++++ b/matrix_invaders.py
+@@ -72,8 +72,14 @@
+ class GameLogic:
+     def step(self, model, actions):
+         self.apply_action(model, actions)
++        self.resolve_bullet_collision(model)
+         self.move_bullet(model)
++        self.resolve_bullet_collision(model)
++        self.clear_bullet_at_top(model)
+         self.move_enemies(model)
++        if model.game_over:
++            return
++        self.resolve_bullet_collision(model)
+ 
+     def apply_action(self, model, actions):
+         player = model.layers[PLAYER_LAYER]
+@@ -93,14 +99,21 @@
+         if model.shooting_permission:
+             return
+         bullet = model.layers[BULLET_LAYER]
+-        # Remove a shot already at the top before a cyclic shift.
+-        if np.any(bullet[0]):
+-            bullet[:] = 0
+-            model.shooting_permission = True
+-            return
+-        model.layers[BULLET_LAYER] = np.roll(bullet, -1, axis=0)
++        if not np.any(bullet[0]):
++            model.layers[BULLET_LAYER] = np.roll(bullet, -1, axis=0)
++
++    def clear_bullet_at_top(self, model):
+         if np.any(model.layers[BULLET_LAYER, 0]):
+             model.layers[BULLET_LAYER] = 0
++            model.shooting_permission = True
++
++    def resolve_bullet_collision(self, model):
++        enemies = model.layers[ENEMIES_LAYER]
++        bullet = model.layers[BULLET_LAYER]
++        collision = enemies * bullet
++        if np.any(collision):
++            enemies -= collision
++            bullet[:] = 0
+             model.shooting_permission = True
+ 
+     def shift_no_wrap(self, matrix, direction):
+@@ -177,7 +190,7 @@
+         self.controller = InputController()
+         self.logic = GameLogic()
+         self.screen = pg.display.set_mode((COLS * CELL_SIZE, ROWS * CELL_SIZE))
+-        pg.display.set_caption("Matrix Invaders - Moving Formation")
++        pg.display.set_caption("Matrix Invaders - Bullet Hits")
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+         self.running = True

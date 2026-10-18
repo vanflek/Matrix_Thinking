@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="750" viewBox="0 0 1500 750">
+<rect width="1500" height="750" fill="#FFFFFF"/>
+<text x="65" y="35" font-family="Segoe UI, sans-serif" font-size="44" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">An overlap mask removes one enemy</text>
+<line x1="65" y1="105" x2="1435" y2="105" stroke="#057F99" stroke-width="4"/>
+<text x="65" y="129" font-family="Segoe UI, sans-serif" font-size="26" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">Elementwise multiplication locates the hit; subtraction updates the enemy layer.</text>
+<text x="70" y="235" font-family="Segoe UI, sans-serif" font-size="26" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">Enemies</text>
+<rect x="70" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="115" y="315" width="45" height="45" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="160" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="205" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="70" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="115" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="160" y="360" width="45" height="45" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="205" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="70" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="115" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="160" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="205" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<line x1="70" y1="315" x2="250" y2="315" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="70" y1="360" x2="250" y2="360" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="70" y1="405" x2="250" y2="405" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="70" y1="450" x2="250" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="70" y1="315" x2="70" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="115" y1="315" x2="115" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="160" y1="315" x2="160" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="205" y1="315" x2="205" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="250" y1="315" x2="250" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<text x="70" y="495" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">Two occupied cells.</text>
+<text x="450" y="235" font-family="Segoe UI, sans-serif" font-size="26" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">Player bullet</text>
+<rect x="450" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="495" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="540" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="585" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="450" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="495" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="540" y="360" width="45" height="45" fill="#27AD67" stroke="none" stroke-width="1"/>
+<rect x="585" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="450" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="495" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="540" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="585" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<line x1="450" y1="315" x2="630" y2="315" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="450" y1="360" x2="630" y2="360" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="450" y1="405" x2="630" y2="405" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="450" y1="450" x2="630" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="450" y1="315" x2="450" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="495" y1="315" x2="495" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="540" y1="315" x2="540" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="585" y1="315" x2="585" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="630" y1="315" x2="630" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<text x="450" y="495" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">One occupied cell.</text>
+<text x="830" y="235" font-family="Segoe UI, sans-serif" font-size="26" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">Overlap mask</text>
+<rect x="830" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="875" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="920" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="965" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="830" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="875" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="920" y="360" width="45" height="45" fill="#27AD67" stroke="none" stroke-width="1"/>
+<rect x="965" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="830" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="875" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="920" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="965" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<line x1="830" y1="315" x2="1010" y2="315" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="830" y1="360" x2="1010" y2="360" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="830" y1="405" x2="1010" y2="405" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="830" y1="450" x2="1010" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="830" y1="315" x2="830" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="875" y1="315" x2="875" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="920" y1="315" x2="920" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="965" y1="315" x2="965" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1010" y1="315" x2="1010" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<text x="830" y="495" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">1 only where both layers</text>
+<text x="830" y="530" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">contain an object.</text>
+<text x="1210" y="235" font-family="Segoe UI, sans-serif" font-size="26" font-weight="700" fill="#172B3A" dominant-baseline="text-before-edge">After subtraction</text>
+<rect x="1210" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1255" y="315" width="45" height="45" fill="#377ED1" stroke="none" stroke-width="1"/>
+<rect x="1300" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1345" y="315" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1210" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1255" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1300" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1345" y="360" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1210" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1255" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1300" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="1345" y="405" width="45" height="45" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<line x1="1210" y1="315" x2="1390" y2="315" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1210" y1="360" x2="1390" y2="360" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1210" y1="405" x2="1390" y2="405" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1210" y1="450" x2="1390" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1210" y1="315" x2="1210" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1255" y1="315" x2="1255" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1300" y1="315" x2="1300" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1345" y1="315" x2="1345" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<line x1="1390" y1="315" x2="1390" y2="450" stroke="#CEDBE3" stroke-width="2"/>
+<text x="1210" y="495" font-family="Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">Other enemy remains.</text>
+<text x="70" y="625" font-family="Segoe UI, sans-serif" font-size="28" font-weight="400" fill="#172B3A" dominant-baseline="text-before-edge">After a hit, clear the player bullet and allow the next shot.</text>
+<text x="70" y="690" font-family="Segoe UI, sans-serif" font-size="26" font-weight="400" fill="#536977" dominant-baseline="text-before-edge">The mask never subtracts 1 from an empty enemy cell.</text>
+</svg>

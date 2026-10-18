@@ -1,0 +1,3 @@
+# Runtime dependencies; illustration-generation tools are not required.
+numpy>=2.1
+pygame>=2.6.1
