@@ -1,0 +1,70 @@
+--- a/main.py
++++ b/main.py
+@@ -16,6 +16,9 @@
+         self.sin_value = 0.0
+         self.point = np.zeros(2)
+         self.circle_points = np.zeros((360, 2))
++        self.graph_angles = np.zeros(361)
++        self.sin_values = np.zeros(361)
++        self.cos_values = np.zeros(361)
+ 
+ 
+ class InputController:
+@@ -58,6 +61,11 @@
+         self.model.circle_points = self.model.radius * np.column_stack((
+             np.cos(angles), np.sin(angles),
+         ))
++        self.model.graph_angles = np.arange(0.0, 361.0)
++        graph_radians = np.deg2rad(self.model.graph_angles)
++        self.model.sin_values = np.sin(graph_radians)
++        self.model.cos_values = np.cos(graph_radians)
++
+ 
+ 
+ class GameView:
+@@ -65,6 +73,34 @@
+         self.screen = screen
+         self.model = model
+         self.font = pg.font.SysFont("Arial", 26)
++
++    def draw_graph(self, label, values, current_value, top, color):
++        left = SCENE_WIDTH + 16
++        right = WIDTH - 16
++        middle_y = top + 58
++        amplitude = 22
++
++        title = self.font.render(label, True, color)
++        self.screen.blit(title, (left, top))
++
++        graph_x = left + self.model.graph_angles / 360 * (right - left)
++        graph_y = middle_y - values * amplitude
++        graph_points = np.column_stack((graph_x, graph_y))
++
++        pg.draw.line(self.screen, (170, 180, 190),
++                     (left, middle_y), (right, middle_y))
++        pg.draw.line(self.screen, (170, 180, 190),
++                     (left, middle_y - amplitude),
++                     (left, middle_y + amplitude))
++        pg.draw.lines(self.screen, color, False, graph_points, 2)
++
++        marker_x = left + self.model.angle / 360 * (right - left)
++        marker_y = middle_y - current_value * amplitude
++        pg.draw.line(self.screen, (200, 65, 55),
++                     (marker_x, middle_y - amplitude),
++                     (marker_x, middle_y + amplitude))
++        pg.draw.circle(self.screen, (200, 65, 55),
++                       (marker_x, marker_y), 4)
+ 
+     def draw_info_panel(self):
+         pg.draw.rect(self.screen, (240, 244, 248),
+@@ -129,6 +165,10 @@
+         pg.draw.line(self.screen, (45, 90, 180), center, endpoint, 3)
+         pg.draw.circle(self.screen, (200, 65, 55), endpoint, 6)
+         self.draw_info_panel()
++        self.draw_graph("sin(angle)", self.model.sin_values,
++                        self.model.sin_value, 285, (190, 115, 0))
++        self.draw_graph("cos(angle)", self.model.cos_values,
++                        self.model.cos_value, 381, (180, 65, 140))
+ 
+ 
+ class GameApp:

@@ -1,0 +1,24 @@
+--- a/main.py
++++ b/main.py
+@@ -85,7 +85,21 @@
+         point_x, point_y = self.model.point
+         endpoint = (WIDTH / 2 + point_x, HEIGHT / 2 - point_y)
+ 
++        x_projection = (endpoint[0], center[1])
++        y_projection = (center[0], endpoint[1])
++
+         pg.draw.lines(self.screen, (0, 130, 155), True, circle, 2)
++
++        pg.draw.line(self.screen, (170, 180, 190),
++                     x_projection, endpoint, 1)
++        pg.draw.line(self.screen, (170, 180, 190),
++                     y_projection, endpoint, 1)
++
++        pg.draw.line(self.screen, (180, 65, 140),
++                     center, x_projection, 4)
++        pg.draw.line(self.screen, (190, 115, 0),
++                     center, y_projection, 4)
++
+         pg.draw.line(self.screen, (45, 90, 180), center, endpoint, 3)
+         pg.draw.circle(self.screen, (200, 65, 55), endpoint, 6)
+ 

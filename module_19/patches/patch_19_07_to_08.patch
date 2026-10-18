@@ -1,0 +1,57 @@
+--- a/main.py
++++ b/main.py
+@@ -69,6 +69,19 @@
+     def __init__(self, model):
+         self.model = model
+ 
++        angles = np.deg2rad(np.arange(0.0, 360.0))
++        self.unit_circle = np.column_stack((
++            np.cos(angles), np.sin(angles),
++        ))
++
++        self.model.graph_angles = np.arange(0.0, 361.0)
++        graph_radians = np.deg2rad(self.model.graph_angles)
++        self.model.sin_values = np.sin(graph_radians)
++        self.model.cos_values = np.cos(graph_radians)
++
++        self._calculated_angle = None
++        self._calculated_radius = None
++
+     def update(self, actions):
+         self.model.angle += actions["angle_delta"]
+         self.model.radius += actions["radius_delta"]
+@@ -76,24 +89,21 @@
+         if not self.model.needs_update:
+             return
+ 
+-        angle_radians = np.deg2rad(self.model.angle)
+-        self.model.cos_value = np.cos(angle_radians)
+-        self.model.sin_value = np.sin(angle_radians)
++        if self.model.angle != self._calculated_angle:
++            radians = np.deg2rad(self.model.angle)
++            self.model.cos_value = np.cos(radians)
++            self.model.sin_value = np.sin(radians)
++            self._calculated_angle = self.model.angle
++
++        if self.model.radius != self._calculated_radius:
++            self.model.circle_points = self.model.radius * self.unit_circle
++            self._calculated_radius = self.model.radius
++
+         self.model.point = self.model.radius * np.array([
+             self.model.cos_value,
+             self.model.sin_value,
+         ])
+-
+-        angles = np.deg2rad(np.arange(0.0, 360.0))
+-        self.model.circle_points = self.model.radius * np.column_stack((
+-            np.cos(angles), np.sin(angles),
+-        ))
+-        self.model.graph_angles = np.arange(0.0, 361.0)
+-        graph_radians = np.deg2rad(self.model.graph_angles)
+-        self.model.sin_values = np.sin(graph_radians)
+-        self.model.cos_values = np.cos(graph_radians)
+         self.model.needs_update = False
+-
+ 
+ 
+ class GameView:
