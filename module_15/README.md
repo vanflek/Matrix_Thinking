@@ -39,7 +39,7 @@ is measured in steps, so changing FPS changes elapsed-time movement speed.
 
 ## Folders and numbering
 
-- `examples/`: four independent console experiments.
+- `examples/`: seven independent console experiments.
 - `steps/`: seven complete, consecutive game iterations.
 - `final/`: the complete game; its logic matches Iteration 15.07.
 - `solutions/`: five independent solutions to Exercises 26-30.
@@ -58,7 +58,10 @@ game; do not combine changes from different exercises unless you intend to.
 - `examples/example_15_01_class_instances.py`
 - `examples/example_15_02_self_and_init.py`
 - `examples/example_15_03_default_arguments.py`
-- `examples/example_15_04_full_rows.py`
+- `examples/example_15_04_elementwise_maximum.py`
+- `examples/example_15_05_key_actions.py`
+- `examples/example_15_06_layer_views.py`
+- `examples/example_15_07_full_rows.py`
 
 ## Game iterations
 
