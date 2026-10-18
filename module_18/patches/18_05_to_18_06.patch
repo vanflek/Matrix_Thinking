@@ -1,0 +1,61 @@
+--- a/xonix.py
++++ b/xonix.py
+@@ -199,10 +199,30 @@
+         return candidate
+ 
+     def enemy_move(self, model):
++        territory = model.layers[TERRITORY_LAYER]
++        row, col = np.argwhere(model.layers[ENEMY_LAYER])[0]
++        dy, dx = model.enemy_direction
++
+         candidate = self.enemy_step(model)
+-        territory = model.layers[TERRITORY_LAYER]
+-
+-        if not (candidate & territory).any():
++        blocked_x = territory[row, col + dx]
++        blocked_y = territory[row + dy, col]
++
++        if (candidate & territory).any() or (blocked_x and blocked_y):
++            if blocked_x:
++                model.enemy_direction[1] *= -1
++            if blocked_y:
++                model.enemy_direction[0] *= -1
++            if not (blocked_x or blocked_y):
++                model.enemy_direction *= -1
++
++            candidate = self.enemy_step(model)
++
++        # The reflected candidate must also satisfy both restrictions.
++        dy, dx = model.enemy_direction
++        corner_blocked = (territory[row, col + dx]
++                          and territory[row + dy, col])
++
++        if not (candidate & territory).any() and not corner_blocked:
+             model.layers[ENEMY_LAYER] = candidate
+ 
+ 
+@@ -250,7 +270,7 @@
+         self.screen = pg.display.set_mode(
+             (cols * CELL_SIZE, rows * CELL_SIZE)
+         )
+-        pg.display.set_caption("Matrix Xonix - One enemy")
++        pg.display.set_caption("Matrix Xonix - Enemy reflection")
+ 
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+@@ -272,4 +292,15 @@
+ 
+ 
+ app = GameApp()
++
++# Verify reflection near the lower-right corner on a separate model.
++test_model = GameModel(7, 9)
++test_model.layers[ENEMY_LAYER] = False
++test_model.layers[ENEMY_LAYER, 5, 7] = True
++test_model.enemy_direction[:] = (1, 1)
++
++app.logic.enemy_move(test_model)
++print("Position:", np.argwhere(test_model.layers[ENEMY_LAYER])[0])
++print("Direction:", test_model.enemy_direction)
++
+ app.run()

@@ -1,0 +1,140 @@
+--- a/xonix.py
++++ b/xonix.py
+@@ -7,10 +7,12 @@
+ CELL_SIZE = 20
+ FPS = 60
+ PLAYER_STEP_INTERVAL = 0.02
++ENEMY_STEP_INTERVAL = 0.10
+ 
+ TERRITORY_LAYER = 0
+ TRAIL_LAYER = 1
+ PLAYER_LAYER = 2
++ENEMY_LAYER = 3
+ GRID_COLOR = (200, 210, 220, 80)
+ 
+ COLORS = np.array([
+@@ -18,6 +20,7 @@
+     [65, 115, 160],   # 1 - territory
+     [245, 185, 60],   # 2 - unfinished trail
+     [245, 245, 245],  # 3 - player
++    [150, 250, 240],  # 4 - enemy
+ ], dtype=np.uint8)
+ 
+ 
+@@ -28,14 +31,16 @@
+         self.start_position()
+ 
+     def start_position(self):
+-        # Rebuild the initial state after a collision.
+-        self.layers = np.zeros((3, self.rows, self.cols), dtype=bool)
++        # Rebuild the territory and both moving objects.
++        self.layers = np.zeros((4, self.rows, self.cols), dtype=bool)
+         territory = self.layers[TERRITORY_LAYER]
+         territory[0, :] = True
+         territory[-1, :] = True
+         territory[:, 0] = True
+         territory[:, -1] = True
+         self.layers[PLAYER_LAYER, 0, self.cols // 2] = True
++        self.layers[ENEMY_LAYER, self.rows // 2, self.cols // 2] = True
++        self.enemy_direction = np.array([1, 1], dtype=int)
+ 
+ 
+ class InputController:
+@@ -60,10 +65,16 @@
+ class GameLogic:
+     def __init__(self):
+         self.player_timer = 0.0
++        self.enemy_timer = 0.0
+ 
+     def step(self, model, actions, delta_time):
++        # Enemy updates do not depend on player input.
++        self.enemy_timer += delta_time
++        while self.enemy_timer >= ENEMY_STEP_INTERVAL:
++            self.enemy_timer -= ENEMY_STEP_INTERVAL
++            self.enemy_move(model)
++
+         self.player_timer += delta_time
+-
+         while self.player_timer >= PLAYER_STEP_INTERVAL:
+             self.player_timer -= PLAYER_STEP_INTERVAL
+             moved = self.player_movement(model, actions)
+@@ -72,10 +83,10 @@
+                 self.player_timer = 0.0
+                 break
+ 
+-            # Check the OLD trail before marking the new player cell.
+             if self.check_suicide(model):
+                 model.start_position()
+                 self.player_timer = 0.0
++                self.enemy_timer = 0.0
+                 break
+ 
+             player = model.layers[PLAYER_LAYER]
+@@ -180,6 +191,21 @@
+             territory |= smallest
+ 
+ 
++    def enemy_step(self, model):
++        enemy = model.layers[ENEMY_LAYER]
++        dy, dx = model.enemy_direction
++        candidate = np.roll(enemy, dy, axis=0)
++        candidate = np.roll(candidate, dx, axis=1)
++        return candidate
++
++    def enemy_move(self, model):
++        candidate = self.enemy_step(model)
++        territory = model.layers[TERRITORY_LAYER]
++
++        if not (candidate & territory).any():
++            model.layers[ENEMY_LAYER] = candidate
++
++
+ class GameView:
+     def __init__(self, screen, cell_size=CELL_SIZE):
+         self.screen = screen
+@@ -200,10 +226,10 @@
+         return grid
+ 
+     def draw(self, layers):
+-        # Assignment order controls which layer is visible on top.
+         cells = np.zeros(layers.shape[1:], dtype=np.uint8)
+         cells[layers[TERRITORY_LAYER]] = 1
+         cells[layers[TRAIL_LAYER]] = 2
++        cells[layers[ENEMY_LAYER]] = 4
+         cells[layers[PLAYER_LAYER]] = 3
+ 
+         pixels = COLORS[cells]
+@@ -224,7 +250,7 @@
+         self.screen = pg.display.set_mode(
+             (cols * CELL_SIZE, rows * CELL_SIZE)
+         )
+-        pg.display.set_caption("Matrix Xonix - Area capture")
++        pg.display.set_caption("Matrix Xonix - One enemy")
+ 
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+@@ -246,24 +272,4 @@
+ 
+ 
+ app = GameApp()
+-
+-# Examine a small board without changing the live game model.
+-test_model = GameModel(7, 9)
+-test_model.layers[TRAIL_LAYER, 1:-1, 3] = True
+-before = test_model.layers[TERRITORY_LAYER].copy()
+-
+-blocked = (test_model.layers[TERRITORY_LAYER]
+-           | test_model.layers[TRAIL_LAYER])
+-areas = []
+-while (~blocked).any():
+-    region = app.logic.find_region(blocked)
+-    areas.append(int(region.sum()))
+-    blocked |= region
+-print("Region areas:", areas)
+-
+-app.logic.captured_area(test_model)
+-territory = test_model.layers[TERRITORY_LAYER]
+-print("New territory cells:", (territory & ~before).sum())
+-print("Trail empty:", not test_model.layers[TRAIL_LAYER].any())
+-
+ app.run()

@@ -1,0 +1,83 @@
+--- a/xonix.py
++++ b/xonix.py
+@@ -191,7 +191,7 @@
+     def captured_area(self, model):
+         territory = model.layers[TERRITORY_LAYER]
+         trail = model.layers[TRAIL_LAYER]
+-        enemy = model.layers[ENEMY_LAYER]
++        enemies = model.layers[ENEMY_LAYER:]
+ 
+         territory |= trail
+         trail[:] = False
+@@ -203,14 +203,12 @@
+         while (~blocked).any():
+             region = self.find_region(blocked)
+             region_count += 1
+-            has_enemy = (region & enemy).any()
+-
+-            # Compare areas only after checking eligibility.
++            has_enemy = (enemies & region).any()
++
+             if not has_enemy:
+                 if smallest is None or region.sum() <= smallest.sum():
+                     smallest = region.copy()
+ 
+-            # Every region is processed, including the enemy's region.
+             blocked |= region
+ 
+         if region_count > 1 and smallest is not None:
+@@ -260,9 +258,9 @@
+ 
+ 
+     def check_enemy_collision(self, model):
+-        enemy = model.layers[ENEMY_LAYER]
++        enemies = model.layers[ENEMY_LAYER:]
+         trail = model.layers[TRAIL_LAYER]
+-        return (enemy & trail).any()
++        return (enemies & trail).any()
+ 
+     def restart(self, model):
+         model.start_position()
+@@ -345,24 +343,27 @@
+ 
+ app = GameApp()
+ 
+-# Prepare three known cases on a separate board.
++# Both free regions contain enemies: commit only the line.
+ test_model = GameModel(7, 9)
+-test_model.level = 3
++test_model.level = 2
+ test_model.start_position()
+ test_model.layers[ENEMY_LAYER:] = False
+-starts = ((5, 7), (1, 4), (3, 2))
+-for i, (row, col) in enumerate(starts):
+-    test_model.layers[ENEMY_LAYER + i, row, col] = True
+-test_model.enemy_direction[:] = ((1, 1), (-1, 1), (1, -1))
+-
+-app.logic.enemy_move(test_model)
+-for i in range(test_model.enemy_count):
+-    enemy = test_model.layers[ENEMY_LAYER + i]
+-    print("Enemy", i, "position:", np.argwhere(enemy)[0])
+-print("Directions:")
+-print(test_model.enemy_direction)
+-
+-# Show three moving enemies in the live game.
++test_model.layers[ENEMY_LAYER, 3, 2] = True
++test_model.layers[ENEMY_LAYER + 1, 3, 5] = True
++test_model.layers[TRAIL_LAYER, 1:-1, 3] = True
++before = test_model.layers[TERRITORY_LAYER].copy()
++
++app.logic.captured_area(test_model)
++territory = test_model.layers[TERRITORY_LAYER]
++enemies = test_model.layers[ENEMY_LAYER:]
++print("New territory cells:", (territory & ~before).sum())
++print("Enemies on territory:", (enemies & territory).any())
++print("Trail empty:", not test_model.layers[TRAIL_LAYER].any())
++
++# The same collision query must include the second enemy.
++test_model.layers[TRAIL_LAYER, 3, 5] = True
++print("Collision with second enemy:", app.logic.check_enemy_collision(test_model))
++
+ app.model.level = 3
+ app.model.start_position()
+ pg.display.set_caption(f"Matrix Xonix - Level {app.model.level}")

@@ -1,0 +1,115 @@
+--- a/xonix.py
++++ b/xonix.py
+@@ -52,8 +52,7 @@
+             row, col = free_cells[i]
+             self.layers[ENEMY_LAYER + i, row, col] = True
+ 
+-        # This iteration still moves only the first enemy.
+-        self.enemy_direction = np.array([1, 1], dtype=int)
++        self.enemy_direction = np.ones((self.enemy_count, 2), dtype=int)
+ 
+ 
+ class InputController:
+@@ -222,39 +221,42 @@
+         territory = model.layers[TERRITORY_LAYER][1:-1, 1:-1]
+         return territory.sum() >= territory.size * 0.75
+ 
+-    def enemy_step(self, model):
+-        enemy = model.layers[ENEMY_LAYER]
+-        dy, dx = model.enemy_direction
++    def enemy_step(self, model, i):
++        enemy = model.layers[ENEMY_LAYER + i]
++        dy, dx = model.enemy_direction[i]
+         candidate = np.roll(enemy, dy, axis=0)
+         candidate = np.roll(candidate, dx, axis=1)
+         return candidate
+ 
+     def enemy_move(self, model):
+         territory = model.layers[TERRITORY_LAYER]
+-        row, col = np.argwhere(model.layers[ENEMY_LAYER])[0]
+-        dy, dx = model.enemy_direction
+-
+-        candidate = self.enemy_step(model)
+-        blocked_x = territory[row, col + dx]
+-        blocked_y = territory[row + dy, col]
+-
+-        if (candidate & territory).any() or (blocked_x and blocked_y):
+-            if blocked_x:
+-                model.enemy_direction[1] *= -1
+-            if blocked_y:
+-                model.enemy_direction[0] *= -1
+-            if not (blocked_x or blocked_y):
+-                model.enemy_direction *= -1
+-
+-            candidate = self.enemy_step(model)
+-
+-        # The reflected candidate must also satisfy both restrictions.
+-        dy, dx = model.enemy_direction
+-        corner_blocked = (territory[row, col + dx]
+-                          and territory[row + dy, col])
+-
+-        if not (candidate & territory).any() and not corner_blocked:
+-            model.layers[ENEMY_LAYER] = candidate
++
++        for i in range(model.enemy_count):
++            layer_index = ENEMY_LAYER + i
++            row, col = np.argwhere(model.layers[layer_index])[0]
++            dy, dx = model.enemy_direction[i]
++
++            candidate = self.enemy_step(model, i)
++            blocked_x = territory[row, col + dx]
++            blocked_y = territory[row + dy, col]
++
++            if (candidate & territory).any() or (blocked_x and blocked_y):
++                if blocked_x:
++                    model.enemy_direction[i, 1] *= -1
++                if blocked_y:
++                    model.enemy_direction[i, 0] *= -1
++                if not (blocked_x or blocked_y):
++                    model.enemy_direction[i] *= -1
++
++                candidate = self.enemy_step(model, i)
++
++            # Recheck the reflected candidate for this enemy only.
++            dy, dx = model.enemy_direction[i]
++            corner_blocked = (territory[row, col + dx]
++                              and territory[row + dy, col])
++
++            if not (candidate & territory).any() and not corner_blocked:
++                model.layers[layer_index] = candidate
+ 
+ 
+     def check_enemy_collision(self, model):
+@@ -343,14 +345,25 @@
+ 
+ app = GameApp()
+ 
+-# Inspect three separate enemy layers before generalizing movement.
++# Prepare three known cases on a separate board.
++test_model = GameModel(7, 9)
++test_model.level = 3
++test_model.start_position()
++test_model.layers[ENEMY_LAYER:] = False
++starts = ((5, 7), (1, 4), (3, 2))
++for i, (row, col) in enumerate(starts):
++    test_model.layers[ENEMY_LAYER + i, row, col] = True
++test_model.enemy_direction[:] = ((1, 1), (-1, 1), (1, -1))
++
++app.logic.enemy_move(test_model)
++for i in range(test_model.enemy_count):
++    enemy = test_model.layers[ENEMY_LAYER + i]
++    print("Enemy", i, "position:", np.argwhere(enemy)[0])
++print("Directions:")
++print(test_model.enemy_direction)
++
++# Show three moving enemies in the live game.
+ app.model.level = 3
+ app.model.start_position()
+ pg.display.set_caption(f"Matrix Xonix - Level {app.model.level}")
+-print("Layers shape:", app.model.layers.shape)
+-print("Enemy layers shape:", app.model.layers[ENEMY_LAYER:].shape)
+-for i in range(app.model.enemy_count):
+-    enemy = app.model.layers[ENEMY_LAYER + i]
+-    print("Enemy", i, "cells:", enemy.sum())
+-
+ app.run()

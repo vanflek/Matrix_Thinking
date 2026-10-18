@@ -1,0 +1,67 @@
+--- a/xonix.py
++++ b/xonix.py
+@@ -124,6 +124,38 @@
+         return (model.layers[PLAYER_LAYER] & model.layers[TRAIL_LAYER]).any()
+ 
+ 
++    def first_empty_cell(self, blocked):
++        for row in range(blocked.shape[0]):
++            for col in range(blocked.shape[1]):
++                if not blocked[row, col]:
++                    return row, col
++        return None
++
++    def find_region(self, blocked):
++        start = self.first_empty_cell(blocked)
++        region = np.zeros_like(blocked)
++        if start is None:
++            return region
++
++        row, col = start
++        region[row, col] = True
++        free = ~blocked
++
++        while True:
++            # Every direction reads the same previous state.
++            previous = region.copy()
++            region[1:, :] |= previous[:-1, :]
++            region[:-1, :] |= previous[1:, :]
++            region[:, 1:] |= previous[:, :-1]
++            region[:, :-1] |= previous[:, 1:]
++            region &= free
++
++            if np.array_equal(region, previous):
++                break
++
++        return region
++
++
+ class GameView:
+     def __init__(self, screen, cell_size=CELL_SIZE):
+         self.screen = screen
+@@ -168,7 +200,7 @@
+         self.screen = pg.display.set_mode(
+             (cols * CELL_SIZE, rows * CELL_SIZE)
+         )
+-        pg.display.set_caption("Matrix Xonix - Movement and trail")
++        pg.display.set_caption("Matrix Xonix - Region search")
+ 
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+@@ -190,4 +222,16 @@
+ 
+ 
+ app = GameApp()
++
++# Test region search on a small field before running the game.
++blocked = np.ones((7, 9), dtype=bool)
++blocked[1:-1, 1:-1] = False
++blocked[1:-1, 3] = True
++before = blocked.copy()
++
++region = app.logic.find_region(blocked)
++print(region.astype(int))
++print("Area:", region.sum())
++print("Input unchanged:", np.array_equal(blocked, before))
++
+ app.run()
