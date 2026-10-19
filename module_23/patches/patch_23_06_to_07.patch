@@ -1,0 +1,52 @@
+--- a/main.py
++++ b/main.py
+@@ -22,6 +22,7 @@
+         self.yaw = 0.0
+         self.roll = 0.0
+         self.mouse_sensitivity = 0.003
++        self.roll_speed = np.deg2rad(45)
+ 
+ 
+ class GameModel:
+@@ -71,6 +72,8 @@
+         actions["right"] = keys[pg.K_d]
+         actions["up"] = keys[pg.K_SPACE]
+         actions["down"] = keys[pg.K_LCTRL]
++        actions["roll_positive"] = keys[pg.K_q]
++        actions["roll_negative"] = keys[pg.K_e]
+         actions["mouse_dx"], actions["mouse_dy"] = pg.mouse.get_rel()
+         return actions
+ 
+@@ -128,9 +131,13 @@
+         ])
+ 
+ 
+-    def camera_rotate(self, camera, actions):
++    def camera_rotate(self, camera, actions, dt):
+         camera.yaw += actions["mouse_dx"] * camera.mouse_sensitivity
+         camera.pitch -= actions["mouse_dy"] * camera.mouse_sensitivity
++        camera.roll += (
++            (actions["roll_positive"] - actions["roll_negative"])
++            * camera.roll_speed * dt
++        )
+ 
+     def get_rotation_matrix(self, angle_x, angle_y, angle_z):
+         cos_y = np.cos(angle_y)
+@@ -177,7 +184,7 @@
+         self.screen.blit(title, (20, 20))
+ 
+         help_text = self.font.render(
+-            "WASD: move | Space/Ctrl: up/down | Mouse: look | Esc: quit",
++            "WASD: move | Space/Ctrl: up/down | Mouse: look | Q/E: roll | Esc: quit",
+             True, COLORS["muted"]
+         )
+         self.screen.blit(help_text, (20, HEIGHT - 40))
+@@ -209,7 +216,7 @@
+             if actions["quit"]:
+                 break
+ 
+-            self.logic.camera_rotate(self.camera, actions)
++            self.logic.camera_rotate(self.camera, actions, dt)
+             self.logic.camera_move(self.camera, actions, dt)
+ 
+             for obj in self.model.objects.values():

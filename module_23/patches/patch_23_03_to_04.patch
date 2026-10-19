@@ -1,0 +1,79 @@
+--- a/main.py
++++ b/main.py
+@@ -17,6 +17,7 @@
+     def __init__(self):
+         self.position = np.array([1.5, 1.2, -5.0, 1.0])
+         self.near = 0.1
++        self.speed = 3.0
+ 
+ 
+ class GameModel:
+@@ -59,6 +60,13 @@
+                 if event.key == pg.K_ESCAPE:
+                     actions["quit"] = True
+ 
++        keys = pg.key.get_pressed()
++        actions["forward"] = keys[pg.K_w]
++        actions["backward"] = keys[pg.K_s]
++        actions["left"] = keys[pg.K_a]
++        actions["right"] = keys[pg.K_d]
++        actions["up"] = keys[pg.K_SPACE]
++        actions["down"] = keys[pg.K_LCTRL]
+         return actions
+ 
+ 
+@@ -88,6 +96,30 @@
+         return screen_vertices[edges]
+ 
+ 
++    def camera_move(self, camera, actions, dt):
++        movement = np.array([
++            actions["right"] - actions["left"],
++            actions["up"] - actions["down"],
++            actions["forward"] - actions["backward"],
++            0,
++        ], dtype=float)
++        length = np.linalg.norm(movement)
++        if length > 0:
++            movement = movement / length * camera.speed * dt
++
++        translation = self.get_translation_matrix(movement[:3])
++        camera.position = camera.position @ translation
++
++    def get_translation_matrix(self, position):
++        dx, dy, dz = position
++        return np.array([
++            [1, 0, 0, 0],
++            [0, 1, 0, 0],
++            [0, 0, 1, 0],
++            [dx, dy, dz, 1],
++        ])
++
++
+ class GameView:
+     def __init__(self):
+         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+@@ -105,7 +137,8 @@
+         self.screen.blit(title, (20, 20))
+ 
+         help_text = self.font.render(
+-            "Esc: quit", True, COLORS["muted"]
++            "W/S: forward/back | A/D: left/right | Space/Ctrl: up/down | Esc: quit",
++            True, COLORS["muted"]
+         )
+         self.screen.blit(help_text, (20, HEIGHT - 40))
+         pg.display.flip()
+@@ -128,10 +161,12 @@
+ 
+     def run(self):
+         while True:
+-            self.clock.tick(FPS)
++            dt = self.clock.tick(FPS) / 1000.0
+             actions = self.controller.get_actions()
+             if actions["quit"]:
+                 break
++
++            self.logic.camera_move(self.camera, actions, dt)
+ 
+             for obj in self.model.objects.values():
+                 obj["screen_lines"] = self.logic.get_screen_lines(

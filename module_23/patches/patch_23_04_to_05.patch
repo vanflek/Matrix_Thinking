@@ -1,0 +1,98 @@
+--- a/main.py
++++ b/main.py
+@@ -18,6 +18,10 @@
+         self.position = np.array([1.5, 1.2, -5.0, 1.0])
+         self.near = 0.1
+         self.speed = 3.0
++        self.pitch = 0.0
++        self.yaw = 0.0
++        self.roll = 0.0
++        self.mouse_sensitivity = 0.003
+ 
+ 
+ class GameModel:
+@@ -67,6 +71,7 @@
+         actions["right"] = keys[pg.K_d]
+         actions["up"] = keys[pg.K_SPACE]
+         actions["down"] = keys[pg.K_LCTRL]
++        actions["mouse_dx"], actions["mouse_dy"] = pg.mouse.get_rel()
+         return actions
+ 
+ 
+@@ -74,7 +79,10 @@
+     def get_camera_vertices(self, camera, vertices):
+         camera_vertices = vertices.copy()
+         camera_vertices[:, :3] -= camera.position[:3]
+-        return camera_vertices
++        rotation = self.get_rotation_matrix(
++            camera.pitch, camera.yaw, camera.roll
++        )
++        return camera_vertices @ rotation
+ 
+ 
+     def get_screen_lines(self, camera, vertices, edges):
+@@ -120,6 +128,37 @@
+         ])
+ 
+ 
++    def camera_rotate(self, camera, actions):
++        camera.yaw += actions["mouse_dx"] * camera.mouse_sensitivity
++
++    def get_rotation_matrix(self, angle_x, angle_y, angle_z):
++        cos_y = np.cos(angle_y)
++        sin_y = np.sin(angle_y)
++        cos_x = np.cos(angle_x)
++        sin_x = np.sin(angle_x)
++        cos_z = np.cos(angle_z)
++        sin_z = np.sin(angle_z)
++        rotation_y = np.array([
++            [cos_y, 0, sin_y, 0],
++            [0, 1, 0, 0],
++            [-sin_y, 0, cos_y, 0],
++            [0, 0, 0, 1],
++        ])
++        rotation_x = np.array([
++            [1, 0, 0, 0],
++            [0, cos_x, sin_x, 0],
++            [0, -sin_x, cos_x, 0],
++            [0, 0, 0, 1],
++        ])
++        rotation_z = np.array([
++            [cos_z, sin_z, 0, 0],
++            [-sin_z, cos_z, 0, 0],
++            [0, 0, 1, 0],
++            [0, 0, 0, 1],
++        ])
++        return rotation_y @ rotation_x @ rotation_z
++
++
+ class GameView:
+     def __init__(self):
+         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+@@ -137,7 +176,7 @@
+         self.screen.blit(title, (20, 20))
+ 
+         help_text = self.font.render(
+-            "W/S: forward/back | A/D: left/right | Space/Ctrl: up/down | Esc: quit",
++            "WASD: move | Space/Ctrl: up/down | Mouse: look | Esc: quit",
+             True, COLORS["muted"]
+         )
+         self.screen.blit(help_text, (20, HEIGHT - 40))
+@@ -158,6 +197,9 @@
+         self.view = GameView()
+         self.camera = Camera()
+         self.clock = pg.time.Clock()
++        pg.event.set_grab(True)
++        pg.mouse.set_visible(False)
++        pg.mouse.get_rel()
+ 
+     def run(self):
+         while True:
+@@ -166,6 +208,7 @@
+             if actions["quit"]:
+                 break
+ 
++            self.logic.camera_rotate(self.camera, actions)
+             self.logic.camera_move(self.camera, actions, dt)
+ 
+             for obj in self.model.objects.values():

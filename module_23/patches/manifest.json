@@ -1,0 +1,77 @@
+[
+  {
+    "patch": "patch_23_01_to_02.patch",
+    "from": "iteration_23_01_skeleton.py",
+    "to": "iteration_23_02_camera_coordinates.py"
+  },
+  {
+    "patch": "patch_23_02_to_03.patch",
+    "from": "iteration_23_02_camera_coordinates.py",
+    "to": "iteration_23_03_first_cube.py"
+  },
+  {
+    "patch": "patch_23_03_to_04.patch",
+    "from": "iteration_23_03_first_cube.py",
+    "to": "iteration_23_04_camera_movement.py"
+  },
+  {
+    "patch": "patch_23_04_to_05.patch",
+    "from": "iteration_23_04_camera_movement.py",
+    "to": "iteration_23_05_camera_yaw.py"
+  },
+  {
+    "patch": "patch_23_05_to_06.patch",
+    "from": "iteration_23_05_camera_yaw.py",
+    "to": "iteration_23_06_camera_pitch.py"
+  },
+  {
+    "patch": "patch_23_06_to_07.patch",
+    "from": "iteration_23_06_camera_pitch.py",
+    "to": "iteration_23_07_camera_roll.py"
+  },
+  {
+    "patch": "patch_23_07_to_08.patch",
+    "from": "iteration_23_07_camera_roll.py",
+    "to": "iteration_23_08_camera_local_movement.py"
+  },
+  {
+    "patch": "patch_23_08_to_09.patch",
+    "from": "iteration_23_08_camera_local_movement.py",
+    "to": "iteration_23_09_near_clipping.py"
+  },
+  {
+    "patch": "patch_23_09_to_10.patch",
+    "from": "iteration_23_09_near_clipping.py",
+    "to": "iteration_23_10_object_transform.py"
+  },
+  {
+    "patch": "patch_23_10_to_11.patch",
+    "from": "iteration_23_10_object_transform.py",
+    "to": "iteration_23_11_object_scale.py"
+  },
+  {
+    "patch": "patch_23_11_to_12.patch",
+    "from": "iteration_23_11_object_scale.py",
+    "to": "iteration_23_12_two_cobras.py"
+  },
+  {
+    "patch": "patch_23_12_to_13.patch",
+    "from": "iteration_23_12_two_cobras.py",
+    "to": "iteration_23_13_object_orientation.py"
+  },
+  {
+    "patch": "patch_23_13_to_14.patch",
+    "from": "iteration_23_13_object_orientation.py",
+    "to": "iteration_23_14_local_axes.py"
+  },
+  {
+    "patch": "patch_23_14_to_15.patch",
+    "from": "iteration_23_14_local_axes.py",
+    "to": "iteration_23_15_local_rotation.py"
+  },
+  {
+    "patch": "patch_23_15_to_16.patch",
+    "from": "iteration_23_15_local_rotation.py",
+    "to": "iteration_23_16_complete.py"
+  }
+]
