@@ -121,6 +121,17 @@ In solution 29, restart suppresses same-frame fire and uses zero elapsed time fo
 the first update of the new model. Grid, fonts, view, window, and controller are
 reused. Solution 30 keeps six enemies and retains the normal 600-point total.
 
+## Creative extension: three waves
+
+`bonus/wireframe_three_levels.py` implements the chapter's additional creative
+exercise. Run it after trying your own solution. Waves contain 2, 4, and 6
+enemies; the final mixed wave moves 25% faster. Score carries over (1200 total).
+Each wave resets the airplane and projectiles and shows a short ready pause.
+Full rules and configuration notes are in `bonus/README.md`.
+
+The main final program remains the six-enemy, 600-point version used throughout
+the step-by-step chapter. The bonus patch starts independently from that final.
+
 ## Optional patches
 
 You can simply run the complete step files. To inspect or apply a patch, work on
