@@ -1,0 +1,19 @@
+--- a/main.py
++++ b/main.py
+@@ -4,6 +4,7 @@
+ CELL_SIZE = 30
+ FPS = 60
+ MOUSE_SENSITIVITY = 0.003
++FOV_DEGREES = 40
+ 
+ GRID_COLOR = (112, 124, 137)
+ CEILING_COLOR = (45, 50, 65)
+@@ -136,7 +137,7 @@
+ class RayCaster:
+     def __init__(self, model, screen_width):
+         self.model = model
+-        self.fov = np.deg2rad(60)
++        self.fov = np.deg2rad(FOV_DEGREES)
+         self.rays_count = 100
+         self.ray_length = np.linalg.norm([
+             model.world_height, model.world_width

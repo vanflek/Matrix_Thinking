@@ -1,0 +1,25 @@
+--- a/main.py
++++ b/main.py
+@@ -156,7 +156,8 @@
+         walls[inside] = (
+             self.model.maze[cell_y[inside], cell_x[inside]] == 0
+         )
+-        return ray_y, ray_x, inside, walls
++        has_wall = walls.any(axis=0)
++        return ray_y, ray_x, inside, walls, has_wall
+ 
+ 
+ class GameView:
+@@ -249,9 +250,10 @@
+             else:
+                 self.logic.apply_actions(actions)
+                 self.logic.update(delta_time)
+-                ray_y, ray_x, inside, walls = self.ray_caster.ray_cast()
++                result = self.ray_caster.ray_cast()
++                ray_y, ray_x, inside, walls, has_wall = result
+                 pg.display.set_caption(
+-                    f"Raycasting: {inside.sum()} valid samples; {walls.sum()} wall samples"
++                    f"Raycasting: {has_wall.sum()} / {has_wall.size} rays hit walls"
+                 )
+                 self.view.draw(ray_y, ray_x, walls)
+                 pg.display.flip()

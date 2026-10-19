@@ -1,0 +1,21 @@
+--- a/main.py
++++ b/main.py
+@@ -147,13 +147,13 @@
+ 
+     def ray_cast(self):
+         ray_angles = self.model.player_angle + self.relative_angles
+-        angle_grid, distance_grid = np.meshgrid(
+-            ray_angles, self.distances
+-        )
++        sin_angles = np.sin(ray_angles)
++        cos_angles = np.cos(ray_angles)
++        distance_column = self.distances[:, None]
+ 
+         player_y, player_x = self.model.player_position
+-        ray_y = player_y + distance_grid * np.sin(angle_grid)
+-        ray_x = player_x + distance_grid * np.cos(angle_grid)
++        ray_y = player_y + distance_column * sin_angles
++        ray_x = player_x + distance_column * cos_angles
+ 
+         cell_y = (ray_y // CELL_SIZE).astype(int)
+         cell_x = (ray_x // CELL_SIZE).astype(int)

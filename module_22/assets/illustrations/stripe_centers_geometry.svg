@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000">
+<rect width="100%" height="100%" fill="white"/>
+<text x="60" y="71.6" font-family="Arial, sans-serif" font-size="37" font-weight="700" fill="#203441">Screen positions determine the ray directions</text>
+<line x1="60" y1="108" x2="1440" y2="108" stroke="#00859b" stroke-width="3"/>
+<text x="60" y="160.0" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#59717d">W = 800     N = 4     FOV = 60 degrees     d = 692.82</text>
+<rect x="350.0" y="210" width="140.0" height="80" fill="#e1f0f3" stroke="#b2c5ce" stroke-width="2"/>
+<text x="399.0" y="195.8" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#203441">100</text>
+<line x1="630" y1="734.9742261192857" x2="420.0" y2="250" stroke="#00859b" stroke-width="3"/>
+<circle cx="420.0" cy="250" r="6" fill="#cf8528"/>
+<rect x="490.0" y="210" width="140.0" height="80" fill="#f3f7f9" stroke="#b2c5ce" stroke-width="2"/>
+<text x="539.0" y="195.8" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#203441">300</text>
+<line x1="630" y1="734.9742261192857" x2="560.0" y2="250" stroke="#00859b" stroke-width="3"/>
+<circle cx="560.0" cy="250" r="6" fill="#cf8528"/>
+<rect x="630.0" y="210" width="140.0" height="80" fill="#e1f0f3" stroke="#b2c5ce" stroke-width="2"/>
+<text x="679.0" y="195.8" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#203441">500</text>
+<line x1="630" y1="734.9742261192857" x2="700.0" y2="250" stroke="#00859b" stroke-width="3"/>
+<circle cx="700.0" cy="250" r="6" fill="#cf8528"/>
+<rect x="770.0" y="210" width="140.0" height="80" fill="#f3f7f9" stroke="#b2c5ce" stroke-width="2"/>
+<text x="819.0" y="195.8" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#203441">700</text>
+<line x1="630" y1="734.9742261192857" x2="840.0" y2="250" stroke="#00859b" stroke-width="3"/>
+<circle cx="840.0" cy="250" r="6" fill="#cf8528"/>
+<line x1="630" y1="734.9742261192857" x2="630" y2="250" stroke="#59717d" stroke-width="2" stroke-dasharray="9 9"/>
+<line x1="630" y1="250" x2="630" y2="330" stroke="#59717d" stroke-width="2" stroke-dasharray="9 9"/>
+<line x1="840.0" y1="250" x2="840.0" y2="330" stroke="#59717d" stroke-width="2" stroke-dasharray="9 9"/>
+<line x1="630" y1="330" x2="840.0" y2="330" stroke="#cf8528" stroke-width="3"/>
+<polygon points="840.0,330 827.0,324.0 827.0,336.0" fill="#cf8528"/>
+<polygon points="630,330 643.0,336.0 643.0,324.0" fill="#cf8528"/>
+<text x="693.0" y="370.8" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#cf8528">s = 300</text>
+<line x1="270" y1="250" x2="270" y2="734.9742261192857" stroke="#59717d" stroke-width="3"/>
+<polygon points="270,734.9742261192857 276.0,721.9742261192857 264.0,721.9742261192857" fill="#59717d"/>
+<polygon points="270,250 264.0,263.0 276.0,263.0" fill="#59717d"/>
+<text x="196.0" y="505.6" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#59717d">d</text>
+<line x1="270" y1="250" x2="350" y2="250" stroke="#59717d" stroke-width="2" stroke-dasharray="9 9"/>
+<line x1="270" y1="734.9742261192857" x2="630" y2="734.9742261192857" stroke="#59717d" stroke-width="2" stroke-dasharray="9 9"/>
+<line x1="630.0" y1="639.9742261192857" x2="630.9704980245563" y2="639.9791834402894" stroke="#59717d" stroke-width="2"/>
+<line x1="630.9704980245563" y1="639.9791834402894" x2="631.9408947634231" y2="639.9940548859314" stroke="#59717d" stroke-width="2"/>
+<line x1="631.9408947634231" y1="639.9940548859314" x2="632.9110889414821" y2="640.0188389041583" stroke="#59717d" stroke-width="2"/>
+<line x1="632.9110889414821" y1="640.0188389041583" x2="633.8809793047548" y2="640.0535329083948" stroke="#59717d" stroke-width="2"/>
+<line x1="633.8809793047548" y1="640.0535329083948" x2="634.85046463097" y2="640.0981332778132" stroke="#59717d" stroke-width="2"/>
+<line x1="634.85046463097" y1="640.0981332778132" x2="635.8194437401286" y2="640.1526353577115" stroke="#59717d" stroke-width="2"/>
+<line x1="635.8194437401286" y1="640.1526353577115" x2="636.7878155050623" y2="640.2170334599987" stroke="#59717d" stroke-width="2"/>
+<line x1="636.7878155050623" y1="640.2170334599987" x2="637.7554788619882" y2="640.2913208637896" stroke="#59717d" stroke-width="2"/>
+<line x1="637.7554788619882" y1="640.2913208637896" x2="638.722332821056" y2="640.375489816105" stroke="#59717d" stroke-width="2"/>
+<line x1="638.722332821056" y1="640.375489816105" x2="639.6882764768882" y2="640.4695315326813" stroke="#59717d" stroke-width="2"/>
+<line x1="639.6882764768882" y1="640.4695315326813" x2="640.6532090191105" y2="640.5734361988876" stroke="#59717d" stroke-width="2"/>
+<line x1="640.6532090191105" y1="640.5734361988876" x2="641.6170297428732" y2="640.6871929707494" stroke="#59717d" stroke-width="2"/>
+<line x1="641.6170297428732" y1="640.6871929707494" x2="642.5796380593614" y2="640.8107899760806" stroke="#59717d" stroke-width="2"/>
+<line x1="642.5796380593614" y1="640.8107899760806" x2="643.5409335062923" y2="640.9442143157229" stroke="#59717d" stroke-width="2"/>
+<line x1="643.5409335062923" y1="640.9442143157229" x2="644.5008157584004" y2="641.0874520648912" stroke="#59717d" stroke-width="2"/>
+<line x1="644.5008157584004" y1="641.0874520648912" x2="645.459184637908" y2="641.2404882746278" stroke="#59717d" stroke-width="2"/>
+<line x1="645.459184637908" y1="641.2404882746278" x2="646.4159401249797" y2="641.4033069733615" stroke="#59717d" stroke-width="2"/>
+<line x1="646.4159401249797" y1="641.4033069733615" x2="647.3709823681612" y2="641.5758911685757" stroke="#59717d" stroke-width="2"/>
+<line x1="647.3709823681612" y1="641.5758911685757" x2="648.3242116948007" y2="641.7582228485805" stroke="#59717d" stroke-width="2"/>
+<line x1="648.3242116948007" y1="641.7582228485805" x2="649.2755286214506" y2="641.9502829843937" stroke="#59717d" stroke-width="2"/>
+<line x1="649.2755286214506" y1="641.9502829843937" x2="650.2248338642501" y2="642.1520515317256" stroke="#59717d" stroke-width="2"/>
+<line x1="650.2248338642501" y1="642.1520515317256" x2="651.1720283492872" y2="642.3635074330722" stroke="#59717d" stroke-width="2"/>
+<line x1="651.1720283492872" y1="642.3635074330722" x2="652.1170132229385" y2="642.5846286199115" stroke="#59717d" stroke-width="2"/>
+<line x1="652.1170132229385" y1="642.5846286199115" x2="653.0596898621858" y2="642.8153920150079" stroke="#59717d" stroke-width="2"/>
+<line x1="653.0596898621858" y1="642.8153920150079" x2="653.9999598849091" y2="643.0557735348195" stroke="#59717d" stroke-width="2"/>
+<line x1="653.9999598849091" y1="643.0557735348195" x2="654.937725160154" y2="643.3057480920128" stroke="#59717d" stroke-width="2"/>
+<line x1="654.937725160154" y1="643.3057480920128" x2="655.8728878183731" y2="643.5652895980796" stroke="#59717d" stroke-width="2"/>
+<line x1="655.8728878183731" y1="643.5652895980796" x2="656.8053502616406" y2="643.8343709660611" stroke="#59717d" stroke-width="2"/>
+<line x1="656.8053502616406" y1="643.8343709660611" x2="657.7350151738373" y2="644.1129641133736" stroke="#59717d" stroke-width="2"/>
+<line x1="657.7350151738373" y1="644.1129641133736" x2="658.6617855308074" y2="644.40103996474" stroke="#59717d" stroke-width="2"/>
+<line x1="658.6617855308074" y1="644.40103996474" x2="659.5855646104845" y2="644.6985684552242" stroke="#59717d" stroke-width="2"/>
+<line x1="659.5855646104845" y1="644.6985684552242" x2="660.506256002986" y2="645.0055185333684" stroke="#59717d" stroke-width="2"/>
+<line x1="660.506256002986" y1="645.0055185333684" x2="661.4237636206742" y2="645.3218581644347" stroke="#59717d" stroke-width="2"/>
+<line x1="661.4237636206742" y1="645.3218581644347" x2="662.3379917081853" y2="645.6475543337472" stroke="#59717d" stroke-width="2"/>
+<line x1="662.3379917081853" y1="645.6475543337472" x2="663.2488448524225" y2="645.9825730501381" stroke="#59717d" stroke-width="2"/>
+<line x1="663.2488448524225" y1="645.9825730501381" x2="664.1562279925137" y2="646.3268793494956" stroke="#59717d" stroke-width="2"/>
+<line x1="664.1562279925137" y1="646.3268793494956" x2="665.0600464297327" y2="646.6804372984122" stroke="#59717d" stroke-width="2"/>
+<line x1="665.0600464297327" y1="646.6804372984122" x2="665.9602058373819" y2="647.0432099979357" stroke="#59717d" stroke-width="2"/>
+<line x1="665.9602058373819" y1="647.0432099979357" x2="666.8566122706377" y2="647.4151595874189" stroke="#59717d" stroke-width="2"/>
+<line x1="666.8566122706377" y1="647.4151595874189" x2="667.7491721763538" y2="647.7962472484722" stroke="#59717d" stroke-width="2"/>
+<text x="660" y="631.5742261192858" font-family="Arial, sans-serif" font-size="27" font-weight="400" fill="#203441">a</text>
+<circle cx="630" cy="734.9742261192857" r="7" fill="#203441"/>
+<text x="569.5" y="788.1742261192858" font-family="Arial, sans-serif" font-size="29" font-weight="400" fill="#203441">Observer</text>
+<text x="970" y="439.0" font-family="Arial, sans-serif" font-size="30" font-weight="400" fill="#203441">tan(a) = s / d</text>
+<text x="970" y="486.0" font-family="Arial, sans-serif" font-size="30" font-weight="400" fill="#00859b">a = arctan(s / d)</text>
+<text x="970" y="541.6" font-family="Arial, sans-serif" font-size="27" font-weight="400" fill="#59717d">a = 23.41 degrees</text>
+<text x="60" y="893.2" font-family="Arial, sans-serif" font-size="29" font-weight="400" fill="#203441">Ray angles:  -23.41     -8.21     8.21     23.41 degrees</text>
+<text x="60" y="946.6" font-family="Arial, sans-serif" font-size="27" font-weight="400" fill="#59717d">Equal screen intervals produce unequal angular intervals.</text>
+</svg>

@@ -1,0 +1,214 @@
+[
+  {
+    "id": "example_22_01",
+    "file": "examples/example_22_01_maze_data.py"
+  },
+  {
+    "id": "iteration_22_01",
+    "file": "steps/iteration_22_01_skeleton.py"
+  },
+  {
+    "id": "example_22_02",
+    "file": "examples/example_22_02_normalization.py"
+  },
+  {
+    "id": "iteration_22_02",
+    "file": "steps/iteration_22_02_movement.py"
+  },
+  {
+    "id": "example_22_03",
+    "file": "examples/example_22_03_cell_checks.py"
+  },
+  {
+    "id": "example_22_04",
+    "file": "examples/example_22_04_ray_samples.py"
+  },
+  {
+    "id": "example_22_05",
+    "file": "examples/example_22_05_meshgrid.py"
+  },
+  {
+    "id": "example_22_06",
+    "file": "examples/example_22_06_ray_coordinates.py"
+  },
+  {
+    "id": "iteration_22_03",
+    "file": "steps/iteration_22_03_rays.py"
+  },
+  {
+    "id": "example_22_07",
+    "file": "examples/example_22_07_valid_addresses.py"
+  },
+  {
+    "id": "iteration_22_04",
+    "file": "steps/iteration_22_04_valid_addresses.py"
+  },
+  {
+    "id": "example_22_08",
+    "file": "examples/example_22_08_masked_walls.py"
+  },
+  {
+    "id": "iteration_22_05",
+    "file": "steps/iteration_22_05_wall_flags.py"
+  },
+  {
+    "id": "example_22_09",
+    "file": "examples/example_22_09_any.py"
+  },
+  {
+    "id": "iteration_22_06",
+    "file": "steps/iteration_22_06_any.py"
+  },
+  {
+    "id": "example_22_10",
+    "file": "examples/example_22_10_argmax.py"
+  },
+  {
+    "id": "iteration_22_07",
+    "file": "steps/iteration_22_07_argmax.py"
+  },
+  {
+    "id": "example_22_11",
+    "file": "examples/example_22_11_endpoint_indices.py"
+  },
+  {
+    "id": "iteration_22_08",
+    "file": "steps/iteration_22_08_endpoints.py"
+  },
+  {
+    "id": "example_22_12",
+    "file": "examples/example_22_12_perspective.py"
+  },
+  {
+    "id": "iteration_22_09",
+    "file": "steps/iteration_22_09_first_person.py"
+  },
+  {
+    "id": "example_22_13",
+    "file": "examples/example_22_13_wall_colors.py"
+  },
+  {
+    "id": "iteration_22_10",
+    "file": "steps/iteration_22_10_wall_color.py"
+  },
+  {
+    "id": "example_22_14",
+    "file": "examples/example_22_14_forward_depth.py"
+  },
+  {
+    "id": "iteration_22_11",
+    "file": "steps/iteration_22_11_forward_depth.py"
+  },
+  {
+    "id": "example_22_15",
+    "file": "examples/example_22_15_stripe_centers.py"
+  },
+  {
+    "id": "iteration_22_12",
+    "file": "steps/iteration_22_12_stripe_centers.py"
+  },
+  {
+    "id": "iteration_22_13",
+    "file": "steps/iteration_22_13_floor_ceiling.py"
+  },
+  {
+    "id": "example_22_16",
+    "file": "examples/example_22_16_sampling_cost.py"
+  },
+  {
+    "id": "iteration_22_14",
+    "file": "steps/iteration_22_14_dense_samples.py"
+  },
+  {
+    "id": "example_22_17",
+    "file": "examples/example_22_17_broadcasting_rays.py"
+  },
+  {
+    "id": "iteration_22_15",
+    "file": "steps/iteration_22_15_broadcasting.py"
+  },
+  {
+    "id": "example_22_18",
+    "file": "examples/example_22_18_batch_indices.py"
+  },
+  {
+    "id": "iteration_22_16",
+    "file": "steps/iteration_22_16_batches.py"
+  },
+  {
+    "id": "example_22_19",
+    "file": "examples/example_22_19_active_ray_ids.py"
+  },
+  {
+    "id": "iteration_22_17",
+    "file": "steps/iteration_22_17_active_rays.py"
+  },
+  {
+    "id": "example_22_20",
+    "file": "examples/example_22_20_compare_and_time.py"
+  },
+  {
+    "id": "example_22_21",
+    "file": "examples/example_22_21_floor_segments.py"
+  },
+  {
+    "id": "iteration_22_18",
+    "file": "steps/iteration_22_18_floor_segments.py"
+  },
+  {
+    "id": "example_22_22",
+    "file": "examples/example_22_22_camera_coordinates.py"
+  },
+  {
+    "id": "iteration_22_19",
+    "file": "steps/iteration_22_19_camera_segments.py"
+  },
+  {
+    "id": "example_22_23",
+    "file": "examples/example_22_23_near_intersection.py"
+  },
+  {
+    "id": "iteration_22_20",
+    "file": "steps/iteration_22_20_near_clipping.py"
+  },
+  {
+    "id": "example_22_24",
+    "file": "examples/example_22_24_floor_projection.py"
+  },
+  {
+    "id": "iteration_22_21",
+    "file": "steps/iteration_22_21_floor_projection.py"
+  },
+  {
+    "id": "example_22_25",
+    "file": "examples/example_22_25_masked_divide.py"
+  },
+  {
+    "id": "iteration_22_22",
+    "file": "steps/iteration_22_22_numpy_clipping.py"
+  },
+  {
+    "id": "iteration_22_23",
+    "file": "steps/iteration_22_23_complete.py"
+  },
+  {
+    "id": "solution_22_26",
+    "file": "solutions/solution_22_26_field_of_view.py"
+  },
+  {
+    "id": "solution_22_27",
+    "file": "solutions/solution_22_27_distance_bands.py"
+  },
+  {
+    "id": "solution_22_28",
+    "file": "solutions/solution_22_28_grid_step.py"
+  },
+  {
+    "id": "solution_22_29",
+    "file": "solutions/solution_22_29_clipping_lab.py"
+  },
+  {
+    "id": "solution_22_30",
+    "file": "solutions/solution_22_30_search_benchmark.py"
+  }
+]

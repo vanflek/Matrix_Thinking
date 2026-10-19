@@ -1,0 +1,164 @@
+[
+  {
+    "patch": "patches/patch_22_01_to_02.patch",
+    "source": "steps/iteration_22_01_skeleton.py",
+    "target": "steps/iteration_22_02_movement.py",
+    "target_sha256": "249f76ef92ef3645753a0bbcb29529bf1767ef0fd2f74a6610845f8fc0f792fb"
+  },
+  {
+    "patch": "patches/patch_22_02_to_03.patch",
+    "source": "steps/iteration_22_02_movement.py",
+    "target": "steps/iteration_22_03_rays.py",
+    "target_sha256": "073c8b9a2c477dbb50eacfe08fbcfbe20b8e64359febaea8fed7f936d3eb692b"
+  },
+  {
+    "patch": "patches/patch_22_03_to_04.patch",
+    "source": "steps/iteration_22_03_rays.py",
+    "target": "steps/iteration_22_04_valid_addresses.py",
+    "target_sha256": "915d9227433d5e414829101c230c04c89d54a6f6937b059d4e3bc61c8d82e04f"
+  },
+  {
+    "patch": "patches/patch_22_04_to_05.patch",
+    "source": "steps/iteration_22_04_valid_addresses.py",
+    "target": "steps/iteration_22_05_wall_flags.py",
+    "target_sha256": "a6c648996a4de1599e37215730878a7e62ee914adede20b6172f2a46c9abad52"
+  },
+  {
+    "patch": "patches/patch_22_05_to_06.patch",
+    "source": "steps/iteration_22_05_wall_flags.py",
+    "target": "steps/iteration_22_06_any.py",
+    "target_sha256": "c06b7438a7b66d5d83778d3e09d60028de0f966a0ce0d887c8546edb8a6c76bd"
+  },
+  {
+    "patch": "patches/patch_22_06_to_07.patch",
+    "source": "steps/iteration_22_06_any.py",
+    "target": "steps/iteration_22_07_argmax.py",
+    "target_sha256": "b9a7fefc811d4c4ac2c085fca38d4a88cad8b316f818608ef61511b1a92022e7"
+  },
+  {
+    "patch": "patches/patch_22_07_to_08.patch",
+    "source": "steps/iteration_22_07_argmax.py",
+    "target": "steps/iteration_22_08_endpoints.py",
+    "target_sha256": "7a1d4c481b49f8a55cfcf2c45291cdd9dfbed3feec378db504d816cda15809ad"
+  },
+  {
+    "patch": "patches/patch_22_08_to_09.patch",
+    "source": "steps/iteration_22_08_endpoints.py",
+    "target": "steps/iteration_22_09_first_person.py",
+    "target_sha256": "16a68c401cefc1225a20d2f8ca22407fd0f72ad51444741afa4dd4c8d6af2f5c"
+  },
+  {
+    "patch": "patches/patch_22_09_to_10.patch",
+    "source": "steps/iteration_22_09_first_person.py",
+    "target": "steps/iteration_22_10_wall_color.py",
+    "target_sha256": "37132dadbb76c2850255a5c3cd7aeadf7b50c41f6423aa8dcd6410ff3df2e6e5"
+  },
+  {
+    "patch": "patches/patch_22_10_to_11.patch",
+    "source": "steps/iteration_22_10_wall_color.py",
+    "target": "steps/iteration_22_11_forward_depth.py",
+    "target_sha256": "fbd29df9e226bb29b7cdd84b79125e7eed1a409af72f5c0de59976d5fa96ac35"
+  },
+  {
+    "patch": "patches/patch_22_11_to_12.patch",
+    "source": "steps/iteration_22_11_forward_depth.py",
+    "target": "steps/iteration_22_12_stripe_centers.py",
+    "target_sha256": "957f4dcec754f0a5440f553290ee535218441d0bd916f6de41a024b56e4100b5"
+  },
+  {
+    "patch": "patches/patch_22_12_to_13.patch",
+    "source": "steps/iteration_22_12_stripe_centers.py",
+    "target": "steps/iteration_22_13_floor_ceiling.py",
+    "target_sha256": "8f3a6362e39dd2986d0272d47365055f31b895cdcd879600774350f738724137"
+  },
+  {
+    "patch": "patches/patch_22_13_to_14.patch",
+    "source": "steps/iteration_22_13_floor_ceiling.py",
+    "target": "steps/iteration_22_14_dense_samples.py",
+    "target_sha256": "59686dea44c5fd238b440fa2770610db3e49625dcf57f00ee45e2bab6ef721f9"
+  },
+  {
+    "patch": "patches/patch_22_14_to_15.patch",
+    "source": "steps/iteration_22_14_dense_samples.py",
+    "target": "steps/iteration_22_15_broadcasting.py",
+    "target_sha256": "993eed784117a6a6c421126b484d3e5a2d623caf8d35ff563e9045695329849d"
+  },
+  {
+    "patch": "patches/patch_22_15_to_16.patch",
+    "source": "steps/iteration_22_15_broadcasting.py",
+    "target": "steps/iteration_22_16_batches.py",
+    "target_sha256": "6bcbba22d728743b3dc18beb1303d8fd3f6ff2ce12a6a14f88fc0b4602a1a3d1"
+  },
+  {
+    "patch": "patches/patch_22_16_to_17.patch",
+    "source": "steps/iteration_22_16_batches.py",
+    "target": "steps/iteration_22_17_active_rays.py",
+    "target_sha256": "3d521682fe1eb487eec658529ac30a1e7efaa95a363d55727db1d2d15d1a34ac"
+  },
+  {
+    "patch": "patches/patch_22_17_to_18.patch",
+    "source": "steps/iteration_22_17_active_rays.py",
+    "target": "steps/iteration_22_18_floor_segments.py",
+    "target_sha256": "f34916f64ac18db7c436658d9dce3d58f89c040efd9bcb6a9e45a9a2bb69e26d"
+  },
+  {
+    "patch": "patches/patch_22_18_to_19.patch",
+    "source": "steps/iteration_22_18_floor_segments.py",
+    "target": "steps/iteration_22_19_camera_segments.py",
+    "target_sha256": "7484e8fef060dc75e23f821fbb7894288f16f19e924ca348f02205c8b84fa059"
+  },
+  {
+    "patch": "patches/patch_22_19_to_20.patch",
+    "source": "steps/iteration_22_19_camera_segments.py",
+    "target": "steps/iteration_22_20_near_clipping.py",
+    "target_sha256": "60d1ac2de2ff4264fef1a65b77088e073fbcd4bd68af0ec916b38af20af87c60"
+  },
+  {
+    "patch": "patches/patch_22_20_to_21.patch",
+    "source": "steps/iteration_22_20_near_clipping.py",
+    "target": "steps/iteration_22_21_floor_projection.py",
+    "target_sha256": "29a9dfc4b3a704200e9903b2601e1a8544cfc94b6b6de1b2d39e40cea94ad973"
+  },
+  {
+    "patch": "patches/patch_22_21_to_22.patch",
+    "source": "steps/iteration_22_21_floor_projection.py",
+    "target": "steps/iteration_22_22_numpy_clipping.py",
+    "target_sha256": "14c7536e629dc18d852aa0c67e18404ba3e21da47e0d8672c1f2cc476237bb5a"
+  },
+  {
+    "patch": "patches/patch_22_22_to_23.patch",
+    "source": "steps/iteration_22_22_numpy_clipping.py",
+    "target": "steps/iteration_22_23_complete.py",
+    "target_sha256": "4c784a78264ec77d39ecf4a1f35b93e4b07e9bb2a3f29db3d4c36da1585d879a"
+  },
+  {
+    "patch": "patches/patch_22_final_to_solution_26.patch",
+    "source": "final/maze_raycasting.py",
+    "target": "solutions/solution_22_26_field_of_view.py",
+    "target_sha256": "9b964281692e4e87168dd08ef8cc24df7e8490c6a55868374dd3cd8d7a63f42e"
+  },
+  {
+    "patch": "patches/patch_22_final_to_solution_27.patch",
+    "source": "final/maze_raycasting.py",
+    "target": "solutions/solution_22_27_distance_bands.py",
+    "target_sha256": "cfa4006c463292facc8622ea578daaf935247c2ff5cfa98703037e20018a4b57"
+  },
+  {
+    "patch": "patches/patch_22_final_to_solution_28.patch",
+    "source": "final/maze_raycasting.py",
+    "target": "solutions/solution_22_28_grid_step.py",
+    "target_sha256": "672a264c63d7fdc55df5b9fbd55e95fa64775cd261081ea3f3331339ba63508d"
+  },
+  {
+    "patch": "patches/patch_22_final_to_solution_29.patch",
+    "source": "final/maze_raycasting.py",
+    "target": "solutions/solution_22_29_clipping_lab.py",
+    "target_sha256": "5d94dd86c700c4449767bbbbd5fdb8fb4114ac8bcc1bb8895417e7df6f69328b"
+  },
+  {
+    "patch": "patches/patch_22_final_to_solution_30.patch",
+    "source": "final/maze_raycasting.py",
+    "target": "solutions/solution_22_30_search_benchmark.py",
+    "target_sha256": "1a10808b8872525f3198562388486876644ea52691ed8934cbdb68964ae39151"
+  }
+]

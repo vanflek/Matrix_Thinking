@@ -1,0 +1,63 @@
+--- a/main.py
++++ b/main.py
+@@ -38,6 +38,27 @@
+         ]) * CELL_SIZE
+         self.player_angle = 0.0
+         self.player_speed = 90.0
++        self.floor_segments = self.create_floor_segments()
++
++
++    def create_floor_segments(self):
++        y = np.arange(self.rows + 1) * CELL_SIZE
++        x = np.arange(self.columns + 1) * CELL_SIZE
++
++        horizontal_start = np.column_stack((y, np.zeros_like(y)))
++        horizontal_end = np.column_stack((
++            y, np.zeros_like(y) + self.world_width
++        ))
++        horizontal = np.stack(
++            (horizontal_start, horizontal_end), axis=1
++        )
++
++        vertical_start = np.column_stack((np.zeros_like(x), x))
++        vertical_end = np.column_stack((
++            np.zeros_like(x) + self.world_height, x
++        ))
++        vertical = np.stack((vertical_start, vertical_end), axis=1)
++        return np.vstack((horizontal, vertical)).astype(float)
+ 
+ 
+ class InputController:
+@@ -243,6 +264,7 @@
+ 
+     def draw(self, end_y, end_x, has_wall):
+         self.screen.blit(self.maze_surface, (0, 0))
++        self.draw_floor_segments()
+         self.draw_rays(end_y, end_x, has_wall)
+ 
+         player_y, player_x = self.model.player_position
+@@ -257,6 +279,15 @@
+         pg.draw.circle(
+             self.screen, PLAYER_COLOR, (player_x, player_y), 5,
+         )
++
++    def draw_floor_segments(self):
++        for segment in self.model.floor_segments:
++            start_y, start_x = segment[0]
++            end_y, end_x = segment[1]
++            pg.draw.line(
++                self.screen, (0, 145, 155),
++                (start_x, start_y), (end_x, end_y), 1,
++            )
+ 
+     def draw_first_person(self, wall_heights, end_distance):
+         width, height = self.screen.get_size()
+@@ -324,7 +355,7 @@
+                 wall_heights = self.ray_caster.get_wall_heights(
+                     end_distance, has_wall
+                 )
+-                self.view.draw_first_person(wall_heights, end_distance)
++                self.view.draw(end_y, end_x, has_wall)
+                 pg.display.flip()
+ 
+         pg.event.set_grab(False)

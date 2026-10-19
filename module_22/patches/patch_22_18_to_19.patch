@@ -1,0 +1,57 @@
+--- a/main.py
++++ b/main.py
+@@ -214,6 +214,17 @@
+ 
+ 
+ 
++    def get_camera_segments(self):
++        relative = self.model.floor_segments - self.model.player_position
++        dy = relative[:, :, 0]
++        dx = relative[:, :, 1]
++        angle = self.model.player_angle
++        sin_angle = np.sin(angle)
++        cos_angle = np.cos(angle)
++        side = dy * cos_angle - dx * sin_angle
++        depth = dy * sin_angle + dx * cos_angle
++        return np.stack((side, depth), axis=2)
++
+     def get_wall_heights(self, end_distance, has_wall):
+         depths = end_distance * np.cos(self.relative_angles)
+         wall_heights = np.zeros_like(end_distance, dtype=float)
+@@ -279,6 +290,26 @@
+         pg.draw.circle(
+             self.screen, PLAYER_COLOR, (player_x, player_y), 5,
+         )
++
++    def draw_camera_grid(self, camera_segments):
++        width, height = self.screen.get_size()
++        center_x, center_y = width / 2, height / 2
++        scale = 0.5
++        self.screen.fill((238, 241, 244))
++        pg.draw.line(self.screen, GRID_COLOR,
++                     (0, center_y), (width - 1, center_y), 2)
++        pg.draw.line(self.screen, GRID_COLOR,
++                     (center_x, 0), (center_x, height - 1), 2)
++        for segment in camera_segments:
++            side, depth = segment[0]
++            start = (center_x + side * scale, center_y - depth * scale)
++            side, depth = segment[1]
++            end = (center_x + side * scale, center_y - depth * scale)
++            pg.draw.line(self.screen, RAY_COLOR, start, end, 1)
++        pg.draw.circle(self.screen, PLAYER_COLOR,
++                       (round(center_x), round(center_y)), 5)
++        pg.draw.line(self.screen, DIRECTION_COLOR,
++                     (center_x, center_y), (center_x, center_y - 25), 3)
+ 
+     def draw_floor_segments(self):
+         for segment in self.model.floor_segments:
+@@ -355,7 +386,8 @@
+                 wall_heights = self.ray_caster.get_wall_heights(
+                     end_distance, has_wall
+                 )
+-                self.view.draw(end_y, end_x, has_wall)
++                camera_segments = self.ray_caster.get_camera_segments()
++                self.view.draw_camera_grid(camera_segments)
+                 pg.display.flip()
+ 
+         pg.event.set_grab(False)

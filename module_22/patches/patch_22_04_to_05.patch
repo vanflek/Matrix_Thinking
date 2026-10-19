@@ -1,0 +1,66 @@
+--- a/main.py
++++ b/main.py
+@@ -15,6 +15,7 @@
+ DIRECTION_COLOR = (42, 117, 170)
+ RAY_COLOR = (0, 145, 155)
+ SAMPLE_COLOR = (230, 151, 48)
++WALL_SAMPLE_COLOR = (220, 80, 150)
+ 
+ 
+ class GameModel:
+@@ -151,7 +152,11 @@
+             (cell_y >= 0) & (cell_y < self.model.rows) &
+             (cell_x >= 0) & (cell_x < self.model.columns)
+         )
+-        return ray_y, ray_x, inside
++        walls = np.zeros_like(inside)
++        walls[inside] = (
++            self.model.maze[cell_y[inside], cell_x[inside]] == 0
++        )
++        return ray_y, ray_x, inside, walls
+ 
+ 
+ class GameView:
+@@ -180,7 +185,7 @@
+         pg.draw.rect(surface, GRID_COLOR, (0, 0, width, height), 1)
+         return surface
+ 
+-    def draw_rays(self, ray_y, ray_x):
++    def draw_rays(self, ray_y, ray_x, walls):
+         player_y, player_x = self.model.player_position
+         for ray_index in range(ray_x.shape[1]):
+             end_y = ray_y[-1, ray_index]
+@@ -192,11 +197,14 @@
+             for sample_index in range(ray_x.shape[0]):
+                 y = ray_y[sample_index, ray_index]
+                 x = ray_x[sample_index, ray_index]
+-                pg.draw.circle(self.screen, SAMPLE_COLOR, (x, y), 2)
+-
+-    def draw(self, ray_y, ray_x):
++                color = SAMPLE_COLOR
++                if walls[sample_index, ray_index]:
++                    color = WALL_SAMPLE_COLOR
++                pg.draw.circle(self.screen, color, (x, y), 2)
++
++    def draw(self, ray_y, ray_x, walls):
+         self.screen.blit(self.maze_surface, (0, 0))
+-        self.draw_rays(ray_y, ray_x)
++        self.draw_rays(ray_y, ray_x, walls)
+ 
+         player_y, player_x = self.model.player_position
+         angle = self.model.player_angle
+@@ -241,11 +249,11 @@
+             else:
+                 self.logic.apply_actions(actions)
+                 self.logic.update(delta_time)
+-                ray_y, ray_x, inside = self.ray_caster.ray_cast()
++                ray_y, ray_x, inside, walls = self.ray_caster.ray_cast()
+                 pg.display.set_caption(
+-                    f"Raycasting: {inside.sum()} / {inside.size} valid samples"
++                    f"Raycasting: {inside.sum()} valid samples; {walls.sum()} wall samples"
+                 )
+-                self.view.draw(ray_y, ray_x)
++                self.view.draw(ray_y, ray_x, walls)
+                 pg.display.flip()
+ 
+         pg.event.set_grab(False)

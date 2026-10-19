@@ -1,0 +1,18 @@
+--- a/main.py
++++ b/main.py
+@@ -132,8 +132,13 @@
+         self.projection_distance = screen_width / (
+             2 * np.tan(self.fov / 2)
+         )
+-        self.relative_angles = np.linspace(
+-            -self.fov / 2, self.fov / 2, self.rays_count
++        stripe_width = screen_width / self.rays_count
++        screen_x = (
++            (np.arange(self.rays_count) + 0.5) * stripe_width
++            - screen_width / 2
++        )
++        self.relative_angles = np.arctan(
++            screen_x / self.projection_distance
+         )
+         self.distances = np.linspace(
+             0, self.ray_length, self.sample_count

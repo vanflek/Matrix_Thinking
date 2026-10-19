@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="950" viewBox="0 0 1500 950">
+<rect width="100%" height="100%" fill="white"/>
+<text x="60" y="71.6" font-family="Arial, sans-serif" font-size="37" font-weight="700" fill="#203441">Floor projection: compare two similar triangles</text>
+<line x1="60" y1="108" x2="1440" y2="108" stroke="#00859b" stroke-width="3"/>
+<text x="760" y="179.0" font-family="Arial, sans-serif" font-size="30" font-weight="400" fill="#203441">offset_y / d = camera_height / depth</text>
+<text x="760" y="226.0" font-family="Arial, sans-serif" font-size="30" font-weight="400" fill="#00859b">screen_y = horizon + offset_y</text>
+<line x1="170" y1="340" x2="1380" y2="340" stroke="#59717d" stroke-width="2"/>
+<text x="1030" y="320.8" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#59717d">Horizon direction</text>
+<line x1="180" y1="670" x2="1380" y2="670" stroke="#203441" stroke-width="4"/>
+<text x="1310" y="727.4" font-family="Arial, sans-serif" font-size="28" font-weight="400" fill="#203441">Floor</text>
+<line x1="550" y1="290" x2="550" y2="700" stroke="#00859b" stroke-width="4"/>
+<line x1="230" y1="340" x2="1280" y2="670" stroke="#cf8528" stroke-width="4"/>
+<line x1="550" y1="340" x2="550" y2="440.57142857142856" stroke="#c35232" stroke-width="8"/>
+<circle cx="230" cy="340" r="7" fill="#203441"/>
+<circle cx="550" cy="440.57142857142856" r="7" fill="#00859b"/>
+<circle cx="1280" cy="670" r="7" fill="#cf8528"/>
+<text x="245" y="326.6" font-family="Arial, sans-serif" font-size="27" font-weight="400" fill="#203441">Camera</text>
+<text x="575" y="398.2" font-family="Arial, sans-serif" font-size="29" font-weight="400" fill="#c35232">offset_y</text>
+<line x1="185" y1="340" x2="185" y2="670" stroke="#59717d" stroke-width="3"/>
+<polygon points="185,670 191.0,657.0 179.0,657.0" fill="#59717d"/>
+<polygon points="185,340 179.0,353.0 191.0,353.0" fill="#59717d"/>
+<text x="65.5" y="499.2" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#203441">camera</text>
+<text x="73.0" y="534.2" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#203441">height</text>
+<line x1="230" y1="340" x2="230" y2="270" stroke="#59717d" stroke-width="2" stroke-dasharray="9 9"/>
+<line x1="550" y1="290" x2="550" y2="270" stroke="#59717d" stroke-width="2" stroke-dasharray="9 9"/>
+<line x1="230" y1="270" x2="550" y2="270" stroke="#00859b" stroke-width="3"/>
+<polygon points="550,270 537.0,264.0 537.0,276.0" fill="#00859b"/>
+<polygon points="230,270 243.0,276.0 243.0,264.0" fill="#00859b"/>
+<text x="381.0" y="253.6" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#00859b">d</text>
+<text x="452.5" y="751.6" font-family="Arial, sans-serif" font-size="27" font-weight="400" fill="#00859b">Projection plane</text>
+<line x1="230" y1="670" x2="230" y2="805" stroke="#59717d" stroke-width="2" stroke-dasharray="9 9"/>
+<line x1="1280" y1="670" x2="1280" y2="805" stroke="#59717d" stroke-width="2" stroke-dasharray="9 9"/>
+<line x1="230" y1="805" x2="1280" y2="805" stroke="#59717d" stroke-width="3"/>
+<polygon points="1280,805 1267.0,799.0 1267.0,811.0" fill="#59717d"/>
+<polygon points="230,805 243.0,811.0 243.0,799.0" fill="#59717d"/>
+<text x="500.0" y="847.4" font-family="Arial, sans-serif" font-size="28" font-weight="400" fill="#203441">depth: forward distance from the camera</text>
+<text x="60" y="925.8" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#59717d">Side view. The orange ray is longer than its horizontal depth.</text>
+</svg>
