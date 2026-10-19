@@ -1,0 +1,42 @@
+--- a/main.py
++++ b/main.py
+@@ -220,6 +220,16 @@
+             )
+             self.enemies.append(enemy)
+ 
++        enemy = self.enemies[2]
++        enemy.motion_type = "oscillation"
++        enemy.orbit_center_x = 0.0
++        enemy.orbit_center_y = 40.0
++        enemy.orbit_radius = 185.0
++        enemy.orbit_angle = 0.0
++        enemy.orbit_speed = 60.0
++        enemy.dx = 0.0
++        enemy.dy = 40.0
++
+     def get_all_objects(self):
+         return [self.player, *self.enemies, *self.projectiles]
+ 
+@@ -446,6 +456,8 @@
+         for enemy in self.model.enemies:
+             if enemy.motion_type == "diagonal":
+                 self.move_diagonal_enemy(enemy, delta_time)
++            elif enemy.motion_type == "oscillation":
++                self.move_oscillating_enemy(enemy, delta_time)
+             elif enemy.motion_type == "circle":
+                 self.move_circular_enemy(enemy, delta_time)
+ 
+@@ -477,6 +489,13 @@
+             enemy.dy = max_y
+             enemy.velocity_y *= -1
+ 
++
++    def move_oscillating_enemy(self, enemy, delta_time):
++        enemy.orbit_angle += enemy.orbit_speed * delta_time
++        enemy.orbit_angle %= 360
++        enemy.dx = (enemy.orbit_center_x + enemy.orbit_radius
++                    * np.sin(np.deg2rad(enemy.orbit_angle)))
++        enemy.dy = enemy.orbit_center_y
+ 
+     def move_circular_enemy(self, enemy, delta_time):
+         enemy.orbit_angle += enemy.orbit_speed * delta_time

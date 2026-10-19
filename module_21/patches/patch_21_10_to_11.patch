@@ -1,0 +1,102 @@
+--- a/main.py
++++ b/main.py
+@@ -156,6 +156,7 @@
+             sx=0.5,
+             sy=0.5,
+             angle=90.0,
++            collision_radius=21.0,
+             color=PLAYER_COLOR,
+             line_width=2,
+         )
+@@ -164,6 +165,8 @@
+         self.enemies = []
+         self.projectiles = []
+         self.score = 0
++        self.game_over = False
++        self.victory = False
+         diagonal_data = [
+             # Initial X, horizontal velocity, visual spin.
+             (-250.0, 120.0, 70.0),
+@@ -275,12 +278,18 @@
+         self.actions = actions
+ 
+     def update(self, delta_time):
++        if self.model.game_over or self.model.victory:
++            return
++
+         self.update_player(delta_time)
+         if self.actions["fire"]:
+             self.create_projectile()
+         self.update_projectiles(delta_time)
+         self.update_enemies(delta_time)
+         self.resolve_projectile_enemy_collisions()
++        self.resolve_enemy_player_collision()
++        if not self.model.enemies and not self.model.game_over:
++            self.model.victory = True
+ 
+     def update_player(self, delta_time):
+         player = self.model.player
+@@ -387,6 +396,20 @@
+         self.model.projectiles = remaining
+ 
+ 
++    def resolve_enemy_player_collision(self):
++        player = self.model.player
++        for enemy in self.model.enemies:
++            distance = np.hypot(
++                player.dx - enemy.dx,
++                player.dy - enemy.dy,
++            )
++            collision_distance = (
++                player.collision_radius + enemy.collision_radius
++            )
++            if distance <= collision_distance:
++                self.model.game_over = True
++                return
++
+     def resolve_projectile_enemy_collisions(self):
+         hit_projectiles = set()
+         hit_enemies = set()
+@@ -470,6 +493,7 @@
+         self.model = model
+         self.grid_surface = self.create_grid_surface()
+         self.font = pg.font.SysFont("consolas", 24)
++        self.result_font = pg.font.SysFont("consolas", 48, bold=True)
+ 
+     def create_grid_surface(self):
+         # Draw the fixed background once and reuse it in every frame.
+@@ -516,11 +540,29 @@
+         )
+         self.screen.blit(label, (12, 12))
+ 
++    def draw_result(self):
++        if self.model.game_over:
++            text = "GAME OVER"
++            color = (185, 65, 45)
++        elif self.model.victory:
++            text = "VICTORY"
++            color = (35, 135, 85)
++        else:
++            return
++
++        label = self.result_font.render(text, True, color)
++        position = label.get_rect(center=(WIDTH // 2, HEIGHT // 2))
++        panel = (position.x - 16, position.y - 10,
++                 position.width + 32, position.height + 20)
++        pg.draw.rect(self.screen, BACKGROUND_COLOR, panel)
++        self.screen.blit(label, position)
++
+     def draw(self):
+         self.screen.blit(self.grid_surface, (0, 0))
+         for game_object in self.model.get_all_objects():
+             self.draw_wireframe(game_object)
+         self.draw_hud()
++        self.draw_result()
+ 
+ 
+ class GameApp:
+@@ -553,3 +595,4 @@
+ 
+ app = GameApp()
+ app.run()
++

@@ -1,0 +1,42 @@
+--- a/main.py
++++ b/main.py
+@@ -228,6 +228,7 @@
+     def get_actions(self):
+         actions = {
+             "quit": False,
++            "restart": False,
+             "forward": False,
+             "backward": False,
+             "strafe_left": False,
+@@ -243,6 +244,8 @@
+             elif event.type == pg.KEYDOWN:
+                 if event.key == pg.K_ESCAPE:
+                     actions["quit"] = True
++                elif event.key == pg.K_r:
++                    actions["restart"] = True
+                 elif event.key == pg.K_SPACE:
+                     actions["fire"] = True
+ 
+@@ -576,6 +579,11 @@
+         self.logic = GameLogic(self.model)
+         self.view = GameView(self.screen, self.model)
+ 
++    def restart(self):
++        self.model = GameModel()
++        self.logic = GameLogic(self.model)
++        self.view.model = self.model
++
+     def run(self):
+         running = True
+         while running:
+@@ -585,6 +593,10 @@
+             if actions["quit"]:
+                 running = False
+             else:
++                if actions["restart"]:
++                    self.restart()
++                    actions["fire"] = False
++                    delta_time = 0.0
+                 self.logic.apply_actions(actions)
+                 self.logic.update(delta_time)
+                 self.view.draw()

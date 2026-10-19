@@ -1,0 +1,130 @@
+--- a/main.py
++++ b/main.py
+@@ -55,7 +55,9 @@
+                  sx=1.0, sy=1.0, angle=0.0,
+                  color=(0, 0, 0), line_width=2,
+                  velocity_x=0.0, velocity_y=0.0,
+-                 angular_speed=0.0, motion_type="static"):
++                 angular_speed=0.0, motion_type="static",
++                 orbit_center_x=0.0, orbit_center_y=0.0,
++                 orbit_radius=0.0, orbit_angle=0.0, orbit_speed=0.0):
+         # Each instance owns its local geometry.
+         self.vertices = vertices.copy()
+         self.edges = edges.copy()
+@@ -74,6 +76,13 @@
+         self.angular_speed = angular_speed
+         self.motion_type = motion_type
+ 
++        # These values describe circular trajectories interpreted by GameLogic.
++        self.orbit_center_x = orbit_center_x
++        self.orbit_center_y = orbit_center_y
++        self.orbit_radius = orbit_radius
++        self.orbit_angle = orbit_angle
++        self.orbit_speed = orbit_speed
++
+     def get_world_vertices(self):
+         # Scale the local shape, rotate it, and place it in the world.
+         scale_matrix = np.array([
+@@ -149,36 +158,58 @@
+             line_width=2,
+         )
+ 
+-        # Replace the temporary triangle with six independent enemies.
++        # Two enemies move on crossing diagonals.
+         self.enemies = []
+         self.projectiles = []
+-        enemy_positions = [
+-            (-250, 250), (250, 250),
+-            (185, 40), (0, 225),
+-            (-185, 40), (0, -145),
++        diagonal_data = [
++            # Initial X, horizontal velocity, visual spin.
++            (-250.0, 120.0, 70.0),
++            (250.0, -120.0, -70.0),
+         ]
+-
+-        for index, (dx, dy) in enumerate(enemy_positions):
+-            angular_speed = 70.0
+-            if index % 2 == 1:
+-                angular_speed = -70.0
+-
++        for dx, velocity_x, angular_speed in diagonal_data:
+             enemy = WireframeObject(
+                 vertices=ENEMY_VERTICES,
+                 edges=ENEMY_EDGES,
+                 dx=dx,
+-                dy=dy,
+-                angle=index * 30.0,
++                dy=250.0,
++                color=ENEMY_COLOR,
++                line_width=3,
++                velocity_x=velocity_x,
++                velocity_y=-120.0,
++                angular_speed=angular_speed,
++                motion_type="diagonal",
++            )
++            self.enemies.append(enemy)
++
++        # Four enemies share one circle but have independent phases and spins.
++        center_x = 0.0
++        center_y = 40.0
++        radius = 185.0
++        circular_data = [
++            # Initial phase, orbital angular speed, visual spin.
++            (0.0, 34.0, 65.0),
++            (90.0, -34.0, -65.0),
++            (180.0, 34.0, 65.0),
++            (270.0, -34.0, -65.0),
++        ]
++        for phase, orbit_speed, angular_speed in circular_data:
++            phase_radians = np.deg2rad(phase)
++            enemy = WireframeObject(
++                vertices=ENEMY_VERTICES,
++                edges=ENEMY_EDGES,
++                dx=center_x + radius * np.cos(phase_radians),
++                dy=center_y + radius * np.sin(phase_radians),
++                angle=phase,
+                 color=ENEMY_COLOR,
+                 line_width=3,
+                 angular_speed=angular_speed,
++                motion_type="circle",
++                orbit_center_x=center_x,
++                orbit_center_y=center_y,
++                orbit_radius=radius,
++                orbit_angle=phase,
++                orbit_speed=orbit_speed,
+             )
+-            if index < 2:
+-                enemy.motion_type = "diagonal"
+-                enemy.velocity_x = 120.0
+-                if index == 1:
+-                    enemy.velocity_x = -120.0
+-                enemy.velocity_y = -120.0
+             self.enemies.append(enemy)
+ 
+     def get_all_objects(self):
+@@ -353,6 +384,8 @@
+         for enemy in self.model.enemies:
+             if enemy.motion_type == "diagonal":
+                 self.move_diagonal_enemy(enemy, delta_time)
++            elif enemy.motion_type == "circle":
++                self.move_circular_enemy(enemy, delta_time)
+ 
+             # Visual spin has its own angle and angular speed.
+             enemy.angle += enemy.angular_speed * delta_time
+@@ -381,6 +414,15 @@
+         elif enemy.dy > max_y:
+             enemy.dy = max_y
+             enemy.velocity_y *= -1
++
++
++    def move_circular_enemy(self, enemy, delta_time):
++        enemy.orbit_angle += enemy.orbit_speed * delta_time
++        enemy.orbit_angle %= 360
++        angle_radians = np.deg2rad(enemy.orbit_angle)
++
++        enemy.dx = enemy.orbit_center_x + enemy.orbit_radius * np.cos(angle_radians)
++        enemy.dy = enemy.orbit_center_y + enemy.orbit_radius * np.sin(angle_radians)
+ 
+ 
+ class GameView:

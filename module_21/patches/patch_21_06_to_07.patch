@@ -1,0 +1,141 @@
+--- a/main.py
++++ b/main.py
+@@ -26,11 +26,36 @@
+ ], dtype=int)
+ 
+ 
++ENEMY_COLOR = (185, 65, 45)
++
++# Four ray tips, four inner corners, and the local center.
++ENEMY_VERTICES = np.array([
++    [30, 0, 1],
++    [10, 7.5, 1],
++    [0, 30, 1],
++    [-7.5, 10, 1],
++    [-30, 0, 1],
++    [-10, -7.5, 1],
++    [0, -30, 1],
++    [7.5, -10, 1],
++    [0, 0, 1],
++], dtype=float)
++ENEMY_EDGES = np.array([
++    # Outer contour.
++    [0, 1], [1, 2], [2, 3], [3, 4],
++    [4, 5], [5, 6], [6, 7], [7, 0],
++    # Inner wireframe.
++    [8, 0], [8, 2], [8, 4], [8, 6],
++    [1, 5], [3, 7],
++], dtype=int)
++
++
+ class WireframeObject:
+     def __init__(self, vertices, edges, dx=0.0, dy=0.0,
+                  sx=1.0, sy=1.0, angle=0.0,
+                  color=(0, 0, 0), line_width=2,
+-                 velocity_x=0.0, velocity_y=0.0):
++                 velocity_x=0.0, velocity_y=0.0,
++                 angular_speed=0.0):
+         # Each instance owns its local geometry.
+         self.vertices = vertices.copy()
+         self.edges = edges.copy()
+@@ -46,6 +71,7 @@
+         # Store world-space velocity components for moving objects.
+         self.velocity_x = velocity_x
+         self.velocity_y = velocity_y
++        self.angular_speed = angular_speed
+ 
+     def get_world_vertices(self):
+         # Scale the local shape, rotate it, and place it in the world.
+@@ -108,42 +134,42 @@
+             vertices=vertices,
+             edges=edges,
+             dx=0.0,
+-            dy=0.0,
+-            sx=1.0,
+-            sy=1.0,
++            dy=-245.0,
++            sx=0.5,
++            sy=0.5,
+             angle=90.0,
+             color=PLAYER_COLOR,
+             line_width=2,
+         )
+ 
+-        # A different local shape uses the same vertex and edge format.
+-        triangle_vertices = np.array([
+-            [-40, -30, 1],
+-            [40, -30, 1],
+-            [0, 50, 1],
+-        ], dtype=float)
+-        triangle_edges = np.array([
+-            [0, 1],
+-            [1, 2],
+-            [2, 0],
+-        ], dtype=int)
+-
+-        triangle = WireframeObject(
+-            vertices=triangle_vertices,
+-            edges=triangle_edges,
+-            dx=200.0,
+-            dy=100.0,
+-            angle=30.0,
+-            color=(190, 95, 35),
+-            line_width=3,
+-        )
+-
+-        # Store references to both instances for common rendering.
+-        self.objects = [self.player, triangle]
++        # Replace the temporary triangle with six independent enemies.
++        self.enemies = []
+         self.projectiles = []
++        enemy_positions = [
++            (-250, 250), (250, 250),
++            (185, 40), (0, 225),
++            (-185, 40), (0, -145),
++        ]
++
++        for index, (dx, dy) in enumerate(enemy_positions):
++            angular_speed = 70.0
++            if index % 2 == 1:
++                angular_speed = -70.0
++
++            enemy = WireframeObject(
++                vertices=ENEMY_VERTICES,
++                edges=ENEMY_EDGES,
++                dx=dx,
++                dy=dy,
++                angle=index * 30.0,
++                color=ENEMY_COLOR,
++                line_width=3,
++                angular_speed=angular_speed,
++            )
++            self.enemies.append(enemy)
+ 
+     def get_all_objects(self):
+-        return [*self.objects, *self.projectiles]
++        return [self.player, *self.enemies, *self.projectiles]
+ 
+ 
+ class InputController:
+@@ -204,6 +230,7 @@
+         if self.actions["fire"]:
+             self.create_projectile()
+         self.update_projectiles(delta_time)
++        self.update_enemies(delta_time)
+ 
+     def update_player(self, delta_time):
+         player = self.model.player
+@@ -316,6 +343,13 @@
+         self.model.projectiles = remaining
+ 
+ 
++    def update_enemies(self, delta_time):
++        for enemy in self.model.enemies:
++            # Spin around this instance's own local origin.
++            enemy.angle += enemy.angular_speed * delta_time
++            enemy.angle %= 360
++
++
+ class GameView:
+     def __init__(self, screen, model):
+         self.screen = screen

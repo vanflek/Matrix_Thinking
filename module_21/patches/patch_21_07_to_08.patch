@@ -1,0 +1,99 @@
+--- a/main.py
++++ b/main.py
+@@ -55,7 +55,7 @@
+                  sx=1.0, sy=1.0, angle=0.0,
+                  color=(0, 0, 0), line_width=2,
+                  velocity_x=0.0, velocity_y=0.0,
+-                 angular_speed=0.0):
++                 angular_speed=0.0, motion_type="static"):
+         # Each instance owns its local geometry.
+         self.vertices = vertices.copy()
+         self.edges = edges.copy()
+@@ -72,6 +72,7 @@
+         self.velocity_x = velocity_x
+         self.velocity_y = velocity_y
+         self.angular_speed = angular_speed
++        self.motion_type = motion_type
+ 
+     def get_world_vertices(self):
+         # Scale the local shape, rotate it, and place it in the world.
+@@ -100,6 +101,12 @@
+         transform_matrix = translation_matrix @ rotation_matrix @ scale_matrix
+         # Return a new result; keep the local vertices unchanged.
+         return self.vertices @ transform_matrix.T
++
++
++    def get_bounding_radius(self):
++        scaled_x = self.vertices[:, 0] * self.sx
++        scaled_y = self.vertices[:, 1] * self.sy
++        return np.max(np.hypot(scaled_x, scaled_y))
+ 
+ 
+ class GameModel:
+@@ -166,6 +173,12 @@
+                 line_width=3,
+                 angular_speed=angular_speed,
+             )
++            if index < 2:
++                enemy.motion_type = "diagonal"
++                enemy.velocity_x = 120.0
++                if index == 1:
++                    enemy.velocity_x = -120.0
++                enemy.velocity_y = -120.0
+             self.enemies.append(enemy)
+ 
+     def get_all_objects(self):
+@@ -279,14 +292,7 @@
+     def keep_player_inside_field(self):
+         player = self.model.player
+ 
+-        # Scale the local coordinates before measuring the frame's radius.
+-        scaled_x = player.vertices[:, 0] * player.sx
+-        scaled_y = player.vertices[:, 1] * player.sy
+-        distances = np.hypot(scaled_x, scaled_y)
+-        radius = np.max(distances)
+-
+-        # Reserve extra room for the visible thickness of the lines.
+-        margin = radius + player.line_width
++        margin = player.get_bounding_radius() + player.line_width
+         half_width = WIDTH / 2
+         half_height = HEIGHT / 2
+ 
+@@ -345,9 +351,36 @@
+ 
+     def update_enemies(self, delta_time):
+         for enemy in self.model.enemies:
+-            # Spin around this instance's own local origin.
++            if enemy.motion_type == "diagonal":
++                self.move_diagonal_enemy(enemy, delta_time)
++
++            # Visual spin has its own angle and angular speed.
+             enemy.angle += enemy.angular_speed * delta_time
+             enemy.angle %= 360
++
++    def move_diagonal_enemy(self, enemy, delta_time):
++        enemy.dx += enemy.velocity_x * delta_time
++        enemy.dy += enemy.velocity_y * delta_time
++
++        margin = enemy.get_bounding_radius() + enemy.line_width
++        min_x = -WIDTH / 2 + margin
++        max_x = WIDTH / 2 - margin
++        min_y = -HEIGHT / 2 + margin
++        max_y = HEIGHT / 2 - margin
++
++        if enemy.dx < min_x:
++            enemy.dx = min_x
++            enemy.velocity_x *= -1
++        elif enemy.dx > max_x:
++            enemy.dx = max_x
++            enemy.velocity_x *= -1
++
++        if enemy.dy < min_y:
++            enemy.dy = min_y
++            enemy.velocity_y *= -1
++        elif enemy.dy > max_y:
++            enemy.dy = max_y
++            enemy.velocity_y *= -1
+ 
+ 
+ class GameView:

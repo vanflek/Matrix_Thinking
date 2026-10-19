@@ -1,0 +1,54 @@
+--- a/main.py
++++ b/main.py
+@@ -58,7 +58,7 @@
+                  angular_speed=0.0, motion_type="static",
+                  orbit_center_x=0.0, orbit_center_y=0.0,
+                  orbit_radius=0.0, orbit_angle=0.0, orbit_speed=0.0,
+-                 collision_radius=0.0):
++                 collision_radius=0.0, reward=0):
+         # Each instance owns its local geometry.
+         self.vertices = vertices.copy()
+         self.edges = edges.copy()
+@@ -84,6 +84,7 @@
+         self.orbit_angle = orbit_angle
+         self.orbit_speed = orbit_speed
+         self.collision_radius = collision_radius
++        self.reward = reward
+ 
+     def get_world_vertices(self):
+         # Scale the local shape, rotate it, and place it in the world.
+@@ -185,6 +186,7 @@
+                 velocity_y=-120.0,
+                 angular_speed=angular_speed,
+                 motion_type="diagonal",
++                reward=150,
+             )
+             self.enemies.append(enemy)
+ 
+@@ -212,6 +214,7 @@
+                 collision_radius=34.0,
+                 angular_speed=angular_speed,
+                 motion_type="circle",
++                reward=100,
+                 orbit_center_x=center_x,
+                 orbit_center_y=center_y,
+                 orbit_radius=radius,
+@@ -429,7 +432,7 @@
+                 if distance <= collision_distance:
+                     hit_projectiles.add(projectile)
+                     hit_enemies.add(enemy)
+-                    self.model.score += 100
++                    self.model.score += enemy.reward
+                     break
+ 
+         # Build new lists only after checking all candidate pairs.
+@@ -536,7 +539,8 @@
+ 
+     def draw_hud(self):
+         label = self.font.render(
+-            f"Score: {self.model.score}", True, (32, 54, 68)
++            f"Score: {self.model.score}  Enemies: {len(self.model.enemies)}",
++            True, (32, 54, 68)
+         )
+         self.screen.blit(label, (12, 12))
+ 
