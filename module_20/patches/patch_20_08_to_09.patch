@@ -1,0 +1,22 @@
+--- a/main.py
++++ b/main.py
+@@ -44,7 +44,7 @@
+         # Independent scale factors for the local X and Y axes.
+         self.sx = 1.0
+         self.sy = 1.0
+-        self.angle = 30.0
++        self.angle = 90.0
+         self.marked_vertex_index = 5
+         self.transformed_vertices = self.vertices.copy()
+ 
+@@ -104,8 +104,8 @@
+             [0, 1, self.model.dy],
+             [0, 0, 1],
+         ], dtype=float)
+-        # Compose local scaling, local rotation, and world translation.
+-        transform_matrix = translation_matrix @ rotation_matrix @ scale_matrix
++        # Experiment: translate the scaled shape, then rotate around world zero.
++        transform_matrix = rotation_matrix @ translation_matrix @ scale_matrix
+         # Vertices are stored as rows, so transpose the combined matrix.
+         self.model.transformed_vertices = (
+             self.model.vertices @ transform_matrix.T

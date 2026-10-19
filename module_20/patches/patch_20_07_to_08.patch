@@ -1,0 +1,31 @@
+--- a/main.py
++++ b/main.py
+@@ -86,7 +86,6 @@
+             [0, self.model.sy, 0],
+             [0, 0, 1],
+         ], dtype=float)
+-        scaled_vertices = self.model.vertices @ scale_matrix.T
+ 
+         # Rotate the scaled shape. The model stores the angle in degrees.
+         angle_radians = np.deg2rad(self.model.angle)
+@@ -98,7 +97,6 @@
+             [sin_angle, cos_angle, 0],
+             [0, 0, 1],
+         ], dtype=float)
+-        rotated_vertices = scaled_vertices @ rotation_matrix.T
+ 
+         # Place the rotated shape in the scene.
+         translation_matrix = np.array([
+@@ -106,8 +104,11 @@
+             [0, 1, self.model.dy],
+             [0, 0, 1],
+         ], dtype=float)
++        # Compose local scaling, local rotation, and world translation.
++        transform_matrix = translation_matrix @ rotation_matrix @ scale_matrix
++        # Vertices are stored as rows, so transpose the combined matrix.
+         self.model.transformed_vertices = (
+-            rotated_vertices @ translation_matrix.T
++            self.model.vertices @ transform_matrix.T
+         )
+ 
+ 

@@ -1,0 +1,53 @@
+--- a/main.py
++++ b/main.py
+@@ -9,18 +9,42 @@
+ 
+ class GameModel:
+     def __init__(self):
+-        # Each row contains one vertex in mathematical coordinates.
++        # Mathematical coordinates of the airplane vertices: [x, y].
+         self.vertices = np.array([
+-            [-80, -50],
+-            [80, -50],
+-            [0, 70],
++            [45, 0],      # 0 body reference point
++            [105, 0],     # 1 nose
++            [90, 15],     # 2 upper front body
++            [60, 15],     # 3 upper body
++            [0, 90],      # 4 upper wing front outer
++            [-30, 90],    # 5 upper wing rear outer
++            [0, 15],      # 6 upper wing root
++            [-45, 15],    # 7 upper tail body
++            [-60, 30],    # 8 upper tail front outer
++            [-75, 30],    # 9 upper tail rear outer
++            [-75, -30],   # 10 lower tail rear outer
++            [-60, -30],   # 11 lower tail front outer
++            [-45, -15],   # 12 lower tail body
++            [0, -15],     # 13 lower wing root
++            [-30, -90],   # 14 lower wing rear outer
++            [0, -90],     # 15 lower wing front outer
++            [60, -15],    # 16 lower body
++            [90, -15],    # 17 lower front body
++            [90, 0],      # 18 cockpit
++            [0, 0],       # 19 local origin
+         ], dtype=float)
+ 
+-        # Each row contains the indices of two connected vertices.
++        # The first group closes the outline; the second adds inner lines.
+         self.edges = np.array([
+-            [0, 1],
+-            [1, 2],
+-            [2, 0],
++            # Outer contour
++            [1, 2], [2, 3], [3, 4], [4, 5], [5, 6],
++            [6, 7], [7, 8], [8, 9], [9, 10], [10, 11],
++            [11, 12], [12, 13], [13, 14], [14, 15],
++            [15, 16], [16, 17], [17, 1],
++
++            # Inner wireframe
++            [1, 18], [18, 3], [18, 16], [18, 19],
++            [3, 0], [16, 0], [3, 19], [16, 19],
++            [6, 13], [19, 6], [19, 13], [7, 12],
+         ], dtype=int)
+ 
+ 
