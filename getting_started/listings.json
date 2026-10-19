@@ -1,0 +1,14 @@
+[
+  {
+    "id": "example_setup_01",
+    "file": "hello.py"
+  },
+  {
+    "id": "example_setup_02",
+    "file": "check_libraries.py"
+  },
+  {
+    "id": "example_setup_03",
+    "file": "check_window.py"
+  }
+]
