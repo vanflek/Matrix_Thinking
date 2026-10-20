@@ -1,0 +1,174 @@
+--- iteration_19_09_cached_images.py
++++ iteration_19_10_final.py
+@@ -9,10 +9,12 @@
+ 
+ 
+ class GameModel:
++    """Store source parameters and the calculated mathematical state."""
+     def __init__(self):
++        # Public properties enforce constraints and invalidate derived data.
+         self._radius = 120.0
+         self._angle = 45.0
+-        self.needs_update = True
++        self.needs_update = True  # Force the initial calculation.
+         self.cos_value = 1.0
+         self.sin_value = 0.0
+         self.point = np.zeros(2)
+@@ -46,6 +48,7 @@
+ 
+ 
+ class InputController:
++    """Translate key events into parameter increments."""
+     def get_actions(self):
+         actions = {"quit": False, "angle_delta": 0.0, "radius_delta": 0.0}
+         for event in pg.event.get():
+@@ -66,19 +69,23 @@
+ 
+ 
+ class GameLogic:
++    """Calculate dependent values when source parameters change."""
+     def __init__(self, model):
+         self.model = model
+ 
++        # Do not repeat the first circle point at 360 degrees.
+         angles = np.deg2rad(np.arange(0.0, 360.0))
+         self.unit_circle = np.column_stack((
+             np.cos(angles), np.sin(angles),
+         ))
+ 
++        # Graphs include both ends of the horizontal angle interval.
+         self.model.graph_angles = np.arange(0.0, 361.0)
+         graph_radians = np.deg2rad(self.model.graph_angles)
+         self.model.sin_values = np.sin(graph_radians)
+         self.model.cos_values = np.cos(graph_radians)
+ 
++        # None distinguishes an absent calculation from a valid zero.
+         self._calculated_angle = None
+         self._calculated_radius = None
+ 
+@@ -86,6 +93,7 @@
+         self.model.angle += actions["angle_delta"]
+         self.model.radius += actions["radius_delta"]
+ 
++        # Apply actions before checking the flag: setters may change it.
+         if not self.model.needs_update:
+             return
+ 
+@@ -95,10 +103,12 @@
+             self.model.sin_value = np.sin(radians)
+             self._calculated_angle = self.model.angle
+ 
++        # A change of angle does not change the circle.
+         if self.model.radius != self._calculated_radius:
+             self.model.circle_points = self.model.radius * self.unit_circle
+             self._calculated_radius = self.model.radius
+ 
++        # The endpoint depends on both length and direction.
+         self.model.point = self.model.radius * np.array([
+             self.model.cos_value,
+             self.model.sin_value,
+@@ -107,10 +117,13 @@
+ 
+ 
+ class GameView:
++    """Convert mathematical coordinates and compose each frame."""
+     def __init__(self, screen, model):
+         self.screen = screen
+         self.model = model
+         self.font = pg.font.SysFont("Arial", 26)
++        self.tick_font = pg.font.SysFont("Arial", 14)
++        # Cache images that depend only on the fixed layout and graph data.
+         self.background = self.create_background()
+         self.sin_base = self.create_graph_base(
+             "sin(angle)", self.model.sin_values, (190, 115, 0))
+@@ -137,26 +150,50 @@
+ 
+     def create_graph_base(self, label, values, color):
+         width = WIDTH - SCENE_WIDTH - 32
+-        surface = pg.Surface((width + 1, 84))
++        surface = pg.Surface((width + 1, 94))
+         surface.fill((240, 244, 248))
+         title = self.font.render(label, True, color)
+         surface.blit(title, (0, 0))
+ 
+-        graph_x = self.model.graph_angles / 360 * width
+-        graph_y = 58 - values * 22
++        plot_left = 22
++        plot_width = width - plot_left
++        middle_y = 52
++        amplitude = 18
++        graph_x = plot_left + self.model.graph_angles / 360 * plot_width
++        graph_y = middle_y - values * amplitude
+         points = np.column_stack((graph_x, graph_y))
+-        pg.draw.line(surface, (170, 180, 190), (0, 58), (width, 58))
+-        pg.draw.line(surface, (170, 180, 190), (0, 36), (0, 80))
++
++        pg.draw.line(surface, (170, 180, 190),
++                     (plot_left, middle_y), (width, middle_y))
++        pg.draw.line(surface, (170, 180, 190),
++                     (plot_left, middle_y - amplitude),
++                     (plot_left, middle_y + amplitude))
+         pg.draw.lines(surface, color, False, points, 2)
++
++        # Tick labels belong to the reusable graph base.
++        for value in [-1, 0, 1]:
++            image = self.tick_font.render(str(value), True, (60, 70, 80))
++            y = middle_y - value * amplitude - image.get_height() / 2
++            surface.blit(image, (0, y))
++        for angle in [0, 180, 360]:
++            image = self.tick_font.render(f"{angle} deg", True, (60, 70, 80))
++            x = plot_left + angle / 360 * plot_width
++            if angle == 180:
++                x -= image.get_width() / 2
++            elif angle == 360:
++                x -= image.get_width()
++            surface.blit(image, (x, 74))
+         return surface
+ 
+     def draw_graph(self, base, current_value, top):
++        # Copy before drawing so markers never accumulate on the base.
+         surface = base.copy()
+-        width = surface.get_width() - 1
+-        marker_x = self.model.angle / 360 * width
+-        marker_y = 58 - current_value * 22
++        plot_left = 22
++        plot_width = surface.get_width() - 1 - plot_left
++        marker_x = plot_left + self.model.angle / 360 * plot_width
++        marker_y = 52 - current_value * 18
+         pg.draw.line(surface, (200, 65, 55),
+-                     (marker_x, 36), (marker_x, 80))
++                     (marker_x, 34), (marker_x, 70))
+         pg.draw.circle(surface, (200, 65, 55),
+                        (marker_x, marker_y), 4)
+         self.screen.blit(surface, (SCENE_WIDTH + 16, top))
+@@ -182,6 +219,7 @@
+             self.screen.blit(image, (SCENE_WIDTH + 16, 20 + i * line_step))
+ 
+     def points_to_screen(self, points):
++        # X points right in both systems; mathematical Y points up.
+         return np.column_stack((
+             SCENE_WIDTH / 2 + points[:, 0],
+             HEIGHT / 2 - points[:, 1],
+@@ -212,12 +250,14 @@
+ 
+         pg.draw.line(self.screen, (45, 90, 180), center, endpoint, 3)
+         pg.draw.circle(self.screen, (200, 65, 55), endpoint, 6)
++        # Draw the opaque panel after the scene so it stays readable.
+         self.draw_info_panel()
+         self.draw_graph(self.sin_base, self.model.sin_value, 285)
+         self.draw_graph(self.cos_base, self.model.cos_value, 381)
+ 
+ 
+ class GameApp:
++    """Own components, process frames, and close Pygame."""
+     def __init__(self):
+         pg.init()
+         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+@@ -225,6 +265,7 @@
+         self.clock = pg.time.Clock()
+         self.model = GameModel()
+         self.controller = InputController()
++        # Prepare graph data before the view builds its graph images.
+         self.logic = GameLogic(self.model)
+         self.view = GameView(self.screen, self.model)
+ 

@@ -1,0 +1,37 @@
+--- iteration_03_04_framed_chessboard_flag.py
++++ iteration_03_05_framed_chessboard_while.py
+@@ -11,13 +11,14 @@
+ width = COLS * CELL
+ height = ROWS * CELL
+ screen = pg.display.set_mode((width, height))
+-pg.display.set_caption("Chessboard: enumerate and a flag")
++pg.display.set_caption("Chessboard with a while loop")
+ 
+ # Frame and board colors
+ FRAME = (140, 70, 20)
+ WHITE = (240, 240, 240)
+ BLACK = (30, 30, 30)
+ 
++# Draw the complete grid once
+ for row, y in enumerate(range(0, ROWS * CELL, CELL)):
+     for col, x in enumerate(range(0, COLS * CELL, CELL)):
+ 
+@@ -49,7 +50,16 @@
+         # Draw the cell after choosing its color
+         pg.draw.rect(screen, color, (x, y, CELL, CELL))
+ 
++# Show the completed image
+ pg.display.update()
+-pg.event.pump()
+-pg.time.wait(5000)
++
++# Keep processing window events during the waiting loop
++steps = 0
++MAX_STEPS = 300
++
++while steps < MAX_STEPS:
++    pg.event.pump()
++    pg.time.wait(16)
++    steps += 1
++
+ pg.quit()

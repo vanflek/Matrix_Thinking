@@ -1,0 +1,22 @@
+--- iteration_07_04_pixel_art_editor_brush_center.py
++++ iteration_07_05_pixel_art_editor_brush.py
+@@ -1,4 +1,3 @@
+-# Intermediate stage: test the brush away from the canvas edges.
+ import pygame as pg
+ import numpy as np
+ 
+@@ -69,10 +68,10 @@
+                 row = int(cursor[0])
+                 col = int(cursor[1])
+ 
+-                row_start = row - brush
+-                row_stop = row + brush + 1
+-                col_start = col - brush
+-                col_stop = col + brush + 1
++                row_start = max(0, row - brush)
++                row_stop = min(ROWS, row + brush + 1)
++                col_start = max(0, col - brush)
++                col_stop = min(COLS, col + brush + 1)
+ 
+                 matrix[row_start:row_stop, col_start:col_stop] = current_color
+ 

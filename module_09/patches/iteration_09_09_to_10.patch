@@ -1,0 +1,26 @@
+--- iteration_09_09_argwhere_where.py
++++ iteration_09_10_random_apple.py
+@@ -1,4 +1,4 @@
+-# Compare coordinate representations
++# Choose a free cell after checking the result
+ import numpy as np
+ 
+ matrix = np.array([
+@@ -16,10 +16,11 @@
+ print(free_cells)
+ print("Count:", len(free_cells))
+ 
+-positions = np.where(free_mask)
++if len(free_cells) > 0:
++    index = np.random.randint(len(free_cells))
++    apple = free_cells[index]
+ 
+-print(positions[0])
+-print(positions[1])
+-
+-apple = free_cells[5]
+-print("Apple:", apple)
++    print("Index:", index)
++    print("Apple:", apple)
++else:
++    print("You win!")

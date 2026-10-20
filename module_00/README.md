@@ -6,9 +6,9 @@ This folder contains companion programs for **Matrix Thinking, Module 0**. Start
 
 | File | Use it for | Expected result |
 | --- | --- | --- |
-| [living_window.py](living_window.py) | The opening program and exercises 1–9 | An 800 × 600 green window titled `Module 0 - A living window`, shown for about three seconds. |
-| [two_frames.py](two_frames.py) | The example solution to exercise 10 | A green frame for one second, followed by a blue frame for two seconds. |
-| [blinking.py](blinking.py) | The example solution to exercise 11 | Five green–black pairs, with a 200 ms pause after each frame. |
+| [steps/iteration_00_01_living_window.py](steps/iteration_00_01_living_window.py) | The opening program and exercises 1–9 | An 800 × 600 green window titled `Module 0 - A living window`, shown for about three seconds. |
+| [solutions/solution_00_10_two_frames.py](solutions/solution_00_10_two_frames.py) | The example solution to exercise 10 | A green frame for one second, followed by a blue frame for two seconds. |
+| [solutions/solution_00_11_blinking.py](solutions/solution_00_11_blinking.py) | The example solution to exercise 11 | Five green–black pairs, with a 200 ms pause after each frame. |
 
 Exercise 12 asks you to draw a data-flow diagram; it does not need a separate program. Try the exercises yourself before opening their example solutions.
 
@@ -29,7 +29,7 @@ See the [official PyCharm package instructions](https://www.jetbrains.com/help/p
 Open a `.py` file in PyCharm, right-click in the editor, and select **Run** for that file. Or, in a terminal using your project environment, run:
 
 ```shell
-python living_window.py
+python steps/iteration_00_01_living_window.py
 ```
 
 These introductory programs pause and then close automatically. They do not yet react to the window's close button: event handling will be introduced later in the book. Wait for each short example to finish.
@@ -47,3 +47,12 @@ Keep a copy of the original program so you can return to a known starting point 
 
 - [Pygame documentation](https://www.pygame.org/docs/)
 - [Python tutorial](https://docs.python.org/3.13/tutorial/)
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

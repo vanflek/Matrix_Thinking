@@ -1,0 +1,36 @@
+--- iteration_09_01_coordinates.py
++++ iteration_09_02_vstack.py
+@@ -1,16 +1,22 @@
+-# Coordinate matrix, tail and head
++# Join matrices by rows
+ import numpy as np
+ 
+-snake = np.array([
+-    [5, 2],
+-    [5, 3],
+-    [4, 3],
+-    [3, 3],
++a = np.array([
++    [1, 2],
+     [3, 4],
+-], dtype=np.int16)
++])
+ 
+-print(snake)
+-print("Shape:", snake.shape)
++b = np.array([
++    [5, 6],
++    [7, 8],
++])
+ 
+-print("Tail:", snake[0])
+-print("Head:", snake[-1])
++print("a:")
++print(a)
++print("b:")
++print(b)
++
++vertical = np.vstack((a, b))
++
++print(vertical)
++print("Shape:", vertical.shape)

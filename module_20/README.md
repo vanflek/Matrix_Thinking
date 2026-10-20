@@ -135,3 +135,12 @@ actual main loops. Targeted checks covered keyboard actions, reset precedence,
 zero and negative scales, composition equivalence, order changes, and fixed-pivot
 rotation. This automated verification does not replace trying the controls in a
 visible desktop window. No measured performance improvement is claimed.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

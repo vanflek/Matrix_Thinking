@@ -1,0 +1,32 @@
+--- iteration_07_02_pixel_art_editor_io.py
++++ iteration_07_03_pixel_art_editor_png.py
+@@ -38,6 +38,8 @@
+ cursor = np.array([0, 0], dtype=np.int16)
+ current_color = 1
+ 
++save_png = False
++
+ running = True
+ while running:
+     # Update the data in response to events.
+@@ -75,6 +77,9 @@
+                 except FileNotFoundError:
+                     pass
+ 
++            elif event.key == pg.K_p:
++                save_png = True
++
+     # Draw each cell using its color index and the palette.
+     for row in range(ROWS):
+         for col in range(COLS):
+@@ -89,6 +94,10 @@
+             pg.draw.rect(
+                 screen, GRID_COLOR, (x, y, CELL_SIZE, CELL_SIZE), 1
+             )
++
++    if save_png:
++        pg.image.save(screen, "art.png")
++        save_png = False
+ 
+     # Draw the cursor over the image without changing the matrix.
+     cursor_x = int(cursor[1]) * CELL_SIZE

@@ -1,0 +1,18 @@
+--- iteration_07_01_pixel_art_editor.py
++++ iteration_07_02_pixel_art_editor_io.py
+@@ -66,6 +66,15 @@
+                 col = cursor[1]
+                 matrix[row, col] = current_color
+ 
++            elif event.key == pg.K_s:
++                np.save("art.npy", matrix)
++
++            elif event.key == pg.K_l:
++                try:
++                    matrix = np.load("art.npy")
++                except FileNotFoundError:
++                    pass
++
+     # Draw each cell using its color index and the palette.
+     for row in range(ROWS):
+         for col in range(COLS):

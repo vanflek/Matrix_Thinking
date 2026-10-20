@@ -1,0 +1,42 @@
+--- iteration_20_04_apply_matrix.py
++++ iteration_20_05_scaling.py
+@@ -40,6 +40,10 @@
+         # Displacement from the original placement, in mathematical units.
+         self.dx = 100.0
+         self.dy = 50.0
++
++        # Independent scale factors for the local X and Y axes.
++        self.sx = 1.5
++        self.sy = 1.5
+         self.transformed_vertices = self.vertices.copy()
+ 
+         # The first group closes the outline; the second adds inner lines.
+@@ -74,16 +78,24 @@
+         self.model = model
+ 
+     def update(self):
+-        # Build a translation matrix for the current displacement.
+-        transform_matrix = np.array([
++        # Scale the original vertices around the local origin.
++        scale_matrix = np.array([
++            [self.model.sx, 0, 0],
++            [0, self.model.sy, 0],
++            [0, 0, 1],
++        ], dtype=float)
++
++        scaled_vertices = self.model.vertices @ scale_matrix.T
++
++        # Then place the scaled object in the scene.
++        translation_matrix = np.array([
+             [1, 0, self.model.dx],
+             [0, 1, self.model.dy],
+             [0, 0, 1],
+         ], dtype=float)
+ 
+-        # Always transform the original vertices.
+         self.model.transformed_vertices = (
+-            self.model.vertices @ transform_matrix.T
++            scaled_vertices @ translation_matrix.T
+         )
+ 
+ 

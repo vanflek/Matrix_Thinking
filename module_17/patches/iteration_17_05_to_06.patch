@@ -1,0 +1,77 @@
+--- iteration_17_05_locking.py
++++ iteration_17_06_collisions.py
+@@ -126,17 +126,43 @@
+ 
+ 
+ class GameLogic:
+-    def update_active_layer(self, model):
++    def create_piece_layer(self, model):
+         piece = model.current_tetromino
+         matrix = piece.get_matrix()
+         height, width = matrix.shape
+-
+-        active_layer = model.glass[ACTIVE_LAYER]
+-        active_layer.fill(0)
+-        active_layer[
++        rows, cols = model.glass.shape[1:]
++
++        if piece.x < 0 or piece.y < 0:
++            return None
++        if piece.x + width > cols or piece.y + height > rows:
++            return None
++
++        layer = np.zeros_like(model.glass[FIXED_LAYER])
++        layer[
+             piece.y:piece.y + height,
+             piece.x:piece.x + width,
+         ] = matrix
++        return layer
++
++    def layer_is_free(self, model, candidate_layer):
++        if candidate_layer is None:
++            return False
++
++        fixed_layer = model.glass[FIXED_LAYER]
++        overlap = fixed_layer * candidate_layer
++        return not np.any(overlap)
++
++    def update_active_layer(self, model, candidate_layer=None):
++        if candidate_layer is None:
++            candidate_layer = self.create_piece_layer(model)
++
++        active_layer = model.glass[ACTIVE_LAYER]
++        if candidate_layer is None:
++            active_layer.fill(0)
++            return False
++
++        active_layer[:] = candidate_layer
++        return True
+ 
+     def try_transform(self, model, dx=0, dy=0, rotate=False):
+         piece = model.current_tetromino
+@@ -148,22 +174,14 @@
+         if rotate:
+             piece.rotate()
+ 
+-        height, width = piece.get_matrix().shape
+-        rows, cols = model.glass.shape[1:]
+-        inside = (
+-            piece.x >= 0
+-            and piece.y >= 0
+-            and piece.x + width <= cols
+-            and piece.y + height <= rows
+-        )
+-
+-        if not inside:
++        candidate_layer = self.create_piece_layer(model)
++        if not self.layer_is_free(model, candidate_layer):
+             piece.x = old_x
+             piece.y = old_y
+             piece.rotation = old_rotation
+             return False
+ 
+-        self.update_active_layer(model)
++        self.update_active_layer(model, candidate_layer)
+         return True
+ 
+     def lock_tetromino(self, model):

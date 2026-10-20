@@ -1,0 +1,19 @@
+--- iteration_09_02_vstack.py
++++ iteration_09_03_hstack.py
+@@ -1,4 +1,4 @@
+-# Join matrices by rows
++# Join matrices by columns
+ import numpy as np
+ 
+ a = np.array([
+@@ -16,7 +16,7 @@
+ print("b:")
+ print(b)
+ 
+-vertical = np.vstack((a, b))
++horizontal = np.hstack((a, b))
+ 
+-print(vertical)
+-print("Shape:", vertical.shape)
++print(horizontal)
++print("Shape:", horizontal.shape)

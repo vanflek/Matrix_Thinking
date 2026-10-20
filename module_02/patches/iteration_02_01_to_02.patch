@@ -1,0 +1,15 @@
+--- iteration_02_01_circles_list.py
++++ iteration_02_02_circles_range.py
+@@ -15,11 +15,10 @@
+ # All circles share a center and an outline width.
+ center = (width // 2, height // 2)
+ line_width = 10
+-radius_list = [200, 160, 120, 80, 40]
+ 
+ # Prepare the background once, then draw all five circles.
+ screen.fill(background)
+-for radius in radius_list:
++for radius in range(200, 0, -40):
+     pg.draw.circle(screen, color, center, radius, line_width)
+ 
+ # Show the completed image after the loop finishes.

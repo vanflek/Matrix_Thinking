@@ -1,0 +1,128 @@
+--- iteration_23_15_local_rotation.py
++++ iteration_23_16_complete.py
+@@ -18,15 +18,16 @@
+ 
+ 
+ class Camera:
++    """Store camera position, angles, and control settings."""
+     def __init__(self):
+         self.position = np.array([0.0, 1.0, -9.0, 1.0])
+         self.near = 0.1
+-        self.speed = 3.0
++        self.speed = 3.0  # World units per second.
+         self.pitch = 0.0
+         self.yaw = 0.0
+         self.roll = 0.0
+-        self.mouse_sensitivity = 0.003
+-        self.roll_speed = np.deg2rad(45)
++        self.mouse_sensitivity = 0.003  # Radians per mouse pixel.
++        self.roll_speed = np.deg2rad(45)  # Radians per second.
+ 
+ 
+ class GameModel:
+@@ -102,8 +103,9 @@
+                 "initial_angles": np.array([0.0, 0.0, 0.0]),
+                 "scale": np.array([1.0, 1.0, 1.0]),
+                 "color": COLORS["muted"],
+-                "show_axes": True,
++                "show_axes": False,
+                 "axis_lines": [],
++                "angular_speed": np.array([0.0, 0.0, 0.0]),
+                 "screen_lines": np.empty((0, 2, 2)),
+             },
+             "cobra": {
+@@ -115,6 +117,7 @@
+                 "color": COLORS["white"],
+                 "show_axes": True,
+                 "axis_lines": [],
++                "angular_speed": np.array([-0.6, 0.0, 0.6]),
+                 "screen_lines": np.empty((0, 2, 2)),
+             },
+             "cobra_2": {
+@@ -126,13 +129,10 @@
+                 "color": COLORS["cyan"],
+                 "show_axes": True,
+                 "axis_lines": [],
++                "angular_speed": np.array([0.24, 0.0, -0.36]),
+                 "screen_lines": np.empty((0, 2, 2)),
+             },
+         }
+-        self.objects["world"]["show_axes"] = False
+-        self.objects["world"]["angular_speed"] = np.array([0.0, 0.0, 0.0])
+-        self.objects["cobra"]["angular_speed"] = np.array([-0.6, 0.0, 0.6])
+-        self.objects["cobra_2"]["angular_speed"] = np.array([0.24, 0.0, -0.36])
+ 
+ 
+ class InputController:
+@@ -160,6 +160,7 @@
+ 
+ 
+ class GameLogic:
++    """Transform geometry and update spatial state."""
+     def get_camera_vertices(self, camera, vertices):
+         camera_vertices = vertices.copy()
+         camera_vertices[:, :3] -= camera.position[:3]
+@@ -168,7 +169,6 @@
+         )
+         return camera_vertices @ rotation
+ 
+-
+     def get_screen_lines(self, camera, vertices, edges):
+         camera_vertices = self.get_camera_vertices(camera, vertices)
+         lines = camera_vertices[edges]
+@@ -185,7 +185,6 @@
+         screen_x = WIDTH / 2 + projected[:, :, 0] / w
+         screen_y = HEIGHT / 2 - projected[:, :, 1] / w
+         return np.stack((screen_x, screen_y), axis=2)
+-
+ 
+     def camera_move(self, camera, actions, dt):
+         movement_camera = np.array([
+@@ -216,7 +215,6 @@
+             [dx, dy, dz, 1],
+         ])
+ 
+-
+     def camera_rotate(self, camera, actions, dt):
+         camera.yaw += actions["mouse_dx"] * camera.mouse_sensitivity
+         camera.pitch -= actions["mouse_dy"] * camera.mouse_sensitivity
+@@ -251,7 +249,6 @@
+             [0, 0, 0, 1],
+         ])
+         return rotation_y @ rotation_x @ rotation_z
+-
+ 
+     def clip_lines(self, lines, near):
+         depths = lines[:, :, 2]
+@@ -274,7 +271,6 @@
+ 
+         return lines
+ 
+-
+     def initialize_orientations(self, model):
+         for obj in model.objects.values():
+             angle_x, angle_y, angle_z = obj["initial_angles"]
+@@ -289,7 +285,6 @@
+             obj["vertices"] @ scaling
+             @ obj["orientation"] @ translation
+         )
+-
+ 
+     def get_axis_lines(self, camera, obj, axis_vertices, axis_edges):
+         translation = self.get_translation_matrix(obj["position"])
+@@ -302,7 +297,6 @@
+             axis_lines.append(lines)
+         return axis_lines
+ 
+-
+     def rotate_object(self, obj, angle_x, angle_y, angle_z):
+         step = self.get_rotation_matrix(angle_x, angle_y, angle_z).T
+         obj["orientation"] = step @ obj["orientation"]
+@@ -350,7 +344,6 @@
+         )
+         self.screen.blit(help_text, (20, HEIGHT - 40))
+         pg.display.flip()
+-
+ 
+     def draw_axes(self, axis_lines):
+         names = ("X", "Y", "Z")

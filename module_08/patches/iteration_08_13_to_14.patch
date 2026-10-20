@@ -1,0 +1,42 @@
+--- iteration_08_13_rebuild_matrix.py
++++ iteration_08_14_palette_indices.py
+@@ -1,32 +1,10 @@
+-# Rebuilding clears the previous player position.
++# Repeated integer indices select repeated RGB vectors.
+ import numpy as np
+ 
+-TARGET_COLOR_INDEX = 3
+-PLAYER_COLOR_INDEX = 5
++COLORS = np.array([
++    [245, 245, 245], [0, 0, 0], [255, 255, 255],
++    [255, 0, 0], [0, 255, 0], [0, 0, 255],
++], dtype=np.uint8)
+ 
+-def move_player(state, shape):
+-    position = state["pos"]
+-    movement = state["vel"]
+-
+-    state["pos"] = (position + movement) % np.array(shape)
+-
+-def rebuild_matrix(matrix, state):
+-    matrix.fill(0)
+-
+-    for row, col in state["targets"]:
+-        matrix[row, col] = TARGET_COLOR_INDEX
+-
+-    row, col = state["pos"]
+-    matrix[row, col] = PLAYER_COLOR_INDEX
+-
+-state = {
+-    "pos": np.array([1, 1], dtype=np.int16),
+-    "vel": np.array([0, 1], dtype=np.int16),
+-    "targets": np.array([[0, 3], [2, 0]], dtype=np.int16),
+-}
+-matrix = np.zeros((3, 4), dtype=np.uint8)
+-rebuild_matrix(matrix, state)
+-print(matrix)
+-move_player(state, matrix.shape)
+-rebuild_matrix(matrix, state)
+-print(matrix)
++indices = np.array([3, 0, 3, 5, 0])
++print(COLORS[indices])

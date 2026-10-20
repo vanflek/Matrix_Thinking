@@ -1,0 +1,68 @@
+--- iteration_02_04_brick_wall_labels.py
++++ iteration_02_05_grid_enumerate.py
+@@ -6,45 +6,38 @@
+ width = 800
+ height = 600
+ screen = pg.display.set_mode((width, height))
+-pg.display.set_caption("Brick wall")
++pg.display.set_caption("Grid with enumerate")
+ 
+-# The background remains visible in the gaps.
+-BACKGROUND = (200, 200, 200)
+-BRICK = (180, 80, 50)
++# Set the colors.
++BACKGROUND = (230, 230, 230)
++CELL_COLOR = (180, 80, 50)
+ TEXT_COLOR = (20, 20, 20)
++
++# Set the cell size and the number of rows and columns.
++CELL = 80
++ROWS = 5
++COLS = 8
++
++# Describe the pixel coordinates of row and column starts.
++row_positions = range(0, ROWS * CELL, CELL)
++col_positions = range(0, COLS * CELL, CELL)
+ 
+ # Prepare one font for all labels.
+ font = pg.font.SysFont("Arial", 20)
+-
+-# Set the cell size and count the complete cells.
+-BRICK_WIDTH = 100
+-BRICK_HEIGHT = 40
+-ROWS = height // BRICK_HEIGHT
+-COLS = width // BRICK_WIDTH
+-
+ screen.fill(BACKGROUND)
+ 
+-# Draw every column in each row.
+-for row in range(ROWS):
+-    y = row * BRICK_HEIGHT
+-    for col in range(COLS):
+-        x = col * BRICK_WIDTH
++for row, y in enumerate(row_positions):
++    for col, x in enumerate(col_positions):
++        # Draw the cell outline with a two-pixel inset.
++        rect = (x + 2, y + 2, CELL - 4, CELL - 4)
++        pg.draw.rect(screen, CELL_COLOR, rect, 2)
+ 
+-        # Leave a two-pixel inset on each side of the cell.
+-        rect = (
+-            x + 2,
+-            y + 2,
+-            BRICK_WIDTH - 4,
+-            BRICK_HEIGHT - 4
+-        )
+-        pg.draw.rect(screen, BRICK, rect)
+-
+-        # Place the label after drawing its background.
++        # Create and place the label with the cell address.
+         text = f"({row}, {col})"
+         label = font.render(text, True, TEXT_COLOR)
+         screen.blit(label, (x + 10, y + 8))
+ 
+-# Show the completed wall.
++# Show the completed grid.
+ pg.display.update()
+ 
+ # Process pending events once, then keep the image visible.

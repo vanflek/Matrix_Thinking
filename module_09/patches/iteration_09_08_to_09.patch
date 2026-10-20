@@ -1,0 +1,25 @@
+--- iteration_09_08_free_mask.py
++++ iteration_09_09_argwhere_where.py
+@@ -1,4 +1,4 @@
+-# Mark free cells with a Boolean mask
++# Compare coordinate representations
+ import numpy as np
+ 
+ matrix = np.array([
+@@ -10,3 +10,16 @@
+ free_mask = matrix == 0
+ 
+ print(free_mask)
++
++free_cells = np.argwhere(free_mask)
++
++print(free_cells)
++print("Count:", len(free_cells))
++
++positions = np.where(free_mask)
++
++print(positions[0])
++print(positions[1])
++
++apple = free_cells[5]
++print("Apple:", apple)

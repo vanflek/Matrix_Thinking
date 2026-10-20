@@ -1,0 +1,116 @@
+--- iteration_22_01_skeleton.py
++++ iteration_22_02_movement.py
+@@ -3,6 +3,7 @@
+ 
+ CELL_SIZE = 30
+ FPS = 60
++MOUSE_SENSITIVITY = 0.003
+ 
+ COLORS = np.array([
+     [35, 45, 60],       # Wall: 0.
+@@ -30,6 +31,7 @@
+             start_row + 0.5, start_column + 0.5
+         ]) * CELL_SIZE
+         self.player_angle = 0.0
++        self.player_speed = 90.0
+ 
+ 
+ class InputController:
+@@ -43,21 +45,74 @@
+                 if event.key == pg.K_ESCAPE:
+                     actions["quit"] = True
+ 
++        keys = pg.key.get_pressed()
++        actions["forward"] = keys[pg.K_w]
++        actions["backward"] = keys[pg.K_s]
++        actions["left"] = keys[pg.K_a]
++        actions["right"] = keys[pg.K_d]
++        actions["mouse_dx"] = pg.mouse.get_rel()[0]
+         return actions
+ 
+ 
+ class GameLogic:
+     def __init__(self, model):
+         self.model = model
++        self.actions = {}
+ 
+     def apply_actions(self, actions):
+-        # Movement actions will be added in the next iteration.
+-        pass
++        self.actions = actions
+ 
+     def update(self, delta_time):
+-        # The observer remains stationary in this iteration.
+-        pass
++        # Mouse input is already a displacement, not a speed.
++        self.model.player_angle += (
++            self.actions["mouse_dx"] * MOUSE_SENSITIVITY
++        )
++        self.model.player_angle %= 2 * np.pi
+ 
++        angle = self.model.player_angle
++        # Both vectors use the coordinate order [y, x].
++        forward = np.array([np.sin(angle), np.cos(angle)])
++        right = np.array([np.cos(angle), -np.sin(angle)])
++
++        movement = np.zeros(2, dtype=float)
++        if self.actions["forward"]:
++            movement += forward
++        if self.actions["backward"]:
++            movement -= forward
++        if self.actions["right"]:
++            movement += right
++        if self.actions["left"]:
++            movement -= right
++
++        length = np.linalg.norm(movement)
++        if length == 0:
++            return
++
++        direction = movement / length
++        distance = self.model.player_speed * delta_time
++
++        # Check short, axis-aligned moves to avoid skipping a wall.
++        max_step = CELL_SIZE / 4
++        step_count = int(distance / max_step) + 1
++        step = direction * distance / step_count
++
++        for _ in range(step_count):
++            for axis in range(2):
++                candidate = self.model.player_position.copy()
++                candidate[axis] += step[axis]
++                if self.can_move(candidate):
++                    self.model.player_position = candidate
++
++    def can_move(self, position):
++        y, x = position
++        # Validate world coordinates before indexing the matrix.
++        if not (0 <= y < self.model.world_height
++                and 0 <= x < self.model.world_width):
++            return False
++
++        row = int(y // CELL_SIZE)
++        column = int(x // CELL_SIZE)
++        return self.model.maze[row, column] == 1
+ 
+ class GameView:
+     def __init__(self, screen, model):
+@@ -115,6 +170,9 @@
+         self.controller = InputController()
+         self.logic = GameLogic(self.model)
+         self.view = GameView(self.screen, self.model)
++        pg.event.set_grab(True)
++        pg.mouse.set_visible(False)
++        pg.mouse.get_rel()  # Discard motion accumulated during setup.
+ 
+     def run(self):
+         running = True
+@@ -130,6 +188,8 @@
+                 self.view.draw()
+                 pg.display.flip()
+ 
++        pg.event.set_grab(False)
++        pg.mouse.set_visible(True)
+         pg.quit()
+ 
+ 

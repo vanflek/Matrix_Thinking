@@ -1,14 +1,16 @@
-# Optional patches
+# Sequential patches
 
-Each unified patch transforms a scratch file named `main.py`.
+Each patch compares two consecutive runnable files in `../steps/`.
+The headers name the source and destination files. Use the complete files first;
+patches are supplied to inspect the changes, not to concatenate programs.
 
-- `patch_21_01_to_02.patch` through `patch_21_10_to_11.patch`: consecutive steps.
-- `patch_21_final_to_solution_26.patch` through `patch_21_final_to_solution_30.patch`:
-  five independent branches from the unmodified final program.
-
-Use `git apply --check path/to/file.patch` before `git apply path/to/file.patch`.
-The full source and target programs are included in the neighboring folders.
-No patch is required to run those complete files.
-
-`patch_21_final_to_three_levels.patch` is another independent branch from the
-final game and adds the three-wave creative extension in `bonus/`.
+- [iteration_21_01_to_02.patch](iteration_21_01_to_02.patch)
+- [iteration_21_02_to_03.patch](iteration_21_02_to_03.patch)
+- [iteration_21_03_to_04.patch](iteration_21_03_to_04.patch)
+- [iteration_21_04_to_05.patch](iteration_21_04_to_05.patch)
+- [iteration_21_05_to_06.patch](iteration_21_05_to_06.patch)
+- [iteration_21_06_to_07.patch](iteration_21_06_to_07.patch)
+- [iteration_21_07_to_08.patch](iteration_21_07_to_08.patch)
+- [iteration_21_08_to_09.patch](iteration_21_08_to_09.patch)
+- [iteration_21_09_to_10.patch](iteration_21_09_to_10.patch)
+- [iteration_21_10_to_11.patch](iteration_21_10_to_11.patch)

@@ -1,5 +1,5 @@
---- steps/iteration_14_03_capture.py
-+++ steps/iteration_14_04_flashlight.py
+--- iteration_14_03_capture.py
++++ iteration_14_04_flashlight.py
 @@ -6,6 +6,7 @@
  ROWS = 16
  COLS = 32

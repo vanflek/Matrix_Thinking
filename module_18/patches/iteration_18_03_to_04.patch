@@ -1,0 +1,89 @@
+--- iteration_18_03_region_search.py
++++ iteration_18_04_area_capture.py
+@@ -84,9 +84,7 @@
+             trail |= player & ~territory
+ 
+             if (player & territory).any() and trail.any():
+-                # This stage commits the line; area capture comes next.
+-                territory |= trail
+-                trail[:] = False
++                self.captured_area(model)
+ 
+     def player_movement(self, model, actions):
+         if not self.can_move(model, actions):
+@@ -156,6 +154,32 @@
+         return region
+ 
+ 
++    def captured_area(self, model):
++        territory = model.layers[TERRITORY_LAYER]
++        trail = model.layers[TRAIL_LAYER]
++
++        # Commit the line before finding the remaining free regions.
++        territory |= trail
++        trail[:] = False
++
++        blocked = territory.copy()
++        smallest = None
++        region_count = 0
++
++        while (~blocked).any():
++            region = self.find_region(blocked)
++            region_count += 1
++
++            if smallest is None or region.sum() <= smallest.sum():
++                smallest = region.copy()
++
++            # Exclude this region from all following searches.
++            blocked |= region
++
++        if region_count > 1 and smallest is not None:
++            territory |= smallest
++
++
+ class GameView:
+     def __init__(self, screen, cell_size=CELL_SIZE):
+         self.screen = screen
+@@ -200,7 +224,7 @@
+         self.screen = pg.display.set_mode(
+             (cols * CELL_SIZE, rows * CELL_SIZE)
+         )
+-        pg.display.set_caption("Matrix Xonix - Region search")
++        pg.display.set_caption("Matrix Xonix - Area capture")
+ 
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+@@ -223,15 +247,23 @@
+ 
+ app = GameApp()
+ 
+-# Test region search on a small field before running the game.
+-blocked = np.ones((7, 9), dtype=bool)
+-blocked[1:-1, 1:-1] = False
+-blocked[1:-1, 3] = True
+-before = blocked.copy()
+-
+-region = app.logic.find_region(blocked)
+-print(region.astype(int))
+-print("Area:", region.sum())
+-print("Input unchanged:", np.array_equal(blocked, before))
++# Examine a small board without changing the live game model.
++test_model = GameModel(7, 9)
++test_model.layers[TRAIL_LAYER, 1:-1, 3] = True
++before = test_model.layers[TERRITORY_LAYER].copy()
++
++blocked = (test_model.layers[TERRITORY_LAYER]
++           | test_model.layers[TRAIL_LAYER])
++areas = []
++while (~blocked).any():
++    region = app.logic.find_region(blocked)
++    areas.append(int(region.sum()))
++    blocked |= region
++print("Region areas:", areas)
++
++app.logic.captured_area(test_model)
++territory = test_model.layers[TERRITORY_LAYER]
++print("New territory cells:", (territory & ~before).sum())
++print("Trail empty:", not test_model.layers[TRAIL_LAYER].any())
+ 
+ app.run()

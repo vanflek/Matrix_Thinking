@@ -1,0 +1,28 @@
+--- iteration_08_24_surface_function.py
++++ iteration_08_25_transparent_overlay.py
+@@ -1,4 +1,4 @@
+-# Replace the transformation sequence with one function call.
++# A transparent overlay leaves the field visible.
+ import numpy as np
+ import pygame as pg
+ 
+@@ -22,11 +22,19 @@
+ pg.init()
+ field_surface = matrix_to_surface(matrix, COLORS, CELL_SIZE)
+ print(field_surface.get_size())
++rows, cols = matrix.shape
++cell_size = CELL_SIZE
++width = cols * cell_size
++height = rows * cell_size
++grid_color = (80, 80, 80)
++grid_surface = pg.Surface((width, height), pg.SRCALPHA)
++grid_surface.fill((0, 0, 0, 0))
+ 
+ screen = pg.display.set_mode(field_surface.get_size())
+ pg.display.set_caption("Collector - step preview")
+ clock = pg.time.Clock()
+ screen.blit(field_surface, (0, 0))
++screen.blit(grid_surface, (0, 0))
+ pg.display.flip()
+ 
+ # Keep the preview open until Esc or the window close button is pressed.

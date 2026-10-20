@@ -1,0 +1,19 @@
+--- iteration_08_04_none.py
++++ iteration_08_05_local_names.py
+@@ -1,8 +1,9 @@
+-# An action and a returned value are different things.
+-def show_rules(target_count):
+-    print(f"Collect {target_count} targets.")
+-    print("Use the arrow keys to change direction.")
+-    print("Visit every target to win.")
++# A local assignment leaves an outside name unchanged.
++def calculate_pixel_size(cell_count, cell_size):
++    pixel_size = cell_count * cell_size
++    return pixel_size
+ 
+-result = show_rules(3)
+-print(result)
++pixel_size = 100
++width = calculate_pixel_size(16, 40)
++print(pixel_size)
++print(width)

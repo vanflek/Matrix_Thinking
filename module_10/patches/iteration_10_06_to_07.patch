@@ -1,0 +1,18 @@
+--- iteration_10_06_display_step.py
++++ iteration_10_07_mouse_edit.py
+@@ -99,6 +99,15 @@
+             elif event.key == pg.K_SPACE:
+                 matrix = life_calculation(matrix)
+ 
++        elif event.type == pg.MOUSEBUTTONDOWN:
++            if event.button == 1:
++                x_px, y_px = event.pos
++                x = x_px // CELL_SIZE
++                y = y_px // CELL_SIZE
++
++                if 1 <= y < ROWS - 1 and 1 <= x < COLS - 1:
++                    matrix[y, x] = 1 - matrix[y, x]
++
+     surface = matrix_to_surface(matrix, COLORS, CELL_SIZE)
+     screen.blit(surface, (0, 0))
+     screen.blit(grid_surface, (0, 0))

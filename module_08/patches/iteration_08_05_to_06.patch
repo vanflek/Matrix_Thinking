@@ -1,0 +1,22 @@
+--- iteration_08_05_local_names.py
++++ iteration_08_06_array_change.py
+@@ -1,9 +1,11 @@
+-# A local assignment leaves an outside name unchanged.
+-def calculate_pixel_size(cell_count, cell_size):
+-    pixel_size = cell_count * cell_size
+-    return pixel_size
++# The array changes even though the function returns None.
++import numpy as np
+ 
+-pixel_size = 100
+-width = calculate_pixel_size(16, 40)
+-print(pixel_size)
+-print(width)
++def clear_cell(field, row, col):
++    field[row, col] = 0
++
++
++matrix = np.array([[0, 1, 0], [0, 0, 1]])
++result = clear_cell(matrix, 0, 1)
++print(matrix)
++print(result)

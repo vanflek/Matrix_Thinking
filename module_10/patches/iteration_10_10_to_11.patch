@@ -1,0 +1,76 @@
+--- iteration_10_10_cursor_overlay.py
++++ iteration_10_11_save_load.py
+@@ -61,6 +61,7 @@
+ CELL_SIZE = 32
+ FPS = 60
+ GRID_COLOR = (185, 198, 206)
++FRAMES_PER_GENERATION = 6
+ 
+ COLORS = np.array([
+     [245, 247, 250],
+@@ -78,7 +79,9 @@
+     COLS * CELL_SIZE,
+     ROWS * CELL_SIZE,
+ ))
+-pg.display.set_caption("Game of Life | Space: run/pause | N: step | C: clear")
++pg.display.set_caption(
++    "Game of Life | Space: run/pause | N: step | C: clear | S/L: save/load"
++)
+ 
+ grid_surface = build_grid_surface(
+     ROWS, COLS, CELL_SIZE, GRID_COLOR
+@@ -86,9 +89,7 @@
+ 
+ clock = pg.time.Clock()
+ running = True
+-
+ simulation_running = False
+-FRAMES_PER_GENERATION = 6
+ generation_frames = 0
+ 
+ while running:
+@@ -112,6 +113,44 @@
+                 matrix.fill(0)
+                 simulation_running = False
+                 generation_frames = 0
++
++            elif event.key == pg.K_s:
++                try:
++                    np.save("life_world.npy", matrix)
++                except OSError:
++                    print("The world could not be saved.")
++
++            elif event.key == pg.K_l:
++                try:
++                    loaded_matrix = np.load(
++                        "life_world.npy",
++                        allow_pickle=False,
++                    )
++
++                    if (
++                        isinstance(loaded_matrix, np.ndarray)
++                        and loaded_matrix.shape == matrix.shape
++                        and np.all(
++                            (loaded_matrix == 0) | (loaded_matrix == 1)
++                        )
++                    ):
++                        matrix = loaded_matrix.astype(np.uint8)
++
++                        # Keep the outer border empty.
++                        matrix[0, :] = 0
++                        matrix[-1, :] = 0
++                        matrix[:, 0] = 0
++                        matrix[:, -1] = 0
++
++                        simulation_running = False
++                        generation_frames = 0
++                    else:
++                        print("The file must contain a matching binary field.")
++
++                except FileNotFoundError:
++                    print("Save a world with S before loading it.")
++                except (OSError, ValueError, EOFError):
++                    print("The world file could not be read.")
+ 
+         elif event.type == pg.MOUSEBUTTONDOWN:
+             if event.button == 1 and not simulation_running:

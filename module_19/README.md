@@ -131,3 +131,12 @@ target iterations and final program. Additional checks cover cardinal directions
 angle wrapping, radius constraints, property assignments, unchanged-array reuse,
 clean graph bases, input changes and all five exercise variants.
 The chapter's complete final listing was compared structurally with the file.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

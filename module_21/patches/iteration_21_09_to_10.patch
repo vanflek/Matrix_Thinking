@@ -1,0 +1,125 @@
+--- iteration_21_09_circular_motion.py
++++ iteration_21_10_projectile_collisions.py
+@@ -57,7 +57,8 @@
+                  velocity_x=0.0, velocity_y=0.0,
+                  angular_speed=0.0, motion_type="static",
+                  orbit_center_x=0.0, orbit_center_y=0.0,
+-                 orbit_radius=0.0, orbit_angle=0.0, orbit_speed=0.0):
++                 orbit_radius=0.0, orbit_angle=0.0, orbit_speed=0.0,
++                 collision_radius=0.0):
+         # Each instance owns its local geometry.
+         self.vertices = vertices.copy()
+         self.edges = edges.copy()
+@@ -82,6 +83,7 @@
+         self.orbit_radius = orbit_radius
+         self.orbit_angle = orbit_angle
+         self.orbit_speed = orbit_speed
++        self.collision_radius = collision_radius
+ 
+     def get_world_vertices(self):
+         # Scale the local shape, rotate it, and place it in the world.
+@@ -161,6 +163,7 @@
+         # Two enemies move on crossing diagonals.
+         self.enemies = []
+         self.projectiles = []
++        self.score = 0
+         diagonal_data = [
+             # Initial X, horizontal velocity, visual spin.
+             (-250.0, 120.0, 70.0),
+@@ -174,6 +177,7 @@
+                 dy=250.0,
+                 color=ENEMY_COLOR,
+                 line_width=3,
++                collision_radius=34.0,
+                 velocity_x=velocity_x,
+                 velocity_y=-120.0,
+                 angular_speed=angular_speed,
+@@ -202,6 +206,7 @@
+                 angle=phase,
+                 color=ENEMY_COLOR,
+                 line_width=3,
++                collision_radius=34.0,
+                 angular_speed=angular_speed,
+                 motion_type="circle",
+                 orbit_center_x=center_x,
+@@ -275,6 +280,7 @@
+             self.create_projectile()
+         self.update_projectiles(delta_time)
+         self.update_enemies(delta_time)
++        self.resolve_projectile_enemy_collisions()
+ 
+     def update_player(self, delta_time):
+         player = self.model.player
+@@ -353,6 +359,7 @@
+             dx=nose_x + forward_x * 12.0,
+             dy=nose_y + forward_y * 12.0,
+             angle=player.angle,
++            collision_radius=9.0,
+             color=PROJECTILE_COLOR,
+             line_width=2,
+             velocity_x=forward_x * self.projectile_speed,
+@@ -380,6 +387,38 @@
+         self.model.projectiles = remaining
+ 
+ 
++    def resolve_projectile_enemy_collisions(self):
++        hit_projectiles = set()
++        hit_enemies = set()
++
++        for projectile in self.model.projectiles:
++            for enemy in self.model.enemies:
++                if enemy in hit_enemies:
++                    continue
++
++                distance = np.hypot(
++                    projectile.dx - enemy.dx,
++                    projectile.dy - enemy.dy,
++                )
++                collision_distance = (
++                    projectile.collision_radius + enemy.collision_radius
++                )
++                if distance <= collision_distance:
++                    hit_projectiles.add(projectile)
++                    hit_enemies.add(enemy)
++                    self.model.score += 100
++                    break
++
++        # Build new lists only after checking all candidate pairs.
++        self.model.projectiles = [
++            projectile for projectile in self.model.projectiles
++            if projectile not in hit_projectiles
++        ]
++        self.model.enemies = [
++            enemy for enemy in self.model.enemies
++            if enemy not in hit_enemies
++        ]
++
+     def update_enemies(self, delta_time):
+         for enemy in self.model.enemies:
+             if enemy.motion_type == "diagonal":
+@@ -430,6 +469,7 @@
+         self.screen = screen
+         self.model = model
+         self.grid_surface = self.create_grid_surface()
++        self.font = pg.font.SysFont("consolas", 24)
+ 
+     def create_grid_surface(self):
+         # Draw the fixed background once and reuse it in every frame.
+@@ -470,10 +510,17 @@
+                 screen_vertices[end_index], game_object.line_width,
+             )
+ 
++    def draw_hud(self):
++        label = self.font.render(
++            f"Score: {self.model.score}", True, (32, 54, 68)
++        )
++        self.screen.blit(label, (12, 12))
++
+     def draw(self):
+         self.screen.blit(self.grid_surface, (0, 0))
+         for game_object in self.model.get_all_objects():
+             self.draw_wireframe(game_object)
++        self.draw_hud()
+ 
+ 
+ class GameApp:

@@ -1,0 +1,33 @@
+--- iteration_08_28_grid_function.py
++++ iteration_08_29_quit_function.py
+@@ -1,4 +1,15 @@
+-# Build the same grid through a reusable function.
++# The quit function controls the lifetime of a real window.
++def handle_quit(events):
++    for event in events:
++        if event.type == pg.QUIT:
++            return False
++
++        if event.type == pg.KEYDOWN:
++            if event.key == pg.K_ESCAPE:
++                return False
++
++    return True
++
+ import numpy as np
+ import pygame as pg
+ 
+@@ -64,12 +75,7 @@
+ running = True
+ while running:
+     events = pg.event.get()
+-    for event in events:
+-        if event.type == pg.QUIT:
+-            running = False
+-        elif event.type == pg.KEYDOWN:
+-            if event.key == pg.K_ESCAPE:
+-                running = False
++    running = handle_quit(events)
+     clock.tick(60)
+ 
+ pg.quit()

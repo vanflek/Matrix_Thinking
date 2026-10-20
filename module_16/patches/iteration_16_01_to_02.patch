@@ -1,0 +1,72 @@
+--- iteration_16_01_skeleton.py
++++ iteration_16_02_enemy_movement.py
+@@ -6,6 +6,7 @@
+ COLS = 31
+ CELL_SIZE = 32
+ FPS = 50
++ENEMY_PERIOD = 12
+ 
+ PLAYER_LAYER = 0
+ BULLET_LAYER = 1
+@@ -32,6 +33,9 @@
+         self.layers[ENEMIES_LAYER, 1:4, 1:cols - 1:2] = 1
+         self.shooting_permission = True
+         self.game_over = False
++        self.enemy_direction = "RIGHT"
++        self.enemy_tick = 0
++        self.enemy_period = ENEMY_PERIOD
+ 
+ 
+ class InputController:
+@@ -99,9 +103,40 @@
+             model.layers[BULLET_LAYER] = 0
+             model.shooting_permission = True
+ 
++    def shift_no_wrap(self, matrix, direction):
++        result = np.zeros_like(matrix)
++        if direction == "RIGHT":
++            result[:, 1:] = matrix[:, :-1]
++        elif direction == "LEFT":
++            result[:, :-1] = matrix[:, 1:]
++        elif direction == "DOWN":
++            result[1:, :] = matrix[:-1, :]
++        else:
++            result[:] = matrix
++        return result
++
+     def move_enemies(self, model):
+-        # Later: move the formation without wrapping at the edges.
+-        pass
++        model.enemy_tick = (model.enemy_tick + 1) % model.enemy_period
++        if model.enemy_tick != 0:
++            return
++
++        enemies = model.layers[ENEMIES_LAYER]
++        if model.enemy_direction == "RIGHT":
++            if np.any(enemies[:, -1]):
++                enemies = self.shift_no_wrap(enemies, "DOWN")
++                model.enemy_direction = "LEFT"
++            else:
++                enemies = self.shift_no_wrap(enemies, "RIGHT")
++        else:
++            if np.any(enemies[:, 0]):
++                enemies = self.shift_no_wrap(enemies, "DOWN")
++                model.enemy_direction = "RIGHT"
++            else:
++                enemies = self.shift_no_wrap(enemies, "LEFT")
++
++        model.layers[ENEMIES_LAYER] = enemies
++        if np.any(enemies[-1]):
++            model.game_over = True
+ 
+ 
+ class GameView:
+@@ -142,7 +177,7 @@
+         self.controller = InputController()
+         self.logic = GameLogic()
+         self.screen = pg.display.set_mode((COLS * CELL_SIZE, ROWS * CELL_SIZE))
+-        pg.display.set_caption("Matrix Invaders - Skeleton")
++        pg.display.set_caption("Matrix Invaders - Moving Formation")
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+         self.running = True

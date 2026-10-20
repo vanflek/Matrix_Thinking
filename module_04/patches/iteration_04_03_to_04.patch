@@ -1,0 +1,65 @@
+--- iteration_04_03_keyboard_circle.py
++++ iteration_04_04_mouse_circle.py
+@@ -6,7 +6,9 @@
+ width = 800
+ height = 600
+ screen = pg.display.set_mode((width, height))
+-pg.display.set_caption("Ball control (KEYDOWN)")
++pg.display.set_caption("Ball follows mouse (cursor hidden)")
++
++pg.mouse.set_visible(False)  # hide the system mouse cursor
+ 
+ # --- colors ---
+ BACKGROUND = (230, 230, 230)
+@@ -19,10 +21,6 @@
+ # --- ball settings ---
+ radius = 30
+ 
+-# --- start position ---
+-x = width // 2
+-y = height // 2
+-
+ running = True
+ 
+ while running:
+@@ -31,27 +29,17 @@
+     for event in pg.event.get():
+         if event.type == pg.QUIT:
+             running = False
+-
+         elif event.type == pg.KEYDOWN:
+-
+-            # ESC closes the program
+             if event.key == pg.K_ESCAPE:
+                 running = False
+-
+-            # arrows move the ball (one step per key press)
+-            elif event.key == pg.K_LEFT:
+-                x = x - 40
+-            elif event.key == pg.K_RIGHT:
+-                x = x + 40
+-            elif event.key == pg.K_UP:
+-                y = y - 40
+-            elif event.key == pg.K_DOWN:
+-                y = y + 40
+ 
+     # --- 2) frame rate ---
+     clock.tick(FPS)
+ 
+-    # --- 3) keep the circle inside the window ---
++    # --- 3) update (logic) ---
++    x, y = pg.mouse.get_pos()   # mouse position is a vector (x, y)
++
++    # keep the circle inside the window
+     if x - radius < 0:
+         x = radius
+     elif x + radius > width:
+@@ -64,7 +52,7 @@
+ 
+     # --- 4) draw (render) ---
+     screen.fill(BACKGROUND)
+-    pg.draw.circle(screen, BLUE, (int(x), int(y)), radius)
++    pg.draw.circle(screen, BLUE, (x, y), radius)
+     pg.display.flip()
+ 
+ pg.quit()

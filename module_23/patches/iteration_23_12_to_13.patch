@@ -1,0 +1,44 @@
+--- iteration_23_12_two_cobras.py
++++ iteration_23_13_object_orientation.py
+@@ -253,14 +253,20 @@
+         return lines
+ 
+ 
++    def initialize_orientations(self, model):
++        for obj in model.objects.values():
++            angle_x, angle_y, angle_z = obj["initial_angles"]
++            obj["orientation"] = self.get_rotation_matrix(
++                angle_x, angle_y, angle_z
++            ).T
++
+     def get_world_vertices(self, obj):
+-        angle_x, angle_y, angle_z = obj["initial_angles"]
+-        orientation = self.get_rotation_matrix(
+-            angle_x, angle_y, angle_z
+-        ).T
+         scaling = self.get_scale_matrix(obj["scale"])
+         translation = self.get_translation_matrix(obj["position"])
+-        return obj["vertices"] @ scaling @ orientation @ translation
++        return (
++            obj["vertices"] @ scaling
++            @ obj["orientation"] @ translation
++        )
+ 
+ 
+     def get_scale_matrix(self, scale):
+@@ -311,6 +317,7 @@
+         self.view = GameView()
+         self.camera = Camera()
+         self.clock = pg.time.Clock()
++        self.logic.initialize_orientations(self.model)
+         pg.event.set_grab(True)
+         pg.mouse.set_visible(False)
+         pg.mouse.get_rel()
+@@ -338,4 +345,7 @@
+ 
+ if __name__ == "__main__":
+     game = GameApp()
++    basis = game.model.objects["cobra"]["orientation"][:3, :3]
++    print(np.linalg.norm(basis, axis=1))
++    print(np.allclose(basis @ basis.T, np.eye(3)))
+     game.run()

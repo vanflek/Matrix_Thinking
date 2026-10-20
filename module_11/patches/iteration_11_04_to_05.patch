@@ -1,0 +1,24 @@
+--- iteration_11_04_channel_controls.py
++++ iteration_11_05_brush_frame.py
+@@ -58,7 +58,6 @@
+ 
+ BG_RGB = np.array([245, 245, 245], dtype=np.uint8)
+ GRID_COLOR = (185, 198, 206)
+-CURSOR_COLOR = (210, 90, 45)
+ 
+ matrix = np.zeros((ROWS, COLS, 3), dtype=np.uint8)
+ matrix[:] = BG_RGB
+@@ -118,10 +117,12 @@
+ 
+     if state["inside"]:
+         row, col = state["cell"]
++        r, g, b = state["brush_rgb"]
++        brush_color = (int(r), int(g), int(b))
+ 
+         pg.draw.rect(
+             screen,
+-            CURSOR_COLOR,
++            brush_color,
+             (col * CELL_SIZE, row * CELL_SIZE,
+              CELL_SIZE, CELL_SIZE),
+             2

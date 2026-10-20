@@ -70,11 +70,11 @@ Use their hunks as an editing guide; the full target snapshot is runnable on its
 
 ## Practice solutions
 
-- `solutions/exercise_26.py` - Passage and allowed-opening counts in the title.
-- `solutions/exercise_27.py` - N requests one manual growth step.
-- `solutions/exercise_28.py` - Highlight dead ends in amber.
-- `solutions/exercise_29.py` - H toggles reachable passages in blue.
-- `solutions/exercise_30.py` - P reports connected-component count.
+- `solutions/solution_13_26_exercise.py` - Passage and allowed-opening counts in the title.
+- `solutions/solution_13_27_exercise.py` - N requests one manual growth step.
+- `solutions/solution_13_28_exercise.py` - Highlight dead ends in amber.
+- `solutions/solution_13_29_exercise.py` - H toggles reachable passages in blue.
+- `solutions/solution_13_30_exercise.py` - P reports connected-component count.
 
 Each solution starts from the same final program; changes are not cumulative.
 For exercise 29, use the two 3x7 initial arrays printed in the chapter in separate runs
@@ -93,3 +93,12 @@ Passage coordinates are (row, col); the screen cursor uses (col, row).
 Starting with one passage and adding only allowed cells preserves a tree. Erasing passages
 or loading arbitrary binary arrays can break that property, so global checks are separate.
 An empty field is not a perfect maze in this program; one isolated passage is.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

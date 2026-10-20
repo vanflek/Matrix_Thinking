@@ -186,3 +186,12 @@ cover agreement between three search methods, camera coordinates, projection,
 near clipping, movement, and map bounds. This is not a manual mouse/focus test or
 a guarantee for every possible input. The final printed listing matches the
 final Python file. Local packaging checks verify all patch targets byte for byte.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

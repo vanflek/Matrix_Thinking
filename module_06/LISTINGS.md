@@ -1,0 +1,56 @@
+# Runnable files
+
+Run each file separately. Follow the module README for its working directory and required resource files, or configure the same directory in PyCharm.
+
+## examples
+
+- [example_06_01_matrix_visualization](examples/example_06_01_matrix_visualization.py)
+- [example_06_02_benchmark_checkerboard](examples/example_06_02_benchmark_checkerboard.py)
+- [example_06_03_index_matrices](examples/example_06_03_index_matrices.py)
+- [example_06_04_mask_operations](examples/example_06_04_mask_operations.py)
+- [example_06_05_mask_values](examples/example_06_05_mask_values.py)
+- [example_06_06_paired_indices_vs_slices](examples/example_06_06_paired_indices_vs_slices.py)
+- [example_06_07_block_and_frame](examples/example_06_07_block_and_frame.py)
+- [example_06_08_bottom_half](examples/example_06_08_bottom_half.py)
+- [example_06_09_centered_square](examples/example_06_09_centered_square.py)
+- [example_06_10_checkerboard_loops](examples/example_06_10_checkerboard_loops.py)
+- [example_06_11_checkerboard_slices](examples/example_06_11_checkerboard_slices.py)
+- [example_06_12_corners_mask](examples/example_06_12_corners_mask.py)
+- [example_06_13_cross_mask](examples/example_06_13_cross_mask.py)
+- [example_06_14_cross_slices](examples/example_06_14_cross_slices.py)
+- [example_06_15_four_corners](examples/example_06_15_four_corners.py)
+- [example_06_16_frame_mask](examples/example_06_16_frame_mask.py)
+- [example_06_17_frame_slices](examples/example_06_17_frame_slices.py)
+- [example_06_18_horizontal_stripes](examples/example_06_18_horizontal_stripes.py)
+- [example_06_19_left_half](examples/example_06_19_left_half.py)
+- [example_06_20_letter_h](examples/example_06_20_letter_h.py)
+- [example_06_21_letter_o](examples/example_06_21_letter_o.py)
+- [example_06_22_letter_x](examples/example_06_22_letter_x.py)
+- [example_06_23_main_diagonal_indices](examples/example_06_23_main_diagonal_indices.py)
+- [example_06_24_main_diagonal_loop](examples/example_06_24_main_diagonal_loop.py)
+- [example_06_25_opposite_quarters](examples/example_06_25_opposite_quarters.py)
+- [example_06_26_other_quarters](examples/example_06_26_other_quarters.py)
+- [example_06_27_right_half](examples/example_06_27_right_half.py)
+- [example_06_28_secondary_diagonal](examples/example_06_28_secondary_diagonal.py)
+- [example_06_29_shifted_vertical_stripes](examples/example_06_29_shifted_vertical_stripes.py)
+- [example_06_30_thick_frame](examples/example_06_30_thick_frame.py)
+- [example_06_31_top_half](examples/example_06_31_top_half.py)
+- [example_06_32_vertical_stripes](examples/example_06_32_vertical_stripes.py)
+- [example_06_33_scalar_logic](examples/example_06_33_scalar_logic.py)
+- [example_06_34_slices_1d](examples/example_06_34_slices_1d.py)
+- [example_06_35_slices_2d](examples/example_06_35_slices_2d.py)
+
+## solutions
+
+- [solution_06_21_two_walls](solutions/solution_06_21_two_walls.py)
+- [solution_06_22_two_shelves](solutions/solution_06_22_two_shelves.py)
+- [solution_06_23_frame_opening](solutions/solution_06_23_frame_opening.py)
+- [solution_06_24_inner_frame](solutions/solution_06_24_inner_frame.py)
+- [solution_06_25_double_frame](solutions/solution_06_25_double_frame.py)
+- [solution_06_26_window_sill](solutions/solution_06_26_window_sill.py)
+- [solution_06_27_dotted_line](solutions/solution_06_27_dotted_line.py)
+- [solution_06_28_opposite_quarters](solutions/solution_06_28_opposite_quarters.py)
+- [solution_06_29_thick_cross](solutions/solution_06_29_thick_cross.py)
+- [solution_06_29_thick_cross_mask](solutions/solution_06_29_thick_cross_mask.py)
+- [solution_06_30_staircase](solutions/solution_06_30_staircase.py)
+

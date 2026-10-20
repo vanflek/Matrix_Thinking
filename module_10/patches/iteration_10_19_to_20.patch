@@ -1,0 +1,75 @@
+--- iteration_10_19_argwhere_coordinates.py
++++ iteration_10_20_add_at.py
+@@ -1,39 +1,42 @@
+ import numpy as np
+ 
+-matrix = np.array([
+-    [0, 0, 0, 0, 0],
+-    [0, 0, 0, 0, 0],
+-    [0, 1, 1, 1, 0],
+-    [0, 0, 0, 0, 0],
+-    [0, 0, 0, 0, 0],
+-], dtype=np.uint8)
+-
+-alive_cells = np.argwhere(matrix == 1)
+-
+-print(alive_cells)
++counts = np.zeros(5, dtype=int)
+ 
+ 
+-upper_neighbors = alive_cells + (-1, 0)
++indices = np.array([2, 2, 2])
+ 
+-print(upper_neighbors)
++for index in indices:
++    counts[index] += 1
++
++print(counts)
+ 
+ 
+-offsets = np.array([
+-    [-1, -1],
+-    [-1,  0],
+-    [-1,  1],
+-    [ 0, -1],
+-    [ 0,  1],
+-    [ 1, -1],
+-    [ 1,  0],
+-    [ 1,  1],
+-])
++counts = np.zeros(5, dtype=int)
++
++counts[indices] += 1
++
++print(counts)
+ 
+ 
+-neighbor_parts = []
+-for offset in offsets:
+-    neighbor_parts.append(alive_cells + offset)
+-neighbor_cells = np.vstack(neighbor_parts)
+-print("Recipient coordinates:")
+-print(neighbor_cells)
+-print("Shape:", neighbor_cells.shape)
++counts = np.zeros(5, dtype=int)
++
++np.add.at(counts, indices, 1)
++
++print(counts)
++
++
++counts = np.array([0, 0, 10, 0, 0])
++
++np.add.at(counts, indices, 2)
++
++print(counts)
++
++
++counts = np.zeros((4, 5), dtype=int)
++
++ys = np.array([1, 1, 1, 2])
++xs = np.array([2, 2, 2, 3])
++
++np.add.at(counts, (ys, xs), 1)
++
++print(counts)

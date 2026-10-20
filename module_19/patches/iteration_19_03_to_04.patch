@@ -1,0 +1,94 @@
+--- iteration_19_03_projections.py
++++ iteration_19_04_values.py
+@@ -1,7 +1,8 @@
+ import numpy as np
+ import pygame as pg
+ 
+-WIDTH = 640
++SCENE_WIDTH = 640
++WIDTH = 900
+ HEIGHT = 480
+ CELL_SIZE = 40
+ FPS = 60
+@@ -11,6 +12,8 @@
+     def __init__(self):
+         self.radius = 120.0
+         self.angle = 45.0
++        self.cos_value = 1.0
++        self.sin_value = 0.0
+         self.point = np.zeros(2)
+         self.circle_points = np.zeros((360, 2))
+ 
+@@ -44,9 +47,11 @@
+         self.model.radius = max(0.0, self.model.radius + actions["radius_delta"])
+ 
+         angle_radians = np.deg2rad(self.model.angle)
++        self.model.cos_value = np.cos(angle_radians)
++        self.model.sin_value = np.sin(angle_radians)
+         self.model.point = self.model.radius * np.array([
+-            np.cos(angle_radians),
+-            np.sin(angle_radians),
++            self.model.cos_value,
++            self.model.sin_value,
+         ])
+ 
+         angles = np.deg2rad(np.arange(0.0, 360.0))
+@@ -59,10 +64,31 @@
+     def __init__(self, screen, model):
+         self.screen = screen
+         self.model = model
++        self.font = pg.font.SysFont("Arial", 26)
++
++    def draw_info_panel(self):
++        pg.draw.rect(self.screen, (240, 244, 248),
++                     (SCENE_WIDTH, 0, WIDTH - SCENE_WIDTH, HEIGHT))
++
++        point_x, point_y = self.model.point
++        lines = [
++            "Trigonometry Lab",
++            f"Angle: {self.model.angle:.0f} deg",
++            f"Radius: {self.model.radius:.0f}",
++            f"X: {point_x:.2f}",
++            f"Y: {point_y:.2f}",
++            f"Cos: {self.model.cos_value:.3f}",
++            f"Sin: {self.model.sin_value:.3f}",
++        ]
++
++        line_step = self.font.get_linesize() + 6
++        for i, text in enumerate(lines):
++            image = self.font.render(text, True, (35, 50, 65))
++            self.screen.blit(image, (SCENE_WIDTH + 16, 20 + i * line_step))
+ 
+     def points_to_screen(self, points):
+         return np.column_stack((
+-            WIDTH / 2 + points[:, 0],
++            SCENE_WIDTH / 2 + points[:, 0],
+             HEIGHT / 2 - points[:, 1],
+         ))
+ 
+@@ -75,7 +101,7 @@
+             pg.draw.line(self.screen, (225, 230, 235),
+                          (0, y), (WIDTH - 1, y))
+ 
+-        center = (WIDTH // 2, HEIGHT // 2)
++        center = (SCENE_WIDTH // 2, HEIGHT // 2)
+         pg.draw.line(self.screen, (110, 120, 130),
+                      (0, center[1]), (WIDTH - 1, center[1]), 2)
+         pg.draw.line(self.screen, (110, 120, 130),
+@@ -83,7 +109,7 @@
+ 
+         circle = self.points_to_screen(self.model.circle_points)
+         point_x, point_y = self.model.point
+-        endpoint = (WIDTH / 2 + point_x, HEIGHT / 2 - point_y)
++        endpoint = (SCENE_WIDTH / 2 + point_x, HEIGHT / 2 - point_y)
+ 
+         x_projection = (endpoint[0], center[1])
+         y_projection = (center[0], endpoint[1])
+@@ -102,6 +128,7 @@
+ 
+         pg.draw.line(self.screen, (45, 90, 180), center, endpoint, 3)
+         pg.draw.circle(self.screen, (200, 65, 55), endpoint, 6)
++        self.draw_info_panel()
+ 
+ 
+ class GameApp:

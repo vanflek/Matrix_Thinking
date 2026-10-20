@@ -1,0 +1,68 @@
+--- iteration_22_15_broadcasting.py
++++ iteration_22_16_batches.py
+@@ -149,30 +149,44 @@
+         ray_angles = self.model.player_angle + self.relative_angles
+         sin_angles = np.sin(ray_angles)
+         cos_angles = np.cos(ray_angles)
+-        distance_column = self.distances[:, None]
+-
+         player_y, player_x = self.model.player_position
+-        ray_y = player_y + distance_column * sin_angles
+-        ray_x = player_x + distance_column * cos_angles
+-
+-        cell_y = (ray_y // CELL_SIZE).astype(int)
+-        cell_x = (ray_x // CELL_SIZE).astype(int)
+-        inside = (
+-            (cell_y >= 0) & (cell_y < self.model.rows) &
+-            (cell_x >= 0) & (cell_x < self.model.columns)
+-        )
+-        walls = np.zeros_like(inside)
+-        walls[inside] = (
+-            self.model.maze[cell_y[inside], cell_x[inside]] == 0
+-        )
+-        has_wall = walls.any(axis=0)
+-        first_hit = walls.argmax(axis=0)
+-        end_index = np.where(has_wall, first_hit, self.sample_count - 1)
+-        ray_indices = np.arange(self.rays_count)
+-        end_y = ray_y[end_index, ray_indices]
+-        end_x = ray_x[end_index, ray_indices]
++
++        end_index = np.full(
++            self.rays_count, self.sample_count - 1, dtype=int
++        )
++        has_wall = np.zeros(self.rays_count, dtype=bool)
++        batch_size = 256
++
++        for start in range(0, self.sample_count, batch_size):
++            distance_column = self.distances[
++                start:start + batch_size, None
++            ]
++            ray_y = player_y + distance_column * sin_angles
++            ray_x = player_x + distance_column * cos_angles
++            cell_y = (ray_y // CELL_SIZE).astype(int)
++            cell_x = (ray_x // CELL_SIZE).astype(int)
++            inside = (
++                (cell_y >= 0) & (cell_y < self.model.rows) &
++                (cell_x >= 0) & (cell_x < self.model.columns)
++            )
++            walls = np.zeros_like(inside)
++            walls[inside] = (
++                self.model.maze[cell_y[inside], cell_x[inside]] == 0
++            )
++            batch_has_wall = walls.any(axis=0)
++            new_hits = batch_has_wall & ~has_wall
++            first_hit = walls.argmax(axis=0)
++            end_index[new_hits] = start + first_hit[new_hits]
++            has_wall[new_hits] = True
++
++            if has_wall.all():
++                break
++
+         end_distance = self.distances[end_index]
++        end_y = player_y + end_distance * sin_angles
++        end_x = player_x + end_distance * cos_angles
+         return end_y, end_x, end_distance, has_wall
++
+ 
+ 
+     def get_wall_heights(self, end_distance, has_wall):

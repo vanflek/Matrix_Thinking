@@ -1,0 +1,71 @@
+--- iteration_04_02_falling_circle_events.py
++++ iteration_04_03_keyboard_circle.py
+@@ -6,7 +6,7 @@
+ width = 800
+ height = 600
+ screen = pg.display.set_mode((width, height))
+-pg.display.set_caption("Falling circle + events")
++pg.display.set_caption("Ball control (KEYDOWN)")
+ 
+ # --- colors ---
+ BACKGROUND = (230, 230, 230)
+@@ -16,9 +16,8 @@
+ clock = pg.time.Clock()
+ FPS = 60
+ 
+-# --- circle settings ---
++# --- ball settings ---
+ radius = 30
+-speed = 240                      # pixels per second
+ 
+ # --- start position ---
+ x = width // 2
+@@ -32,23 +31,40 @@
+     for event in pg.event.get():
+         if event.type == pg.QUIT:
+             running = False
++
+         elif event.type == pg.KEYDOWN:
++
++            # ESC closes the program
+             if event.key == pg.K_ESCAPE:
+                 running = False
+ 
+-    # --- 2) time step ---
+-    dt = clock.tick(FPS) / 1000  # milliseconds -> seconds
++            # arrows move the ball (one step per key press)
++            elif event.key == pg.K_LEFT:
++                x = x - 40
++            elif event.key == pg.K_RIGHT:
++                x = x + 40
++            elif event.key == pg.K_UP:
++                y = y - 40
++            elif event.key == pg.K_DOWN:
++                y = y + 40
+ 
+-    # --- 3) update (logic) ---
+-    y = y + speed * dt           # update y coordinate using distance = speed * time
++    # --- 2) frame rate ---
++    clock.tick(FPS)
+ 
+-    # stop when the circle reaches the floor
+-    if y + radius >= height:
+-        running = False
++    # --- 3) keep the circle inside the window ---
++    if x - radius < 0:
++        x = radius
++    elif x + radius > width:
++        x = width - radius
++
++    if y - radius < 0:
++        y = radius
++    elif y + radius > height:
++        y = height - radius
+ 
+     # --- 4) draw (render) ---
+     screen.fill(BACKGROUND)
+-    pg.draw.circle(screen, BLUE, (x, int(y)), radius)
++    pg.draw.circle(screen, BLUE, (int(x), int(y)), radius)
+     pg.display.flip()
+ 
+ pg.quit()

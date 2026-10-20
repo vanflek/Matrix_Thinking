@@ -1,0 +1,16 @@
+--- iteration_22_13_floor_ceiling.py
++++ iteration_22_14_dense_samples.py
+@@ -125,11 +125,11 @@
+     def __init__(self, model, screen_width):
+         self.model = model
+         self.fov = np.deg2rad(60)
+-        self.rays_count = 60
++        self.rays_count = 100
+         self.ray_length = np.linalg.norm([
+             model.world_height, model.world_width
+         ])
+-        self.sample_count = int(self.ray_length) + 1
++        self.sample_count = int(self.ray_length * 16) + 2
+         self.projection_distance = screen_width / (
+             2 * np.tan(self.fov / 2)
+         )

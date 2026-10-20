@@ -1,0 +1,77 @@
+--- iteration_18_07_trail_collision.py
++++ iteration_18_08_safe_capture.py
+@@ -175,8 +175,8 @@
+     def captured_area(self, model):
+         territory = model.layers[TERRITORY_LAYER]
+         trail = model.layers[TRAIL_LAYER]
+-
+-        # Commit the line before finding the remaining free regions.
++        enemy = model.layers[ENEMY_LAYER]
++
+         territory |= trail
+         trail[:] = False
+ 
+@@ -187,11 +187,14 @@
+         while (~blocked).any():
+             region = self.find_region(blocked)
+             region_count += 1
+-
+-            if smallest is None or region.sum() <= smallest.sum():
+-                smallest = region.copy()
+-
+-            # Exclude this region from all following searches.
++            has_enemy = (region & enemy).any()
++
++            # Compare areas only after checking eligibility.
++            if not has_enemy:
++                if smallest is None or region.sum() <= smallest.sum():
++                    smallest = region.copy()
++
++            # Every region is processed, including the enemy's region.
+             blocked |= region
+ 
+         if region_count > 1 and smallest is not None:
+@@ -288,7 +291,7 @@
+         self.screen = pg.display.set_mode(
+             (cols * CELL_SIZE, rows * CELL_SIZE)
+         )
+-        pg.display.set_caption("Matrix Xonix - Trail collision")
++        pg.display.set_caption("Matrix Xonix - Eligible region capture")
+ 
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+@@ -311,22 +314,19 @@
+ 
+ app = GameApp()
+ 
++# Put the enemy in the smaller region of a separate test board.
+ test_model = GameModel(7, 9)
+-initial = test_model.layers.copy()
+-idle = {"quit": False, "move_up": False, "move_down": False,
+-        "move_left": False, "move_right": False}
+-
+-# The enemy's next step reaches a prepared trail cell.
+-test_model.layers[TRAIL_LAYER, 4, 5] = True
+-app.logic.step(test_model, idle, ENEMY_STEP_INTERVAL)
+-print("Reset after enemy step:", np.array_equal(test_model.layers, initial))
+-
+-# The player moves into the enemy before its next scheduled step.
++test_model.layers[TRAIL_LAYER, 1:-1, 3] = True
+ test_model.layers[ENEMY_LAYER] = False
+-test_model.layers[ENEMY_LAYER, 1, 4] = True
+-down = {"quit": False, "move_up": False, "move_down": True,
+-        "move_left": False, "move_right": False}
+-app.logic.step(test_model, down, PLAYER_STEP_INTERVAL)
+-print("Reset after player step:", np.array_equal(test_model.layers, initial))
++test_model.layers[ENEMY_LAYER, 3, 2] = True
++before = test_model.layers[TERRITORY_LAYER].copy()
++
++app.logic.captured_area(test_model)
++territory = test_model.layers[TERRITORY_LAYER]
++enemy = test_model.layers[ENEMY_LAYER]
++print("Left region captured:", territory[1:-1, 1:3].all())
++print("Right region captured:", territory[1:-1, 4:-1].all())
++print("Enemy on territory:", (enemy & territory).any())
++print("New territory cells:", (territory & ~before).sum())
+ 
+ app.run()

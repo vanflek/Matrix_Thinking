@@ -1,0 +1,65 @@
+--- iteration_09_13_coordinates_to_field.py
++++ iteration_09_14_field_and_apple.py
+@@ -1,24 +1,46 @@
+-# Use paired coordinate indices
++# Build occupancy before choosing an apple
+ import numpy as np
+ 
++
++def fill_field(matrix, snake):
++    matrix[:] = 0
++    matrix[snake[:, 0], snake[:, 1]] = 5
++
++
++def spawn_apple(matrix):
++    free_cells = np.argwhere(matrix == 0)
++
++    if len(free_cells) == 0:
++        return None
++
++    index = np.random.randint(len(free_cells))
++    return free_cells[index]
++
++
++matrix = np.zeros((3, 4), dtype=np.uint8)
++
+ snake = np.array([
+-    [5, 2],
+-    [5, 3],
+-    [4, 3],
+-    [3, 3],
+-    [3, 4],
++    [0, 0],
++    [0, 1],
++    [0, 2],
++    [0, 3],
++    [1, 3],
++    [1, 2],
++    [1, 1],
++    [1, 0],
++    [2, 0],
++    [2, 1],
++    [2, 2],
+ ], dtype=np.int16)
+ 
+-matrix = np.zeros((8, 8), dtype=np.uint8)
++fill_field(matrix, snake)
++apple = spawn_apple(matrix)
+ 
+-snake_rows = snake[:, 0]
+-snake_cols = snake[:, 1]
++if apple is None:
++    print("You win!")
++else:
++    row, col = apple
++    matrix[row, col] = 3
++    print("Apple:", apple)
+ 
+-matrix[snake_rows, snake_cols] = 5
+-
+-print("Rows:", snake_rows)
+-print("Columns:", snake_cols)
+ print(matrix)
+-
+-free_cells = np.argwhere(matrix == 0)
+-print("Free cells:", len(free_cells))

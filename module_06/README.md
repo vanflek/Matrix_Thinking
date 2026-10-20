@@ -10,7 +10,7 @@ Use the same interpreter for installation and execution:
 
 ```bash
 python -m pip install -r requirements.txt
-python matrix_visualization.py
+python examples/example_06_01_matrix_visualization.py
 ```
 
 You can also open any Python file in PyCharm and run it directly. Every file is
@@ -26,13 +26,13 @@ Keep `matrix`, `ROWS`, `COLS`, and `CELL_SIZE` consistent with the book.
 
 | File | Topic |
 | --- | --- |
-| [slices_1d.py](slices_1d.py) | Start, exclusive stop, step, omitted bounds, and negative indices. |
-| [slices_2d.py](slices_2d.py) | Rows, columns, rectangles, and assigning to a selection. |
-| [paired_indices_vs_slices.py](paired_indices_vs_slices.py) | Three index pairs versus nine intersections. |
-| [scalar_logic.py](scalar_logic.py) | `and`, `or`, and `not`, including the game-door example. |
-| [mask_values.py](mask_values.py) | Build a mask, read selected values, write through it, and recompute it. |
-| [index_matrices.py](index_matrices.py) | Store row and column indices as data. |
-| [mask_operations.py](mask_operations.py) | Union, intersection, and complement of Boolean masks. |
+| [examples/example_06_34_slices_1d.py](examples/example_06_34_slices_1d.py) | Start, exclusive stop, step, omitted bounds, and negative indices. |
+| [examples/example_06_35_slices_2d.py](examples/example_06_35_slices_2d.py) | Rows, columns, rectangles, and assigning to a selection. |
+| [examples/example_06_06_paired_indices_vs_slices.py](examples/example_06_06_paired_indices_vs_slices.py) | Three index pairs versus nine intersections. |
+| [examples/example_06_33_scalar_logic.py](examples/example_06_33_scalar_logic.py) | `and`, `or`, and `not`, including the game-door example. |
+| [examples/example_06_05_mask_values.py](examples/example_06_05_mask_values.py) | Build a mask, read selected values, write through it, and recompute it. |
+| [examples/example_06_03_index_matrices.py](examples/example_06_03_index_matrices.py) | Store row and column indices as data. |
+| [examples/example_06_04_mask_operations.py](examples/example_06_04_mask_operations.py) | Union, intersection, and complement of Boolean masks. |
 
 ## Patterns in a Pygame window
 
@@ -42,32 +42,32 @@ does not remove the loops that draw the individual cells.
 
 | File | Pattern |
 | --- | --- |
-| [vertical_stripes.py](patterns/vertical_stripes.py) | Vertical stripes. |
-| [shifted_vertical_stripes.py](patterns/shifted_vertical_stripes.py) | Shifted vertical stripes. |
-| [horizontal_stripes.py](patterns/horizontal_stripes.py) | Horizontal stripes. |
-| [four_corners.py](patterns/four_corners.py) | Four corners. |
-| [frame_slices.py](patterns/frame_slices.py) | Frame slices. |
-| [thick_frame.py](patterns/thick_frame.py) | Thick frame. |
-| [left_half.py](patterns/left_half.py) | Left half. |
-| [right_half.py](patterns/right_half.py) | Right half. |
-| [top_half.py](patterns/top_half.py) | Top half. |
-| [bottom_half.py](patterns/bottom_half.py) | Bottom half. |
-| [centered_square.py](patterns/centered_square.py) | Centered square. |
-| [checkerboard_loops.py](patterns/checkerboard_loops.py) | Checkerboard loops. |
-| [checkerboard_slices.py](patterns/checkerboard_slices.py) | Checkerboard slices. |
-| [cross_slices.py](patterns/cross_slices.py) | Cross slices. |
-| [opposite_quarters.py](patterns/opposite_quarters.py) | Opposite quarters. |
-| [other_quarters.py](patterns/other_quarters.py) | Other quarters. |
-| [letter_h.py](patterns/letter_h.py) | Letter h. |
-| [letter_o.py](patterns/letter_o.py) | Letter o. |
-| [main_diagonal_loop.py](patterns/main_diagonal_loop.py) | Main diagonal loop. |
-| [main_diagonal_indices.py](patterns/main_diagonal_indices.py) | Main diagonal indices. |
-| [secondary_diagonal.py](patterns/secondary_diagonal.py) | Secondary diagonal. |
-| [letter_x.py](patterns/letter_x.py) | Letter x. |
-| [frame_mask.py](patterns/frame_mask.py) | Frame mask. |
-| [corners_mask.py](patterns/corners_mask.py) | Corners mask. |
-| [cross_mask.py](patterns/cross_mask.py) | Cross mask. |
-| [block_and_frame.py](patterns/block_and_frame.py) | Block and frame. |
+| [examples/example_06_32_vertical_stripes.py](examples/example_06_32_vertical_stripes.py) | Vertical stripes. |
+| [examples/example_06_29_shifted_vertical_stripes.py](examples/example_06_29_shifted_vertical_stripes.py) | Shifted vertical stripes. |
+| [examples/example_06_18_horizontal_stripes.py](examples/example_06_18_horizontal_stripes.py) | Horizontal stripes. |
+| [examples/example_06_15_four_corners.py](examples/example_06_15_four_corners.py) | Four corners. |
+| [examples/example_06_17_frame_slices.py](examples/example_06_17_frame_slices.py) | Frame slices. |
+| [examples/example_06_30_thick_frame.py](examples/example_06_30_thick_frame.py) | Thick frame. |
+| [examples/example_06_19_left_half.py](examples/example_06_19_left_half.py) | Left half. |
+| [examples/example_06_27_right_half.py](examples/example_06_27_right_half.py) | Right half. |
+| [examples/example_06_31_top_half.py](examples/example_06_31_top_half.py) | Top half. |
+| [examples/example_06_08_bottom_half.py](examples/example_06_08_bottom_half.py) | Bottom half. |
+| [examples/example_06_09_centered_square.py](examples/example_06_09_centered_square.py) | Centered square. |
+| [examples/example_06_10_checkerboard_loops.py](examples/example_06_10_checkerboard_loops.py) | Checkerboard loops. |
+| [examples/example_06_11_checkerboard_slices.py](examples/example_06_11_checkerboard_slices.py) | Checkerboard slices. |
+| [examples/example_06_14_cross_slices.py](examples/example_06_14_cross_slices.py) | Cross slices. |
+| [examples/example_06_25_opposite_quarters.py](examples/example_06_25_opposite_quarters.py) | Opposite quarters. |
+| [examples/example_06_26_other_quarters.py](examples/example_06_26_other_quarters.py) | Other quarters. |
+| [examples/example_06_20_letter_h.py](examples/example_06_20_letter_h.py) | Letter h. |
+| [examples/example_06_21_letter_o.py](examples/example_06_21_letter_o.py) | Letter o. |
+| [examples/example_06_24_main_diagonal_loop.py](examples/example_06_24_main_diagonal_loop.py) | Main diagonal loop. |
+| [examples/example_06_23_main_diagonal_indices.py](examples/example_06_23_main_diagonal_indices.py) | Main diagonal indices. |
+| [examples/example_06_28_secondary_diagonal.py](examples/example_06_28_secondary_diagonal.py) | Secondary diagonal. |
+| [examples/example_06_22_letter_x.py](examples/example_06_22_letter_x.py) | Letter x. |
+| [examples/example_06_16_frame_mask.py](examples/example_06_16_frame_mask.py) | Frame mask. |
+| [examples/example_06_12_corners_mask.py](examples/example_06_12_corners_mask.py) | Corners mask. |
+| [examples/example_06_13_cross_mask.py](examples/example_06_13_cross_mask.py) | Cross mask. |
+| [examples/example_06_07_block_and_frame.py](examples/example_06_07_block_and_frame.py) | Block and frame. |
 
 Change one parameter, predict the result, then run the program. Diagonal examples
 assume a square field. Shape-independent frame examples can also use rectangles.
@@ -79,24 +79,24 @@ the same display code and the exact approved pattern-building snippet.
 
 | Exercise | File |
 | --- | --- |
-| 21 | [two walls](solutions/exercise_21_two_walls.py) |
-| 22 | [two shelves](solutions/exercise_22_two_shelves.py) |
-| 23 | [frame opening](solutions/exercise_23_frame_opening.py) |
-| 24 | [inner frame](solutions/exercise_24_inner_frame.py) |
-| 25 | [double frame](solutions/exercise_25_double_frame.py) |
-| 26 | [window sill](solutions/exercise_26_window_sill.py) |
-| 27 | [dotted line](solutions/exercise_27_dotted_line.py) |
-| 28 | [opposite quarters](solutions/exercise_28_opposite_quarters.py) |
-| 29 | [thick cross](solutions/exercise_29_thick_cross.py) |
-| 30 | [staircase](solutions/exercise_30_staircase.py) |
+| 21 | [two walls](solutions/solution_06_21_two_walls.py) |
+| 22 | [two shelves](solutions/solution_06_22_two_shelves.py) |
+| 23 | [frame opening](solutions/solution_06_23_frame_opening.py) |
+| 24 | [inner frame](solutions/solution_06_24_inner_frame.py) |
+| 25 | [double frame](solutions/solution_06_25_double_frame.py) |
+| 26 | [window sill](solutions/solution_06_26_window_sill.py) |
+| 27 | [dotted line](solutions/solution_06_27_dotted_line.py) |
+| 28 | [opposite quarters](solutions/solution_06_28_opposite_quarters.py) |
+| 29 | [thick cross](solutions/solution_06_29_thick_cross.py) |
+| 30 | [staircase](solutions/solution_06_30_staircase.py) |
 
-Exercise 29 also has a [mask-based solution](solutions/exercise_29_thick_cross_mask.py).
+Exercise 29 also has a [mask-based solution](solutions/solution_06_29_thick_cross_mask.py).
 Both versions produce the same three-cell-wide cross.
 
 ## Repeat the timing experiment
 
 ```bash
-python benchmark_checkerboard.py
+python examples/example_06_02_benchmark_checkerboard.py
 ```
 
 The benchmark uses NumPy and Python's standard library. It checks that both
@@ -111,3 +111,12 @@ It is not a general NumPy speedup and does not measure rendering speed or FPS.
 ## Previous module
 
 [Module 5 - Scalars, vectors, and matrices](../module_05/)
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

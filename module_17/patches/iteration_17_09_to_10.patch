@@ -1,0 +1,152 @@
+--- iteration_17_09_game_over.py
++++ iteration_17_10_complete.py
+@@ -65,7 +65,10 @@
+ 
+ 
+ class Tetromino:
++    # Store a shape, its cell coordinates, and its rotation index.
++
+     def __init__(self, matrix, x=0, y=0, rotation=0):
++        # Keep each instance independent of the shape catalog.
+         self.matrix = matrix.copy()
+         self.x = x
+         self.y = y
+@@ -83,6 +86,8 @@
+ 
+ 
+ class GameModel:
++    # Store the field, score, game status, and current figure.
++
+     def __init__(self, rows=ROWS, cols=COLS):
+         self.glass = np.zeros((2, rows, cols), dtype=np.uint8)
+         self.score = 0
+@@ -98,6 +103,8 @@
+ 
+ 
+ class InputController:
++    # Translate keyboard events and held keys into game actions.
++
+     def get_actions(self):
+         actions = {
+             "move_left": False,
+@@ -120,17 +127,21 @@
+                 elif event.key == pg.K_UP:
+                     actions["rotate"] = True
+ 
++        # Down is a continuous action; other controls use key events.
+         keys = pg.key.get_pressed()
+         actions["fast"] = keys[pg.K_DOWN]
+         return actions
+ 
+ 
+ class GameLogic:
++    # Apply placement rules and advance the game using elapsed seconds.
++
+     def __init__(self):
+         self.fall_timer = 0.0
+         self.fall_interval = NORMAL_FALL_INTERVAL
+ 
+     def create_piece_layer(self, model):
++        # Build a separate placement array, or return None outside the field.
+         piece = model.current_tetromino
+         matrix = piece.get_matrix()
+         height, width = matrix.shape
+@@ -153,6 +164,7 @@
+             return False
+ 
+         fixed_layer = model.glass[FIXED_LAYER]
++        # Color indices are 0..7, so their products fit in uint8.
+         overlap = fixed_layer * candidate_layer
+         return not np.any(overlap)
+ 
+@@ -165,11 +177,13 @@
+             active_layer.fill(0)
+             return False
+ 
++        # Replace the whole layer, including the empty cells.
+         active_layer[:] = candidate_layer
+         return True
+ 
+     def try_transform(self, model, dx=0, dy=0, rotate=False):
+         piece = model.current_tetromino
++        # Save the accepted state before trying a transformation.
+         old_x = piece.x
+         old_y = piece.y
+         old_rotation = piece.rotation
+@@ -196,11 +210,13 @@
+         if cleared == 0:
+             return 0
+ 
++        # Keep row order and restore field height with empty rows on top.
+         remaining_rows = fixed_layer[~full_rows]
+         empty_rows = np.zeros(
+             (cleared, fixed_layer.shape[1]),
+             dtype=fixed_layer.dtype,
+         )
++        # Write through the view to preserve the model's array.
+         fixed_layer[:] = np.vstack((empty_rows, remaining_rows))
+         model.score += 100 * cleared * cleared
+         return cleared
+@@ -208,6 +224,7 @@
+     def initialize_current_tetromino(self, model):
+         candidate_layer = self.create_piece_layer(model)
+         if not self.layer_is_free(model, candidate_layer):
++            # A blocked new figure must not cover the final board.
+             model.glass[ACTIVE_LAYER].fill(0)
+             model.game_over = True
+             return False
+@@ -223,6 +240,7 @@
+         fixed_layer = model.glass[FIXED_LAYER]
+         active_layer = model.glass[ACTIVE_LAYER]
+ 
++        # Copy occupied cells without erasing blocks beneath shape holes.
+         mask = active_layer != 0
+         fixed_layer[mask] = active_layer[mask]
+ 
+@@ -244,21 +262,26 @@
+             FAST_FALL_INTERVAL if actions["fast"]
+             else NORMAL_FALL_INTERVAL
+         )
++        # Start a fresh interval when the falling mode changes.
+         if interval != self.fall_interval:
+             self.fall_interval = interval
+             self.fall_timer = 0.0
+ 
+         self.fall_timer += delta_time
++        # Catch up after a slow frame, checking every downward step.
+         while self.fall_timer >= self.fall_interval:
+             self.fall_timer -= self.fall_interval
+ 
+             if not self.try_transform(model, dy=1):
+                 self.lock_tetromino(model)
++                # Give the new figure its own falling timer.
+                 self.fall_timer = 0.0
+                 break
+ 
+ 
+ class GameView:
++    # Render the field and game status without changing model data.
++
+     def __init__(self, screen, cell_size=CELL_SIZE):
+         self.screen = screen
+         self.cell_size = cell_size
+@@ -287,7 +310,9 @@
+         pixels = np.repeat(pixels, self.cell_size, axis=0)
+         pixels = np.repeat(pixels, self.cell_size, axis=1)
+ 
+-        pg.surfarray.blit_array(self.screen, np.swapaxes(pixels, 0, 1))
++        # Convert (row, column, channel) into (x, y, channel).
++        pixels_for_pygame = np.transpose(pixels, (1, 0, 2))
++        pg.surfarray.blit_array(self.screen, pixels_for_pygame)
+         self.screen.blit(self.grid, (0, 0))
+         pg.display.set_caption(f"Matrix Tetris | Score: {score}")
+ 
+@@ -306,6 +331,8 @@
+ 
+ 
+ class GameApp:
++    # Connect input, rules, model state, and rendering.
++
+     def __init__(self):
+         pg.init()
+         self.model = GameModel()

@@ -1,13 +1,15 @@
-# Sequential transitions
+# Sequential patches
 
-Each patch transforms `main.py` from one complete iteration to the next.
-Start with a copy of `steps/iteration_19_01_skeleton.py` at the module root.
-Apply patches in ascending order using:
+Each patch compares two consecutive runnable files in `../steps/`.
+The headers name the source and destination files. Use the complete files first;
+patches are supplied to inspect the changes, not to concatenate programs.
 
-```console
-git -c core.autocrlf=false apply --check patches/patch_19_01_to_02.patch
-git -c core.autocrlf=false apply patches/patch_19_01_to_02.patch
-```
-
-Run `python main.py` after every patch. Patch 09_to_10 adds graph tick labels and
-final English comments. All nine transitions were applied and byte-checked.
+- [iteration_19_01_to_02.patch](iteration_19_01_to_02.patch)
+- [iteration_19_02_to_03.patch](iteration_19_02_to_03.patch)
+- [iteration_19_03_to_04.patch](iteration_19_03_to_04.patch)
+- [iteration_19_04_to_05.patch](iteration_19_04_to_05.patch)
+- [iteration_19_05_to_06.patch](iteration_19_05_to_06.patch)
+- [iteration_19_06_to_07.patch](iteration_19_06_to_07.patch)
+- [iteration_19_07_to_08.patch](iteration_19_07_to_08.patch)
+- [iteration_19_08_to_09.patch](iteration_19_08_to_09.patch)
+- [iteration_19_09_to_10.patch](iteration_19_09_to_10.patch)

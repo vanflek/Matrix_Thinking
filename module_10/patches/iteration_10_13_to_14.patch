@@ -1,0 +1,54 @@
+--- iteration_10_13_roll_directions.py
++++ iteration_10_14_elementwise_addition.py
+@@ -1,25 +1,36 @@
+ import numpy as np
+ 
+-matrix = np.array([
+-    [1, 2, 3],
+-    [4, 5, 6],
+-    [7, 8, 9],
+-])
++morning = np.array([[1, 0, 2],
++                    [0, 1, 1]])
++evening = np.array([[0, 3, 1],
++                    [2, 0, 1]])
+ 
+-shifted = np.roll(matrix, 1, axis=0)
+-
+-print(shifted)
++total = morning + evening
++print(total)
+ 
+ 
+-print(np.roll(matrix, 1, axis=1))
++total_with_loops = np.zeros_like(morning)
++
++for y in range(morning.shape[0]):
++    for x in range(morning.shape[1]):
++        total_with_loops[y, x] = morning[y, x] + evening[y, x]
++
++print(total_with_loops)
++print(np.array_equal(total, total_with_loops))
+ 
+ 
+-print(np.roll(matrix, -1, axis=0))
+-print()
+-print(np.roll(matrix, -1, axis=1))
++print(np.add(morning, evening))
++print(np.sum(morning))
+ 
+ 
+-shifted = np.roll(matrix, 1, axis=0)
++print(morning + 10)
++print(morning)
+ 
+-print(matrix[0, 1])
+-print(shifted[1, 1])
++
++import numpy as np
++
++a = np.array([[250]], dtype=np.uint8)
++b = np.array([[10]], dtype=np.uint8)
++
++print(a + b)
++print(a.astype(np.int16) + b.astype(np.int16))

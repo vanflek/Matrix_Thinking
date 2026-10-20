@@ -1,0 +1,30 @@
+--- iteration_22_03_rays.py
++++ iteration_22_04_valid_addresses.py
+@@ -144,7 +144,14 @@
+         player_y, player_x = self.model.player_position
+         ray_y = player_y + distance_grid * np.sin(angle_grid)
+         ray_x = player_x + distance_grid * np.cos(angle_grid)
+-        return ray_y, ray_x
++
++        cell_y = (ray_y // CELL_SIZE).astype(int)
++        cell_x = (ray_x // CELL_SIZE).astype(int)
++        inside = (
++            (cell_y >= 0) & (cell_y < self.model.rows) &
++            (cell_x >= 0) & (cell_x < self.model.columns)
++        )
++        return ray_y, ray_x, inside
+ 
+ 
+ class GameView:
+@@ -234,7 +241,10 @@
+             else:
+                 self.logic.apply_actions(actions)
+                 self.logic.update(delta_time)
+-                ray_y, ray_x = self.ray_caster.ray_cast()
++                ray_y, ray_x, inside = self.ray_caster.ray_cast()
++                pg.display.set_caption(
++                    f"Raycasting: {inside.sum()} / {inside.size} valid samples"
++                )
+                 self.view.draw(ray_y, ray_x)
+                 pg.display.flip()
+ 

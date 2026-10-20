@@ -1,0 +1,46 @@
+--- iteration_03_03_framed_chessboard.py
++++ iteration_03_04_framed_chessboard_flag.py
+@@ -11,30 +11,33 @@
+ width = COLS * CELL
+ height = ROWS * CELL
+ screen = pg.display.set_mode((width, height))
+-pg.display.set_caption("Chessboard with a frame")
++pg.display.set_caption("Chessboard: enumerate and a flag")
+ 
+ # Frame and board colors
+ FRAME = (140, 70, 20)
+ WHITE = (240, 240, 240)
+ BLACK = (30, 30, 30)
+ 
+-for row in range(ROWS):
+-    y = row * CELL
++for row, y in enumerate(range(0, ROWS * CELL, CELL)):
++    for col, x in enumerate(range(0, COLS * CELL, CELL)):
+ 
+-    for col in range(COLS):
+-        x = col * CELL
++        # Reset the flag for each new cell
++        is_border = False
+ 
+-        # Choose the frame color for border cells
++        # Check whether the cell belongs to the frame
+         if row == 0:
+-            color = FRAME
++            is_border = True
+         elif row == ROWS - 1:
+-            color = FRAME
++            is_border = True
+         elif col == 0:
+-            color = FRAME
++            is_border = True
+         elif col == COLS - 1:
++            is_border = True
++
++        # Use the saved result to choose a color
++        if is_border:
+             color = FRAME
+         else:
+-            # Choose a chessboard color for an inner cell
+             inner_row = row - 1
+             inner_col = col - 1
+ 

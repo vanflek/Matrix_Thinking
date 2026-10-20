@@ -68,3 +68,12 @@ from the original final game. Do not carry the ring mask into Exercise 29.
 
 The intentional invalid multiplication in Example 14.6 is commented out.
 Uncomment it only when studying the expected ValueError.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

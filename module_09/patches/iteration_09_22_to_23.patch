@@ -1,0 +1,25 @@
+--- iteration_09_22_opposite_direction.py
++++ iteration_09_23_two_turn_problem.py
+@@ -1,4 +1,4 @@
+-# Reject the opposite direction
++# Reproduce two turns before a movement step
+ import numpy as np
+ 
+ 
+@@ -28,3 +28,16 @@
+     np.array([1, 0], dtype=np.int16),
+ )
+ print("After Down:", state["vel"])
++
++state["vel"] = np.array([0, 1], dtype=np.int16)
++
++change_direction(
++    state,
++    np.array([-1, 0], dtype=np.int16),
++)
++change_direction(
++    state,
++    np.array([0, -1], dtype=np.int16),
++)
++
++print("After two turns:", state["vel"])

@@ -1,0 +1,101 @@
+--- iteration_18_06_enemy_reflection.py
++++ iteration_18_07_trail_collision.py
+@@ -68,12 +68,15 @@
+         self.enemy_timer = 0.0
+ 
+     def step(self, model, actions, delta_time):
+-        # Enemy updates do not depend on player input.
+         self.enemy_timer += delta_time
+         while self.enemy_timer >= ENEMY_STEP_INTERVAL:
+             self.enemy_timer -= ENEMY_STEP_INTERVAL
+             self.enemy_move(model)
+ 
++            if self.check_enemy_collision(model):
++                self.restart(model)
++                return
++
+         self.player_timer += delta_time
+         while self.player_timer >= PLAYER_STEP_INTERVAL:
+             self.player_timer -= PLAYER_STEP_INTERVAL
+@@ -83,16 +86,20 @@
+                 self.player_timer = 0.0
+                 break
+ 
++            # The new position must not overlap the old trail.
+             if self.check_suicide(model):
+-                model.start_position()
+-                self.player_timer = 0.0
+-                self.enemy_timer = 0.0
+-                break
++                self.restart(model)
++                return
+ 
+             player = model.layers[PLAYER_LAYER]
+             territory = model.layers[TERRITORY_LAYER]
+             trail = model.layers[TRAIL_LAYER]
+             trail |= player & ~territory
++
++            # A new trail cell can appear at the enemy's current position.
++            if self.check_enemy_collision(model):
++                self.restart(model)
++                return
+ 
+             if (player & territory).any() and trail.any():
+                 self.captured_area(model)
+@@ -226,6 +233,17 @@
+             model.layers[ENEMY_LAYER] = candidate
+ 
+ 
++    def check_enemy_collision(self, model):
++        enemy = model.layers[ENEMY_LAYER]
++        trail = model.layers[TRAIL_LAYER]
++        return (enemy & trail).any()
++
++    def restart(self, model):
++        model.start_position()
++        self.player_timer = 0.0
++        self.enemy_timer = 0.0
++
++
+ class GameView:
+     def __init__(self, screen, cell_size=CELL_SIZE):
+         self.screen = screen
+@@ -270,7 +288,7 @@
+         self.screen = pg.display.set_mode(
+             (cols * CELL_SIZE, rows * CELL_SIZE)
+         )
+-        pg.display.set_caption("Matrix Xonix - Enemy reflection")
++        pg.display.set_caption("Matrix Xonix - Trail collision")
+ 
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+@@ -293,14 +311,22 @@
+ 
+ app = GameApp()
+ 
+-# Verify reflection near the lower-right corner on a separate model.
+ test_model = GameModel(7, 9)
++initial = test_model.layers.copy()
++idle = {"quit": False, "move_up": False, "move_down": False,
++        "move_left": False, "move_right": False}
++
++# The enemy's next step reaches a prepared trail cell.
++test_model.layers[TRAIL_LAYER, 4, 5] = True
++app.logic.step(test_model, idle, ENEMY_STEP_INTERVAL)
++print("Reset after enemy step:", np.array_equal(test_model.layers, initial))
++
++# The player moves into the enemy before its next scheduled step.
+ test_model.layers[ENEMY_LAYER] = False
+-test_model.layers[ENEMY_LAYER, 5, 7] = True
+-test_model.enemy_direction[:] = (1, 1)
+-
+-app.logic.enemy_move(test_model)
+-print("Position:", np.argwhere(test_model.layers[ENEMY_LAYER])[0])
+-print("Direction:", test_model.enemy_direction)
++test_model.layers[ENEMY_LAYER, 1, 4] = True
++down = {"quit": False, "move_up": False, "move_down": True,
++        "move_left": False, "move_right": False}
++app.logic.step(test_model, down, PLAYER_STEP_INTERVAL)
++print("Reset after player step:", np.array_equal(test_model.layers, initial))
+ 
+ app.run()

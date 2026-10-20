@@ -1,0 +1,36 @@
+--- iteration_09_07_no_growth.py
++++ iteration_09_08_free_mask.py
+@@ -1,25 +1,12 @@
+-# Preserve length when the apple is elsewhere
++# Mark free cells with a Boolean mask
+ import numpy as np
+ 
+-snake = np.array([
+-    [5, 2],
+-    [5, 3],
+-    [4, 3],
+-    [3, 3],
+-    [3, 4],
+-], dtype=np.int16)
++matrix = np.array([
++    [0, 0, 0, 0],
++    [0, 5, 5, 0],
++    [0, 0, 5, 0],
++], dtype=np.uint8)
+ 
+-movement = np.array([0, 1], dtype=np.int16)
+-apple = np.array([1, 6], dtype=np.int16)
++free_mask = matrix == 0
+ 
+-new_head = snake[-1] + movement
+-eating = np.array_equal(new_head, apple)
+-
+-snake = np.vstack((snake, new_head))
+-
+-if not eating:
+-    snake = snake[1:]
+-
+-print("Eating:", eating)
+-print(snake)
+-print("Length:", len(snake))
++print(free_mask)

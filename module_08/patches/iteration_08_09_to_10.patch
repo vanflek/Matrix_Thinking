@@ -1,0 +1,66 @@
+--- iteration_08_09_movement.py
++++ iteration_08_10_keyboard.py
+@@ -1,11 +1,20 @@
+-# Check an ordinary step and wrapping on two axes.
++# Keyboard events change the direction stored in state.
+ import numpy as np
++import pygame as pg
+ 
+-def move_player(state, shape):
+-    position = state["pos"]
++def handle_input(events, state):
+     movement = state["vel"]
+ 
+-    state["pos"] = (position + movement) % np.array(shape)
++    for event in events:
++        if event.type == pg.KEYDOWN:
++            if event.key == pg.K_UP:
++                movement[:] = (-1, 0)
++            elif event.key == pg.K_DOWN:
++                movement[:] = (1, 0)
++            elif event.key == pg.K_LEFT:
++                movement[:] = (0, -1)
++            elif event.key == pg.K_RIGHT:
++                movement[:] = (0, 1)
+ 
+ state = {
+     "pos": np.array([8, 8], dtype=np.int16),
+@@ -13,12 +22,29 @@
+     "targets": np.array([[2, 3], [5, 10], [12, 6]], dtype=np.int16),
+ }
+ 
+-move_player(state, (16, 16))
+-print(state["pos"])
+-state["pos"] = np.array([8, 15], dtype=np.int16)
+-move_player(state, (16, 16))
+-print(state["pos"])
+-state["pos"] = np.array([0, 8], dtype=np.int16)
+-state["vel"] = np.array([-1, 0], dtype=np.int16)
+-move_player(state, (16, 16))
+-print(state["pos"])
++pg.init()
++screen = pg.display.set_mode((320, 160))
++pg.display.set_caption("Press arrows - check the console")
++screen.fill((245, 245, 245))
++pg.display.flip()
++clock = pg.time.Clock()
++running = True
++
++# The window receives real keyboard events. No player is drawn yet.
++while running:
++    events = pg.event.get()
++    for event in events:
++        if event.type == pg.QUIT:
++            running = False
++        elif event.type == pg.KEYDOWN:
++            if event.key == pg.K_ESCAPE:
++                running = False
++
++    if running:
++        handle_input(events, state)
++        for event in events:
++            if event.type == pg.KEYDOWN:
++                print(state["vel"])
++    clock.tick(60)
++
++pg.quit()

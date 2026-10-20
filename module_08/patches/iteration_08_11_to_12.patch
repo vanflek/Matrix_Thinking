@@ -1,0 +1,39 @@
+--- iteration_08_11_axes.py
++++ iteration_08_12_collect_target.py
+@@ -1,10 +1,28 @@
+-# An axis selects the array dimension affected by an operation.
++# Only visiting a target removes its coordinate row.
+ import numpy as np
+ 
+-matrix = np.array([[10, 20, 30], [40, 50, 60]])
+-print(matrix.shape)
+-print(matrix[:, 1])
+-print(np.delete(matrix, 0, axis=0))
+-print(np.delete(matrix, 0, axis=1))
+-print(np.repeat(matrix, 2, axis=0).shape)
+-print(np.repeat(matrix, 2, axis=1).shape)
++def collect_target(state):
++    position = state["pos"]
++
++    for index, target in enumerate(state["targets"]):
++        if position[0] == target[0] and position[1] == target[1]:
++            state["targets"] = np.delete(
++                state["targets"], index, axis=0
++            )
++            return
++
++state = {
++    "pos": np.array([8, 8], dtype=np.int16),
++    "vel": np.array([0, 1], dtype=np.int16),
++    "targets": np.array([[2, 3], [5, 10], [12, 6]], dtype=np.int16),
++}
++
++state["pos"] = np.array([0, 0], dtype=np.int16)
++collect_target(state)
++print(len(state["targets"]))
++state["pos"] = np.array([5, 10], dtype=np.int16)
++collect_target(state)
++print(state["targets"])
++print(len(state["targets"]))
++collect_target(state)
++print(len(state["targets"]))

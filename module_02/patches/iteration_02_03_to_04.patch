@@ -1,0 +1,25 @@
+--- iteration_02_03_brick_wall.py
++++ iteration_02_04_brick_wall_labels.py
+@@ -11,6 +11,10 @@
+ # The background remains visible in the gaps.
+ BACKGROUND = (200, 200, 200)
+ BRICK = (180, 80, 50)
++TEXT_COLOR = (20, 20, 20)
++
++# Prepare one font for all labels.
++font = pg.font.SysFont("Arial", 20)
+ 
+ # Set the cell size and count the complete cells.
+ BRICK_WIDTH = 100
+@@ -35,6 +39,11 @@
+         )
+         pg.draw.rect(screen, BRICK, rect)
+ 
++        # Place the label after drawing its background.
++        text = f"({row}, {col})"
++        label = font.render(text, True, TEXT_COLOR)
++        screen.blit(label, (x + 10, y + 8))
++
+ # Show the completed wall.
+ pg.display.update()
+ 

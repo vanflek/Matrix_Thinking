@@ -102,8 +102,17 @@ The 19 diagrams and example images in `assets/illustrations/` accompany the chap
 
 ## Solution files
 
-- `solutions/exercise_26.py` — Exercise 26.
-- `solutions/exercise_27.py` — Exercise 27.
-- `solutions/exercise_28.py` — Exercise 28.
-- `solutions/exercise_29.py` — Exercise 29.
-- `solutions/exercise_30.py` — Exercise 30.
+- `solutions/solution_12_26_exercise.py` — Exercise 26.
+- `solutions/solution_12_27_exercise.py` — Exercise 27.
+- `solutions/solution_12_28_exercise.py` — Exercise 28.
+- `solutions/solution_12_29_exercise.py` — Exercise 29.
+- `solutions/solution_12_30_exercise.py` — Exercise 30.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

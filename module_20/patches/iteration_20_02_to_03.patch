@@ -1,0 +1,15 @@
+--- iteration_20_02_airplane.py
++++ iteration_20_03_homogeneous.py
+@@ -32,6 +32,12 @@
+             [90, 0],      # 18 cockpit
+             [0, 0],       # 19 local origin
+         ], dtype=float)
++
++        # Add the homogeneous coordinate to every vertex.
++        ones = np.ones(len(self.vertices))
++        self.vertices = np.column_stack((self.vertices, ones))
++        print("Vertices:", self.vertices.shape)
++        print("Nose:", self.vertices[1])
+ 
+         # The first group closes the outline; the second adds inner lines.
+         self.edges = np.array([

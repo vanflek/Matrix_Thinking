@@ -1,0 +1,153 @@
+--- iteration_21_05_field_bounds.py
++++ iteration_21_06_shooting.py
+@@ -12,10 +12,25 @@
+ PLAYER_COLOR = (45, 90, 180)
+ 
+ 
++PROJECTILE_COLOR = (35, 135, 85)
++
++# The projectile points along its local positive X axis.
++PROJECTILE_VERTICES = np.array([
++    [12, 0, 1],
++    [0, 3, 1],
++    [-8, 0, 1],
++    [0, -3, 1],
++], dtype=float)
++PROJECTILE_EDGES = np.array([
++    [0, 1], [1, 2], [2, 3], [3, 0], [0, 2],
++], dtype=int)
++
++
+ class WireframeObject:
+     def __init__(self, vertices, edges, dx=0.0, dy=0.0,
+                  sx=1.0, sy=1.0, angle=0.0,
+-                 color=(0, 0, 0), line_width=2):
++                 color=(0, 0, 0), line_width=2,
++                 velocity_x=0.0, velocity_y=0.0):
+         # Each instance owns its local geometry.
+         self.vertices = vertices.copy()
+         self.edges = edges.copy()
+@@ -28,6 +43,9 @@
+         self.angle = angle
+         self.color = color
+         self.line_width = line_width
++        # Store world-space velocity components for moving objects.
++        self.velocity_x = velocity_x
++        self.velocity_y = velocity_y
+ 
+     def get_world_vertices(self):
+         # Scale the local shape, rotate it, and place it in the world.
+@@ -122,6 +140,10 @@
+ 
+         # Store references to both instances for common rendering.
+         self.objects = [self.player, triangle]
++        self.projectiles = []
++
++    def get_all_objects(self):
++        return [*self.objects, *self.projectiles]
+ 
+ 
+ class InputController:
+@@ -134,6 +156,7 @@
+             "strafe_right": False,
+             "turn_left": False,
+             "turn_right": False,
++            "fire": False,
+         }
+ 
+         for event in pg.event.get():
+@@ -142,6 +165,8 @@
+             elif event.type == pg.KEYDOWN:
+                 if event.key == pg.K_ESCAPE:
+                     actions["quit"] = True
++                elif event.key == pg.K_SPACE:
++                    actions["fire"] = True
+ 
+         # Continuous actions use the current state of the keyboard.
+         keys = pg.key.get_pressed()
+@@ -159,6 +184,7 @@
+         self.model = model
+         self.move_speed = 220.0
+         self.turn_speed = 120.0
++        self.projectile_speed = 520.0
+         self.actions = {
+             "forward": False,
+             "backward": False,
+@@ -166,6 +192,7 @@
+             "strafe_right": False,
+             "turn_left": False,
+             "turn_right": False,
++            "fire": False,
+         }
+ 
+     def apply_actions(self, actions):
+@@ -173,6 +200,12 @@
+         self.actions = actions
+ 
+     def update(self, delta_time):
++        self.update_player(delta_time)
++        if self.actions["fire"]:
++            self.create_projectile()
++        self.update_projectiles(delta_time)
++
++    def update_player(self, delta_time):
+         player = self.model.player
+         actions = self.actions
+ 
+@@ -242,6 +275,47 @@
+         )
+ 
+ 
++    def create_projectile(self):
++        player = self.model.player
++        angle_radians = np.deg2rad(player.angle)
++        forward_x = np.cos(angle_radians)
++        forward_y = np.sin(angle_radians)
++
++        # Vertex 1 is the nose of our airplane geometry.
++        nose_x, nose_y = player.get_world_vertices()[1, :2]
++        projectile = WireframeObject(
++            vertices=PROJECTILE_VERTICES,
++            edges=PROJECTILE_EDGES,
++            dx=nose_x + forward_x * 12.0,
++            dy=nose_y + forward_y * 12.0,
++            angle=player.angle,
++            color=PROJECTILE_COLOR,
++            line_width=2,
++            velocity_x=forward_x * self.projectile_speed,
++            velocity_y=forward_y * self.projectile_speed,
++        )
++        self.model.projectiles.append(projectile)
++
++    def update_projectiles(self, delta_time):
++        remaining = []
++        margin = 40.0
++        half_width = WIDTH / 2
++        half_height = HEIGHT / 2
++
++        for projectile in self.model.projectiles:
++            projectile.dx += projectile.velocity_x * delta_time
++            projectile.dy += projectile.velocity_y * delta_time
++
++            # Keep the list being traversed intact; collect survivors separately.
++            if (
++                -half_width - margin <= projectile.dx <= half_width + margin
++                and -half_height - margin <= projectile.dy <= half_height + margin
++            ):
++                remaining.append(projectile)
++
++        self.model.projectiles = remaining
++
++
+ class GameView:
+     def __init__(self, screen, model):
+         self.screen = screen
+@@ -289,7 +363,7 @@
+ 
+     def draw(self):
+         self.screen.blit(self.grid_surface, (0, 0))
+-        for game_object in self.model.objects:
++        for game_object in self.model.get_all_objects():
+             self.draw_wireframe(game_object)
+ 
+ 

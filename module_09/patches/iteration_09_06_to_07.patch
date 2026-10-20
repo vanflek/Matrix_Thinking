@@ -1,0 +1,17 @@
+--- iteration_09_06_growth.py
++++ iteration_09_07_no_growth.py
+@@ -1,4 +1,4 @@
+-# Keep the tail when eating an apple
++# Preserve length when the apple is elsewhere
+ import numpy as np
+ 
+ snake = np.array([
+@@ -10,7 +10,7 @@
+ ], dtype=np.int16)
+ 
+ movement = np.array([0, 1], dtype=np.int16)
+-apple = np.array([3, 5], dtype=np.int16)
++apple = np.array([1, 6], dtype=np.int16)
+ 
+ new_head = snake[-1] + movement
+ eating = np.array_equal(new_head, apple)

@@ -1,0 +1,45 @@
+--- iteration_10_01_world.py
++++ iteration_10_02_one_neighborhood.py
+@@ -2,29 +2,26 @@
+ 
+ matrix = np.array([
+     [0, 0, 0, 0, 0],
+-    [0, 0, 1, 0, 0],
+-    [0, 0, 1, 0, 0],
+-    [0, 0, 1, 0, 0],
++    [0, 1, 1, 0, 0],
++    [0, 0, 1, 1, 0],
++    [0, 0, 0, 1, 0],
+     [0, 0, 0, 0, 0],
+ ], dtype=np.uint8)
+ 
+-print(matrix)
++y = 2
++x = 2
++
++print(matrix[y, x])
+ 
+ 
+-print(matrix[1, 2])
+-print(matrix[1, 1])
++block = matrix[y - 1:y + 2, x - 1:x + 2]
++
++print(block)
+ 
+ 
+-ROWS = 32
+-COLS = 64
+-
+-matrix = np.zeros((ROWS, COLS), dtype=np.uint8)
+-
+-print(matrix.shape)
+-print(np.sum(matrix))
++print(np.sum(block))
+ 
+ 
+-matrix[15:17, 31:33] = 1
++alive_neighbors = int(np.sum(block)) - int(matrix[y, x])
+ 
+-print(matrix[14:18, 30:34])
+-print(np.sum(matrix))
++print(alive_neighbors)

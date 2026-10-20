@@ -1,0 +1,62 @@
+--- iteration_11_12_save_load_npy.py
++++ iteration_11_13_export_png.py
+@@ -35,6 +35,7 @@
+     state["clear"] = False
+     state["save"] = False
+     state["load"] = False
++    state["export"] = False
+     state["paint_cells"] = []
+     state["pipette_cells"] = []
+     state["erase"] = (pg.key.get_mods() & pg.KMOD_SHIFT) != 0
+@@ -53,6 +54,8 @@
+                 state["save"] = True
+             elif event.key == pg.K_l:
+                 state["load"] = True
++            elif event.key == pg.K_p:
++                state["export"] = True
+ 
+         elif event.type == pg.MOUSEWHEEL:
+             channel = state["channel"]
+@@ -144,6 +147,16 @@
+     return loaded
+ 
+ 
++def export_png(surface, filename):
++    try:
++        pg.image.save(surface, filename)
++    except (OSError, pg.error):
++        print("Could not export:", filename)
++        return
++
++    print("Exported:", filename)
++
++
+ pg.init()
+ 
+ ROWS = 32
+@@ -151,6 +164,7 @@
+ CELL_SIZE = 16
+ FPS = 60
+ SAVE_NPY = "pixel_art_rgb.npy"
++EXPORT_PNG = "pixel_art_rgb.png"
+ 
+ BG_RGB = np.array([245, 245, 245], dtype=np.uint8)
+ GRID_COLOR = (185, 198, 206)
+@@ -179,6 +193,7 @@
+     "clear": False,
+     "save": False,
+     "load": False,
++    "export": False,
+ }
+ 
+ running = True
+@@ -239,6 +254,9 @@
+             2
+         )
+ 
++    if state["export"]:
++        export_png(frame_surface, EXPORT_PNG)
++
+     pg.display.flip()
+     clock.tick(FPS)
+ 

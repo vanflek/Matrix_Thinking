@@ -1,0 +1,13 @@
+--- iteration_08_16_repeat_values.py
++++ iteration_08_17_repeat_rows.py
+@@ -1,5 +1,7 @@
+-# Repeat each element rather than the whole sequence.
++# Repeat complete rows along axis zero.
+ import numpy as np
+ 
+-values = np.array([3, 5, 0])
+-print(np.repeat(values, 2))
++matrix = np.array([[0, 3, 0], [5, 0, 3]], dtype=np.uint8)
++repeated_rows = np.repeat(matrix, 2, axis=0)
++print(repeated_rows)
++print(repeated_rows.shape)

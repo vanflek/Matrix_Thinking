@@ -1,0 +1,53 @@
+--- iteration_11_02_cursor_frame.py
++++ iteration_11_03_editor_state.py
+@@ -55,6 +55,13 @@
+ grid_surface = build_grid_surface(ROWS, COLS, CELL_SIZE, GRID_COLOR)
+ clock = pg.time.Clock()
+ 
++state = {
++    "cell": (0, 0),  # (row, col)
++    "inside": False,
++    "brush_rgb": np.array([0, 0, 0], dtype=np.uint8),
++    "channel": 0,
++}
++
+ running = True
+ 
+ while running:
+@@ -69,19 +76,28 @@
+     screen.blit(frame_surface, (0, 0))
+     screen.blit(grid_surface, (0, 0))
+ 
++    state["inside"] = False
++
+     if pg.mouse.get_focused():
+         x_px, y_px = pg.mouse.get_pos()
+         col = x_px // CELL_SIZE
+         row = y_px // CELL_SIZE
+ 
+-        if 0 <= row < ROWS and 0 <= col < COLS:
+-            pg.draw.rect(
+-                screen,
+-                CURSOR_COLOR,
+-                (col * CELL_SIZE, row * CELL_SIZE,
+-                 CELL_SIZE, CELL_SIZE),
+-                2
+-            )
++        state["cell"] = (row, col)
++        state["inside"] = (
++            0 <= row < ROWS and 0 <= col < COLS
++        )
++
++    if state["inside"]:
++        row, col = state["cell"]
++
++        pg.draw.rect(
++            screen,
++            CURSOR_COLOR,
++            (col * CELL_SIZE, row * CELL_SIZE,
++             CELL_SIZE, CELL_SIZE),
++            2
++        )
+ 
+     pg.display.flip()
+     clock.tick(FPS)

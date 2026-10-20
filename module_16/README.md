@@ -126,3 +126,12 @@ Each resulting file was compared byte-for-byte with its target iteration.
 
 The final game differs from Iteration 16.06 only in its window title and explanatory
 comments. Its game logic is identical. Dependencies apply equally to all stages.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

@@ -1,0 +1,52 @@
+--- iteration_19_06_properties.py
++++ iteration_19_07_needs_update.py
+@@ -12,6 +12,7 @@
+     def __init__(self):
+         self._radius = 120.0
+         self._angle = 45.0
++        self.needs_update = True
+         self.cos_value = 1.0
+         self.sin_value = 0.0
+         self.point = np.zeros(2)
+@@ -27,7 +28,10 @@
+ 
+     @radius.setter
+     def radius(self, value):
+-        self._radius = max(0.0, value)
++        new_radius = max(0.0, value)
++        if new_radius != self._radius:
++            self._radius = new_radius
++            self.needs_update = True
+ 
+     @property
+     def angle(self):
+@@ -35,7 +39,10 @@
+ 
+     @angle.setter
+     def angle(self, value):
+-        self._angle = value % 360
++        new_angle = value % 360
++        if new_angle != self._angle:
++            self._angle = new_angle
++            self.needs_update = True
+ 
+ 
+ class InputController:
+@@ -66,6 +73,9 @@
+         self.model.angle += actions["angle_delta"]
+         self.model.radius += actions["radius_delta"]
+ 
++        if not self.model.needs_update:
++            return
++
+         angle_radians = np.deg2rad(self.model.angle)
+         self.model.cos_value = np.cos(angle_radians)
+         self.model.sin_value = np.sin(angle_radians)
+@@ -82,6 +92,7 @@
+         graph_radians = np.deg2rad(self.model.graph_angles)
+         self.model.sin_values = np.sin(graph_radians)
+         self.model.cos_values = np.cos(graph_radians)
++        self.model.needs_update = False
+ 
+ 
+ 

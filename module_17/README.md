@@ -133,3 +133,12 @@ spaces. Continue through `17_09_to_17_10.patch`. Git is only needed to apply the
 optional patches; all complete stages can be run directly without it. No Git
 repository initialization is required in the working folder. Each applied result
 was verified byte-for-byte against its target iteration.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

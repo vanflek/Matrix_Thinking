@@ -1,0 +1,22 @@
+--- iteration_08_07_state.py
++++ iteration_08_08_dictionary_updates.py
+@@ -1,4 +1,4 @@
+-# Dictionary keys provide access to whole arrays.
++# Changing data and replacing a dictionary entry.
+ import numpy as np
+ 
+ state = {
+@@ -7,7 +7,10 @@
+     "targets": np.array([[2, 3], [5, 10], [12, 6]], dtype=np.int16),
+ }
+ 
++state["pos"][0] = 4
+ print(state["pos"])
+-print(state["vel"])
+-print(state["targets"])
+-print(len(state["targets"]))
++state["pos"] = np.array([1, 2], dtype=np.int16)
++print(state["pos"])
++settings = {"cell_size": 20, "cell_size": 40}
++print(settings["cell_size"])
++print(len(settings))

@@ -1,0 +1,31 @@
+--- iteration_11_01_rgb_canvas.py
++++ iteration_11_02_cursor_frame.py
+@@ -40,6 +40,7 @@
+ 
+ BG_RGB = np.array([245, 245, 245], dtype=np.uint8)
+ GRID_COLOR = (185, 198, 206)
++CURSOR_COLOR = (210, 90, 45)
+ 
+ matrix = np.zeros((ROWS, COLS, 3), dtype=np.uint8)
+ matrix[:] = BG_RGB
+@@ -68,6 +69,20 @@
+     screen.blit(frame_surface, (0, 0))
+     screen.blit(grid_surface, (0, 0))
+ 
++    if pg.mouse.get_focused():
++        x_px, y_px = pg.mouse.get_pos()
++        col = x_px // CELL_SIZE
++        row = y_px // CELL_SIZE
++
++        if 0 <= row < ROWS and 0 <= col < COLS:
++            pg.draw.rect(
++                screen,
++                CURSOR_COLOR,
++                (col * CELL_SIZE, row * CELL_SIZE,
++                 CELL_SIZE, CELL_SIZE),
++                2
++            )
++
+     pg.display.flip()
+     clock.tick(FPS)
+ 

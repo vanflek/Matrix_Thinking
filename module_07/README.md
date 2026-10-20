@@ -12,7 +12,7 @@ Open a terminal in this module's folder, then use the same interpreter for both:
 
 ```bash
 python -m pip install -r requirements.txt
-python pixel_art_editor_info.py
+python steps/iteration_07_07_pixel_art_editor_info.py
 ```
 
 In PyCharm, open a script and run it directly. Each script is standalone.
@@ -23,13 +23,13 @@ that directory, which can differ from the script's folder.
 
 | File | Added behavior |
 | --- | --- |
-| [pixel_art_editor.py](pixel_art_editor.py) | Move the cursor, cycle colors, and paint one cell. |
-| [pixel_art_editor_io.py](pixel_art_editor_io.py) | Save and load the canvas matrix; handle a missing file. |
-| [pixel_art_editor_png.py](pixel_art_editor_png.py) | Export the canvas and grid without the cursor. |
-| [pixel_art_editor_brush_center.py](pixel_art_editor_brush_center.py) | Intermediate brush: try it away from edges first. Negative slice bounds deliberately remain unresolved here. |
-| [pixel_art_editor_brush.py](pixel_art_editor_brush.py) | Clip the brush area to the canvas with min/max. |
-| [pixel_art_editor_shift.py](pixel_art_editor_shift.py) | Cycle colors backward with Shift + Space. |
-| [pixel_art_editor_info.py](pixel_art_editor_info.py) | Final chapter version: toggle the data overlay with I. |
+| [steps/iteration_07_01_pixel_art_editor.py](steps/iteration_07_01_pixel_art_editor.py) | Move the cursor, cycle colors, and paint one cell. |
+| [steps/iteration_07_02_pixel_art_editor_io.py](steps/iteration_07_02_pixel_art_editor_io.py) | Save and load the canvas matrix; handle a missing file. |
+| [steps/iteration_07_03_pixel_art_editor_png.py](steps/iteration_07_03_pixel_art_editor_png.py) | Export the canvas and grid without the cursor. |
+| [steps/iteration_07_04_pixel_art_editor_brush_center.py](steps/iteration_07_04_pixel_art_editor_brush_center.py) | Intermediate brush: try it away from edges first. Negative slice bounds deliberately remain unresolved here. |
+| [steps/iteration_07_05_pixel_art_editor_brush.py](steps/iteration_07_05_pixel_art_editor_brush.py) | Clip the brush area to the canvas with min/max. |
+| [steps/iteration_07_06_pixel_art_editor_shift.py](steps/iteration_07_06_pixel_art_editor_shift.py) | Cycle colors backward with Shift + Space. |
+| [steps/iteration_07_07_pixel_art_editor_info.py](steps/iteration_07_07_pixel_art_editor_info.py) | Final chapter version: toggle the data overlay with I. |
 
 ## Controls in the final version
 
@@ -64,23 +64,23 @@ no single correct icon.
 
 | Exercise | File | What to try |
 | --- | --- | --- |
-| 21 | [palette_directions](solutions/exercise_21_palette_directions.py) | Space and Shift + Space cycle and paint in both directions. |
-| 22 | [palette_info](solutions/exercise_22_palette_info.py) | I also displays the number of palette colors. |
-| 23 | [brush_sizes](solutions/exercise_23_brush_sizes.py) | Keys 1, 2, 3 select brush radii 0, 1, 2. |
-| 24 | [rectangular_canvas](solutions/exercise_24_rectangular_canvas.py) | Check brush clipping on a 6 by 10 canvas. |
-| 25 | [clean_png](solutions/exercise_25_clean_png.py) | I, then P: the PNG contains neither labels nor cursor. |
-| 26 | [save_and_reload](solutions/exercise_26_save_and_reload.py) | S/L use saves/art.npy. Save before loading. |
-| 27 | [missing_file](solutions/exercise_27_missing_file.py) | Missing saves/art.npy prints a message and preserves the canvas. |
-| 28 | [two_palettes](solutions/exercise_28_two_palettes.py) | Draw, then press T to change colors while preserving the matrix. |
-| 29 | [separate_color](solutions/exercise_29_separate_color.py) | Q/E select a color; Space only paints. |
-| 30 | [own_icon](solutions/exercise_30_own_icon.py) | Q/E and a one-cell brush; save, restart, load, and add a detail. |
+| 21 | [palette_directions](solutions/solution_07_21_palette_directions.py) | Space and Shift + Space cycle and paint in both directions. |
+| 22 | [palette_info](solutions/solution_07_22_palette_info.py) | I also displays the number of palette colors. |
+| 23 | [brush_sizes](solutions/solution_07_23_brush_sizes.py) | Keys 1, 2, 3 select brush radii 0, 1, 2. |
+| 24 | [rectangular_canvas](solutions/solution_07_24_rectangular_canvas.py) | Check brush clipping on a 6 by 10 canvas. |
+| 25 | [clean_png](solutions/solution_07_25_clean_png.py) | I, then P: the PNG contains neither labels nor cursor. |
+| 26 | [save_and_reload](solutions/solution_07_26_save_and_reload.py) | S/L use saves/art.npy. Save before loading. |
+| 27 | [missing_file](solutions/solution_07_27_missing_file.py) | Missing saves/art.npy prints a message and preserves the canvas. |
+| 28 | [two_palettes](solutions/solution_07_28_two_palettes.py) | Draw, then press T to change colors while preserving the matrix. |
+| 29 | [separate_color](solutions/solution_07_29_separate_color.py) | Q/E select a color; Space only paints. |
+| 30 | [own_icon](solutions/solution_07_30_own_icon.py) | Q/E and a one-cell brush; save, restart, load, and add a detail. |
 
 For exercises 26 and 27, create a folder named `saves` in the working directory
 before pressing S. From a terminal opened in this module's folder:
 
 ```bash
 mkdir saves
-python solutions/exercise_27_missing_file.py
+python solutions/solution_07_27_missing_file.py
 ```
 
 Keep the same working directory when restarting. Exercise 26 intentionally
@@ -91,3 +91,12 @@ its own 6 by 10 save; do not load a 16 by 16 save into it.
 ## Previous module
 
 [Module 6 - Slices and masks](../module_06/)
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

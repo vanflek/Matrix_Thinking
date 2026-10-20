@@ -1,0 +1,46 @@
+--- iteration_09_12_spawn_function.py
++++ iteration_09_13_coordinates_to_field.py
+@@ -1,26 +1,24 @@
+-# Return coordinates or None
++# Use paired coordinate indices
+ import numpy as np
+ 
++snake = np.array([
++    [5, 2],
++    [5, 3],
++    [4, 3],
++    [3, 3],
++    [3, 4],
++], dtype=np.int16)
+ 
+-def spawn_apple(matrix):
+-    free_cells = np.argwhere(matrix == 0)
++matrix = np.zeros((8, 8), dtype=np.uint8)
+ 
+-    if len(free_cells) == 0:
+-        return None
++snake_rows = snake[:, 0]
++snake_cols = snake[:, 1]
+ 
+-    index = np.random.randint(len(free_cells))
+-    return free_cells[index]
++matrix[snake_rows, snake_cols] = 5
+ 
++print("Rows:", snake_rows)
++print("Columns:", snake_cols)
++print(matrix)
+ 
+-matrix = np.array([
+-    [5, 5, 5, 5],
+-    [5, 5, 5, 0],
+-    [5, 5, 5, 5],
+-], dtype=np.uint8)
+-
+-apple = spawn_apple(matrix)
+-
+-if apple is None:
+-    print("You win!")
+-else:
+-    print("Apple:", apple)
++free_cells = np.argwhere(matrix == 0)
++print("Free cells:", len(free_cells))

@@ -1,0 +1,18 @@
+--- iteration_08_03_return_value.py
++++ iteration_08_04_none.py
+@@ -1,8 +1,8 @@
+-# Use a returned value outside the function.
+-def calculate_pixel_size(cell_count, cell_size):
+-    pixel_size = cell_count * cell_size
+-    return pixel_size
++# An action and a returned value are different things.
++def show_rules(target_count):
++    print(f"Collect {target_count} targets.")
++    print("Use the arrow keys to change direction.")
++    print("Visit every target to win.")
+ 
+-width = calculate_pixel_size(16, 40)
+-height = calculate_pixel_size(12, 40)
+-print(width, height)
++result = show_rules(3)
++print(result)

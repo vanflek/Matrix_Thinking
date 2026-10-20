@@ -1,0 +1,51 @@
+--- iteration_11_03_editor_state.py
++++ iteration_11_04_channel_controls.py
+@@ -29,6 +29,24 @@
+                  (0, 0, width, height), 1)
+ 
+     return grid_surface
++
++
++def handle_controls(events, state):
++    for event in events:
++        if event.type == pg.KEYDOWN:
++            if event.key == pg.K_r:
++                state["channel"] = 0
++            elif event.key == pg.K_g:
++                state["channel"] = 1
++            elif event.key == pg.K_b:
++                state["channel"] = 2
++
++        elif event.type == pg.MOUSEWHEEL:
++            channel = state["channel"]
++            value = int(state["brush_rgb"][channel])
++            value = value + event.y * 5
++            value = max(0, min(255, value))
++            state["brush_rgb"][channel] = value
+ 
+ 
+ pg.init()
+@@ -65,12 +83,22 @@
+ running = True
+ 
+ while running:
+-    for event in pg.event.get():
++    events = pg.event.get()
++
++    for event in events:
+         if event.type == pg.QUIT:
+             running = False
+         elif event.type == pg.KEYDOWN:
+             if event.key == pg.K_ESCAPE:
+                 running = False
++
++    handle_controls(events, state)
++
++    r, g, b = state["brush_rgb"]
++    channel = state["channel"]
++    pg.display.set_caption(
++        f"Module 11 | R={r} G={g} B={b} | channel={channel}"
++    )
+ 
+     frame_surface = matrix_to_surface(matrix, CELL_SIZE)
+     screen.blit(frame_surface, (0, 0))

@@ -1,0 +1,49 @@
+--- iteration_09_11_empty_field.py
++++ iteration_09_12_spawn_function.py
+@@ -1,27 +1,26 @@
+-# Handle a field with no free cells
++# Return coordinates or None
+ import numpy as np
+ 
++
++def spawn_apple(matrix):
++    free_cells = np.argwhere(matrix == 0)
++
++    if len(free_cells) == 0:
++        return None
++
++    index = np.random.randint(len(free_cells))
++    return free_cells[index]
++
++
+ matrix = np.array([
+-    [0, 0, 0, 0],
+-    [0, 5, 5, 0],
+-    [0, 0, 5, 0],
++    [5, 5, 5, 5],
++    [5, 5, 5, 0],
++    [5, 5, 5, 5],
+ ], dtype=np.uint8)
+ 
+-matrix[:] = 5
+-free_mask = matrix == 0
++apple = spawn_apple(matrix)
+ 
+-print(free_mask)
+-
+-free_cells = np.argwhere(free_mask)
+-
+-print(free_cells)
+-print("Count:", len(free_cells))
+-
+-if len(free_cells) > 0:
+-    index = np.random.randint(len(free_cells))
+-    apple = free_cells[index]
+-
+-    print("Index:", index)
++if apple is None:
++    print("You win!")
++else:
+     print("Apple:", apple)
+-else:
+-    print("You win!")

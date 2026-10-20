@@ -1,23 +1,28 @@
-# Optional patches for module 22
+# Sequential patches
 
-Every patch transforms a scratch file named `main.py`. Keep `maze.npy` in the
-scratch working directory for window programs and the solution 30 benchmark.
+Each patch compares two consecutive runnable files in `../steps/`.
+The headers name the source and destination files. Use the complete files first;
+patches are supplied to inspect the changes, not to concatenate programs.
 
-- `patch_22_01_to_02.patch` through `patch_22_22_to_23.patch`: consecutive steps.
-- `patch_22_final_to_solution_26.patch` through `patch_22_final_to_solution_30.patch`:
-  independent branches from the unmodified final program, not from each other.
-
-The manifest lists each source, target, and target SHA-256. Copy the source file
-to `main.py`, run `git apply --check path/to/patch.patch`, then
-`git apply path/to/patch.patch`. The result must equal the listed target file.
-No Git repository is needed for applying these file patches. Git itself is an
-optional development tool, not a runtime dependency of the examples.
-
-Solutions 26–28 open a window. Solutions 29–30 are console experiments; their
-patches intentionally change the entry point and may remove unrelated classes.
-You can always run the complete target file instead of applying a patch.
-
-Git on Windows may convert LF line endings to CRLF according to local settings.
-This does not change the Python program. To preserve exact release bytes and
-compare the manifest hashes, use `git -c core.autocrlf=false apply` for that
-command only; no global Git setting needs to change.
+- [iteration_22_01_to_02.patch](iteration_22_01_to_02.patch)
+- [iteration_22_02_to_03.patch](iteration_22_02_to_03.patch)
+- [iteration_22_03_to_04.patch](iteration_22_03_to_04.patch)
+- [iteration_22_04_to_05.patch](iteration_22_04_to_05.patch)
+- [iteration_22_05_to_06.patch](iteration_22_05_to_06.patch)
+- [iteration_22_06_to_07.patch](iteration_22_06_to_07.patch)
+- [iteration_22_07_to_08.patch](iteration_22_07_to_08.patch)
+- [iteration_22_08_to_09.patch](iteration_22_08_to_09.patch)
+- [iteration_22_09_to_10.patch](iteration_22_09_to_10.patch)
+- [iteration_22_10_to_11.patch](iteration_22_10_to_11.patch)
+- [iteration_22_11_to_12.patch](iteration_22_11_to_12.patch)
+- [iteration_22_12_to_13.patch](iteration_22_12_to_13.patch)
+- [iteration_22_13_to_14.patch](iteration_22_13_to_14.patch)
+- [iteration_22_14_to_15.patch](iteration_22_14_to_15.patch)
+- [iteration_22_15_to_16.patch](iteration_22_15_to_16.patch)
+- [iteration_22_16_to_17.patch](iteration_22_16_to_17.patch)
+- [iteration_22_17_to_18.patch](iteration_22_17_to_18.patch)
+- [iteration_22_18_to_19.patch](iteration_22_18_to_19.patch)
+- [iteration_22_19_to_20.patch](iteration_22_19_to_20.patch)
+- [iteration_22_20_to_21.patch](iteration_22_20_to_21.patch)
+- [iteration_22_21_to_22.patch](iteration_22_21_to_22.patch)
+- [iteration_22_22_to_23.patch](iteration_22_22_to_23.patch)

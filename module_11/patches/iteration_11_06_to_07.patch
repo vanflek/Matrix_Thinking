@@ -1,0 +1,18 @@
+--- iteration_11_06_click_paint.py
++++ iteration_11_07_drag_paint.py
+@@ -56,6 +56,15 @@
+                 col = x_px // cell_size
+                 row = y_px // cell_size
+                 state["paint_cells"].append((row, col))
++
++
++    left_down = pg.mouse.get_pressed()[0]
++
++    if left_down and pg.mouse.get_focused():
++        x_px, y_px = pg.mouse.get_pos()
++        col = x_px // cell_size
++        row = y_px // cell_size
++        state["paint_cells"].append((row, col))
+ 
+ 
+ def apply_actions(matrix, state):

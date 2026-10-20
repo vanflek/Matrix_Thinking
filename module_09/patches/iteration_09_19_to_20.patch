@@ -1,0 +1,95 @@
+--- iteration_09_19_respawn.py
++++ iteration_09_20_wrap.py
+@@ -1,77 +1,21 @@
+-# Grow and place the next apple
++# Check all four boundaries on a rectangular field
+ import numpy as np
+ 
+-def hits_body(new_head, snake, eating):
+-    if eating:
+-        body = snake
+-    else:
+-        body = snake[1:]
++matrix = np.zeros((4, 6), dtype=np.uint8)
++field_size = np.array(matrix.shape)
+ 
+-    matches = body == new_head
+-    same_cell = matches.all(axis=1)
++head = np.array([2, 5], dtype=np.int16)
++movement = np.array([0, 1], dtype=np.int16)
++print("Right:", (head + movement) % field_size)
+ 
+-    return same_cell.any()
++head = np.array([2, 0], dtype=np.int16)
++movement = np.array([0, -1], dtype=np.int16)
++print("Left:", (head + movement) % field_size)
+ 
+-def do_snake_step(state):
+-    snake = state["snake"]
++head = np.array([3, 4], dtype=np.int16)
++movement = np.array([1, 0], dtype=np.int16)
++print("Down:", (head + movement) % field_size)
+ 
+-    new_head = snake[-1] + state["vel"]
+-    eating = np.array_equal(new_head, state["apple"])
+-
+-    if hits_body(new_head, snake, eating):
+-        state["alive"] = False
+-        return
+-
+-    snake = np.vstack((snake, new_head))
+-
+-    if not eating:
+-        snake = snake[1:]
+-
+-    state["snake"] = snake
+-
+-    if eating:
+-        state["apple"] = None
+-
+-def fill_field(matrix, snake):
+-    matrix[:] = 0
+-    matrix[snake[:, 0], snake[:, 1]] = 5
+-
+-def spawn_apple(matrix):
+-    free_cells = np.argwhere(matrix == 0)
+-
+-    if len(free_cells) == 0:
+-        return None
+-
+-    index = np.random.randint(len(free_cells))
+-    return free_cells[index]
+-
+-matrix = np.zeros((2, 3), dtype=np.uint8)
+-
+-state = {
+-    "snake": np.array([
+-        [0, 0],
+-        [0, 1],
+-    ], dtype=np.int16),
+-    "vel": np.array([0, 1], dtype=np.int16),
+-    "apple": np.array([0, 2], dtype=np.int16),
+-    "alive": True,
+-    "won": False,
+-}
+-
+-do_snake_step(state)
+-
+-if state["alive"]:
+-    fill_field(matrix, state["snake"])
+-
+-    if state["apple"] is None:
+-        state["apple"] = spawn_apple(matrix)
+-        state["won"] = state["apple"] is None
+-
+-    if state["apple"] is not None:
+-        row, col = state["apple"]
+-        matrix[row, col] = 3
+-
+-print("Alive:", state["alive"])
+-print("Won:", state["won"])
+-print("Apple:", state["apple"])
+-print(matrix)
++head = np.array([0, 4], dtype=np.int16)
++movement = np.array([-1, 0], dtype=np.int16)
++print("Up:", (head + movement) % field_size)

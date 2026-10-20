@@ -1,0 +1,51 @@
+--- iteration_16_03_bullet_collision.py
++++ iteration_16_04_player_collision.py
+@@ -71,15 +71,30 @@
+ 
+ class GameLogic:
+     def step(self, model, actions):
++        if model.game_over:
++            return
++
+         self.apply_action(model, actions)
++        self.check_game_over(model)
++        if model.game_over:
++            return
+         self.resolve_bullet_collision(model)
++
+         self.move_bullet(model)
+         self.resolve_bullet_collision(model)
+         self.clear_bullet_at_top(model)
++
+         self.move_enemies(model)
++        self.check_game_over(model)
+         if model.game_over:
+             return
+         self.resolve_bullet_collision(model)
++
++    def check_game_over(self, model):
++        enemies = model.layers[ENEMIES_LAYER]
++        player = model.layers[PLAYER_LAYER]
++        if np.any(enemies * player) or np.any(enemies[-1]):
++            model.game_over = True
+ 
+     def apply_action(self, model, actions):
+         player = model.layers[PLAYER_LAYER]
+@@ -148,8 +163,6 @@
+                 enemies = self.shift_no_wrap(enemies, "LEFT")
+ 
+         model.layers[ENEMIES_LAYER] = enemies
+-        if np.any(enemies[-1]):
+-            model.game_over = True
+ 
+ 
+ class GameView:
+@@ -190,7 +203,7 @@
+         self.controller = InputController()
+         self.logic = GameLogic()
+         self.screen = pg.display.set_mode((COLS * CELL_SIZE, ROWS * CELL_SIZE))
+-        pg.display.set_caption("Matrix Invaders - Bullet Hits")
++        pg.display.set_caption("Matrix Invaders - Player Collision")
+         self.view = GameView(self.screen)
+         self.clock = pg.time.Clock()
+         self.running = True

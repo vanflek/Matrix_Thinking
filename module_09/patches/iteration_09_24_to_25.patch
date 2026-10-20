@@ -1,0 +1,67 @@
+--- iteration_09_24_turn_permission.py
++++ iteration_09_25_arrow_events.py
+@@ -1,6 +1,7 @@
+-# Allow one turn per completed step
++# Translate two key events into a single permitted turn
+ import numpy as np
+ 
++import pygame as pg
+ 
+ def change_direction(state, new_direction):
+     if not state["can_turn"]:
+@@ -15,30 +16,35 @@
+     state["vel"] = new_direction
+     state["can_turn"] = False
+ 
++def handle_input(events, state):
++    for event in events:
++        if event.type == pg.KEYDOWN:
++            new_direction = None
++
++            if event.key == pg.K_UP:
++                new_direction = np.array([-1, 0], dtype=np.int16)
++            elif event.key == pg.K_DOWN:
++                new_direction = np.array([1, 0], dtype=np.int16)
++            elif event.key == pg.K_LEFT:
++                new_direction = np.array([0, -1], dtype=np.int16)
++            elif event.key == pg.K_RIGHT:
++                new_direction = np.array([0, 1], dtype=np.int16)
++
++            if new_direction is not None:
++                change_direction(state, new_direction)
++
+ 
+ state = {
+     "vel": np.array([0, 1], dtype=np.int16),
+     "can_turn": True,
+ }
+ 
+-change_direction(
+-    state,
+-    np.array([-1, 0], dtype=np.int16),
+-)
+-print("After Up:", state["vel"])
++events = [
++    pg.event.Event(pg.KEYDOWN, key=pg.K_UP),
++    pg.event.Event(pg.KEYDOWN, key=pg.K_LEFT),
++]
++
++handle_input(events, state)
++
++print("Direction:", state["vel"])
+ print("Can turn:", state["can_turn"])
+-
+-change_direction(
+-    state,
+-    np.array([0, -1], dtype=np.int16),
+-)
+-print("After Left:", state["vel"])
+-
+-# Simulate restoring permission after a completed step.
+-state["can_turn"] = True
+-
+-change_direction(
+-    state,
+-    np.array([0, -1], dtype=np.int16),
+-)
+-print("After step and Left:", state["vel"])

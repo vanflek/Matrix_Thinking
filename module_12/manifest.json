@@ -241,23 +241,23 @@
       "purpose": "Standalone console example from the manuscript"
     },
     {
-      "file": "solutions/exercise_26.py",
+      "file": "solutions/solution_12_26_exercise.py",
       "purpose": "Build a four-symbol palette"
     },
     {
-      "file": "solutions/exercise_27.py",
+      "file": "solutions/solution_12_27_exercise.py",
       "purpose": "Compare three algorithms"
     },
     {
-      "file": "solutions/exercise_28.py",
+      "file": "solutions/solution_12_28_exercise.py",
       "purpose": "Show the effect of averaging RGB"
     },
     {
-      "file": "solutions/exercise_29.py",
+      "file": "solutions/solution_12_29_exercise.py",
       "purpose": "Save the current rebuilt surface"
     },
     {
-      "file": "solutions/exercise_30.py",
+      "file": "solutions/solution_12_30_exercise.py",
       "purpose": "Measure detail levels for the selected image"
     }
   ],

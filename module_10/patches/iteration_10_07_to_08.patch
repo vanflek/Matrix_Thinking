@@ -1,0 +1,53 @@
+--- iteration_10_07_mouse_edit.py
++++ iteration_10_08_run_pause.py
+@@ -78,7 +78,7 @@
+     COLS * CELL_SIZE,
+     ROWS * CELL_SIZE,
+ ))
+-pg.display.set_caption("Game of Life | Space: next generation")
++pg.display.set_caption("Game of Life | Space: run/pause | N: step")
+ 
+ grid_surface = build_grid_surface(
+     ROWS, COLS, CELL_SIZE, GRID_COLOR
+@@ -86,6 +86,10 @@
+ 
+ clock = pg.time.Clock()
+ running = True
++
++simulation_running = False
++FRAMES_PER_GENERATION = 6
++generation_frames = 0
+ 
+ while running:
+     for event in pg.event.get():
+@@ -97,16 +101,28 @@
+                 running = False
+ 
+             elif event.key == pg.K_SPACE:
+-                matrix = life_calculation(matrix)
++                simulation_running = not simulation_running
++                generation_frames = 0
++
++            elif event.key == pg.K_n:
++                if not simulation_running:
++                    matrix = life_calculation(matrix)
+ 
+         elif event.type == pg.MOUSEBUTTONDOWN:
+-            if event.button == 1:
++            if event.button == 1 and not simulation_running:
+                 x_px, y_px = event.pos
+                 x = x_px // CELL_SIZE
+                 y = y_px // CELL_SIZE
+ 
+                 if 1 <= y < ROWS - 1 and 1 <= x < COLS - 1:
+                     matrix[y, x] = 1 - matrix[y, x]
++
++    if simulation_running:
++        generation_frames += 1
++
++        if generation_frames >= FRAMES_PER_GENERATION:
++            matrix = life_calculation(matrix)
++            generation_frames = 0
+ 
+     surface = matrix_to_surface(matrix, COLORS, CELL_SIZE)
+     screen.blit(surface, (0, 0))

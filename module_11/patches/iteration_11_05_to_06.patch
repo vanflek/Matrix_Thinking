@@ -1,0 +1,53 @@
+--- iteration_11_05_brush_frame.py
++++ iteration_11_06_click_paint.py
+@@ -31,7 +31,9 @@
+     return grid_surface
+ 
+ 
+-def handle_controls(events, state):
++def handle_controls(events, state, cell_size):
++    state["paint_cells"] = []
++
+     for event in events:
+         if event.type == pg.KEYDOWN:
+             if event.key == pg.K_r:
+@@ -47,6 +49,21 @@
+             value = value + event.y * 5
+             value = max(0, min(255, value))
+             state["brush_rgb"][channel] = value
++
++        elif event.type == pg.MOUSEBUTTONDOWN:
++            if event.button == 1:
++                x_px, y_px = event.pos
++                col = x_px // cell_size
++                row = y_px // cell_size
++                state["paint_cells"].append((row, col))
++
++
++def apply_actions(matrix, state):
++    rows, cols = matrix.shape[:2]
++
++    for row, col in state["paint_cells"]:
++        if 0 <= row < rows and 0 <= col < cols:
++            matrix[row, col] = state["brush_rgb"]
+ 
+ 
+ pg.init()
+@@ -77,6 +94,7 @@
+     "inside": False,
+     "brush_rgb": np.array([0, 0, 0], dtype=np.uint8),
+     "channel": 0,
++    "paint_cells": [],
+ }
+ 
+ running = True
+@@ -91,7 +109,8 @@
+             if event.key == pg.K_ESCAPE:
+                 running = False
+ 
+-    handle_controls(events, state)
++    handle_controls(events, state, CELL_SIZE)
++    apply_actions(matrix, state)
+ 
+     r, g, b = state["brush_rgb"]
+     channel = state["channel"]

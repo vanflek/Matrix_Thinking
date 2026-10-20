@@ -1,0 +1,44 @@
+--- iteration_11_08_erase.py
++++ iteration_11_09_pipette.py
+@@ -33,6 +33,7 @@
+ 
+ def handle_controls(events, state, cell_size):
+     state["paint_cells"] = []
++    state["pipette_cells"] = []
+     state["erase"] = (pg.key.get_mods() & pg.KMOD_SHIFT) != 0
+ 
+     for event in events:
+@@ -58,6 +59,12 @@
+                 row = y_px // cell_size
+                 state["paint_cells"].append((row, col))
+ 
++            elif event.button == 3:
++                x_px, y_px = event.pos
++                col = x_px // cell_size
++                row = y_px // cell_size
++                state["pipette_cells"].append((row, col))
++
+ 
+     left_down = pg.mouse.get_pressed()[0]
+ 
+@@ -70,6 +77,12 @@
+ 
+ def apply_actions(matrix, state, bg_rgb):
+     rows, cols = matrix.shape[:2]
++
++    if state["pipette_cells"]:
++        for row, col in state["pipette_cells"]:
++            if 0 <= row < rows and 0 <= col < cols:
++                state["brush_rgb"][:] = matrix[row, col]
++        return
+ 
+     if state["erase"]:
+         color = bg_rgb
+@@ -110,6 +123,7 @@
+     "brush_rgb": np.array([0, 0, 0], dtype=np.uint8),
+     "channel": 0,
+     "paint_cells": [],
++    "pipette_cells": [],
+     "erase": False,
+ }
+ 

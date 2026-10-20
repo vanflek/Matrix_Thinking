@@ -1,0 +1,23 @@
+--- iteration_10_08_run_pause.py
++++ iteration_10_09_clear.py
+@@ -78,7 +78,7 @@
+     COLS * CELL_SIZE,
+     ROWS * CELL_SIZE,
+ ))
+-pg.display.set_caption("Game of Life | Space: run/pause | N: step")
++pg.display.set_caption("Game of Life | Space: run/pause | N: step | C: clear")
+ 
+ grid_surface = build_grid_surface(
+     ROWS, COLS, CELL_SIZE, GRID_COLOR
+@@ -108,6 +108,11 @@
+                 if not simulation_running:
+                     matrix = life_calculation(matrix)
+ 
++            elif event.key == pg.K_c:
++                matrix.fill(0)
++                simulation_running = False
++                generation_frames = 0
++
+         elif event.type == pg.MOUSEBUTTONDOWN:
+             if event.button == 1 and not simulation_running:
+                 x_px, y_px = event.pos

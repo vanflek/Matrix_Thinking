@@ -1,0 +1,37 @@
+--- iteration_07_06_pixel_art_editor_shift.py
++++ iteration_07_07_pixel_art_editor_info.py
+@@ -40,6 +40,9 @@
+ brush = 1
+ 
+ save_png = False
++
++show_info = False
++font = pg.font.SysFont("Arial", 20)
+ 
+ running = True
+ while running:
+@@ -91,6 +94,9 @@
+             elif event.key == pg.K_p:
+                 save_png = True
+ 
++            elif event.key == pg.K_i:
++                show_info = not show_info
++
+     # Draw each cell using its color index and the palette.
+     for row in range(ROWS):
+         for col in range(COLS):
+@@ -121,6 +127,14 @@
+         3
+     )
+ 
++    if show_info:
++        row = int(cursor[0])
++        col = int(cursor[1])
++        cell_index = int(matrix[row, col])
++        text = f"cursor=({row},{col})  cell={cell_index}  current={current_color}"
++        label = font.render(text, True, (20, 20, 20), (245, 245, 245))
++        screen.blit(label, (10, 10))
++
+     pg.display.flip()
+     clock.tick(FPS)
+ 

@@ -1,0 +1,38 @@
+--- iteration_17_02_tetromino.py
++++ iteration_17_03_first_figure.py
+@@ -82,8 +82,11 @@
+ 
+ class GameModel:
+     def __init__(self, rows=ROWS, cols=COLS):
+-        # Store fixed blocks and the active figure separately.
+         self.glass = np.zeros((2, rows, cols), dtype=np.uint8)
++
++        matrix = TETROMINOES["T"]
++        x = (cols - matrix.shape[1]) // 2
++        self.current_tetromino = Tetromino(matrix, x=x, y=0)
+ 
+ 
+ class InputController:
+@@ -101,9 +104,20 @@
+ 
+ 
+ class GameLogic:
++    def update_active_layer(self, model):
++        piece = model.current_tetromino
++        matrix = piece.get_matrix()
++        height, width = matrix.shape
++
++        active_layer = model.glass[ACTIVE_LAYER]
++        active_layer.fill(0)
++        active_layer[
++            piece.y:piece.y + height,
++            piece.x:piece.x + width,
++        ] = matrix
++
+     def step(self, model, actions):
+-        # Game rules will be added in the following steps.
+-        pass
++        self.update_active_layer(model)
+ 
+ 
+ class GameView:

@@ -1,0 +1,37 @@
+--- iteration_21_04_movement.py
++++ iteration_21_05_field_bounds.py
+@@ -213,6 +213,34 @@
+             player.dx += move_x * distance
+             player.dy += move_y * distance
+ 
++        # Check the bounds every frame, including rotation without movement.
++        self.keep_player_inside_field()
++
++    def keep_player_inside_field(self):
++        player = self.model.player
++
++        # Scale the local coordinates before measuring the frame's radius.
++        scaled_x = player.vertices[:, 0] * player.sx
++        scaled_y = player.vertices[:, 1] * player.sy
++        distances = np.hypot(scaled_x, scaled_y)
++        radius = np.max(distances)
++
++        # Reserve extra room for the visible thickness of the lines.
++        margin = radius + player.line_width
++        half_width = WIDTH / 2
++        half_height = HEIGHT / 2
++
++        player.dx = np.clip(
++            player.dx,
++            -half_width + margin,
++            half_width - margin,
++        )
++        player.dy = np.clip(
++            player.dy,
++            -half_height + margin,
++            half_height - margin,
++        )
++
+ 
+ class GameView:
+     def __init__(self, screen, model):

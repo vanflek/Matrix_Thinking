@@ -157,3 +157,14 @@ contact and near misses, multiple projectiles and enemies, scoring, update order
 frozen outcomes, diagnostics, restart references, and oscillation checkpoints.
 These are automated startup, rendering, and behavior checks, not a claim of a
 complete manual playthrough. The chapter's final listing matches the final file.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.
+
+`bonus/` contains the optional three-level extension.

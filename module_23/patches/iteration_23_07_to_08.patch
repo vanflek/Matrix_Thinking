@@ -1,0 +1,31 @@
+--- iteration_23_07_camera_roll.py
++++ iteration_23_08_camera_local_movement.py
+@@ -108,17 +108,23 @@
+ 
+ 
+     def camera_move(self, camera, actions, dt):
+-        movement = np.array([
++        movement_camera = np.array([
+             actions["right"] - actions["left"],
+             actions["up"] - actions["down"],
+             actions["forward"] - actions["backward"],
+             0,
+         ], dtype=float)
+-        length = np.linalg.norm(movement)
++        length = np.linalg.norm(movement_camera)
+         if length > 0:
+-            movement = movement / length * camera.speed * dt
+-
+-        translation = self.get_translation_matrix(movement[:3])
++            movement_camera = (
++                movement_camera / length * camera.speed * dt
++            )
++
++        rotation = self.get_rotation_matrix(
++            camera.pitch, camera.yaw, camera.roll
++        )
++        movement_world = movement_camera @ rotation.T
++        translation = self.get_translation_matrix(movement_world[:3])
+         camera.position = camera.position @ translation
+ 
+     def get_translation_matrix(self, position):

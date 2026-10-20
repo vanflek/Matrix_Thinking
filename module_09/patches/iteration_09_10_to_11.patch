@@ -1,0 +1,16 @@
+--- iteration_09_10_random_apple.py
++++ iteration_09_11_empty_field.py
+@@ -1,4 +1,4 @@
+-# Choose a free cell after checking the result
++# Handle a field with no free cells
+ import numpy as np
+ 
+ matrix = np.array([
+@@ -7,6 +7,7 @@
+     [0, 0, 5, 0],
+ ], dtype=np.uint8)
+ 
++matrix[:] = 5
+ free_mask = matrix == 0
+ 
+ print(free_mask)

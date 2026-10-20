@@ -8,32 +8,32 @@ Tested with Python 3.13.7, NumPy 2.5.3 and Pygame 2.6.1.
 
 ```sh
 python -m pip install -r requirements.txt
-python rgb_editor.py
+python final/rgb_editor.py
 ```
 
 Run each teaching file separately. Every file is self-contained and does not import another teaching script. Console examples do not open a window.
 
 ## Learning steps
 
-- `iterations/s00_rgb_canvas.py`: Display the RGB canvas and grid.
-- `iterations/s01_cursor_frame.py`: Locate a cell and draw its cursor frame.
-- `iterations/s02_editor_state.py`: Store tool settings in a dictionary.
-- `iterations/s03_channel_controls.py`: Select and adjust a color component.
-- `iterations/s04_brush_frame.py`: Show the brush color in the cursor frame.
-- `iterations/s05_click_paint.py`: Paint one cell per click.
-- `iterations/s06_drag_paint.py`: Paint while holding the mouse button.
-- `iterations/s07_erase.py`: Erase with Shift.
-- `iterations/s08_pipette.py`: Read a cell color into the brush.
-- `iterations/s09_view_and_copy.py`: Compare a view, a copy and a separate brush (console).
-- `iterations/s10_clear.py`: Clear the entire canvas.
-- `iterations/s11_save_load_npy.py`: Save and validate RGB arrays.
-- `iterations/s12_export_png.py`: Export a clean PNG image.
+- `steps/iteration_11_01_rgb_canvas.py`: Display the RGB canvas and grid.
+- `steps/iteration_11_02_cursor_frame.py`: Locate a cell and draw its cursor frame.
+- `steps/iteration_11_03_editor_state.py`: Store tool settings in a dictionary.
+- `steps/iteration_11_04_channel_controls.py`: Select and adjust a color component.
+- `steps/iteration_11_05_brush_frame.py`: Show the brush color in the cursor frame.
+- `steps/iteration_11_06_click_paint.py`: Paint one cell per click.
+- `steps/iteration_11_07_drag_paint.py`: Paint while holding the mouse button.
+- `steps/iteration_11_08_erase.py`: Erase with Shift.
+- `steps/iteration_11_09_pipette.py`: Read a cell color into the brush.
+- `steps/iteration_11_10_view_and_copy.py`: Compare a view, a copy and a separate brush (console).
+- `steps/iteration_11_11_clear.py`: Clear the entire canvas.
+- `steps/iteration_11_12_save_load_npy.py`: Save and validate RGB arrays.
+- `steps/iteration_11_13_export_png.py`: Export a clean PNG image.
 
 ## Small console examples
 
-- `examples/rgb_axes.py`: select a scalar, RGB vector and channel matrix.
-- `examples/canvas_fill.py`: create and fill a canvas using broadcasting.
-- `examples/rgb_surface.py`: convert an array to a Pygame surface and check its dimensions.
+- `examples/example_11_02_rgb_axes.py`: select a scalar, RGB vector and channel matrix.
+- `examples/example_11_01_canvas_fill.py`: create and fill a canvas using broadcasting.
+- `examples/example_11_03_rgb_surface.py`: convert an array to a Pygame surface and check its dimensions.
 
 ## Editor controls
 
@@ -58,12 +58,21 @@ Files are saved in the current working directory: `pixel_art_rgb.npy` contains t
 
 Run each solution independently; solutions do not depend on the previous exercise.
 
-- `solutions/exercise_26.py`: four colored quadrants, 8 rows and 12 columns.
-- `solutions/exercise_27.py`: a 3 x 3 brush and eraser clipped at the canvas boundaries.
-- `solutions/exercise_28.py`: E exports only the red channel to `red_channel.png`; P keeps the normal export.
-- `solutions/exercise_29.py`: U restores the canvas from before its last clear, once. A new clear replaces the backup.
-- `solutions/exercise_30.py`: O exports one pixel per cell to `pixel_art_cells.png`; P exports the enlarged image.
+- `solutions/solution_11_26_exercise.py`: four colored quadrants, 8 rows and 12 columns.
+- `solutions/solution_11_27_exercise.py`: a 3 x 3 brush and eraser clipped at the canvas boundaries.
+- `solutions/solution_11_28_exercise.py`: E exports only the red channel to `red_channel.png`; P keeps the normal export.
+- `solutions/solution_11_29_exercise.py`: U restores the canvas from before its last clear, once. A new clear replaces the backup.
+- `solutions/solution_11_30_exercise.py`: O exports one pixel per cell to `pixel_art_cells.png`; P exports the enlarged image.
 
 ## Illustrations
 
 The `illustrations` directory contains diagrams of RGB axes, shared and copied data, the frame/export pipeline, and the five practical tasks. All labels are in English.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

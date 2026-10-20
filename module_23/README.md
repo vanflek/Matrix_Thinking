@@ -122,3 +122,14 @@ step files. Patches are optional; the complete files remain the primary route.
 The Cobra Mk III vertices and edges come from the BBC Micro Elite ship blueprint:
 [annotated source](https://elite.bbcelite.com/disc/ship_blueprints_c/variable/ship_cobra_mk_3.html).
 The chapter explains which parts of Elite's original rendering are simplified.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.
+
+`solutions/wireframe_scene.py` is the shared implementation imported by the solution files; keep it beside them.

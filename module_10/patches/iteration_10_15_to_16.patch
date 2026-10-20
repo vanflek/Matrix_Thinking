@@ -1,0 +1,30 @@
+--- iteration_10_15_eight_shift_sum.py
++++ iteration_10_16_survive_born_masks.py
+@@ -24,3 +24,27 @@
+ )
+ 
+ print(neighbors)
++
++
++alive = matrix == 1
++
++survive = alive & ((neighbors == 2) | (neighbors == 3))
++born = (~alive) & (neighbors == 3)
++
++print("Survive:")
++print(survive.astype(np.uint8))
++
++print("Born:")
++print(born.astype(np.uint8))
++
++
++new_matrix = np.zeros_like(matrix)
++new_matrix[survive | born] = 1
++
++
++new_matrix[0, :] = 0
++new_matrix[-1, :] = 0
++new_matrix[:, 0] = 0
++new_matrix[:, -1] = 0
++
++print(new_matrix)

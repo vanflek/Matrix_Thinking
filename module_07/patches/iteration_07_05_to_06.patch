@@ -1,0 +1,18 @@
+--- iteration_07_05_pixel_art_editor_brush.py
++++ iteration_07_06_pixel_art_editor_shift.py
+@@ -62,9 +62,13 @@
+             elif event.key == pg.K_DOWN:
+                 cursor[0] = (cursor[0] + 1) % ROWS
+ 
+-            # Select the next color, then paint the brush area.
++            # Select a color in either direction, then paint the brush area.
+             elif event.key == pg.K_SPACE:
+-                current_color = (current_color + 1) % len(COLORS)
++                mods = event.mod
++                if mods & pg.KMOD_SHIFT:
++                    current_color = (current_color - 1) % len(COLORS)
++                else:
++                    current_color = (current_color + 1) % len(COLORS)
+                 row = int(cursor[0])
+                 col = int(cursor[1])
+ 

@@ -1,0 +1,26 @@
+--- iteration_22_12_stripe_centers.py
++++ iteration_22_13_floor_ceiling.py
+@@ -15,7 +15,8 @@
+ DIRECTION_COLOR = (42, 117, 170)
+ RAY_COLOR = (0, 145, 155)
+ FIRST_HIT_COLOR = (20, 175, 75)
+-VIEW_BACKGROUND_COLOR = (18, 24, 32)
++CEILING_COLOR = (45, 50, 65)
++FLOOR_COLOR = (70, 60, 50)
+ BASE_WALL_COLOR = np.array([220, 180, 120], dtype=float)
+ SHADE_DISTANCE = 300.0
+ 
+@@ -241,7 +242,12 @@
+ 
+     def draw_first_person(self, wall_heights, end_distance):
+         width, height = self.screen.get_size()
+-        self.screen.fill(VIEW_BACKGROUND_COLOR)
++        horizon = height // 2
++        self.screen.fill(CEILING_COLOR)
++        pg.draw.rect(
++            self.screen, FLOOR_COLOR,
++            (0, horizon, width, height - horizon),
++        )
+ 
+         brightness = 1 / (1 + end_distance / SHADE_DISTANCE)
+         wall_colors = (

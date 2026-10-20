@@ -1,0 +1,56 @@
+--- iteration_08_23_compare_rgb_methods.py
++++ iteration_08_24_surface_function.py
+@@ -1,16 +1,44 @@
+-# A loop and integer indexing produce the same color data.
++# Replace the transformation sequence with one function call.
+ import numpy as np
++import pygame as pg
+ 
+ COLORS = np.array([
+     [245, 245, 245], [0, 0, 0], [255, 255, 255],
+     [255, 0, 0], [0, 255, 0], [0, 0, 255],
+ ], dtype=np.uint8)
++def matrix_to_surface(matrix, palette, cell_size):
++    rgb_small = palette[matrix]
++
++    rgb_rows = np.repeat(rgb_small, cell_size, axis=0)
++    rgb_big = np.repeat(rgb_rows, cell_size, axis=1)
++
++    rgb_for_pygame = np.swapaxes(rgb_big, 0, 1)
++    image = pg.surfarray.make_surface(rgb_for_pygame)
++
++    return image
++
+ matrix = np.array([[0, 3, 0], [5, 0, 3]], dtype=np.uint8)
+-rows, cols = matrix.shape
+-rgb_loop = np.zeros((rows, cols, 3), dtype=np.uint8)
+-for row in range(rows):
+-    for col in range(cols):
+-        rgb_loop[row, col] = COLORS[matrix[row, col]]
+-rgb_array = COLORS[matrix]
+-print(rgb_loop)
+-print(rgb_array)
++CELL_SIZE = 40
++pg.init()
++field_surface = matrix_to_surface(matrix, COLORS, CELL_SIZE)
++print(field_surface.get_size())
++
++screen = pg.display.set_mode(field_surface.get_size())
++pg.display.set_caption("Collector - step preview")
++clock = pg.time.Clock()
++screen.blit(field_surface, (0, 0))
++pg.display.flip()
++
++# Keep the preview open until Esc or the window close button is pressed.
++running = True
++while running:
++    events = pg.event.get()
++    for event in events:
++        if event.type == pg.QUIT:
++            running = False
++        elif event.type == pg.KEYDOWN:
++            if event.key == pg.K_ESCAPE:
++                running = False
++    clock.tick(60)
++
++pg.quit()

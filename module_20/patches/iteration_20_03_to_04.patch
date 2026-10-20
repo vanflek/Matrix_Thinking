@@ -1,0 +1,47 @@
+--- iteration_20_03_homogeneous.py
++++ iteration_20_04_apply_matrix.py
+@@ -36,8 +36,11 @@
+         # Add the homogeneous coordinate to every vertex.
+         ones = np.ones(len(self.vertices))
+         self.vertices = np.column_stack((self.vertices, ones))
+-        print("Vertices:", self.vertices.shape)
+-        print("Nose:", self.vertices[1])
++
++        # Displacement from the original placement, in mathematical units.
++        self.dx = 100.0
++        self.dy = 50.0
++        self.transformed_vertices = self.vertices.copy()
+ 
+         # The first group closes the outline; the second adds inner lines.
+         self.edges = np.array([
+@@ -71,8 +74,17 @@
+         self.model = model
+ 
+     def update(self):
+-        # Transformations will be added in the following steps.
+-        pass
++        # Build a translation matrix for the current displacement.
++        transform_matrix = np.array([
++            [1, 0, self.model.dx],
++            [0, 1, self.model.dy],
++            [0, 0, 1],
++        ], dtype=float)
++
++        # Always transform the original vertices.
++        self.model.transformed_vertices = (
++            self.model.vertices @ transform_matrix.T
++        )
+ 
+ 
+ class GameView:
+@@ -116,7 +128,9 @@
+ 
+     def draw(self):
+         self.screen.blit(self.grid_surface, (0, 0))
+-        screen_vertices = self.points_to_screen(self.model.vertices)
++        screen_vertices = self.points_to_screen(
++            self.model.transformed_vertices
++        )
+         self.draw_wireframe(screen_vertices, self.model.edges)
+ 
+         # Mark vertices to make the structure of the wireframe visible.

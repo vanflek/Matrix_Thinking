@@ -1,0 +1,47 @@
+--- iteration_11_07_drag_paint.py
++++ iteration_11_08_erase.py
+@@ -33,6 +33,7 @@
+ 
+ def handle_controls(events, state, cell_size):
+     state["paint_cells"] = []
++    state["erase"] = (pg.key.get_mods() & pg.KMOD_SHIFT) != 0
+ 
+     for event in events:
+         if event.type == pg.KEYDOWN:
+@@ -67,12 +68,17 @@
+         state["paint_cells"].append((row, col))
+ 
+ 
+-def apply_actions(matrix, state):
++def apply_actions(matrix, state, bg_rgb):
+     rows, cols = matrix.shape[:2]
++
++    if state["erase"]:
++        color = bg_rgb
++    else:
++        color = state["brush_rgb"]
+ 
+     for row, col in state["paint_cells"]:
+         if 0 <= row < rows and 0 <= col < cols:
+-            matrix[row, col] = state["brush_rgb"]
++            matrix[row, col] = color
+ 
+ 
+ pg.init()
+@@ -104,6 +110,7 @@
+     "brush_rgb": np.array([0, 0, 0], dtype=np.uint8),
+     "channel": 0,
+     "paint_cells": [],
++    "erase": False,
+ }
+ 
+ running = True
+@@ -119,7 +126,7 @@
+                 running = False
+ 
+     handle_controls(events, state, CELL_SIZE)
+-    apply_actions(matrix, state)
++    apply_actions(matrix, state, BG_RGB)
+ 
+     r, g, b = state["brush_rgb"]
+     channel = state["channel"]

@@ -140,3 +140,12 @@ Replace the example path with your actual location; quote paths containing space
 Continue through `18_12_to_18_13.patch`. No Git repository initialization is needed.
 Git is needed only for these optional patches; complete iterations run without it.
 Each applied result is checked byte-for-byte against the next iteration.
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

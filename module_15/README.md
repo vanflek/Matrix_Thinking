@@ -80,3 +80,12 @@ game; do not combine changes from different exercises unless you intend to.
 - `solutions/solution_15_28_boundaries.py`
 - `solutions/solution_15_29_score.py`
 - `solutions/solution_15_30_field_size.py`
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

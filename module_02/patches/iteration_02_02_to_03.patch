@@ -1,0 +1,55 @@
+--- iteration_02_02_circles_range.py
++++ iteration_02_03_brick_wall.py
+@@ -6,26 +6,39 @@
+ width = 800
+ height = 600
+ screen = pg.display.set_mode((width, height))
+-pg.display.set_caption("Circles with a for loop")
++pg.display.set_caption("Brick wall")
+ 
+-# Set the background and circle color.
+-background = (0, 0, 0)
+-color = (255, 0, 0)
++# The background remains visible in the gaps.
++BACKGROUND = (200, 200, 200)
++BRICK = (180, 80, 50)
+ 
+-# All circles share a center and an outline width.
+-center = (width // 2, height // 2)
+-line_width = 10
++# Set the cell size and count the complete cells.
++BRICK_WIDTH = 100
++BRICK_HEIGHT = 40
++ROWS = height // BRICK_HEIGHT
++COLS = width // BRICK_WIDTH
+ 
+-# Prepare the background once, then draw all five circles.
+-screen.fill(background)
+-for radius in range(200, 0, -40):
+-    pg.draw.circle(screen, color, center, radius, line_width)
++screen.fill(BACKGROUND)
+ 
+-# Show the completed image after the loop finishes.
++# Draw every column in each row.
++for row in range(ROWS):
++    y = row * BRICK_HEIGHT
++    for col in range(COLS):
++        x = col * BRICK_WIDTH
++
++        # Leave a two-pixel inset on each side of the cell.
++        rect = (
++            x + 2,
++            y + 2,
++            BRICK_WIDTH - 4,
++            BRICK_HEIGHT - 4
++        )
++        pg.draw.rect(screen, BRICK, rect)
++
++# Show the completed wall.
+ pg.display.update()
+ 
+ # Process pending events once, then keep the image visible.
+ pg.event.pump()
+ pg.time.wait(5000)
+-
+ pg.quit()

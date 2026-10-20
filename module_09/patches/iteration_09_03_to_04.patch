@@ -1,0 +1,21 @@
+--- iteration_09_03_hstack.py
++++ iteration_09_04_append_row.py
+@@ -1,4 +1,4 @@
+-# Join matrices by columns
++# Append a coordinate vector as one row
+ import numpy as np
+ 
+ a = np.array([
+@@ -16,7 +16,9 @@
+ print("b:")
+ print(b)
+ 
+-horizontal = np.hstack((a, b))
++new_row = np.array([9, 10])
+ 
+-print(horizontal)
+-print("Shape:", horizontal.shape)
++result = np.vstack((a, new_row))
++
++print(result)
++print("Shape:", result.shape)

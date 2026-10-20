@@ -1,0 +1,84 @@
+--- iteration_18_09_levels.py
++++ iteration_18_10_enemy_layers.py
+@@ -32,15 +32,27 @@
+         self.start_position()
+ 
+     def start_position(self):
+-        # Rebuild the territory and both moving objects.
+-        self.layers = np.zeros((4, self.rows, self.cols), dtype=bool)
++        capacity = (self.rows - 2) * (self.cols - 2)
++        self.enemy_count = min(self.level, capacity)
++        self.layers = np.zeros(
++            (ENEMY_LAYER + self.enemy_count, self.rows, self.cols),
++            dtype=bool
++        )
++
+         territory = self.layers[TERRITORY_LAYER]
+         territory[0, :] = True
+         territory[-1, :] = True
+         territory[:, 0] = True
+         territory[:, -1] = True
+         self.layers[PLAYER_LAYER, 0, self.cols // 2] = True
+-        self.layers[ENEMY_LAYER, self.rows // 2, self.cols // 2] = True
++
++        free_cells = np.argwhere(~territory)
++        np.random.shuffle(free_cells)
++        for i in range(self.enemy_count):
++            row, col = free_cells[i]
++            self.layers[ENEMY_LAYER + i, row, col] = True
++
++        # This iteration still moves only the first enemy.
+         self.enemy_direction = np.array([1, 1], dtype=int)
+ 
+ 
+@@ -279,7 +291,8 @@
+         cells = np.zeros(layers.shape[1:], dtype=np.uint8)
+         cells[layers[TERRITORY_LAYER]] = 1
+         cells[layers[TRAIL_LAYER]] = 2
+-        cells[layers[ENEMY_LAYER]] = 4
++        for enemy in layers[ENEMY_LAYER:]:
++            cells[enemy] = 4
+         cells[layers[PLAYER_LAYER]] = 3
+ 
+         pixels = COLORS[cells]
+@@ -330,31 +343,14 @@
+ 
+ app = GameApp()
+ 
+-# Check the exact threshold on a separate 7 x 9 board.
+-test_model = GameModel(7, 9)
+-test_model.layers[ENEMY_LAYER] = False
+-test_model.layers[ENEMY_LAYER, 5, 7] = True
+-territory = test_model.layers[TERRITORY_LAYER]
+-territory[1:4, 1:-1] = True
+-territory[4, 1:6] = True
+-print("Captured cells:", territory[1:-1, 1:-1].sum())
+-print("Level complete:", app.logic.check_level_complete(test_model))
+-
+-territory[4, 6] = True
+-print("Captured cells:", territory[1:-1, 1:-1].sum())
+-print("Level complete:", app.logic.check_level_complete(test_model))
+-
+-# Turn the 27th cell into an unfinished trail and close the line.
+-test_model.level = 3
+-territory[4, 6] = False
+-test_model.layers[TRAIL_LAYER, 4, 6] = True
+-test_model.layers[PLAYER_LAYER] = False
+-test_model.layers[PLAYER_LAYER, 4, 6] = True
+-up = {"quit": False, "move_up": True, "move_down": False,
+-      "move_left": False, "move_right": False}
+-app.logic.step(test_model, up, PLAYER_STEP_INTERVAL)
+-print("Level after completion:", test_model.level)
+-print("Captured after reset:",
+-      test_model.layers[TERRITORY_LAYER, 1:-1, 1:-1].sum())
++# Inspect three separate enemy layers before generalizing movement.
++app.model.level = 3
++app.model.start_position()
++pg.display.set_caption(f"Matrix Xonix - Level {app.model.level}")
++print("Layers shape:", app.model.layers.shape)
++print("Enemy layers shape:", app.model.layers[ENEMY_LAYER:].shape)
++for i in range(app.model.enemy_count):
++    enemy = app.model.layers[ENEMY_LAYER + i]
++    print("Enemy", i, "cells:", enemy.sum())
+ 
+ app.run()

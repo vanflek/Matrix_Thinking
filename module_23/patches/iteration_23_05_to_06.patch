@@ -1,0 +1,10 @@
+--- iteration_23_05_camera_yaw.py
++++ iteration_23_06_camera_pitch.py
+@@ -130,6 +130,7 @@
+ 
+     def camera_rotate(self, camera, actions):
+         camera.yaw += actions["mouse_dx"] * camera.mouse_sensitivity
++        camera.pitch -= actions["mouse_dy"] * camera.mouse_sensitivity
+ 
+     def get_rotation_matrix(self, angle_x, angle_y, angle_z):
+         cos_y = np.cos(angle_y)

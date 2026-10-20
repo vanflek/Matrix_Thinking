@@ -13,7 +13,7 @@ Open a terminal in this module's folder and use the same interpreter for both:
 
 ```bash
 python -m pip install -r requirements.txt
-python collector.py
+python final/collector.py
 ```
 
 In PyCharm, select the interpreter with these packages and run the chosen file.
@@ -31,8 +31,8 @@ do not concatenate the experiments. See the [step index](steps/README.md).
 
 | File | Purpose |
 | --- | --- |
-| [collector_every_frame.py](collector_every_frame.py) | First complete program: one movement step per rendered frame. Deliberately fast; run this version before introducing the step counter. |
-| [collector.py](collector.py) | Final chapter program: one step every `STEP_FRAMES` frames, with input and rendering handled every frame. |
+| [examples/example_08_05_collector_every_frame.py](examples/example_08_05_collector_every_frame.py) | First complete program: one movement step per rendered frame. Deliberately fast; run this version before introducing the step counter. |
+| [final/collector.py](final/collector.py) | Final chapter program: one step every `STEP_FRAMES` frames, with input and rendering handled every frame. |
 
 Both versions use the chapter's functions and calculations. English comments
 explain their roles. These are complete files, so you can run either directly.
@@ -59,37 +59,46 @@ These scripts print results and finish. Predict the output before running them.
 
 | File | Topic |
 | --- | --- |
-| [functions.py](examples/functions.py) | Parameters, arguments, returned sizes, and local variables. |
-| [array_changes.py](examples/array_changes.py) | Changing array elements versus rebinding a name; a function returning `None`. |
-| [state_and_targets.py](examples/state_and_targets.py) | A dictionary containing vectors and a coordinate matrix; movement and collection. |
-| [axes.py](examples/axes.py) | Index positions, `shape`, deletion, repetition, and swapping axes. |
-| [palette_and_image.py](examples/palette_and_image.py) | Repeated color indices, RGB array shapes, and preparation of a Surface without opening a window. |
+| [examples/example_08_03_functions.py](examples/example_08_03_functions.py) | Parameters, arguments, returned sizes, and local variables. |
+| [examples/example_08_02_array_changes.py](examples/example_08_02_array_changes.py) | Changing array elements versus rebinding a name; a function returning `None`. |
+| [examples/example_08_05_state_and_targets.py](examples/example_08_05_state_and_targets.py) | A dictionary containing vectors and a coordinate matrix; movement and collection. |
+| [examples/example_08_01_axes.py](examples/example_08_01_axes.py) | Index positions, `shape`, deletion, repetition, and swapping axes. |
+| [examples/example_08_04_palette_and_image.py](examples/example_08_04_palette_and_image.py) | Repeated color indices, RGB array shapes, and preparation of a Surface without opening a window. |
 
 For example:
 
 ```bash
-python examples/axes.py
+python examples/example_08_01_axes.py
 ```
 
 ## Practice solutions
 
 Try the chapter exercises first. These are **independent complete versions** of
-`collector.py`, not cumulative additions. Each can be run directly.
+`final/collector.py`, not cumulative additions. Each can be run directly.
 
 | Exercise | File | Change |
 | --- | --- | --- |
-| 26 | [eight targets](solutions/exercise_26_eight_targets.py) | Eight target coordinates on the original 16 by 16 field. |
-| 27 | [rectangular field](solutions/exercise_27_rectangular_field.py) | Ten rows, eighteen columns, and 30-pixel cells. |
-| 28 | [dark palette](solutions/exercise_28_dark_palette.py) | Change appearance while keeping the game state and rules. |
-| 29 | [pause](solutions/exercise_29_pause.py) | Space toggles pause. The step counter and position freeze; arrows are ignored while paused. Events retain their order within each frame. |
-| 30 | [restart](solutions/exercise_30_restart.py) | After victory, R creates fresh state and resets the counter. R has no effect before victory. This version does not include pause. |
+| 26 | [eight targets](solutions/solution_08_26_eight_targets.py) | Eight target coordinates on the original 16 by 16 field. |
+| 27 | [rectangular field](solutions/solution_08_27_rectangular_field.py) | Ten rows, eighteen columns, and 30-pixel cells. |
+| 28 | [dark palette](solutions/solution_08_28_dark_palette.py) | Change appearance while keeping the game state and rules. |
+| 29 | [pause](solutions/solution_08_29_pause.py) | Space toggles pause. The step counter and position freeze; arrows are ignored while paused. Events retain their order within each frame. |
+| 30 | [restart](solutions/solution_08_30_restart.py) | After victory, R creates fresh state and resets the counter. R has no effect before victory. This version does not include pause. |
 
 For example:
 
 ```bash
-python solutions/exercise_29_pause.py
+python solutions/solution_08_29_pause.py
 ```
 
 ## Previous module
 
 [Module 7 - Palette and matrix](../module_07/)
+
+
+## File and listing names
+
+`steps/iteration_MM_NN_name.py` contains runnable learning steps in chapter order.
+`examples/example_MM_NN_name.py` contains independent experiments.
+`solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
+`final/` contains complete programs, where provided. Listing identifiers match file stems;
+these numbers are not PDF page numbers. Run each program separately.

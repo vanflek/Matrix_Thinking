@@ -1,0 +1,27 @@
+--- iteration_10_09_clear.py
++++ iteration_10_10_cursor_overlay.py
+@@ -133,6 +133,24 @@
+     screen.blit(surface, (0, 0))
+     screen.blit(grid_surface, (0, 0))
+ 
++    if not simulation_running and pg.mouse.get_focused():
++        x_px, y_px = pg.mouse.get_pos()
++        x = x_px // CELL_SIZE
++        y = y_px // CELL_SIZE
++
++        if 1 <= y < ROWS - 1 and 1 <= x < COLS - 1:
++            pg.draw.rect(
++                screen,
++                (210, 90, 45),
++                (
++                    x * CELL_SIZE,
++                    y * CELL_SIZE,
++                    CELL_SIZE,
++                    CELL_SIZE,
++                ),
++                2,
++            )
++
+     pg.display.flip()
+     clock.tick(FPS)
+ 

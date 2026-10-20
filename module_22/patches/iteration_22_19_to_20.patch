@@ -1,0 +1,41 @@
+--- iteration_22_19_camera_segments.py
++++ iteration_22_20_near_clipping.py
+@@ -225,6 +225,26 @@
+         depth = dy * sin_angle + dx * cos_angle
+         return np.stack((side, depth), axis=2)
+ 
++    def clip_floor_segments(self, camera_segments):
++        near = 1.0
++        visible = (camera_segments[:, :, 1] >= near).any(axis=1)
++        clipped = camera_segments[visible].copy()
++
++        for segment in clipped:
++            start = segment[0].copy()
++            end = segment[1].copy()
++            start_inside = start[1] >= near
++            end_inside = end[1] >= near
++            if start_inside != end_inside:
++                t = (near - start[1]) / (end[1] - start[1])
++                intersection = start + t * (end - start)
++                intersection[1] = near
++                if not start_inside:
++                    segment[0] = intersection
++                else:
++                    segment[1] = intersection
++        return clipped
++
+     def get_wall_heights(self, end_distance, has_wall):
+         depths = end_distance * np.cos(self.relative_angles)
+         wall_heights = np.zeros_like(end_distance, dtype=float)
+@@ -387,7 +407,10 @@
+                     end_distance, has_wall
+                 )
+                 camera_segments = self.ray_caster.get_camera_segments()
+-                self.view.draw_camera_grid(camera_segments)
++                clipped_segments = self.ray_caster.clip_floor_segments(
++                    camera_segments
++                )
++                self.view.draw_camera_grid(clipped_segments)
+                 pg.display.flip()
+ 
+         pg.event.set_grab(False)
