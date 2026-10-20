@@ -1,0 +1,262 @@
+[
+  {
+    "id": "iteration_12_01_chr_ord",
+    "file": "steps/iteration_12_01_chr_ord.py"
+  },
+  {
+    "id": "iteration_12_02_ascii_codes",
+    "file": "steps/iteration_12_02_ascii_codes.py"
+  },
+  {
+    "id": "iteration_12_03_render_symbol",
+    "file": "steps/iteration_12_03_render_symbol.py"
+  },
+  {
+    "id": "iteration_12_04_brightness_loops",
+    "file": "steps/iteration_12_04_brightness_loops.py"
+  },
+  {
+    "id": "iteration_12_05_brightness_numpy",
+    "file": "steps/iteration_12_05_brightness_numpy.py"
+  },
+  {
+    "id": "iteration_12_06_all_symbols_list",
+    "file": "steps/iteration_12_06_all_symbols_list.py"
+  },
+  {
+    "id": "iteration_12_07_paired_arrays",
+    "file": "steps/iteration_12_07_paired_arrays.py"
+  },
+  {
+    "id": "iteration_12_08_normalize_loops",
+    "file": "steps/iteration_12_08_normalize_loops.py"
+  },
+  {
+    "id": "iteration_12_09_normalize_numpy",
+    "file": "steps/iteration_12_09_normalize_numpy.py"
+  },
+  {
+    "id": "iteration_12_10_sort_loops",
+    "file": "steps/iteration_12_10_sort_loops.py"
+  },
+  {
+    "id": "iteration_12_11_sort_numpy",
+    "file": "steps/iteration_12_11_sort_numpy.py"
+  },
+  {
+    "id": "iteration_12_12_save_palette",
+    "file": "steps/iteration_12_12_save_palette.py"
+  },
+  {
+    "id": "iteration_12_13_load_image",
+    "file": "steps/iteration_12_13_load_image.py"
+  },
+  {
+    "id": "iteration_12_14_gray_loops",
+    "file": "steps/iteration_12_14_gray_loops.py"
+  },
+  {
+    "id": "iteration_12_15_gray_numpy",
+    "file": "steps/iteration_12_15_gray_numpy.py"
+  },
+  {
+    "id": "iteration_12_16_blocks_four_loops",
+    "file": "steps/iteration_12_16_blocks_four_loops.py"
+  },
+  {
+    "id": "iteration_12_17_blocks_mean",
+    "file": "steps/iteration_12_17_blocks_mean.py"
+  },
+  {
+    "id": "iteration_12_18_blocks_reshape",
+    "file": "steps/iteration_12_18_blocks_reshape.py"
+  },
+  {
+    "id": "iteration_12_19_mosaic_repeat",
+    "file": "steps/iteration_12_19_mosaic_repeat.py"
+  },
+  {
+    "id": "iteration_12_20_single_block_function",
+    "file": "steps/iteration_12_20_single_block_function.py"
+  },
+  {
+    "id": "iteration_12_21_select_symbols",
+    "file": "steps/iteration_12_21_select_symbols.py"
+  },
+  {
+    "id": "iteration_12_22_draw_ascii",
+    "file": "steps/iteration_12_22_draw_ascii.py"
+  },
+  {
+    "id": "iteration_12_23_searchsorted",
+    "file": "steps/iteration_12_23_searchsorted.py"
+  },
+  {
+    "id": "iteration_12_24_select_numpy",
+    "file": "steps/iteration_12_24_select_numpy.py"
+  },
+  {
+    "id": "iteration_12_25_color_means",
+    "file": "steps/iteration_12_25_color_means.py"
+  },
+  {
+    "id": "iteration_12_26_draw_color",
+    "file": "steps/iteration_12_26_draw_color.py"
+  },
+  {
+    "id": "iteration_12_27_color_numpy",
+    "file": "steps/iteration_12_27_color_numpy.py"
+  },
+  {
+    "id": "iteration_12_28_resize",
+    "file": "steps/iteration_12_28_resize.py"
+  },
+  {
+    "id": "iteration_12_29_color_toggle",
+    "file": "steps/iteration_12_29_color_toggle.py"
+  },
+  {
+    "id": "example_12_01_channel_mean",
+    "file": "examples/example_12_01_channel_mean.py"
+  },
+  {
+    "id": "example_12_02_paired_arrays",
+    "file": "examples/example_12_02_paired_arrays.py"
+  },
+  {
+    "id": "example_12_03_normalize_loops",
+    "file": "examples/example_12_03_normalize_loops.py"
+  },
+  {
+    "id": "example_12_04_normalize_numpy",
+    "file": "examples/example_12_04_normalize_numpy.py"
+  },
+  {
+    "id": "example_12_05_argsort",
+    "file": "examples/example_12_05_argsort.py"
+  },
+  {
+    "id": "example_12_06_reorder_loops",
+    "file": "examples/example_12_06_reorder_loops.py"
+  },
+  {
+    "id": "example_12_07_reorder_numpy",
+    "file": "examples/example_12_07_reorder_numpy.py"
+  },
+  {
+    "id": "example_12_08_savez_load",
+    "file": "examples/example_12_08_savez_load.py"
+  },
+  {
+    "id": "example_12_09_reshape_matrix",
+    "file": "examples/example_12_09_reshape_matrix.py"
+  },
+  {
+    "id": "example_12_10_image_coordinates",
+    "file": "examples/example_12_10_image_coordinates.py"
+  },
+  {
+    "id": "example_12_11_block_address",
+    "file": "examples/example_12_11_block_address.py"
+  },
+  {
+    "id": "example_12_12_select_block",
+    "file": "examples/example_12_12_select_block.py"
+  },
+  {
+    "id": "example_12_13_mean_axes",
+    "file": "examples/example_12_13_mean_axes.py"
+  },
+  {
+    "id": "example_12_14_block_averages",
+    "file": "examples/example_12_14_block_averages.py"
+  },
+  {
+    "id": "example_12_15_nearest_symbol",
+    "file": "examples/example_12_15_nearest_symbol.py"
+  },
+  {
+    "id": "example_12_16_symbol_matrix",
+    "file": "examples/example_12_16_symbol_matrix.py"
+  },
+  {
+    "id": "example_12_17_searchsorted_scalar",
+    "file": "examples/example_12_17_searchsorted_scalar.py"
+  },
+  {
+    "id": "example_12_18_nearest_sorted",
+    "file": "examples/example_12_18_nearest_sorted.py"
+  },
+  {
+    "id": "example_12_19_searchsorted_matrix",
+    "file": "examples/example_12_19_searchsorted_matrix.py"
+  },
+  {
+    "id": "example_12_20_rgb_means",
+    "file": "examples/example_12_20_rgb_means.py"
+  },
+  {
+    "id": "example_12_21_exercise_paired_arrays",
+    "file": "examples/example_12_21_exercise_paired_arrays.py"
+  },
+  {
+    "id": "example_12_22_exercise_argsort",
+    "file": "examples/example_12_22_exercise_argsort.py"
+  },
+  {
+    "id": "example_12_23_exercise_broken_pairs",
+    "file": "examples/example_12_23_exercise_broken_pairs.py"
+  },
+  {
+    "id": "example_12_24_exercise_block_address",
+    "file": "examples/example_12_24_exercise_block_address.py"
+  },
+  {
+    "id": "example_12_25_exercise_mean_axes",
+    "file": "examples/example_12_25_exercise_mean_axes.py"
+  },
+  {
+    "id": "example_12_26_exercise_searchsorted",
+    "file": "examples/example_12_26_exercise_searchsorted.py"
+  },
+  {
+    "id": "example_12_27_exercise_where",
+    "file": "examples/example_12_27_exercise_where.py"
+  },
+  {
+    "id": "example_12_28_compare_averages",
+    "file": "examples/example_12_28_compare_averages.py"
+  },
+  {
+    "id": "example_12_29_keep_rgb_axis",
+    "file": "examples/example_12_29_keep_rgb_axis.py"
+  },
+  {
+    "id": "solution_12_26_exercise",
+    "file": "solutions/solution_12_26_exercise.py"
+  },
+  {
+    "id": "solution_12_27_exercise",
+    "file": "solutions/solution_12_27_exercise.py"
+  },
+  {
+    "id": "solution_12_28_exercise",
+    "file": "solutions/solution_12_28_exercise.py"
+  },
+  {
+    "id": "solution_12_29_exercise",
+    "file": "solutions/solution_12_29_exercise.py"
+  },
+  {
+    "id": "solution_12_30_exercise",
+    "file": "solutions/solution_12_30_exercise.py"
+  },
+  {
+    "id": "analyze_symbols",
+    "file": "final/analyze_symbols.py"
+  },
+  {
+    "id": "image_to_ascii",
+    "file": "final/image_to_ascii.py"
+  }
+]

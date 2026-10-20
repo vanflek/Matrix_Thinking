@@ -1,0 +1,62 @@
+[
+  {
+    "id": "iteration_02_01_circles_list",
+    "file": "steps/iteration_02_01_circles_list.py"
+  },
+  {
+    "id": "iteration_02_02_circles_range",
+    "file": "steps/iteration_02_02_circles_range.py"
+  },
+  {
+    "id": "iteration_02_03_brick_wall",
+    "file": "steps/iteration_02_03_brick_wall.py"
+  },
+  {
+    "id": "iteration_02_04_brick_wall_labels",
+    "file": "steps/iteration_02_04_brick_wall_labels.py"
+  },
+  {
+    "id": "iteration_02_05_grid_enumerate",
+    "file": "steps/iteration_02_05_grid_enumerate.py"
+  },
+  {
+    "id": "solution_02_02_wider_outlines",
+    "file": "solutions/solution_02_02_wider_outlines.py"
+  },
+  {
+    "id": "solution_02_03_graph_paper",
+    "file": "solutions/solution_02_03_graph_paper.py"
+  },
+  {
+    "id": "solution_02_04_resize_grid",
+    "file": "solutions/solution_02_04_resize_grid.py"
+  },
+  {
+    "id": "solution_02_05_edge_labels",
+    "file": "solutions/solution_02_05_edge_labels.py"
+  },
+  {
+    "id": "solution_02_06_centered_labels",
+    "file": "solutions/solution_02_06_centered_labels.py"
+  },
+  {
+    "id": "solution_02_07_linear_indices",
+    "file": "solutions/solution_02_07_linear_indices.py"
+  },
+  {
+    "id": "solution_02_08_trace",
+    "file": "solutions/solution_02_08_trace.py"
+  },
+  {
+    "id": "solution_02_17_smaller_cells",
+    "file": "solutions/solution_02_17_smaller_cells.py"
+  },
+  {
+    "id": "solution_02_18_centers",
+    "file": "solutions/solution_02_18_centers.py"
+  },
+  {
+    "id": "solution_02_25_shift_centers",
+    "file": "solutions/solution_02_25_shift_centers.py"
+  }
+]

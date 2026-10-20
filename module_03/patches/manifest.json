@@ -1,0 +1,26 @@
+[
+  {
+    "patch": "patches/iteration_03_01_to_02.patch",
+    "source": "steps/iteration_03_01_brick_wall.py",
+    "target": "steps/iteration_03_02_chessboard.py",
+    "target_sha256": "cd448b8eec124c8de458f55e9f317c8c6af5f7c13988b1ef0b15d7352d0b169e"
+  },
+  {
+    "patch": "patches/iteration_03_02_to_03.patch",
+    "source": "steps/iteration_03_02_chessboard.py",
+    "target": "steps/iteration_03_03_framed_chessboard.py",
+    "target_sha256": "7eb2983267cd4f2c688d2caee294b7bfee5dfeb4e810ef90e2fef7a30b3274ca"
+  },
+  {
+    "patch": "patches/iteration_03_03_to_04.patch",
+    "source": "steps/iteration_03_03_framed_chessboard.py",
+    "target": "steps/iteration_03_04_framed_chessboard_flag.py",
+    "target_sha256": "17b6e855bb16dd02974af6a1bc815e5d0d599846a54794b9a3d7b60638e8e7e5"
+  },
+  {
+    "patch": "patches/iteration_03_04_to_05.patch",
+    "source": "steps/iteration_03_04_framed_chessboard_flag.py",
+    "target": "steps/iteration_03_05_framed_chessboard_while.py",
+    "target_sha256": "ae333d230d6aff7a84084aeb414e15a42e84f55e7ea4de31345f40205c809549"
+  }
+]

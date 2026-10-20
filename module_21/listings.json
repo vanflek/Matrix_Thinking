@@ -1,0 +1,90 @@
+[
+  {
+    "id": "iteration_21_01_skeleton",
+    "file": "steps/iteration_21_01_skeleton.py"
+  },
+  {
+    "id": "iteration_21_02_wireframe_object",
+    "file": "steps/iteration_21_02_wireframe_object.py"
+  },
+  {
+    "id": "iteration_21_03_second_object",
+    "file": "steps/iteration_21_03_second_object.py"
+  },
+  {
+    "id": "iteration_21_04_movement",
+    "file": "steps/iteration_21_04_movement.py"
+  },
+  {
+    "id": "iteration_21_05_field_bounds",
+    "file": "steps/iteration_21_05_field_bounds.py"
+  },
+  {
+    "id": "iteration_21_06_shooting",
+    "file": "steps/iteration_21_06_shooting.py"
+  },
+  {
+    "id": "iteration_21_07_rotating_enemies",
+    "file": "steps/iteration_21_07_rotating_enemies.py"
+  },
+  {
+    "id": "iteration_21_08_diagonal_motion",
+    "file": "steps/iteration_21_08_diagonal_motion.py"
+  },
+  {
+    "id": "iteration_21_09_circular_motion",
+    "file": "steps/iteration_21_09_circular_motion.py"
+  },
+  {
+    "id": "iteration_21_10_projectile_collisions",
+    "file": "steps/iteration_21_10_projectile_collisions.py"
+  },
+  {
+    "id": "iteration_21_11_game_end",
+    "file": "steps/iteration_21_11_game_end.py"
+  },
+  {
+    "id": "example_21_01_hypot",
+    "file": "examples/example_21_01_hypot.py"
+  },
+  {
+    "id": "example_21_02_clip",
+    "file": "examples/example_21_02_clip.py"
+  },
+  {
+    "id": "example_21_03_list_unpacking",
+    "file": "examples/example_21_03_list_unpacking.py"
+  },
+  {
+    "id": "example_21_04_list_comprehension",
+    "file": "examples/example_21_04_list_comprehension.py"
+  },
+  {
+    "id": "solution_21_26_diamond",
+    "file": "solutions/solution_21_26_diamond.py"
+  },
+  {
+    "id": "solution_21_27_collision_areas",
+    "file": "solutions/solution_21_27_collision_areas.py"
+  },
+  {
+    "id": "solution_21_28_rewards",
+    "file": "solutions/solution_21_28_rewards.py"
+  },
+  {
+    "id": "solution_21_29_restart",
+    "file": "solutions/solution_21_29_restart.py"
+  },
+  {
+    "id": "solution_21_30_oscillation",
+    "file": "solutions/solution_21_30_oscillation.py"
+  },
+  {
+    "id": "wireframe_game",
+    "file": "final/wireframe_game.py"
+  },
+  {
+    "id": "wireframe_three_levels",
+    "file": "bonus/wireframe_three_levels.py"
+  }
+]

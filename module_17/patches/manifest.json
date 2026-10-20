@@ -1,0 +1,56 @@
+[
+  {
+    "patch": "patches/iteration_17_01_to_02.patch",
+    "source": "steps/iteration_17_01_skeleton.py",
+    "target": "steps/iteration_17_02_tetromino.py",
+    "target_sha256": "3c53370c76c1cdff258aa0a4e9e03362f281fd9c635a406da0f06f48c01f8563"
+  },
+  {
+    "patch": "patches/iteration_17_02_to_03.patch",
+    "source": "steps/iteration_17_02_tetromino.py",
+    "target": "steps/iteration_17_03_first_figure.py",
+    "target_sha256": "c19ff04ab3d48eb138ec78d86dda74572ebd1d5d56abb6a1ad9e822f4b0fa1db"
+  },
+  {
+    "patch": "patches/iteration_17_03_to_04.patch",
+    "source": "steps/iteration_17_03_first_figure.py",
+    "target": "steps/iteration_17_04_movement.py",
+    "target_sha256": "660858d3d7ac908d0e1ce1c61a77db3f341afce1dc7a02cccd74705bda3e7087"
+  },
+  {
+    "patch": "patches/iteration_17_04_to_05.patch",
+    "source": "steps/iteration_17_04_movement.py",
+    "target": "steps/iteration_17_05_locking.py",
+    "target_sha256": "51432f41a4dc557f5a166c836b8602766722980f2b8af1e2bec6317284151213"
+  },
+  {
+    "patch": "patches/iteration_17_05_to_06.patch",
+    "source": "steps/iteration_17_05_locking.py",
+    "target": "steps/iteration_17_06_collisions.py",
+    "target_sha256": "5b134cb38c8f740bb81763734a5041219927114dc10f6bb0a00639cbb19798cc"
+  },
+  {
+    "patch": "patches/iteration_17_06_to_07.patch",
+    "source": "steps/iteration_17_06_collisions.py",
+    "target": "steps/iteration_17_07_falling.py",
+    "target_sha256": "5f3e6d1aa7f85cdc87d313094b32c70a707b5ab6f90cbf48643727823f791795"
+  },
+  {
+    "patch": "patches/iteration_17_07_to_08.patch",
+    "source": "steps/iteration_17_07_falling.py",
+    "target": "steps/iteration_17_08_clear_rows.py",
+    "target_sha256": "a496b72d267b55034602218fd8b9c5c0a75c5d01600dd2f37fdb495b1b3b08a4"
+  },
+  {
+    "patch": "patches/iteration_17_08_to_09.patch",
+    "source": "steps/iteration_17_08_clear_rows.py",
+    "target": "steps/iteration_17_09_game_over.py",
+    "target_sha256": "5ab1910e6f3ad27a24545752acee4d554f650946a5e00649c69fc4bb17b7a6b6"
+  },
+  {
+    "patch": "patches/iteration_17_09_to_10.patch",
+    "source": "steps/iteration_17_09_game_over.py",
+    "target": "steps/iteration_17_10_complete.py",
+    "target_sha256": "67b825505a3c2dd903545879c0cf13612063c61ae8098093d1542cb62a8ab621"
+  }
+]

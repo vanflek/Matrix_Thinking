@@ -1,0 +1,110 @@
+[
+  {
+    "id": "iteration_13_01_skeleton",
+    "file": "steps/iteration_13_01_skeleton.py"
+  },
+  {
+    "id": "iteration_13_02_manual_building",
+    "file": "steps/iteration_13_02_manual_building.py"
+  },
+  {
+    "id": "iteration_13_03_local_rule",
+    "file": "steps/iteration_13_03_local_rule.py"
+  },
+  {
+    "id": "iteration_13_04_cursor_feedback",
+    "file": "steps/iteration_13_04_cursor_feedback.py"
+  },
+  {
+    "id": "iteration_13_05_frontier_display",
+    "file": "steps/iteration_13_05_frontier_display.py"
+  },
+  {
+    "id": "iteration_13_06_automatic_growth",
+    "file": "steps/iteration_13_06_automatic_growth.py"
+  },
+  {
+    "id": "iteration_13_07_save_load",
+    "file": "steps/iteration_13_07_save_load.py"
+  },
+  {
+    "id": "iteration_13_08_check_maze",
+    "file": "steps/iteration_13_08_check_maze.py"
+  },
+  {
+    "id": "iteration_13_09_numpy_coordinates",
+    "file": "steps/iteration_13_09_numpy_coordinates.py"
+  },
+  {
+    "id": "iteration_13_10_numpy_edges",
+    "file": "steps/iteration_13_10_numpy_edges.py"
+  },
+  {
+    "id": "iteration_13_11_numpy_frontier",
+    "file": "steps/iteration_13_11_numpy_frontier.py"
+  },
+  {
+    "id": "example_13_01_neighbors",
+    "file": "examples/example_13_01_neighbors.py"
+  },
+  {
+    "id": "example_13_02_opening_rule",
+    "file": "examples/example_13_02_opening_rule.py"
+  },
+  {
+    "id": "example_13_03_frontier",
+    "file": "examples/example_13_03_frontier.py"
+  },
+  {
+    "id": "example_13_04_growth_step",
+    "file": "examples/example_13_04_growth_step.py"
+  },
+  {
+    "id": "example_13_05_stack_and_set",
+    "file": "examples/example_13_05_stack_and_set.py"
+  },
+  {
+    "id": "example_13_06_connectivity",
+    "file": "examples/example_13_06_connectivity.py"
+  },
+  {
+    "id": "example_13_07_perfect_maze",
+    "file": "examples/example_13_07_perfect_maze.py"
+  },
+  {
+    "id": "example_13_08_numpy_coordinates",
+    "file": "examples/example_13_08_numpy_coordinates.py"
+  },
+  {
+    "id": "example_13_09_numpy_edges",
+    "file": "examples/example_13_09_numpy_edges.py"
+  },
+  {
+    "id": "example_13_10_numpy_frontier",
+    "file": "examples/example_13_10_numpy_frontier.py"
+  },
+  {
+    "id": "solution_13_26_exercise",
+    "file": "solutions/solution_13_26_exercise.py"
+  },
+  {
+    "id": "solution_13_27_exercise",
+    "file": "solutions/solution_13_27_exercise.py"
+  },
+  {
+    "id": "solution_13_28_exercise",
+    "file": "solutions/solution_13_28_exercise.py"
+  },
+  {
+    "id": "solution_13_29_exercise",
+    "file": "solutions/solution_13_29_exercise.py"
+  },
+  {
+    "id": "solution_13_30_exercise",
+    "file": "solutions/solution_13_30_exercise.py"
+  },
+  {
+    "id": "maze_generator",
+    "file": "final/maze_generator.py"
+  }
+]

@@ -1,77 +1,92 @@
 [
   {
-    "patch": "patch_23_01_to_02.patch",
-    "from": "iteration_23_01_skeleton.py",
-    "to": "iteration_23_02_camera_coordinates.py"
+    "patch": "patches/iteration_23_01_to_02.patch",
+    "source": "steps/iteration_23_01_skeleton.py",
+    "target": "steps/iteration_23_02_camera_coordinates.py",
+    "target_sha256": "59cba9bb262821b080565ef812f42ef5a1dd0e48f054788627340ad0b5418824"
   },
   {
-    "patch": "patch_23_02_to_03.patch",
-    "from": "iteration_23_02_camera_coordinates.py",
-    "to": "iteration_23_03_first_cube.py"
+    "patch": "patches/iteration_23_02_to_03.patch",
+    "source": "steps/iteration_23_02_camera_coordinates.py",
+    "target": "steps/iteration_23_03_first_cube.py",
+    "target_sha256": "9e0b4ab2664a69596e14b1bbacbd1a117de73b839c967a4b0e969c17afe4a76f"
   },
   {
-    "patch": "patch_23_03_to_04.patch",
-    "from": "iteration_23_03_first_cube.py",
-    "to": "iteration_23_04_camera_movement.py"
+    "patch": "patches/iteration_23_03_to_04.patch",
+    "source": "steps/iteration_23_03_first_cube.py",
+    "target": "steps/iteration_23_04_camera_movement.py",
+    "target_sha256": "c933ef777f7148aa3f62a0cf8d4b285a4d150e3bb4a523fb1be012acc0eea3a2"
   },
   {
-    "patch": "patch_23_04_to_05.patch",
-    "from": "iteration_23_04_camera_movement.py",
-    "to": "iteration_23_05_camera_yaw.py"
+    "patch": "patches/iteration_23_04_to_05.patch",
+    "source": "steps/iteration_23_04_camera_movement.py",
+    "target": "steps/iteration_23_05_camera_yaw.py",
+    "target_sha256": "54cfaaa50a9892b18420ff72b216879a1e7eb0b1c2c03fc32d117a499e0e447e"
   },
   {
-    "patch": "patch_23_05_to_06.patch",
-    "from": "iteration_23_05_camera_yaw.py",
-    "to": "iteration_23_06_camera_pitch.py"
+    "patch": "patches/iteration_23_05_to_06.patch",
+    "source": "steps/iteration_23_05_camera_yaw.py",
+    "target": "steps/iteration_23_06_camera_pitch.py",
+    "target_sha256": "e759edb151ca441dc6ae85a85fd313e56cdb1894043bd79b530d8a46d53c2820"
   },
   {
-    "patch": "patch_23_06_to_07.patch",
-    "from": "iteration_23_06_camera_pitch.py",
-    "to": "iteration_23_07_camera_roll.py"
+    "patch": "patches/iteration_23_06_to_07.patch",
+    "source": "steps/iteration_23_06_camera_pitch.py",
+    "target": "steps/iteration_23_07_camera_roll.py",
+    "target_sha256": "730c1d02d955cb94e36e21b6648d7df5a20b681b0a1a9d3049d0b7ad38868dea"
   },
   {
-    "patch": "patch_23_07_to_08.patch",
-    "from": "iteration_23_07_camera_roll.py",
-    "to": "iteration_23_08_camera_local_movement.py"
+    "patch": "patches/iteration_23_07_to_08.patch",
+    "source": "steps/iteration_23_07_camera_roll.py",
+    "target": "steps/iteration_23_08_camera_local_movement.py",
+    "target_sha256": "b591d1607c6625c419b37c807b941b4d86788178acf3878e116306e30f903265"
   },
   {
-    "patch": "patch_23_08_to_09.patch",
-    "from": "iteration_23_08_camera_local_movement.py",
-    "to": "iteration_23_09_near_clipping.py"
+    "patch": "patches/iteration_23_08_to_09.patch",
+    "source": "steps/iteration_23_08_camera_local_movement.py",
+    "target": "steps/iteration_23_09_near_clipping.py",
+    "target_sha256": "8c5d0c2ed2fa8df204203352c180cb58eb15e7318703d6a7cfdbd54ec90edc1d"
   },
   {
-    "patch": "patch_23_09_to_10.patch",
-    "from": "iteration_23_09_near_clipping.py",
-    "to": "iteration_23_10_object_transform.py"
+    "patch": "patches/iteration_23_09_to_10.patch",
+    "source": "steps/iteration_23_09_near_clipping.py",
+    "target": "steps/iteration_23_10_object_transform.py",
+    "target_sha256": "6ffa122f4c1097c7320ac38eb86dec4a967b0ecc05b2c73859abb2ca6da08bbb"
   },
   {
-    "patch": "patch_23_10_to_11.patch",
-    "from": "iteration_23_10_object_transform.py",
-    "to": "iteration_23_11_object_scale.py"
+    "patch": "patches/iteration_23_10_to_11.patch",
+    "source": "steps/iteration_23_10_object_transform.py",
+    "target": "steps/iteration_23_11_object_scale.py",
+    "target_sha256": "50b90ebb40e6028d675d83a72e7c9bb828d9ed1eae0367acba5c8945b2f06584"
   },
   {
-    "patch": "patch_23_11_to_12.patch",
-    "from": "iteration_23_11_object_scale.py",
-    "to": "iteration_23_12_two_cobras.py"
+    "patch": "patches/iteration_23_11_to_12.patch",
+    "source": "steps/iteration_23_11_object_scale.py",
+    "target": "steps/iteration_23_12_two_cobras.py",
+    "target_sha256": "94134e61762c8b904a0d6c19504747ee632fa9e03163a070100d95145776413e"
   },
   {
-    "patch": "patch_23_12_to_13.patch",
-    "from": "iteration_23_12_two_cobras.py",
-    "to": "iteration_23_13_object_orientation.py"
+    "patch": "patches/iteration_23_12_to_13.patch",
+    "source": "steps/iteration_23_12_two_cobras.py",
+    "target": "steps/iteration_23_13_object_orientation.py",
+    "target_sha256": "297ec2f515abf5d686b40239c21fd1d52da9bca8573f600063e2c126242163c6"
   },
   {
-    "patch": "patch_23_13_to_14.patch",
-    "from": "iteration_23_13_object_orientation.py",
-    "to": "iteration_23_14_local_axes.py"
+    "patch": "patches/iteration_23_13_to_14.patch",
+    "source": "steps/iteration_23_13_object_orientation.py",
+    "target": "steps/iteration_23_14_local_axes.py",
+    "target_sha256": "1966fc270335c6301507c607a8c4331d08c9ce6a2266a2db1afcee1018350cd2"
   },
   {
-    "patch": "patch_23_14_to_15.patch",
-    "from": "iteration_23_14_local_axes.py",
-    "to": "iteration_23_15_local_rotation.py"
+    "patch": "patches/iteration_23_14_to_15.patch",
+    "source": "steps/iteration_23_14_local_axes.py",
+    "target": "steps/iteration_23_15_local_rotation.py",
+    "target_sha256": "502eee3afff870f6c06a18b09e1d88ab457d443cd7efaf26bd7dca68fc78106e"
   },
   {
-    "patch": "patch_23_15_to_16.patch",
-    "from": "iteration_23_15_local_rotation.py",
-    "to": "iteration_23_16_complete.py"
+    "patch": "patches/iteration_23_15_to_16.patch",
+    "source": "steps/iteration_23_15_local_rotation.py",
+    "target": "steps/iteration_23_16_complete.py",
+    "target_sha256": "ecdaaa049821822426de08b5b86ee3f9af2d1062f1b0c17a1ab160c1494442b5"
   }
 ]

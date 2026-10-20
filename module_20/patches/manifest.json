@@ -1,0 +1,56 @@
+[
+  {
+    "patch": "patches/iteration_20_01_to_02.patch",
+    "source": "steps/iteration_20_01_skeleton.py",
+    "target": "steps/iteration_20_02_airplane.py",
+    "target_sha256": "cab959ed5b04f79bbb76c2d2e5e590427707adb83e41be7be02fedf3a40ce1d5"
+  },
+  {
+    "patch": "patches/iteration_20_02_to_03.patch",
+    "source": "steps/iteration_20_02_airplane.py",
+    "target": "steps/iteration_20_03_homogeneous.py",
+    "target_sha256": "0261639c22c8d01d2ef5b26ad567e25ef70531ed63bed42a229f1f6d07e6616b"
+  },
+  {
+    "patch": "patches/iteration_20_03_to_04.patch",
+    "source": "steps/iteration_20_03_homogeneous.py",
+    "target": "steps/iteration_20_04_apply_matrix.py",
+    "target_sha256": "9b03933f34c041f112a844d888980e5a27251a929a74f41a28e69934800af496"
+  },
+  {
+    "patch": "patches/iteration_20_04_to_05.patch",
+    "source": "steps/iteration_20_04_apply_matrix.py",
+    "target": "steps/iteration_20_05_scaling.py",
+    "target_sha256": "016aa6e71f1a6bc54fb4b494bc2fc100779be83114f60f818fff34ff1527bcfc"
+  },
+  {
+    "patch": "patches/iteration_20_05_to_06.patch",
+    "source": "steps/iteration_20_05_scaling.py",
+    "target": "steps/iteration_20_06_reflections.py",
+    "target_sha256": "36a370e35f37835299076854975f8752c63c2769d769a5586a0f6df688b0fdb3"
+  },
+  {
+    "patch": "patches/iteration_20_06_to_07.patch",
+    "source": "steps/iteration_20_06_reflections.py",
+    "target": "steps/iteration_20_07_rotation.py",
+    "target_sha256": "ca870a1b3bc802b6ae09c3ef20a4b4a0fb1d55dfb16ad7f34c4c23e24f0cb52c"
+  },
+  {
+    "patch": "patches/iteration_20_07_to_08.patch",
+    "source": "steps/iteration_20_07_rotation.py",
+    "target": "steps/iteration_20_08_composition.py",
+    "target_sha256": "a1347b168162d258049933bf4c15f253fb6837ee508418c9cb987ed7956d1409"
+  },
+  {
+    "patch": "patches/iteration_20_08_to_09.patch",
+    "source": "steps/iteration_20_08_composition.py",
+    "target": "steps/iteration_20_09_order.py",
+    "target_sha256": "b42ed7de2729588c4925ac33626fccc1bb87a9b559f76f2ed0ae7ad4389b9b3a"
+  },
+  {
+    "patch": "patches/iteration_20_09_to_10.patch",
+    "source": "steps/iteration_20_09_order.py",
+    "target": "steps/iteration_20_10_keyboard.py",
+    "target_sha256": "f31aecf0c1aee60670e5fcbe463bbb5047c3766cf8cd593b367a50b1b41acfc8"
+  }
+]

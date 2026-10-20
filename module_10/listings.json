@@ -1,0 +1,122 @@
+[
+  {
+    "id": "iteration_10_01_world",
+    "file": "steps/iteration_10_01_world.py"
+  },
+  {
+    "id": "iteration_10_02_one_neighborhood",
+    "file": "steps/iteration_10_02_one_neighborhood.py"
+  },
+  {
+    "id": "iteration_10_03_cell_rules",
+    "file": "steps/iteration_10_03_cell_rules.py"
+  },
+  {
+    "id": "iteration_10_04_generation_loops",
+    "file": "steps/iteration_10_04_generation_loops.py"
+  },
+  {
+    "id": "iteration_10_05_generation_function",
+    "file": "steps/iteration_10_05_generation_function.py"
+  },
+  {
+    "id": "iteration_10_06_display_step",
+    "file": "steps/iteration_10_06_display_step.py"
+  },
+  {
+    "id": "iteration_10_07_mouse_edit",
+    "file": "steps/iteration_10_07_mouse_edit.py"
+  },
+  {
+    "id": "iteration_10_08_run_pause",
+    "file": "steps/iteration_10_08_run_pause.py"
+  },
+  {
+    "id": "iteration_10_09_clear",
+    "file": "steps/iteration_10_09_clear.py"
+  },
+  {
+    "id": "iteration_10_10_cursor_overlay",
+    "file": "steps/iteration_10_10_cursor_overlay.py"
+  },
+  {
+    "id": "iteration_10_11_save_load",
+    "file": "steps/iteration_10_11_save_load.py"
+  },
+  {
+    "id": "iteration_10_12_patterns",
+    "file": "steps/iteration_10_12_patterns.py"
+  },
+  {
+    "id": "iteration_10_13_roll_directions",
+    "file": "steps/iteration_10_13_roll_directions.py"
+  },
+  {
+    "id": "iteration_10_14_elementwise_addition",
+    "file": "steps/iteration_10_14_elementwise_addition.py"
+  },
+  {
+    "id": "iteration_10_15_eight_shift_sum",
+    "file": "steps/iteration_10_15_eight_shift_sum.py"
+  },
+  {
+    "id": "iteration_10_16_survive_born_masks",
+    "file": "steps/iteration_10_16_survive_born_masks.py"
+  },
+  {
+    "id": "iteration_10_17_compare_loops_roll",
+    "file": "steps/iteration_10_17_compare_loops_roll.py"
+  },
+  {
+    "id": "iteration_10_18_life_roll",
+    "file": "steps/iteration_10_18_life_roll.py"
+  },
+  {
+    "id": "iteration_10_19_argwhere_coordinates",
+    "file": "steps/iteration_10_19_argwhere_coordinates.py"
+  },
+  {
+    "id": "iteration_10_20_add_at",
+    "file": "steps/iteration_10_20_add_at.py"
+  },
+  {
+    "id": "iteration_10_21_argwhere_generation",
+    "file": "steps/iteration_10_21_argwhere_generation.py"
+  },
+  {
+    "id": "iteration_10_22_compare_three_methods",
+    "file": "steps/iteration_10_22_compare_three_methods.py"
+  },
+  {
+    "id": "example_10_01_life_loops",
+    "file": "examples/example_10_01_life_loops.py"
+  },
+  {
+    "id": "example_10_02_life_argwhere",
+    "file": "examples/example_10_02_life_argwhere.py"
+  },
+  {
+    "id": "solution_10_26_patterns",
+    "file": "solutions/solution_10_26_patterns.py"
+  },
+  {
+    "id": "solution_10_27_generation_counter",
+    "file": "solutions/solution_10_27_generation_counter.py"
+  },
+  {
+    "id": "solution_10_28_preview",
+    "file": "solutions/solution_10_28_preview.py"
+  },
+  {
+    "id": "solution_10_29_torus",
+    "file": "solutions/solution_10_29_torus.py"
+  },
+  {
+    "id": "solution_10_30_compare",
+    "file": "solutions/solution_10_30_compare.py"
+  },
+  {
+    "id": "life_roll",
+    "file": "final/life_roll.py"
+  }
+]

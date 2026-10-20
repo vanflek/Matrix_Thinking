@@ -1,0 +1,38 @@
+[
+  {
+    "patch": "patches/iteration_15_01_to_02.patch",
+    "source": "steps/iteration_15_01_skeleton.py",
+    "target": "steps/iteration_15_02_player_movement.py",
+    "target_sha256": "5f11d2dbc144801cfcb4ea32312fe303acd8f878f71b26dd30876ee830d866d0"
+  },
+  {
+    "patch": "patches/iteration_15_02_to_03.patch",
+    "source": "steps/iteration_15_02_player_movement.py",
+    "target": "steps/iteration_15_03_bullet_movement.py",
+    "target_sha256": "c30b8b3374753f07f6b358a3680ebf9312323329c62952d33e7388860f009cb5"
+  },
+  {
+    "patch": "patches/iteration_15_03_to_04.patch",
+    "source": "steps/iteration_15_03_bullet_movement.py",
+    "target": "steps/iteration_15_04_falling_blocks.py",
+    "target_sha256": "f5a7dcdd5edc7a8da3c8f70fcb39da019913af4364eef5efb32386d4a4a67a5f"
+  },
+  {
+    "patch": "patches/iteration_15_04_to_05.patch",
+    "source": "steps/iteration_15_04_falling_blocks.py",
+    "target": "steps/iteration_15_05_bullet_collision.py",
+    "target_sha256": "f2c2212021106a49e3a5846c5f59f6c58556d5bfc0265c06990d8797e06e8c25"
+  },
+  {
+    "patch": "patches/iteration_15_05_to_06.patch",
+    "source": "steps/iteration_15_05_bullet_collision.py",
+    "target": "steps/iteration_15_06_full_rows.py",
+    "target_sha256": "24f472745869a2da998d88aba5c1d7ba76d10b1548578b3e37bbdf6fd34b2527"
+  },
+  {
+    "patch": "patches/iteration_15_06_to_07.patch",
+    "source": "steps/iteration_15_06_full_rows.py",
+    "target": "steps/iteration_15_07_game_over.py",
+    "target_sha256": "0510db11ceafb8e16d8b579436bf1051c4e463645c75e7f1e0a42b0572696a40"
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "iteration_04_01_falling_circle",
+    "file": "steps/iteration_04_01_falling_circle.py"
+  },
+  {
+    "id": "iteration_04_02_falling_circle_events",
+    "file": "steps/iteration_04_02_falling_circle_events.py"
+  },
+  {
+    "id": "iteration_04_03_keyboard_circle",
+    "file": "steps/iteration_04_03_keyboard_circle.py"
+  },
+  {
+    "id": "iteration_04_04_mouse_circle",
+    "file": "steps/iteration_04_04_mouse_circle.py"
+  },
+  {
+    "id": "example_04_01_background_after_circle",
+    "file": "examples/example_04_01_background_after_circle.py"
+  },
+  {
+    "id": "example_04_02_fps_15",
+    "file": "examples/example_04_02_fps_15.py"
+  },
+  {
+    "id": "example_04_03_fps_60",
+    "file": "examples/example_04_03_fps_60.py"
+  },
+  {
+    "id": "example_04_04_no_background_clear",
+    "file": "examples/example_04_04_no_background_clear.py"
+  },
+  {
+    "id": "solution_04_05_fractional_position",
+    "file": "solutions/solution_04_05_fractional_position.py"
+  },
+  {
+    "id": "solution_04_08_loop_flag",
+    "file": "solutions/solution_04_08_loop_flag.py"
+  },
+  {
+    "id": "solution_04_10_close_request",
+    "file": "solutions/solution_04_10_close_request.py"
+  },
+  {
+    "id": "solution_04_13_bounds",
+    "file": "solutions/solution_04_13_bounds.py"
+  },
+  {
+    "id": "solution_04_15_show_cursor",
+    "file": "solutions/solution_04_15_show_cursor.py"
+  }
+]

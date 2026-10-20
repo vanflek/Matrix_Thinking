@@ -1,0 +1,70 @@
+[
+  {
+    "id": "iteration_07_01_pixel_art_editor",
+    "file": "steps/iteration_07_01_pixel_art_editor.py"
+  },
+  {
+    "id": "iteration_07_02_pixel_art_editor_io",
+    "file": "steps/iteration_07_02_pixel_art_editor_io.py"
+  },
+  {
+    "id": "iteration_07_03_pixel_art_editor_png",
+    "file": "steps/iteration_07_03_pixel_art_editor_png.py"
+  },
+  {
+    "id": "iteration_07_04_pixel_art_editor_brush_center",
+    "file": "steps/iteration_07_04_pixel_art_editor_brush_center.py"
+  },
+  {
+    "id": "iteration_07_05_pixel_art_editor_brush",
+    "file": "steps/iteration_07_05_pixel_art_editor_brush.py"
+  },
+  {
+    "id": "iteration_07_06_pixel_art_editor_shift",
+    "file": "steps/iteration_07_06_pixel_art_editor_shift.py"
+  },
+  {
+    "id": "iteration_07_07_pixel_art_editor_info",
+    "file": "steps/iteration_07_07_pixel_art_editor_info.py"
+  },
+  {
+    "id": "solution_07_21_palette_directions",
+    "file": "solutions/solution_07_21_palette_directions.py"
+  },
+  {
+    "id": "solution_07_22_palette_info",
+    "file": "solutions/solution_07_22_palette_info.py"
+  },
+  {
+    "id": "solution_07_23_brush_sizes",
+    "file": "solutions/solution_07_23_brush_sizes.py"
+  },
+  {
+    "id": "solution_07_24_rectangular_canvas",
+    "file": "solutions/solution_07_24_rectangular_canvas.py"
+  },
+  {
+    "id": "solution_07_25_clean_png",
+    "file": "solutions/solution_07_25_clean_png.py"
+  },
+  {
+    "id": "solution_07_26_save_and_reload",
+    "file": "solutions/solution_07_26_save_and_reload.py"
+  },
+  {
+    "id": "solution_07_27_missing_file",
+    "file": "solutions/solution_07_27_missing_file.py"
+  },
+  {
+    "id": "solution_07_28_two_palettes",
+    "file": "solutions/solution_07_28_two_palettes.py"
+  },
+  {
+    "id": "solution_07_29_separate_color",
+    "file": "solutions/solution_07_29_separate_color.py"
+  },
+  {
+    "id": "solution_07_30_own_icon",
+    "file": "solutions/solution_07_30_own_icon.py"
+  }
+]

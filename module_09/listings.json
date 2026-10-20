@@ -1,0 +1,134 @@
+[
+  {
+    "id": "iteration_09_01_coordinates",
+    "file": "steps/iteration_09_01_coordinates.py"
+  },
+  {
+    "id": "iteration_09_02_vstack",
+    "file": "steps/iteration_09_02_vstack.py"
+  },
+  {
+    "id": "iteration_09_03_hstack",
+    "file": "steps/iteration_09_03_hstack.py"
+  },
+  {
+    "id": "iteration_09_04_append_row",
+    "file": "steps/iteration_09_04_append_row.py"
+  },
+  {
+    "id": "iteration_09_05_move",
+    "file": "steps/iteration_09_05_move.py"
+  },
+  {
+    "id": "iteration_09_06_growth",
+    "file": "steps/iteration_09_06_growth.py"
+  },
+  {
+    "id": "iteration_09_07_no_growth",
+    "file": "steps/iteration_09_07_no_growth.py"
+  },
+  {
+    "id": "iteration_09_08_free_mask",
+    "file": "steps/iteration_09_08_free_mask.py"
+  },
+  {
+    "id": "iteration_09_09_argwhere_where",
+    "file": "steps/iteration_09_09_argwhere_where.py"
+  },
+  {
+    "id": "iteration_09_10_random_apple",
+    "file": "steps/iteration_09_10_random_apple.py"
+  },
+  {
+    "id": "iteration_09_11_empty_field",
+    "file": "steps/iteration_09_11_empty_field.py"
+  },
+  {
+    "id": "iteration_09_12_spawn_function",
+    "file": "steps/iteration_09_12_spawn_function.py"
+  },
+  {
+    "id": "iteration_09_13_coordinates_to_field",
+    "file": "steps/iteration_09_13_coordinates_to_field.py"
+  },
+  {
+    "id": "iteration_09_14_field_and_apple",
+    "file": "steps/iteration_09_14_field_and_apple.py"
+  },
+  {
+    "id": "iteration_09_15_collision_arrays",
+    "file": "steps/iteration_09_15_collision_arrays.py"
+  },
+  {
+    "id": "iteration_09_16_collision_function",
+    "file": "steps/iteration_09_16_collision_function.py"
+  },
+  {
+    "id": "iteration_09_17_single_step",
+    "file": "steps/iteration_09_17_single_step.py"
+  },
+  {
+    "id": "iteration_09_18_win",
+    "file": "steps/iteration_09_18_win.py"
+  },
+  {
+    "id": "iteration_09_19_respawn",
+    "file": "steps/iteration_09_19_respawn.py"
+  },
+  {
+    "id": "iteration_09_20_wrap",
+    "file": "steps/iteration_09_20_wrap.py"
+  },
+  {
+    "id": "iteration_09_21_wrapped_step",
+    "file": "steps/iteration_09_21_wrapped_step.py"
+  },
+  {
+    "id": "iteration_09_22_opposite_direction",
+    "file": "steps/iteration_09_22_opposite_direction.py"
+  },
+  {
+    "id": "iteration_09_23_two_turn_problem",
+    "file": "steps/iteration_09_23_two_turn_problem.py"
+  },
+  {
+    "id": "iteration_09_24_turn_permission",
+    "file": "steps/iteration_09_24_turn_permission.py"
+  },
+  {
+    "id": "iteration_09_25_arrow_events",
+    "file": "steps/iteration_09_25_arrow_events.py"
+  },
+  {
+    "id": "iteration_09_26_frame_counter",
+    "file": "steps/iteration_09_26_frame_counter.py"
+  },
+  {
+    "id": "iteration_09_27_snake",
+    "file": "steps/iteration_09_27_snake.py"
+  },
+  {
+    "id": "solution_09_26_colored_head",
+    "file": "solutions/solution_09_26_colored_head.py"
+  },
+  {
+    "id": "solution_09_27_score",
+    "file": "solutions/solution_09_27_score.py"
+  },
+  {
+    "id": "solution_09_28_speed",
+    "file": "solutions/solution_09_28_speed.py"
+  },
+  {
+    "id": "solution_09_29_walls",
+    "file": "solutions/solution_09_29_walls.py"
+  },
+  {
+    "id": "solution_09_30_restart",
+    "file": "solutions/solution_09_30_restart.py"
+  },
+  {
+    "id": "snake",
+    "file": "final/snake.py"
+  }
+]

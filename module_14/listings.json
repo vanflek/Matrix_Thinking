@@ -1,0 +1,110 @@
+[
+  {
+    "id": "iteration_14_01_skeleton",
+    "file": "steps/iteration_14_01_skeleton.py"
+  },
+  {
+    "id": "iteration_14_02_arrow_controls",
+    "file": "steps/iteration_14_02_arrow_controls.py"
+  },
+  {
+    "id": "iteration_14_03_capture",
+    "file": "steps/iteration_14_03_capture.py"
+  },
+  {
+    "id": "iteration_14_04_flashlight",
+    "file": "steps/iteration_14_04_flashlight.py"
+  },
+  {
+    "id": "example_14_01_elementwise_product",
+    "file": "examples/example_14_01_elementwise_product.py"
+  },
+  {
+    "id": "example_14_02_mask_intersection",
+    "file": "examples/example_14_02_mask_intersection.py"
+  },
+  {
+    "id": "example_14_03_image_mask",
+    "file": "examples/example_14_03_image_mask.py"
+  },
+  {
+    "id": "example_14_04_matrix_product",
+    "file": "examples/example_14_04_matrix_product.py"
+  },
+  {
+    "id": "example_14_05_factor_order",
+    "file": "examples/example_14_05_factor_order.py"
+  },
+  {
+    "id": "example_14_06_shape_constraints",
+    "file": "examples/example_14_06_shape_constraints.py"
+  },
+  {
+    "id": "example_14_07_weighted_scores",
+    "file": "examples/example_14_07_weighted_scores.py"
+  },
+  {
+    "id": "example_14_08_identity",
+    "file": "examples/example_14_08_identity.py"
+  },
+  {
+    "id": "example_14_09_cyclic_permutation",
+    "file": "examples/example_14_09_cyclic_permutation.py"
+  },
+  {
+    "id": "example_14_10_two_dimensional_shifts",
+    "file": "examples/example_14_10_two_dimensional_shifts.py"
+  },
+  {
+    "id": "example_14_11_inverse_operators",
+    "file": "examples/example_14_11_inverse_operators.py"
+  },
+  {
+    "id": "example_14_12_build_operators",
+    "file": "examples/example_14_12_build_operators.py"
+  },
+  {
+    "id": "example_14_13_operator_checks",
+    "file": "examples/example_14_13_operator_checks.py"
+  },
+  {
+    "id": "example_14_14_world_layers",
+    "file": "examples/example_14_14_world_layers.py"
+  },
+  {
+    "id": "example_14_15_distance_mask",
+    "file": "examples/example_14_15_distance_mask.py"
+  },
+  {
+    "id": "example_14_16_open_grid_broadcasting",
+    "file": "examples/example_14_16_open_grid_broadcasting.py"
+  },
+  {
+    "id": "example_14_17_shift_comparison",
+    "file": "examples/example_14_17_shift_comparison.py"
+  },
+  {
+    "id": "solution_14_26_group_shift",
+    "file": "solutions/solution_14_26_group_shift.py"
+  },
+  {
+    "id": "solution_14_27_composed_operator",
+    "file": "solutions/solution_14_27_composed_operator.py"
+  },
+  {
+    "id": "solution_14_28_ring_light",
+    "file": "solutions/solution_14_28_ring_light.py"
+  },
+  {
+    "id": "solution_14_29_two_lights",
+    "file": "solutions/solution_14_29_two_lights.py"
+  },
+  {
+    "id": "solution_14_30_three_bugs",
+    "file": "solutions/solution_14_30_three_bugs.py"
+  },
+  {
+    "id": "bug_buster",
+    "file": "final/bug_buster.py"
+  }
+]

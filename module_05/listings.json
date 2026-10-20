@@ -1,0 +1,74 @@
+[
+  {
+    "id": "iteration_05_01_first_matrix",
+    "file": "steps/iteration_05_01_first_matrix.py"
+  },
+  {
+    "id": "iteration_05_02_matrix_visualization",
+    "file": "steps/iteration_05_02_matrix_visualization.py"
+  },
+  {
+    "id": "example_05_01_array_constructors",
+    "file": "examples/example_05_01_array_constructors.py"
+  },
+  {
+    "id": "example_05_02_array_shapes",
+    "file": "examples/example_05_02_array_shapes.py"
+  },
+  {
+    "id": "example_05_03_neutral_face",
+    "file": "examples/example_05_03_neutral_face.py"
+  },
+  {
+    "id": "example_05_04_rectangular_frame",
+    "file": "examples/example_05_04_rectangular_frame.py"
+  },
+  {
+    "id": "example_05_05_wider_visor",
+    "file": "examples/example_05_05_wider_visor.py"
+  },
+  {
+    "id": "solution_05_21_corners",
+    "file": "solutions/solution_05_21_corners.py"
+  },
+  {
+    "id": "solution_05_22_top_row",
+    "file": "solutions/solution_05_22_top_row.py"
+  },
+  {
+    "id": "solution_05_23_left_column",
+    "file": "solutions/solution_05_23_left_column.py"
+  },
+  {
+    "id": "solution_05_24_frame",
+    "file": "solutions/solution_05_24_frame.py"
+  },
+  {
+    "id": "solution_05_25_main_diagonal",
+    "file": "solutions/solution_05_25_main_diagonal.py"
+  },
+  {
+    "id": "solution_05_25_main_diagonal_eye",
+    "file": "solutions/solution_05_25_main_diagonal_eye.py"
+  },
+  {
+    "id": "solution_05_26_secondary_diagonal",
+    "file": "solutions/solution_05_26_secondary_diagonal.py"
+  },
+  {
+    "id": "solution_05_27_letter_l",
+    "file": "solutions/solution_05_27_letter_l.py"
+  },
+  {
+    "id": "solution_05_28_letter_t",
+    "file": "solutions/solution_05_28_letter_t.py"
+  },
+  {
+    "id": "solution_05_29_smiley",
+    "file": "solutions/solution_05_29_smiley.py"
+  },
+  {
+    "id": "solution_05_30_among_us",
+    "file": "solutions/solution_05_30_among_us.py"
+  }
+]

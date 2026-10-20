@@ -9,8 +9,8 @@
   "files": [
     {
       "path": ".gitignore",
-      "bytes": 29,
-      "sha256": "5297b35c3ad3414b28f0bd55b8d357dfe33fb0e320581ff5b130a3efbf432720"
+      "bytes": 26,
+      "sha256": "4cad133d4f0a6cf4bba15f1b8bbae48d6a55f20b94f75487c51a93cc6a5af59f"
     },
     {
       "path": "assets/illustrations/boundary_light.png",
@@ -69,168 +69,183 @@
     },
     {
       "path": "examples/example_14_01_elementwise_product.py",
-      "bytes": 239,
-      "sha256": "c0e9543e829264a6ecf0da26ce909fffa31c6b8b972b8607dc485e41fde3f6ad"
+      "bytes": 217,
+      "sha256": "8c0bc6c02d1a0b316c6a53a18f8c555d583f5f460a8ba12138fd71189e4058c5"
     },
     {
       "path": "examples/example_14_02_mask_intersection.py",
-      "bytes": 473,
-      "sha256": "a40d3dec43376b2a2d16a23047d8b9a52a3ed4d0b8a727f3031bbd924ed5b1d5"
+      "bytes": 446,
+      "sha256": "54e0163aa214fa4a5155989abb17f8a660c4dee2837c26377b4dfda4121efb6d"
     },
     {
       "path": "examples/example_14_03_image_mask.py",
-      "bytes": 719,
-      "sha256": "eb35990cc79d440a1831da5d7688e617f559f0368464c8cb24ad434cf99f67b6"
+      "bytes": 687,
+      "sha256": "75a578433a80e81bc6079157634eec6805b04453372b1a2aba1eeb9b2bd67ed7"
     },
     {
       "path": "examples/example_14_04_matrix_product.py",
-      "bytes": 228,
-      "sha256": "d8234d74b48aa0437ff40cc4a65e609d46af466bb40bdee61e6d5a815ea23129"
+      "bytes": 206,
+      "sha256": "4c35a3ea56e099330be80607a2d8cfa417120890c63a257f35f89adc1c8677f3"
     },
     {
       "path": "examples/example_14_05_factor_order.py",
-      "bytes": 180,
-      "sha256": "02b8997bb0394b6e5ae7b631f0f1db0f5f63bd91be68d39fec863b8dd65d2c8a"
+      "bytes": 163,
+      "sha256": "9721d299175828b8276888adce19e87adcee49b9117f305446929e5097c2355e"
     },
     {
       "path": "examples/example_14_06_shape_constraints.py",
-      "bytes": 273,
-      "sha256": "09f9a0930eaff8a8ff393fd14057ffb0c2a5e5028ef5689b895eb2cc6435e6d8"
+      "bytes": 253,
+      "sha256": "d3decee2815bf62592ccff26fc8332743c61267572ae0fea12ff108f67ea10b0"
     },
     {
       "path": "examples/example_14_07_weighted_scores.py",
-      "bytes": 382,
-      "sha256": "5dccf86ed7d882180a37fa0743dbd75810b8bc76f8e296ba1fcde59f36be613a"
+      "bytes": 355,
+      "sha256": "46d136425b84bb8a67144b1cf2f0ec3f39bd62f9db908c612a837a86676a27ec"
     },
     {
       "path": "examples/example_14_08_identity.py",
-      "bytes": 404,
-      "sha256": "ad7a41b23b69e0b65f96c1ebb3c021e297d453728bf09f43f9aaa7090867b598"
+      "bytes": 383,
+      "sha256": "9e1d5bb9388a89110cc6f2bd3fd0cc0b511e8dda2c87a1fc7591538173ce6d69"
     },
     {
       "path": "examples/example_14_09_cyclic_permutation.py",
-      "bytes": 819,
-      "sha256": "59fc9c0273c59790b6e354ab332228f0433bb74c85f616899ee5606692dfddc4"
+      "bytes": 776,
+      "sha256": "36bc76ac34ca86634f6ab2df63c01c854827e68f622f718dadf98de133a3f80f"
     },
     {
       "path": "examples/example_14_10_two_dimensional_shifts.py",
-      "bytes": 660,
-      "sha256": "5730c7e3c3328eb4ad1259d05c95c2b2cc80b20e0594b447ebdae44a50d1e012"
+      "bytes": 616,
+      "sha256": "454cfc28078b6d24c4b2cc82ce43530eb19a05f6f5bb009bc247751c29d4b09b"
     },
     {
       "path": "examples/example_14_11_inverse_operators.py",
-      "bytes": 814,
-      "sha256": "00e22027c72bd4cc174dd05fdb3df84d010e17b5cef4019da3d445a2b2eb5416"
+      "bytes": 762,
+      "sha256": "f6ac0a9d68a6cd2223c00b8678f17a8ce3dfbbb4c1db273a9cf794b748e060be"
     },
     {
       "path": "examples/example_14_12_build_operators.py",
-      "bytes": 711,
-      "sha256": "e0db183ca3a0cdc1244dfe07097fde6ed4ad6d75327615408b14f7291187656e"
+      "bytes": 672,
+      "sha256": "98aa85028e279d3df1fd80ee4e6fa31438be67d65a7a59f5fceb479c6fafafa7"
     },
     {
       "path": "examples/example_14_13_operator_checks.py",
-      "bytes": 1796,
-      "sha256": "e4de6dd286ac900db8031adddba37e331f79730faa345cc2e487504e902fee48"
+      "bytes": 1713,
+      "sha256": "0bd4ad2a510623d16496a83b54f1fcf0b5bc43bc4cf2aa50bae7377699465a5d"
     },
     {
       "path": "examples/example_14_14_world_layers.py",
-      "bytes": 677,
-      "sha256": "7c7286c13a193daf545c07841397d3d03635bb00a0737683062f553e4664bb15"
+      "bytes": 638,
+      "sha256": "6b397657edc649ab01813ab6b8eb4bca0bb6235b3a7249ec331aec216dfbd69b"
     },
     {
       "path": "examples/example_14_15_distance_mask.py",
-      "bytes": 975,
-      "sha256": "172566dd4fa8b78ae2c02b256c532c98eed832517b38ca921067913aa9d2d189"
+      "bytes": 927,
+      "sha256": "989eb8e49f1e8713ce1f5d63105f367c14e334203f34f54b3e2f22043c1c7db7"
     },
     {
       "path": "examples/example_14_16_open_grid_broadcasting.py",
-      "bytes": 324,
-      "sha256": "dc9c4fbb11a89ff51b6dbe3b116bbe336a2e981387e7b58c43d54643d0fea73a"
+      "bytes": 301,
+      "sha256": "99d076a42271dcef0cfb45bc1e7956d0c3ed660b6de37f62eac228e5f8b27188"
     },
     {
       "path": "examples/example_14_17_shift_comparison.py",
-      "bytes": 429,
-      "sha256": "9641c98a07c43eb369026156962ce52d63cc37b42433a503932d10c15a007c13"
+      "bytes": 408,
+      "sha256": "ad23390176c38be7cd2fc85ee491e8ea3c9e85a49889010f65497269acaa2a46"
     },
     {
       "path": "final/bug_buster.py",
-      "bytes": 6513,
-      "sha256": "c12a087217e9023987ac5271d90dd5c6bba9448bf7056a20e030074fcc6a8ba8"
+      "bytes": 6284,
+      "sha256": "1e5b78d0231b01f515096925b7a74ed8ef69d1e0ea37bfdb58536fd4b10d2cdc"
+    },
+    {
+      "path": "listings.json",
+      "bytes": 2835,
+      "sha256": "f2179a1017e654a9a06e4e22b83e3d2f30ef7b27a8df5b376e7c7441a0173732"
+    },
+    {
+      "path": "LISTINGS.md",
+      "bytes": 2215,
+      "sha256": "fa2599ac2f2147d138dab87a03419b98adf7067162f2f42689814e192617ad7d"
     },
     {
       "path": "patches/iteration_14_01_to_02.patch",
-      "bytes": 2297,
-      "sha256": "d9aec799d08c6c01d7e7afac7ae91cbe3b3beba798b3b2aa04dc4861ba33ab8b"
+      "bytes": 2205,
+      "sha256": "c722f433ab7280d286faa13c38cd67bf624a37d4ce8f3174ada4000e463610b2"
     },
     {
       "path": "patches/iteration_14_02_to_03.patch",
-      "bytes": 1637,
-      "sha256": "bd799b27a5d104135ab5596a04a2a49a06db63eb34728dd29675cc5be8aafb2c"
+      "bytes": 1570,
+      "sha256": "19d1ca6241a1ebfa248f368210d84008f36bc07f458431f29a3f081449835575"
     },
     {
       "path": "patches/iteration_14_03_to_04.patch",
-      "bytes": 1935,
-      "sha256": "3fed832b2cb81146ebcfbb4881513ea6039f47efa9ea331e14ae64ff2ef87a66"
+      "bytes": 1868,
+      "sha256": "ae0cbe2dd7fc47b667371b2310dcf550edb2d13db3c1ed5317b89354526a184e"
     },
     {
       "path": "patches/manifest.json",
-      "bytes": 491,
-      "sha256": "ad54d9025aee064eb56105cfe41dc13af35d1bb7939b074f915687dfd2dd697e"
+      "bytes": 768,
+      "sha256": "11ff7c7c2f9faeb103f3602ce66d596231adc3b524e97614b49d73b4617352fe"
+    },
+    {
+      "path": "patches/README.md",
+      "bytes": 428,
+      "sha256": "ca0fc0c62ec91fbcf71f2c08cec071045d2f5fcbed68bafbd8e364d4a78d167c"
     },
     {
       "path": "README.md",
-      "bytes": 3113,
-      "sha256": "91c70991a8198c0c14524fdd520b1d3eddfce624ac026109a7d3389e63ff65e4"
+      "bytes": 3474,
+      "sha256": "042d91659f755c40f0b5fe9a68c4598f83b8e96e976d091f9cf643f44bfa2bc8"
     },
     {
       "path": "requirements.txt",
-      "bytes": 27,
-      "sha256": "f5b4ae4248a894f84aff2374fc5def23abc1a0794e143d864f2fe083e6c265ec"
+      "bytes": 25,
+      "sha256": "270ab023706725d7810a12a3dedb82976f4497cec4d5036407ce5f0e07c8ce63"
     },
     {
       "path": "solutions/solution_14_26_group_shift.py",
-      "bytes": 682,
-      "sha256": "0085f68f74554d398cd7c700ddad8397a56886242ed87f932c34343a93c0ce30"
+      "bytes": 653,
+      "sha256": "3b9d4b68b9d4fba4a8a078d69d400f5f38b9af6acf8239dcbc4232fdf9b7f814"
     },
     {
       "path": "solutions/solution_14_27_composed_operator.py",
-      "bytes": 574,
-      "sha256": "86246e88affa3d8dbc4ebc9dd5b27d5e19949773963bd554426043809280fa40"
+      "bytes": 552,
+      "sha256": "bf4143bc506942e0d73988b29c5a1c963837dcc6ea5637046cad2c33dea29477"
     },
     {
       "path": "solutions/solution_14_28_ring_light.py",
-      "bytes": 6262,
-      "sha256": "c027c9dc3942ab1be3ef24dc5efd7bf9fadd423ae88eef737d65f001c72b14ec"
+      "bytes": 6083,
+      "sha256": "42d3931e5ef2eb20d26844c7805d8444109ea68deeb9de7cda25c6b509a4bc5a"
     },
     {
       "path": "solutions/solution_14_29_two_lights.py",
-      "bytes": 6563,
-      "sha256": "c0f41a2a1ba0a0ea16d0701c882c20457fb7f953ddb69ddeef2269d5f3e59b94"
+      "bytes": 6382,
+      "sha256": "1e0336071315e579a74a7fd67519efdfe8527803d8ab00fdc4f5bed146c6886c"
     },
     {
       "path": "solutions/solution_14_30_three_bugs.py",
-      "bytes": 5956,
-      "sha256": "8560e0f26bcba439d3dda4397e1e0e0baae8dff8c97da8f7272bc1b0867e50f5"
+      "bytes": 5788,
+      "sha256": "d788d0c568d4be3330b72353a91cf1e4564ae190d24205e23fe8a164698d9be7"
     },
     {
       "path": "steps/iteration_14_01_skeleton.py",
-      "bytes": 3118,
-      "sha256": "e4a50a03e3f3253d680d30461a061467710a4f3214c008a01967db56e1536135"
+      "bytes": 3000,
+      "sha256": "ead793316cf73491fb37d846b34d2d0ef6f0063943b7ad09f162d7f68855f0a0"
     },
     {
       "path": "steps/iteration_14_02_arrow_controls.py",
-      "bytes": 4746,
-      "sha256": "39426379bf7e217befbd77095668df891d5ee8aacd5e69249785efb6a071e73d"
+      "bytes": 4571,
+      "sha256": "46510b7d822fe7752480e7dcfbfc12a9180ca76f13a6245fb2ade920bf3f650c"
     },
     {
       "path": "steps/iteration_14_03_capture.py",
-      "bytes": 5382,
-      "sha256": "0a4842eec6d376522d921fc6f03a097d4be78bce68d1899c1e235803d1698ee3"
+      "bytes": 5184,
+      "sha256": "f56efa2bed2eecca8a93fa21d8c783c0c40b773533c194a6c164f2f59a737811"
     },
     {
       "path": "steps/iteration_14_04_flashlight.py",
-      "bytes": 5936,
-      "sha256": "3dbd21bdb973ea8120e2efb79559184ebc46f45af4e5bb223d273a5da972fb3f"
+      "bytes": 5724,
+      "sha256": "c899023185c5e98b25a98f9b623e3c1491b5ac9a285c9a2cbd7d426e4faabafe"
     }
   ]
 }

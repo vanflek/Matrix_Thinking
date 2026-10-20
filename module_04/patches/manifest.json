@@ -1,0 +1,20 @@
+[
+  {
+    "patch": "patches/iteration_04_01_to_02.patch",
+    "source": "steps/iteration_04_01_falling_circle.py",
+    "target": "steps/iteration_04_02_falling_circle_events.py",
+    "target_sha256": "2a422770830e28bf5ee37627430ce52302673e68dbf41736c5bb38dd35b2db6a"
+  },
+  {
+    "patch": "patches/iteration_04_02_to_03.patch",
+    "source": "steps/iteration_04_02_falling_circle_events.py",
+    "target": "steps/iteration_04_03_keyboard_circle.py",
+    "target_sha256": "1d91c2fe7c97634d4e093bc5b869a80c27fe0dd1bdf3806f51a3cf2ff4c31b35"
+  },
+  {
+    "patch": "patches/iteration_04_03_to_04.patch",
+    "source": "steps/iteration_04_03_keyboard_circle.py",
+    "target": "steps/iteration_04_04_mouse_circle.py",
+    "target_sha256": "e1c3b7233498376655caea6ee9b0c8240af4c389130b15e80cea54663b525e36"
+  }
+]

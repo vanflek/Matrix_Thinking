@@ -1,0 +1,32 @@
+[
+  {
+    "patch": "patches/iteration_16_01_to_02.patch",
+    "source": "steps/iteration_16_01_skeleton.py",
+    "target": "steps/iteration_16_02_enemy_movement.py",
+    "target_sha256": "bebe33d0382077a3668e5d06f585f767c04747615cd14bc37ba0c83bae29c002"
+  },
+  {
+    "patch": "patches/iteration_16_02_to_03.patch",
+    "source": "steps/iteration_16_02_enemy_movement.py",
+    "target": "steps/iteration_16_03_bullet_collision.py",
+    "target_sha256": "c773e1feefd9cb21076ec2ddf7280a1677a6517d879351369faae9d0c66d8125"
+  },
+  {
+    "patch": "patches/iteration_16_03_to_04.patch",
+    "source": "steps/iteration_16_03_bullet_collision.py",
+    "target": "steps/iteration_16_04_player_collision.py",
+    "target_sha256": "4cfed2fcdd3c5c6daf3eaaca190a90c79c316b2795b3c56cf252ed20c1244251"
+  },
+  {
+    "patch": "patches/iteration_16_04_to_05.patch",
+    "source": "steps/iteration_16_04_player_collision.py",
+    "target": "steps/iteration_16_05_enemy_bullet.py",
+    "target_sha256": "e563b45bf86914d01ae71303e8d6015fb95817d71aa589e28626d11331620565"
+  },
+  {
+    "patch": "patches/iteration_16_05_to_06.patch",
+    "source": "steps/iteration_16_05_enemy_bullet.py",
+    "target": "steps/iteration_16_06_waves.py",
+    "target_sha256": "85f7e29ee51ab9b8586045849f2ce73b1f59a0456de73a3f940e8838c65c1973"
+  }
+]

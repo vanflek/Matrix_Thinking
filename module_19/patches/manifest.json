@@ -1,0 +1,56 @@
+[
+  {
+    "patch": "patches/iteration_19_01_to_02.patch",
+    "source": "steps/iteration_19_01_skeleton.py",
+    "target": "steps/iteration_19_02_keyboard.py",
+    "target_sha256": "523576a28ad26bea68cda01a2f08e50e1c1cde19c968eff346398b649cb27c6f"
+  },
+  {
+    "patch": "patches/iteration_19_02_to_03.patch",
+    "source": "steps/iteration_19_02_keyboard.py",
+    "target": "steps/iteration_19_03_projections.py",
+    "target_sha256": "fbcc6e721881453ea7241fb2327813ee79fdf1ab6d269d7783fcd0b31ae5b662"
+  },
+  {
+    "patch": "patches/iteration_19_03_to_04.patch",
+    "source": "steps/iteration_19_03_projections.py",
+    "target": "steps/iteration_19_04_values.py",
+    "target_sha256": "ae9c5cf4bda1d37a1c490ece647ca3ad8511a716467702b38ae3ef0d57e1c809"
+  },
+  {
+    "patch": "patches/iteration_19_04_to_05.patch",
+    "source": "steps/iteration_19_04_values.py",
+    "target": "steps/iteration_19_05_graphs.py",
+    "target_sha256": "273da557b12728b583105be9ecb21462b1c2bf36e4dc4376f1421e777b88cfd1"
+  },
+  {
+    "patch": "patches/iteration_19_05_to_06.patch",
+    "source": "steps/iteration_19_05_graphs.py",
+    "target": "steps/iteration_19_06_properties.py",
+    "target_sha256": "9c1e568e736cc884826c362b60cf90dd0111164fea5e3503b8392d7f909431f9"
+  },
+  {
+    "patch": "patches/iteration_19_06_to_07.patch",
+    "source": "steps/iteration_19_06_properties.py",
+    "target": "steps/iteration_19_07_needs_update.py",
+    "target_sha256": "5c80eeb5768a1ba50e31476afa61ea64da611dbc7371ddaa87c3c6e80d270986"
+  },
+  {
+    "patch": "patches/iteration_19_07_to_08.patch",
+    "source": "steps/iteration_19_07_needs_update.py",
+    "target": "steps/iteration_19_08_dependencies.py",
+    "target_sha256": "a5c2a2c1155287d508b3d3fe048d6e235fabe257d707d527fe436fa64851d5e2"
+  },
+  {
+    "patch": "patches/iteration_19_08_to_09.patch",
+    "source": "steps/iteration_19_08_dependencies.py",
+    "target": "steps/iteration_19_09_cached_images.py",
+    "target_sha256": "37d9534bd5189fb78d94c4dc82c62f6b0a95e42e295b0ad8659fc0fa14812108"
+  },
+  {
+    "patch": "patches/iteration_19_09_to_10.patch",
+    "source": "steps/iteration_19_09_cached_images.py",
+    "target": "steps/iteration_19_10_final.py",
+    "target_sha256": "3e3acde18846bbb7e6aee6f0c5843a0368eb00a1f262d3d3fb71fb21ce38dc25"
+  }
+]

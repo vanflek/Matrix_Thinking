@@ -1,0 +1,94 @@
+[
+  {
+    "id": "iteration_19_01_skeleton",
+    "file": "steps/iteration_19_01_skeleton.py"
+  },
+  {
+    "id": "iteration_19_02_keyboard",
+    "file": "steps/iteration_19_02_keyboard.py"
+  },
+  {
+    "id": "iteration_19_03_projections",
+    "file": "steps/iteration_19_03_projections.py"
+  },
+  {
+    "id": "iteration_19_04_values",
+    "file": "steps/iteration_19_04_values.py"
+  },
+  {
+    "id": "iteration_19_05_graphs",
+    "file": "steps/iteration_19_05_graphs.py"
+  },
+  {
+    "id": "iteration_19_06_properties",
+    "file": "steps/iteration_19_06_properties.py"
+  },
+  {
+    "id": "iteration_19_07_needs_update",
+    "file": "steps/iteration_19_07_needs_update.py"
+  },
+  {
+    "id": "iteration_19_08_dependencies",
+    "file": "steps/iteration_19_08_dependencies.py"
+  },
+  {
+    "id": "iteration_19_09_cached_images",
+    "file": "steps/iteration_19_09_cached_images.py"
+  },
+  {
+    "id": "iteration_19_10_final",
+    "file": "steps/iteration_19_10_final.py"
+  },
+  {
+    "id": "example_19_01_vector_length",
+    "file": "examples/example_19_01_vector_length.py"
+  },
+  {
+    "id": "example_19_02_single_angle",
+    "file": "examples/example_19_02_single_angle.py"
+  },
+  {
+    "id": "example_19_03_angles_loop",
+    "file": "examples/example_19_03_angles_loop.py"
+  },
+  {
+    "id": "example_19_04_angles_numpy",
+    "file": "examples/example_19_04_angles_numpy.py"
+  },
+  {
+    "id": "example_19_05_columns_loop",
+    "file": "examples/example_19_05_columns_loop.py"
+  },
+  {
+    "id": "example_19_06_column_stack",
+    "file": "examples/example_19_06_column_stack.py"
+  },
+  {
+    "id": "example_19_07_circle",
+    "file": "examples/example_19_07_circle.py"
+  },
+  {
+    "id": "solution_19_26_angle_step",
+    "file": "solutions/solution_19_26_angle_step.py"
+  },
+  {
+    "id": "solution_19_27_reset",
+    "file": "solutions/solution_19_27_reset.py"
+  },
+  {
+    "id": "solution_19_28_toggle_projections",
+    "file": "solutions/solution_19_28_toggle_projections.py"
+  },
+  {
+    "id": "solution_19_29_ellipse",
+    "file": "solutions/solution_19_29_ellipse.py"
+  },
+  {
+    "id": "solution_19_30_opposite_point",
+    "file": "solutions/solution_19_30_opposite_point.py"
+  },
+  {
+    "id": "trigonometry_lab",
+    "file": "final/trigonometry_lab.py"
+  }
+]

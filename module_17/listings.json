@@ -1,0 +1,94 @@
+[
+  {
+    "id": "iteration_17_01_skeleton",
+    "file": "steps/iteration_17_01_skeleton.py"
+  },
+  {
+    "id": "iteration_17_02_tetromino",
+    "file": "steps/iteration_17_02_tetromino.py"
+  },
+  {
+    "id": "iteration_17_03_first_figure",
+    "file": "steps/iteration_17_03_first_figure.py"
+  },
+  {
+    "id": "iteration_17_04_movement",
+    "file": "steps/iteration_17_04_movement.py"
+  },
+  {
+    "id": "iteration_17_05_locking",
+    "file": "steps/iteration_17_05_locking.py"
+  },
+  {
+    "id": "iteration_17_06_collisions",
+    "file": "steps/iteration_17_06_collisions.py"
+  },
+  {
+    "id": "iteration_17_07_falling",
+    "file": "steps/iteration_17_07_falling.py"
+  },
+  {
+    "id": "iteration_17_08_clear_rows",
+    "file": "steps/iteration_17_08_clear_rows.py"
+  },
+  {
+    "id": "iteration_17_09_game_over",
+    "file": "steps/iteration_17_09_game_over.py"
+  },
+  {
+    "id": "iteration_17_10_complete",
+    "file": "steps/iteration_17_10_complete.py"
+  },
+  {
+    "id": "example_17_01_tetromino",
+    "file": "examples/example_17_01_tetromino.py"
+  },
+  {
+    "id": "example_17_02_locking_mask",
+    "file": "examples/example_17_02_locking_mask.py"
+  },
+  {
+    "id": "example_17_03_overlap",
+    "file": "examples/example_17_03_overlap.py"
+  },
+  {
+    "id": "example_17_04_elapsed_time",
+    "file": "examples/example_17_04_elapsed_time.py"
+  },
+  {
+    "id": "example_17_05_clear_rows",
+    "file": "examples/example_17_05_clear_rows.py"
+  },
+  {
+    "id": "example_17_06_game_over",
+    "file": "examples/example_17_06_game_over.py"
+  },
+  {
+    "id": "example_17_07_transpose_axes",
+    "file": "examples/example_17_07_transpose_axes.py"
+  },
+  {
+    "id": "solution_17_26_clockwise",
+    "file": "solutions/solution_17_26_clockwise.py"
+  },
+  {
+    "id": "solution_17_27_field_stats",
+    "file": "solutions/solution_17_27_field_stats.py"
+  },
+  {
+    "id": "solution_17_28_pause",
+    "file": "solutions/solution_17_28_pause.py"
+  },
+  {
+    "id": "solution_17_29_restart",
+    "file": "solutions/solution_17_29_restart.py"
+  },
+  {
+    "id": "solution_17_30_shadow",
+    "file": "solutions/solution_17_30_shadow.py"
+  },
+  {
+    "id": "tetris",
+    "file": "final/tetris.py"
+  }
+]

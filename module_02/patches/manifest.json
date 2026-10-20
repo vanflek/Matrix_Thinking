@@ -1,0 +1,26 @@
+[
+  {
+    "patch": "patches/iteration_02_01_to_02.patch",
+    "source": "steps/iteration_02_01_circles_list.py",
+    "target": "steps/iteration_02_02_circles_range.py",
+    "target_sha256": "3eb5ad972a4b0b0f2e6b7d44445d6619d4353b258cb03a87c7384148b0062f98"
+  },
+  {
+    "patch": "patches/iteration_02_02_to_03.patch",
+    "source": "steps/iteration_02_02_circles_range.py",
+    "target": "steps/iteration_02_03_brick_wall.py",
+    "target_sha256": "14641a6f0fba82ce4fe10149e5d08e445e2c82beed34c6dbc97dc430181e24c1"
+  },
+  {
+    "patch": "patches/iteration_02_03_to_04.patch",
+    "source": "steps/iteration_02_03_brick_wall.py",
+    "target": "steps/iteration_02_04_brick_wall_labels.py",
+    "target_sha256": "3a16716d3051f88578558944c5b08ba3edc238e6235ac4170a6c21e7d374c6af"
+  },
+  {
+    "patch": "patches/iteration_02_04_to_05.patch",
+    "source": "steps/iteration_02_04_brick_wall_labels.py",
+    "target": "steps/iteration_02_05_grid_enumerate.py",
+    "target_sha256": "5e8b4b7b7dfaa1a8bf31951bf0874be7f74f3db901bb2c51bbd4295ce9d2c148"
+  }
+]

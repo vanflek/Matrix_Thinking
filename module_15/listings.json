@@ -1,0 +1,82 @@
+[
+  {
+    "id": "iteration_15_01_skeleton",
+    "file": "steps/iteration_15_01_skeleton.py"
+  },
+  {
+    "id": "iteration_15_02_player_movement",
+    "file": "steps/iteration_15_02_player_movement.py"
+  },
+  {
+    "id": "iteration_15_03_bullet_movement",
+    "file": "steps/iteration_15_03_bullet_movement.py"
+  },
+  {
+    "id": "iteration_15_04_falling_blocks",
+    "file": "steps/iteration_15_04_falling_blocks.py"
+  },
+  {
+    "id": "iteration_15_05_bullet_collision",
+    "file": "steps/iteration_15_05_bullet_collision.py"
+  },
+  {
+    "id": "iteration_15_06_full_rows",
+    "file": "steps/iteration_15_06_full_rows.py"
+  },
+  {
+    "id": "iteration_15_07_game_over",
+    "file": "steps/iteration_15_07_game_over.py"
+  },
+  {
+    "id": "example_15_01_class_instances",
+    "file": "examples/example_15_01_class_instances.py"
+  },
+  {
+    "id": "example_15_02_self_and_init",
+    "file": "examples/example_15_02_self_and_init.py"
+  },
+  {
+    "id": "example_15_03_default_arguments",
+    "file": "examples/example_15_03_default_arguments.py"
+  },
+  {
+    "id": "example_15_04_elementwise_maximum",
+    "file": "examples/example_15_04_elementwise_maximum.py"
+  },
+  {
+    "id": "example_15_05_key_actions",
+    "file": "examples/example_15_05_key_actions.py"
+  },
+  {
+    "id": "example_15_06_layer_views",
+    "file": "examples/example_15_06_layer_views.py"
+  },
+  {
+    "id": "example_15_07_full_rows",
+    "file": "examples/example_15_07_full_rows.py"
+  },
+  {
+    "id": "solution_15_26_palette",
+    "file": "solutions/solution_15_26_palette.py"
+  },
+  {
+    "id": "solution_15_27_horizontal",
+    "file": "solutions/solution_15_27_horizontal.py"
+  },
+  {
+    "id": "solution_15_28_boundaries",
+    "file": "solutions/solution_15_28_boundaries.py"
+  },
+  {
+    "id": "solution_15_29_score",
+    "file": "solutions/solution_15_29_score.py"
+  },
+  {
+    "id": "solution_15_30_field_size",
+    "file": "solutions/solution_15_30_field_size.py"
+  },
+  {
+    "id": "line_breaker",
+    "file": "final/line_breaker.py"
+  }
+]

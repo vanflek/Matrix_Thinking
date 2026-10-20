@@ -1,0 +1,170 @@
+[
+  {
+    "patch": "patches/iteration_12_01_to_02.patch",
+    "source": "steps/iteration_12_01_chr_ord.py",
+    "target": "steps/iteration_12_02_ascii_codes.py",
+    "target_sha256": "80fb5ea1bc028c9a8219145fb5871893932e0f53890dd906e52049c6418bbbca"
+  },
+  {
+    "patch": "patches/iteration_12_02_to_03.patch",
+    "source": "steps/iteration_12_02_ascii_codes.py",
+    "target": "steps/iteration_12_03_render_symbol.py",
+    "target_sha256": "1eed51737c353cd68eb2dfe461515aaaa91e4949baea4ec71327c6a433337728"
+  },
+  {
+    "patch": "patches/iteration_12_03_to_04.patch",
+    "source": "steps/iteration_12_03_render_symbol.py",
+    "target": "steps/iteration_12_04_brightness_loops.py",
+    "target_sha256": "46f2f0379b0f13458817cfcaf51d72b0283effb9eb66627a5682432659580b72"
+  },
+  {
+    "patch": "patches/iteration_12_04_to_05.patch",
+    "source": "steps/iteration_12_04_brightness_loops.py",
+    "target": "steps/iteration_12_05_brightness_numpy.py",
+    "target_sha256": "316a39d0cca8da8132a3c96ddc65d728a0320dd6b34c800b67903cd7867bd7b8"
+  },
+  {
+    "patch": "patches/iteration_12_05_to_06.patch",
+    "source": "steps/iteration_12_05_brightness_numpy.py",
+    "target": "steps/iteration_12_06_all_symbols_list.py",
+    "target_sha256": "1373a868287dea217ca19c0ba0d75be7dcb831577b23c5252ddcafd5fbd65b1d"
+  },
+  {
+    "patch": "patches/iteration_12_06_to_07.patch",
+    "source": "steps/iteration_12_06_all_symbols_list.py",
+    "target": "steps/iteration_12_07_paired_arrays.py",
+    "target_sha256": "599c75bbb8061b3c544647fa3548d723f79609e47bd6e3f7d9627ad8657bb614"
+  },
+  {
+    "patch": "patches/iteration_12_07_to_08.patch",
+    "source": "steps/iteration_12_07_paired_arrays.py",
+    "target": "steps/iteration_12_08_normalize_loops.py",
+    "target_sha256": "ff3a7dcae7b301a8e396b6dcca9e7a32a08ae9b553b08826b2751479fc457d3e"
+  },
+  {
+    "patch": "patches/iteration_12_08_to_09.patch",
+    "source": "steps/iteration_12_08_normalize_loops.py",
+    "target": "steps/iteration_12_09_normalize_numpy.py",
+    "target_sha256": "fa01642a2965fe68422815225a7f39671510c139d90de136f253f0fc93e0ff31"
+  },
+  {
+    "patch": "patches/iteration_12_09_to_10.patch",
+    "source": "steps/iteration_12_09_normalize_numpy.py",
+    "target": "steps/iteration_12_10_sort_loops.py",
+    "target_sha256": "f8c50959bf274b519d088e8dd8f88b0242c2bd8745f48dfd8db37abf74eb12ef"
+  },
+  {
+    "patch": "patches/iteration_12_10_to_11.patch",
+    "source": "steps/iteration_12_10_sort_loops.py",
+    "target": "steps/iteration_12_11_sort_numpy.py",
+    "target_sha256": "6f24069212ef58d97b29f9d3bb1d5fb1d05a538eb7e7fcbaf45e80ff0db4ab45"
+  },
+  {
+    "patch": "patches/iteration_12_11_to_12.patch",
+    "source": "steps/iteration_12_11_sort_numpy.py",
+    "target": "steps/iteration_12_12_save_palette.py",
+    "target_sha256": "1756ce82cf12a443460daac1866b4c4b65a888bcef76de8bf293de6a36017906"
+  },
+  {
+    "patch": "patches/iteration_12_12_to_13.patch",
+    "source": "steps/iteration_12_12_save_palette.py",
+    "target": "steps/iteration_12_13_load_image.py",
+    "target_sha256": "ee9cc1474885bf2a5a8991af24145f3595c79c205cd511bc46a0c7a32f73b74a"
+  },
+  {
+    "patch": "patches/iteration_12_13_to_14.patch",
+    "source": "steps/iteration_12_13_load_image.py",
+    "target": "steps/iteration_12_14_gray_loops.py",
+    "target_sha256": "b5eda1cae908649c6c257fedbf19296bd9611704ea70dcaf0b38398fc895678b"
+  },
+  {
+    "patch": "patches/iteration_12_14_to_15.patch",
+    "source": "steps/iteration_12_14_gray_loops.py",
+    "target": "steps/iteration_12_15_gray_numpy.py",
+    "target_sha256": "159696a10225a78b5ee10e5e04b7672816dd3750a17758a50a177956fb3751d7"
+  },
+  {
+    "patch": "patches/iteration_12_15_to_16.patch",
+    "source": "steps/iteration_12_15_gray_numpy.py",
+    "target": "steps/iteration_12_16_blocks_four_loops.py",
+    "target_sha256": "53172b588d6cb7e0a97e282848a584ad93af01c4799248d1bbd5105149a63b8c"
+  },
+  {
+    "patch": "patches/iteration_12_16_to_17.patch",
+    "source": "steps/iteration_12_16_blocks_four_loops.py",
+    "target": "steps/iteration_12_17_blocks_mean.py",
+    "target_sha256": "7aa1260ed31ecedaa9414bac8f1b0b1bbbf2607febc4e25edc3e431dfbd52a80"
+  },
+  {
+    "patch": "patches/iteration_12_17_to_18.patch",
+    "source": "steps/iteration_12_17_blocks_mean.py",
+    "target": "steps/iteration_12_18_blocks_reshape.py",
+    "target_sha256": "2f2a546f290924ce98c9a5f6c34776d4247d7f814776fe5f81bc04fb271d19e9"
+  },
+  {
+    "patch": "patches/iteration_12_18_to_19.patch",
+    "source": "steps/iteration_12_18_blocks_reshape.py",
+    "target": "steps/iteration_12_19_mosaic_repeat.py",
+    "target_sha256": "472cccc936b22e4e0331d7f7cdeb4bae7751b76d525d27e1a6384afb963ef22a"
+  },
+  {
+    "patch": "patches/iteration_12_19_to_20.patch",
+    "source": "steps/iteration_12_19_mosaic_repeat.py",
+    "target": "steps/iteration_12_20_single_block_function.py",
+    "target_sha256": "2c8ee74379c95e447da511caa45d26514e8d67507f147b3a29d9b54944ed71ba"
+  },
+  {
+    "patch": "patches/iteration_12_20_to_21.patch",
+    "source": "steps/iteration_12_20_single_block_function.py",
+    "target": "steps/iteration_12_21_select_symbols.py",
+    "target_sha256": "28b34c6360f2107ec4e090b6ea0918bdf0eda5271a817235adcd52bccdac6820"
+  },
+  {
+    "patch": "patches/iteration_12_21_to_22.patch",
+    "source": "steps/iteration_12_21_select_symbols.py",
+    "target": "steps/iteration_12_22_draw_ascii.py",
+    "target_sha256": "5b922c57a1ae585584a12cc0f556cf1f63ba5a3eb14ba6da4a0b4c06f6d70b1d"
+  },
+  {
+    "patch": "patches/iteration_12_22_to_23.patch",
+    "source": "steps/iteration_12_22_draw_ascii.py",
+    "target": "steps/iteration_12_23_searchsorted.py",
+    "target_sha256": "3d8373863772de1e1c2dcc71d108fd1f4c2985a448db50a3b2cb44a36b8fc648"
+  },
+  {
+    "patch": "patches/iteration_12_23_to_24.patch",
+    "source": "steps/iteration_12_23_searchsorted.py",
+    "target": "steps/iteration_12_24_select_numpy.py",
+    "target_sha256": "f589cc6b3f14701fa5c7caf0d24fd977f8b69abd7e77e3491a96cba7ff4faff3"
+  },
+  {
+    "patch": "patches/iteration_12_24_to_25.patch",
+    "source": "steps/iteration_12_24_select_numpy.py",
+    "target": "steps/iteration_12_25_color_means.py",
+    "target_sha256": "1bad99521c966fcfb8a3d0bb23ce6060a131b6be30e4495f53a55664ea8dd484"
+  },
+  {
+    "patch": "patches/iteration_12_25_to_26.patch",
+    "source": "steps/iteration_12_25_color_means.py",
+    "target": "steps/iteration_12_26_draw_color.py",
+    "target_sha256": "e3cfb574a6c04e01101fe43a50cacab9aefbe8fcc0aa67d4cda5227e48ddac20"
+  },
+  {
+    "patch": "patches/iteration_12_26_to_27.patch",
+    "source": "steps/iteration_12_26_draw_color.py",
+    "target": "steps/iteration_12_27_color_numpy.py",
+    "target_sha256": "6e245833ab1adc1f4def0ac55d4d2a880bacefab5314db7874836a062324139b"
+  },
+  {
+    "patch": "patches/iteration_12_27_to_28.patch",
+    "source": "steps/iteration_12_27_color_numpy.py",
+    "target": "steps/iteration_12_28_resize.py",
+    "target_sha256": "f87890480b8f919d5c358379dc16eafb91383af91df0d929318b07ae0f721a78"
+  },
+  {
+    "patch": "patches/iteration_12_28_to_29.patch",
+    "source": "steps/iteration_12_28_resize.py",
+    "target": "steps/iteration_12_29_color_toggle.py",
+    "target_sha256": "bad72b9ac09bbd87710dc3cd23a06daf023b8260528136721eac61451b6088c6"
+  }
+]

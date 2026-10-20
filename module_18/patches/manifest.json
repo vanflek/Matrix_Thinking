@@ -1,0 +1,74 @@
+[
+  {
+    "patch": "patches/iteration_18_01_to_02.patch",
+    "source": "steps/iteration_18_01_skeleton.py",
+    "target": "steps/iteration_18_02_movement_and_trail.py",
+    "target_sha256": "ee1ff8c86e68b8b50392ffde5999509b9a25c47f54e41a4c0e50224a43ededf4"
+  },
+  {
+    "patch": "patches/iteration_18_02_to_03.patch",
+    "source": "steps/iteration_18_02_movement_and_trail.py",
+    "target": "steps/iteration_18_03_region_search.py",
+    "target_sha256": "91db0bfe8ddacc03aefe5d3a98f4b2dfecb52e1cf23ba67ef7b32227edb230fd"
+  },
+  {
+    "patch": "patches/iteration_18_03_to_04.patch",
+    "source": "steps/iteration_18_03_region_search.py",
+    "target": "steps/iteration_18_04_area_capture.py",
+    "target_sha256": "4a305c68fcc0a80d1354bef91a9f410ab920ee346504f8ad26274ee8696f8458"
+  },
+  {
+    "patch": "patches/iteration_18_04_to_05.patch",
+    "source": "steps/iteration_18_04_area_capture.py",
+    "target": "steps/iteration_18_05_one_enemy.py",
+    "target_sha256": "d94ee85b36464d885289fe0e983a8443b191d3fc389c3f034d0edb4295e76c84"
+  },
+  {
+    "patch": "patches/iteration_18_05_to_06.patch",
+    "source": "steps/iteration_18_05_one_enemy.py",
+    "target": "steps/iteration_18_06_enemy_reflection.py",
+    "target_sha256": "955754bcc798e4433696e4d56854fe2db4de8a6c7400588a5d2bbefe756b4e9e"
+  },
+  {
+    "patch": "patches/iteration_18_06_to_07.patch",
+    "source": "steps/iteration_18_06_enemy_reflection.py",
+    "target": "steps/iteration_18_07_trail_collision.py",
+    "target_sha256": "dfac8db39dc8845e385251dbf2e5216ee9d2895ab4b2b1bb486068d271f2dc23"
+  },
+  {
+    "patch": "patches/iteration_18_07_to_08.patch",
+    "source": "steps/iteration_18_07_trail_collision.py",
+    "target": "steps/iteration_18_08_safe_capture.py",
+    "target_sha256": "4d4ccfc64405528eac20889ec46a7557f4dda353624a96f16dfa5d3f63f9d7a2"
+  },
+  {
+    "patch": "patches/iteration_18_08_to_09.patch",
+    "source": "steps/iteration_18_08_safe_capture.py",
+    "target": "steps/iteration_18_09_levels.py",
+    "target_sha256": "3535a4e3d24143359f44ca8d1247494ae6231543e288f24652a949fbfec8d5ce"
+  },
+  {
+    "patch": "patches/iteration_18_09_to_10.patch",
+    "source": "steps/iteration_18_09_levels.py",
+    "target": "steps/iteration_18_10_enemy_layers.py",
+    "target_sha256": "cd5c26e493ee0ed6efd0cf5e02f4174afa44291287ccbb4d37482d9394f851d5"
+  },
+  {
+    "patch": "patches/iteration_18_10_to_11.patch",
+    "source": "steps/iteration_18_10_enemy_layers.py",
+    "target": "steps/iteration_18_11_independent_enemies.py",
+    "target_sha256": "d02c92d5adf96175f97c183f2bb7ebc9ab29fba9cf79c7580c2d3bdbbec4bdfe"
+  },
+  {
+    "patch": "patches/iteration_18_11_to_12.patch",
+    "source": "steps/iteration_18_11_independent_enemies.py",
+    "target": "steps/iteration_18_12_group_checks.py",
+    "target_sha256": "ee4debb20b83b0b50d92bda54e37565eaa629376a329716e3638118faa8b5aaa"
+  },
+  {
+    "patch": "patches/iteration_18_12_to_13.patch",
+    "source": "steps/iteration_18_12_group_checks.py",
+    "target": "steps/iteration_18_13_complete_game.py",
+    "target_sha256": "1ae029a279bf986406ae50c554dea6ad06a1500c46a93709f602c83ad76bb85a"
+  }
+]

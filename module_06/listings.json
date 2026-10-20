@@ -1,0 +1,186 @@
+[
+  {
+    "id": "example_06_01_matrix_visualization",
+    "file": "examples/example_06_01_matrix_visualization.py"
+  },
+  {
+    "id": "example_06_02_benchmark_checkerboard",
+    "file": "examples/example_06_02_benchmark_checkerboard.py"
+  },
+  {
+    "id": "example_06_03_index_matrices",
+    "file": "examples/example_06_03_index_matrices.py"
+  },
+  {
+    "id": "example_06_04_mask_operations",
+    "file": "examples/example_06_04_mask_operations.py"
+  },
+  {
+    "id": "example_06_05_mask_values",
+    "file": "examples/example_06_05_mask_values.py"
+  },
+  {
+    "id": "example_06_06_paired_indices_vs_slices",
+    "file": "examples/example_06_06_paired_indices_vs_slices.py"
+  },
+  {
+    "id": "example_06_07_block_and_frame",
+    "file": "examples/example_06_07_block_and_frame.py"
+  },
+  {
+    "id": "example_06_08_bottom_half",
+    "file": "examples/example_06_08_bottom_half.py"
+  },
+  {
+    "id": "example_06_09_centered_square",
+    "file": "examples/example_06_09_centered_square.py"
+  },
+  {
+    "id": "example_06_10_checkerboard_loops",
+    "file": "examples/example_06_10_checkerboard_loops.py"
+  },
+  {
+    "id": "example_06_11_checkerboard_slices",
+    "file": "examples/example_06_11_checkerboard_slices.py"
+  },
+  {
+    "id": "example_06_12_corners_mask",
+    "file": "examples/example_06_12_corners_mask.py"
+  },
+  {
+    "id": "example_06_13_cross_mask",
+    "file": "examples/example_06_13_cross_mask.py"
+  },
+  {
+    "id": "example_06_14_cross_slices",
+    "file": "examples/example_06_14_cross_slices.py"
+  },
+  {
+    "id": "example_06_15_four_corners",
+    "file": "examples/example_06_15_four_corners.py"
+  },
+  {
+    "id": "example_06_16_frame_mask",
+    "file": "examples/example_06_16_frame_mask.py"
+  },
+  {
+    "id": "example_06_17_frame_slices",
+    "file": "examples/example_06_17_frame_slices.py"
+  },
+  {
+    "id": "example_06_18_horizontal_stripes",
+    "file": "examples/example_06_18_horizontal_stripes.py"
+  },
+  {
+    "id": "example_06_19_left_half",
+    "file": "examples/example_06_19_left_half.py"
+  },
+  {
+    "id": "example_06_20_letter_h",
+    "file": "examples/example_06_20_letter_h.py"
+  },
+  {
+    "id": "example_06_21_letter_o",
+    "file": "examples/example_06_21_letter_o.py"
+  },
+  {
+    "id": "example_06_22_letter_x",
+    "file": "examples/example_06_22_letter_x.py"
+  },
+  {
+    "id": "example_06_23_main_diagonal_indices",
+    "file": "examples/example_06_23_main_diagonal_indices.py"
+  },
+  {
+    "id": "example_06_24_main_diagonal_loop",
+    "file": "examples/example_06_24_main_diagonal_loop.py"
+  },
+  {
+    "id": "example_06_25_opposite_quarters",
+    "file": "examples/example_06_25_opposite_quarters.py"
+  },
+  {
+    "id": "example_06_26_other_quarters",
+    "file": "examples/example_06_26_other_quarters.py"
+  },
+  {
+    "id": "example_06_27_right_half",
+    "file": "examples/example_06_27_right_half.py"
+  },
+  {
+    "id": "example_06_28_secondary_diagonal",
+    "file": "examples/example_06_28_secondary_diagonal.py"
+  },
+  {
+    "id": "example_06_29_shifted_vertical_stripes",
+    "file": "examples/example_06_29_shifted_vertical_stripes.py"
+  },
+  {
+    "id": "example_06_30_thick_frame",
+    "file": "examples/example_06_30_thick_frame.py"
+  },
+  {
+    "id": "example_06_31_top_half",
+    "file": "examples/example_06_31_top_half.py"
+  },
+  {
+    "id": "example_06_32_vertical_stripes",
+    "file": "examples/example_06_32_vertical_stripes.py"
+  },
+  {
+    "id": "example_06_33_scalar_logic",
+    "file": "examples/example_06_33_scalar_logic.py"
+  },
+  {
+    "id": "example_06_34_slices_1d",
+    "file": "examples/example_06_34_slices_1d.py"
+  },
+  {
+    "id": "example_06_35_slices_2d",
+    "file": "examples/example_06_35_slices_2d.py"
+  },
+  {
+    "id": "solution_06_21_two_walls",
+    "file": "solutions/solution_06_21_two_walls.py"
+  },
+  {
+    "id": "solution_06_22_two_shelves",
+    "file": "solutions/solution_06_22_two_shelves.py"
+  },
+  {
+    "id": "solution_06_23_frame_opening",
+    "file": "solutions/solution_06_23_frame_opening.py"
+  },
+  {
+    "id": "solution_06_24_inner_frame",
+    "file": "solutions/solution_06_24_inner_frame.py"
+  },
+  {
+    "id": "solution_06_25_double_frame",
+    "file": "solutions/solution_06_25_double_frame.py"
+  },
+  {
+    "id": "solution_06_26_window_sill",
+    "file": "solutions/solution_06_26_window_sill.py"
+  },
+  {
+    "id": "solution_06_27_dotted_line",
+    "file": "solutions/solution_06_27_dotted_line.py"
+  },
+  {
+    "id": "solution_06_28_opposite_quarters",
+    "file": "solutions/solution_06_28_opposite_quarters.py"
+  },
+  {
+    "id": "solution_06_29_thick_cross",
+    "file": "solutions/solution_06_29_thick_cross.py"
+  },
+  {
+    "id": "solution_06_29_thick_cross_mask",
+    "file": "solutions/solution_06_29_thick_cross_mask.py"
+  },
+  {
+    "id": "solution_06_30_staircase",
+    "file": "solutions/solution_06_30_staircase.py"
+  }
+]

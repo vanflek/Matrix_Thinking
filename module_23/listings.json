@@ -1,122 +1,126 @@
 [
   {
-    "id": "iteration_23_01",
+    "id": "iteration_23_01_skeleton",
     "file": "steps/iteration_23_01_skeleton.py"
   },
   {
-    "id": "iteration_23_02",
+    "id": "iteration_23_02_camera_coordinates",
     "file": "steps/iteration_23_02_camera_coordinates.py"
   },
   {
-    "id": "iteration_23_03",
+    "id": "iteration_23_03_first_cube",
     "file": "steps/iteration_23_03_first_cube.py"
   },
   {
-    "id": "iteration_23_04",
+    "id": "iteration_23_04_camera_movement",
     "file": "steps/iteration_23_04_camera_movement.py"
   },
   {
-    "id": "iteration_23_05",
+    "id": "iteration_23_05_camera_yaw",
     "file": "steps/iteration_23_05_camera_yaw.py"
   },
   {
-    "id": "iteration_23_06",
+    "id": "iteration_23_06_camera_pitch",
     "file": "steps/iteration_23_06_camera_pitch.py"
   },
   {
-    "id": "iteration_23_07",
+    "id": "iteration_23_07_camera_roll",
     "file": "steps/iteration_23_07_camera_roll.py"
   },
   {
-    "id": "iteration_23_08",
+    "id": "iteration_23_08_camera_local_movement",
     "file": "steps/iteration_23_08_camera_local_movement.py"
   },
   {
-    "id": "iteration_23_09",
+    "id": "iteration_23_09_near_clipping",
     "file": "steps/iteration_23_09_near_clipping.py"
   },
   {
-    "id": "iteration_23_10",
+    "id": "iteration_23_10_object_transform",
     "file": "steps/iteration_23_10_object_transform.py"
   },
   {
-    "id": "iteration_23_11",
+    "id": "iteration_23_11_object_scale",
     "file": "steps/iteration_23_11_object_scale.py"
   },
   {
-    "id": "iteration_23_12",
+    "id": "iteration_23_12_two_cobras",
     "file": "steps/iteration_23_12_two_cobras.py"
   },
   {
-    "id": "iteration_23_13",
+    "id": "iteration_23_13_object_orientation",
     "file": "steps/iteration_23_13_object_orientation.py"
   },
   {
-    "id": "iteration_23_14",
+    "id": "iteration_23_14_local_axes",
     "file": "steps/iteration_23_14_local_axes.py"
   },
   {
-    "id": "iteration_23_15",
+    "id": "iteration_23_15_local_rotation",
     "file": "steps/iteration_23_15_local_rotation.py"
   },
   {
-    "id": "iteration_23_16",
+    "id": "iteration_23_16_complete",
     "file": "steps/iteration_23_16_complete.py"
   },
   {
-    "id": "example_23_01",
+    "id": "example_23_01_cube_geometry",
     "file": "examples/example_23_01_cube_geometry.py"
   },
   {
-    "id": "example_23_02",
+    "id": "example_23_02_perspective",
     "file": "examples/example_23_02_perspective.py"
   },
   {
-    "id": "example_23_03",
+    "id": "example_23_03_field_of_view",
     "file": "examples/example_23_03_field_of_view.py"
   },
   {
-    "id": "example_23_04",
+    "id": "example_23_04_inverse_rotation",
     "file": "examples/example_23_04_inverse_rotation.py"
   },
   {
-    "id": "example_23_05",
+    "id": "example_23_05_near_intersection",
     "file": "examples/example_23_05_near_intersection.py"
   },
   {
-    "id": "example_23_06",
+    "id": "example_23_06_clip_lines",
     "file": "examples/example_23_06_clip_lines.py"
   },
   {
-    "id": "example_23_07",
+    "id": "example_23_07_stack_screen_lines",
     "file": "examples/example_23_07_stack_screen_lines.py"
   },
   {
-    "id": "example_23_08",
+    "id": "example_23_08_scale_order",
     "file": "examples/example_23_08_scale_order.py"
   },
   {
-    "id": "solution_23_26",
+    "id": "solution_23_26_perspective",
     "file": "solutions/solution_23_26_perspective.py"
   },
   {
-    "id": "solution_23_27",
+    "id": "solution_23_27_clipping",
     "file": "solutions/solution_23_27_clipping.py"
   },
   {
-    "id": "solution_23_28",
+    "id": "solution_23_28_third_ship",
     "file": "solutions/solution_23_28_third_ship.py"
   },
   {
-    "id": "solution_23_29",
+    "id": "solution_23_29_local",
     "file": "solutions/solution_23_29_local.py"
   },
   {
-    "id": "solution_23_29",
+    "id": "solution_23_29_world",
     "file": "solutions/solution_23_29_world.py"
   },
   {
-    "id": "solution_23_30",
+    "id": "solution_23_30_time",
     "file": "solutions/solution_23_30_time.py"
+  },
+  {
+    "id": "wireframe_scene",
+    "file": "final/wireframe_scene.py"
   }
 ]

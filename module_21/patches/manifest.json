@@ -1,0 +1,62 @@
+[
+  {
+    "patch": "patches/iteration_21_01_to_02.patch",
+    "source": "steps/iteration_21_01_skeleton.py",
+    "target": "steps/iteration_21_02_wireframe_object.py",
+    "target_sha256": "fd79b2bb7f5599b88f46979c7ab4a140c79df4a13ce88409d20b83f58f43a8cf"
+  },
+  {
+    "patch": "patches/iteration_21_02_to_03.patch",
+    "source": "steps/iteration_21_02_wireframe_object.py",
+    "target": "steps/iteration_21_03_second_object.py",
+    "target_sha256": "dda57484ce4ce953c1f932b06df51e6d5ab6e451b54b0e7bda8e9c97fb6cfe24"
+  },
+  {
+    "patch": "patches/iteration_21_03_to_04.patch",
+    "source": "steps/iteration_21_03_second_object.py",
+    "target": "steps/iteration_21_04_movement.py",
+    "target_sha256": "c6a4583fa71c94be4cbaee9b1af9110b618e563dadc70d0753a1f4d50191c54c"
+  },
+  {
+    "patch": "patches/iteration_21_04_to_05.patch",
+    "source": "steps/iteration_21_04_movement.py",
+    "target": "steps/iteration_21_05_field_bounds.py",
+    "target_sha256": "163c1ea8915e41d9435f410e193aca7ec93f14621ff8bee735be05ca97de7877"
+  },
+  {
+    "patch": "patches/iteration_21_05_to_06.patch",
+    "source": "steps/iteration_21_05_field_bounds.py",
+    "target": "steps/iteration_21_06_shooting.py",
+    "target_sha256": "08d1ac035636f89e2d326f7655756e329c063995e8597587296376769930f5d6"
+  },
+  {
+    "patch": "patches/iteration_21_06_to_07.patch",
+    "source": "steps/iteration_21_06_shooting.py",
+    "target": "steps/iteration_21_07_rotating_enemies.py",
+    "target_sha256": "8608e91beb413bc0f87cebdc2a62fb067a5f393500f8184f664674b36ab91d46"
+  },
+  {
+    "patch": "patches/iteration_21_07_to_08.patch",
+    "source": "steps/iteration_21_07_rotating_enemies.py",
+    "target": "steps/iteration_21_08_diagonal_motion.py",
+    "target_sha256": "3e60c65d0220794c7129ac9ffd30176c86649c295b2ebf924c18e2f25645e818"
+  },
+  {
+    "patch": "patches/iteration_21_08_to_09.patch",
+    "source": "steps/iteration_21_08_diagonal_motion.py",
+    "target": "steps/iteration_21_09_circular_motion.py",
+    "target_sha256": "c40090adbc62ad9c4e2a308be8ccc64a79bd238b2a11746621624d6a5d2e57a5"
+  },
+  {
+    "patch": "patches/iteration_21_09_to_10.patch",
+    "source": "steps/iteration_21_09_circular_motion.py",
+    "target": "steps/iteration_21_10_projectile_collisions.py",
+    "target_sha256": "1c2865aee4ebbf33694fbd544c834cad021abfa890bbb849e25bc015d21167a0"
+  },
+  {
+    "patch": "patches/iteration_21_10_to_11.patch",
+    "source": "steps/iteration_21_10_projectile_collisions.py",
+    "target": "steps/iteration_21_11_game_end.py",
+    "target_sha256": "9f21b9649f0f5875daed72de2cb055c989c757cb0ef1551b1c2a7f209da183c9"
+  }
+]

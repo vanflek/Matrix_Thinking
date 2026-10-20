@@ -1,0 +1,188 @@
+[
+  {
+    "patch": "patches/iteration_08_01_to_02.patch",
+    "source": "steps/iteration_08_01_show_rules.py",
+    "target": "steps/iteration_08_02_arguments.py",
+    "target_sha256": "fbe9b7bf4fb6ca3bd61a43d8d26ba9fefb49f1e779cb8d8edf22cae8df26cda7"
+  },
+  {
+    "patch": "patches/iteration_08_02_to_03.patch",
+    "source": "steps/iteration_08_02_arguments.py",
+    "target": "steps/iteration_08_03_return_value.py",
+    "target_sha256": "a5347b96086aa8829719ec0b45438c4a4b76d3258dc64c0d329ff3b20fdf8be3"
+  },
+  {
+    "patch": "patches/iteration_08_03_to_04.patch",
+    "source": "steps/iteration_08_03_return_value.py",
+    "target": "steps/iteration_08_04_none.py",
+    "target_sha256": "b8c0e43c224cb475eba6f8433cc32865f06114674cf247a0cfd898e2aa091d71"
+  },
+  {
+    "patch": "patches/iteration_08_04_to_05.patch",
+    "source": "steps/iteration_08_04_none.py",
+    "target": "steps/iteration_08_05_local_names.py",
+    "target_sha256": "13762187ca39d249f218637c8b4dfd70b919bfc6aa1835d6fd4b33570fdbfcfb"
+  },
+  {
+    "patch": "patches/iteration_08_05_to_06.patch",
+    "source": "steps/iteration_08_05_local_names.py",
+    "target": "steps/iteration_08_06_array_change.py",
+    "target_sha256": "393686b753d1aa4c787515496e4b5d4aeead1ce0a8ee1e0d055f05580647a0e1"
+  },
+  {
+    "patch": "patches/iteration_08_06_to_07.patch",
+    "source": "steps/iteration_08_06_array_change.py",
+    "target": "steps/iteration_08_07_state.py",
+    "target_sha256": "3511949a540c2c93ee78b495b66163bbb8cd1a0838bf7cfe86d5b513f94d3752"
+  },
+  {
+    "patch": "patches/iteration_08_07_to_08.patch",
+    "source": "steps/iteration_08_07_state.py",
+    "target": "steps/iteration_08_08_dictionary_updates.py",
+    "target_sha256": "6e62bb7d66cca8e92e4d29dcd52b3a2967b30cea5192071a0685a6f561950668"
+  },
+  {
+    "patch": "patches/iteration_08_08_to_09.patch",
+    "source": "steps/iteration_08_08_dictionary_updates.py",
+    "target": "steps/iteration_08_09_movement.py",
+    "target_sha256": "df83c9fd15ac40c8cfa196516ebb71c92e3a7f35abeae49d5bd1535bf4960c6d"
+  },
+  {
+    "patch": "patches/iteration_08_09_to_10.patch",
+    "source": "steps/iteration_08_09_movement.py",
+    "target": "steps/iteration_08_10_keyboard.py",
+    "target_sha256": "99be86f4d8608966c87a745e1a37609f7463cba45bb2b9501931e63e7ab27dce"
+  },
+  {
+    "patch": "patches/iteration_08_10_to_11.patch",
+    "source": "steps/iteration_08_10_keyboard.py",
+    "target": "steps/iteration_08_11_axes.py",
+    "target_sha256": "584b2630097cae2be9e698795df96cdbf72c2f175d19390895538f9e9cb922c7"
+  },
+  {
+    "patch": "patches/iteration_08_11_to_12.patch",
+    "source": "steps/iteration_08_11_axes.py",
+    "target": "steps/iteration_08_12_collect_target.py",
+    "target_sha256": "2e7b64aa2862e2d231bdfc47e8e1049969ec4777bfd6d80576e36bcf9070615d"
+  },
+  {
+    "patch": "patches/iteration_08_12_to_13.patch",
+    "source": "steps/iteration_08_12_collect_target.py",
+    "target": "steps/iteration_08_13_rebuild_matrix.py",
+    "target_sha256": "cec6ebdb906eac2a2b00855e7bc9a3d4bb8f96bd0916be0efe78943a7400e6eb"
+  },
+  {
+    "patch": "patches/iteration_08_13_to_14.patch",
+    "source": "steps/iteration_08_13_rebuild_matrix.py",
+    "target": "steps/iteration_08_14_palette_indices.py",
+    "target_sha256": "d0108bb2688bbd6f4c2082b27ce33b637d3343b5314e8fe8409a5ebacbe97434"
+  },
+  {
+    "patch": "patches/iteration_08_14_to_15.patch",
+    "source": "steps/iteration_08_14_palette_indices.py",
+    "target": "steps/iteration_08_15_rgb_matrix.py",
+    "target_sha256": "496b4c535e29e540c0181e80d9456af45a4afbb009c8fb97676c96b10d92a04b"
+  },
+  {
+    "patch": "patches/iteration_08_15_to_16.patch",
+    "source": "steps/iteration_08_15_rgb_matrix.py",
+    "target": "steps/iteration_08_16_repeat_values.py",
+    "target_sha256": "568c854bdff2f8daa0b15d0e2eaca15e28d598e9e9cb04d5012529c73e9cbad0"
+  },
+  {
+    "patch": "patches/iteration_08_16_to_17.patch",
+    "source": "steps/iteration_08_16_repeat_values.py",
+    "target": "steps/iteration_08_17_repeat_rows.py",
+    "target_sha256": "c0bbebac6376861bb0c3a1c7dcd0877b614b888f27ddd4b9c1d17075b6c6c27b"
+  },
+  {
+    "patch": "patches/iteration_08_17_to_18.patch",
+    "source": "steps/iteration_08_17_repeat_rows.py",
+    "target": "steps/iteration_08_18_repeat_columns.py",
+    "target_sha256": "e8a1d15a56b55928588a4267b74b42eee50a7d34d19a1158cae4b24563894b69"
+  },
+  {
+    "patch": "patches/iteration_08_18_to_19.patch",
+    "source": "steps/iteration_08_18_repeat_columns.py",
+    "target": "steps/iteration_08_19_repeat_rgb.py",
+    "target_sha256": "cfa053fd8fb32d4d9f6605a4733e90a90cfde2c14b67384668ef180ac88f49fa"
+  },
+  {
+    "patch": "patches/iteration_08_19_to_20.patch",
+    "source": "steps/iteration_08_19_repeat_rgb.py",
+    "target": "steps/iteration_08_20_swap_matrix_axes.py",
+    "target_sha256": "d3fa7a041008474beec36f7e617c9f0147243a3578e725df8968be43eb2aa0fa"
+  },
+  {
+    "patch": "patches/iteration_08_20_to_21.patch",
+    "source": "steps/iteration_08_20_swap_matrix_axes.py",
+    "target": "steps/iteration_08_21_swap_rgb_axes.py",
+    "target_sha256": "1a55c18a575470489d75f080206fc90d82532c5ec5dc34e2e80cacadc9e53523"
+  },
+  {
+    "patch": "patches/iteration_08_21_to_22.patch",
+    "source": "steps/iteration_08_21_swap_rgb_axes.py",
+    "target": "steps/iteration_08_22_surface_preview.py",
+    "target_sha256": "e803c3e660806390639ae358d74aeb81220c99b728da01ba618bfe6a8f2791eb"
+  },
+  {
+    "patch": "patches/iteration_08_22_to_23.patch",
+    "source": "steps/iteration_08_22_surface_preview.py",
+    "target": "steps/iteration_08_23_compare_rgb_methods.py",
+    "target_sha256": "87405bd2203f6fa26c4c0dcf34e393134018c46e0efd33f3487da1a11ce7d36e"
+  },
+  {
+    "patch": "patches/iteration_08_23_to_24.patch",
+    "source": "steps/iteration_08_23_compare_rgb_methods.py",
+    "target": "steps/iteration_08_24_surface_function.py",
+    "target_sha256": "4bff4e64b54fed69a28b4b5d0ee18272998996fa1605dc48310cd43b91854165"
+  },
+  {
+    "patch": "patches/iteration_08_24_to_25.patch",
+    "source": "steps/iteration_08_24_surface_function.py",
+    "target": "steps/iteration_08_25_transparent_overlay.py",
+    "target_sha256": "9afc294fc6ede2b038c6846075d76d9eb08f7f6ba64d8f4b456400686d55e770"
+  },
+  {
+    "patch": "patches/iteration_08_25_to_26.patch",
+    "source": "steps/iteration_08_25_transparent_overlay.py",
+    "target": "steps/iteration_08_26_grid_lines.py",
+    "target_sha256": "fe4cae4c468917810b183642e56ef49ffa1b370dece8c13bd9f5a4483d7e352f"
+  },
+  {
+    "patch": "patches/iteration_08_26_to_27.patch",
+    "source": "steps/iteration_08_26_grid_lines.py",
+    "target": "steps/iteration_08_27_grid_border.py",
+    "target_sha256": "fa60123bbf508e9c864161e9ea2c6ec85ca0e725f12762ea91414cc796a947e1"
+  },
+  {
+    "patch": "patches/iteration_08_27_to_28.patch",
+    "source": "steps/iteration_08_27_grid_border.py",
+    "target": "steps/iteration_08_28_grid_function.py",
+    "target_sha256": "35a091962b042f967688cbe6345398f49c0719880913a0a7d0d5f887c92ef3f6"
+  },
+  {
+    "patch": "patches/iteration_08_28_to_29.patch",
+    "source": "steps/iteration_08_28_grid_function.py",
+    "target": "steps/iteration_08_29_quit_function.py",
+    "target_sha256": "2b357633d3138cb7aa9e4fbf294b8b1335d67f20a1b9bded1744d2724ba24afb"
+  },
+  {
+    "patch": "patches/iteration_08_29_to_30.patch",
+    "source": "steps/iteration_08_29_quit_function.py",
+    "target": "steps/iteration_08_30_collector_every_frame.py",
+    "target_sha256": "b5ca555e72a3989909a0f02fb2471e892aba4418c65083f8233acd5de6eee163"
+  },
+  {
+    "patch": "patches/iteration_08_30_to_31.patch",
+    "source": "steps/iteration_08_30_collector_every_frame.py",
+    "target": "steps/iteration_08_31_step_counter.py",
+    "target_sha256": "eb127bdce9bc67bd62d5f6743fb4e4fec97388f150c11a84190cceb29f0989ee"
+  },
+  {
+    "patch": "patches/iteration_08_31_to_32.patch",
+    "source": "steps/iteration_08_31_step_counter.py",
+    "target": "steps/iteration_08_32_collector_timed.py",
+    "target_sha256": "82af4c2bde18563c2cafd4f379493c3fa49bb555a1fffe52170b6d2ccfc5c679"
+  }
+]

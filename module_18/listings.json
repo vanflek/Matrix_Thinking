@@ -1,0 +1,86 @@
+[
+  {
+    "id": "iteration_18_01_skeleton",
+    "file": "steps/iteration_18_01_skeleton.py"
+  },
+  {
+    "id": "iteration_18_02_movement_and_trail",
+    "file": "steps/iteration_18_02_movement_and_trail.py"
+  },
+  {
+    "id": "iteration_18_03_region_search",
+    "file": "steps/iteration_18_03_region_search.py"
+  },
+  {
+    "id": "iteration_18_04_area_capture",
+    "file": "steps/iteration_18_04_area_capture.py"
+  },
+  {
+    "id": "iteration_18_05_one_enemy",
+    "file": "steps/iteration_18_05_one_enemy.py"
+  },
+  {
+    "id": "iteration_18_06_enemy_reflection",
+    "file": "steps/iteration_18_06_enemy_reflection.py"
+  },
+  {
+    "id": "iteration_18_07_trail_collision",
+    "file": "steps/iteration_18_07_trail_collision.py"
+  },
+  {
+    "id": "iteration_18_08_safe_capture",
+    "file": "steps/iteration_18_08_safe_capture.py"
+  },
+  {
+    "id": "iteration_18_09_levels",
+    "file": "steps/iteration_18_09_levels.py"
+  },
+  {
+    "id": "iteration_18_10_enemy_layers",
+    "file": "steps/iteration_18_10_enemy_layers.py"
+  },
+  {
+    "id": "iteration_18_11_independent_enemies",
+    "file": "steps/iteration_18_11_independent_enemies.py"
+  },
+  {
+    "id": "iteration_18_12_group_checks",
+    "file": "steps/iteration_18_12_group_checks.py"
+  },
+  {
+    "id": "iteration_18_13_complete_game",
+    "file": "steps/iteration_18_13_complete_game.py"
+  },
+  {
+    "id": "example_18_01_shuffle",
+    "file": "examples/example_18_01_shuffle.py"
+  },
+  {
+    "id": "example_18_02_group_masks",
+    "file": "examples/example_18_02_group_masks.py"
+  },
+  {
+    "id": "solution_18_26_region_from_start",
+    "file": "solutions/solution_18_26_region_from_start.py"
+  },
+  {
+    "id": "solution_18_27_initial_directions",
+    "file": "solutions/solution_18_27_initial_directions.py"
+  },
+  {
+    "id": "solution_18_28_count_collisions",
+    "file": "solutions/solution_18_28_count_collisions.py"
+  },
+  {
+    "id": "solution_18_29_capture_all_regions",
+    "file": "solutions/solution_18_29_capture_all_regions.py"
+  },
+  {
+    "id": "solution_18_30_captured_percent",
+    "file": "solutions/solution_18_30_captured_percent.py"
+  },
+  {
+    "id": "xonix",
+    "file": "final/xonix.py"
+  }
+]

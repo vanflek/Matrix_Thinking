@@ -1,0 +1,74 @@
+[
+  {
+    "id": "example_01_01_pixel",
+    "file": "examples/example_01_01_pixel.py"
+  },
+  {
+    "id": "example_01_02_circle",
+    "file": "examples/example_01_02_circle.py"
+  },
+  {
+    "id": "example_01_03_line",
+    "file": "examples/example_01_03_line.py"
+  },
+  {
+    "id": "example_01_04_rectangle",
+    "file": "examples/example_01_04_rectangle.py"
+  },
+  {
+    "id": "example_01_05_draw_order_circle_first",
+    "file": "examples/example_01_05_draw_order_circle_first.py"
+  },
+  {
+    "id": "example_01_06_draw_order_rectangle_first",
+    "file": "examples/example_01_06_draw_order_rectangle_first.py"
+  },
+  {
+    "id": "example_01_07_exercise_template",
+    "file": "examples/example_01_07_exercise_template.py"
+  },
+  {
+    "id": "example_01_08_shift_house",
+    "file": "examples/example_01_08_shift_house.py"
+  },
+  {
+    "id": "solution_01_05_center",
+    "file": "solutions/solution_01_05_center.py"
+  },
+  {
+    "id": "solution_01_05_corner",
+    "file": "solutions/solution_01_05_corner.py"
+  },
+  {
+    "id": "solution_01_05_inward",
+    "file": "solutions/solution_01_05_inward.py"
+  },
+  {
+    "id": "solution_01_06_reversed_order",
+    "file": "solutions/solution_01_06_reversed_order.py"
+  },
+  {
+    "id": "solution_01_06_target",
+    "file": "solutions/solution_01_06_target.py"
+  },
+  {
+    "id": "solution_01_07_crosshair",
+    "file": "solutions/solution_01_07_crosshair.py"
+  },
+  {
+    "id": "solution_01_08_frame",
+    "file": "solutions/solution_01_08_frame.py"
+  },
+  {
+    "id": "solution_01_09_house",
+    "file": "solutions/solution_01_09_house.py"
+  },
+  {
+    "id": "solution_01_10_flag",
+    "file": "solutions/solution_01_10_flag.py"
+  },
+  {
+    "id": "solution_01_11_sight",
+    "file": "solutions/solution_01_11_sight.py"
+  }
+]

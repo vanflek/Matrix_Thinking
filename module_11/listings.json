@@ -1,0 +1,90 @@
+[
+  {
+    "id": "iteration_11_01_rgb_canvas",
+    "file": "steps/iteration_11_01_rgb_canvas.py"
+  },
+  {
+    "id": "iteration_11_02_cursor_frame",
+    "file": "steps/iteration_11_02_cursor_frame.py"
+  },
+  {
+    "id": "iteration_11_03_editor_state",
+    "file": "steps/iteration_11_03_editor_state.py"
+  },
+  {
+    "id": "iteration_11_04_channel_controls",
+    "file": "steps/iteration_11_04_channel_controls.py"
+  },
+  {
+    "id": "iteration_11_05_brush_frame",
+    "file": "steps/iteration_11_05_brush_frame.py"
+  },
+  {
+    "id": "iteration_11_06_click_paint",
+    "file": "steps/iteration_11_06_click_paint.py"
+  },
+  {
+    "id": "iteration_11_07_drag_paint",
+    "file": "steps/iteration_11_07_drag_paint.py"
+  },
+  {
+    "id": "iteration_11_08_erase",
+    "file": "steps/iteration_11_08_erase.py"
+  },
+  {
+    "id": "iteration_11_09_pipette",
+    "file": "steps/iteration_11_09_pipette.py"
+  },
+  {
+    "id": "iteration_11_10_view_and_copy",
+    "file": "steps/iteration_11_10_view_and_copy.py"
+  },
+  {
+    "id": "iteration_11_11_clear",
+    "file": "steps/iteration_11_11_clear.py"
+  },
+  {
+    "id": "iteration_11_12_save_load_npy",
+    "file": "steps/iteration_11_12_save_load_npy.py"
+  },
+  {
+    "id": "iteration_11_13_export_png",
+    "file": "steps/iteration_11_13_export_png.py"
+  },
+  {
+    "id": "example_11_01_canvas_fill",
+    "file": "examples/example_11_01_canvas_fill.py"
+  },
+  {
+    "id": "example_11_02_rgb_axes",
+    "file": "examples/example_11_02_rgb_axes.py"
+  },
+  {
+    "id": "example_11_03_rgb_surface",
+    "file": "examples/example_11_03_rgb_surface.py"
+  },
+  {
+    "id": "solution_11_26_exercise",
+    "file": "solutions/solution_11_26_exercise.py"
+  },
+  {
+    "id": "solution_11_27_exercise",
+    "file": "solutions/solution_11_27_exercise.py"
+  },
+  {
+    "id": "solution_11_28_exercise",
+    "file": "solutions/solution_11_28_exercise.py"
+  },
+  {
+    "id": "solution_11_29_exercise",
+    "file": "solutions/solution_11_29_exercise.py"
+  },
+  {
+    "id": "solution_11_30_exercise",
+    "file": "solutions/solution_11_30_exercise.py"
+  },
+  {
+    "id": "rgb_editor",
+    "file": "final/rgb_editor.py"
+  }
+]

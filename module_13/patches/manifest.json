@@ -1,52 +1,62 @@
 [
   {
-    "patch": "iteration_13_01_to_02.patch",
-    "before": "steps/iteration_13_01_skeleton.py",
-    "after": "steps/iteration_13_02_manual_building.py"
+    "patch": "patches/iteration_13_01_to_02.patch",
+    "source": "steps/iteration_13_01_skeleton.py",
+    "target": "steps/iteration_13_02_manual_building.py",
+    "target_sha256": "51dd1e5d765bfc623bd0fcd8423359cc81091563019add425a033682c5baedc4"
   },
   {
-    "patch": "iteration_13_02_to_03.patch",
-    "before": "steps/iteration_13_02_manual_building.py",
-    "after": "steps/iteration_13_03_local_rule.py"
+    "patch": "patches/iteration_13_02_to_03.patch",
+    "source": "steps/iteration_13_02_manual_building.py",
+    "target": "steps/iteration_13_03_local_rule.py",
+    "target_sha256": "22b4e07854f226b6b25729ba66bcf4e727963906d0ba241a2486d16dc63d8073"
   },
   {
-    "patch": "iteration_13_03_to_04.patch",
-    "before": "steps/iteration_13_03_local_rule.py",
-    "after": "steps/iteration_13_04_cursor_feedback.py"
+    "patch": "patches/iteration_13_03_to_04.patch",
+    "source": "steps/iteration_13_03_local_rule.py",
+    "target": "steps/iteration_13_04_cursor_feedback.py",
+    "target_sha256": "5aa6e20024c4b8495f9a1d197e417d5a46726818287e62ec02d519c9ef1bb67c"
   },
   {
-    "patch": "iteration_13_04_to_05.patch",
-    "before": "steps/iteration_13_04_cursor_feedback.py",
-    "after": "steps/iteration_13_05_frontier_display.py"
+    "patch": "patches/iteration_13_04_to_05.patch",
+    "source": "steps/iteration_13_04_cursor_feedback.py",
+    "target": "steps/iteration_13_05_frontier_display.py",
+    "target_sha256": "f1da9ba29994a265ecffdac17e059135b1ceca3c5fbecb2a508a864b1d0fe610"
   },
   {
-    "patch": "iteration_13_05_to_06.patch",
-    "before": "steps/iteration_13_05_frontier_display.py",
-    "after": "steps/iteration_13_06_automatic_growth.py"
+    "patch": "patches/iteration_13_05_to_06.patch",
+    "source": "steps/iteration_13_05_frontier_display.py",
+    "target": "steps/iteration_13_06_automatic_growth.py",
+    "target_sha256": "7c6b510fea23a79cd69b74f227626303fc09f46690241bf4ca77175819aa3290"
   },
   {
-    "patch": "iteration_13_06_to_07.patch",
-    "before": "steps/iteration_13_06_automatic_growth.py",
-    "after": "steps/iteration_13_07_save_load.py"
+    "patch": "patches/iteration_13_06_to_07.patch",
+    "source": "steps/iteration_13_06_automatic_growth.py",
+    "target": "steps/iteration_13_07_save_load.py",
+    "target_sha256": "d3dbb204bc429ec587eedf43ef3f51c7f65cee72f999ad082fcf040dd53a0c8b"
   },
   {
-    "patch": "iteration_13_07_to_08.patch",
-    "before": "steps/iteration_13_07_save_load.py",
-    "after": "steps/iteration_13_08_check_maze.py"
+    "patch": "patches/iteration_13_07_to_08.patch",
+    "source": "steps/iteration_13_07_save_load.py",
+    "target": "steps/iteration_13_08_check_maze.py",
+    "target_sha256": "08e2f5a9d8b1ec601a1bbffb3abbd395cde88930798b7840cca0a0bedcb75bed"
   },
   {
-    "patch": "iteration_13_08_to_09.patch",
-    "before": "steps/iteration_13_08_check_maze.py",
-    "after": "steps/iteration_13_09_numpy_coordinates.py"
+    "patch": "patches/iteration_13_08_to_09.patch",
+    "source": "steps/iteration_13_08_check_maze.py",
+    "target": "steps/iteration_13_09_numpy_coordinates.py",
+    "target_sha256": "e5fad9c727064809cbe81e157bf2c815a0c1d22dc8c4a41b7d8ee8a83fe7f9c1"
   },
   {
-    "patch": "iteration_13_09_to_10.patch",
-    "before": "steps/iteration_13_09_numpy_coordinates.py",
-    "after": "steps/iteration_13_10_numpy_edges.py"
+    "patch": "patches/iteration_13_09_to_10.patch",
+    "source": "steps/iteration_13_09_numpy_coordinates.py",
+    "target": "steps/iteration_13_10_numpy_edges.py",
+    "target_sha256": "7d46303e888afb480bd852962366f3d65c5ff38afe16804738d040e2b22479e1"
   },
   {
-    "patch": "iteration_13_10_to_11.patch",
-    "before": "steps/iteration_13_10_numpy_edges.py",
-    "after": "steps/iteration_13_11_numpy_frontier.py"
+    "patch": "patches/iteration_13_10_to_11.patch",
+    "source": "steps/iteration_13_10_numpy_edges.py",
+    "target": "steps/iteration_13_11_numpy_frontier.py",
+    "target_sha256": "a35f3c8859ff476547d6cbca33c149609b673683545235baccc9d65239e808c1"
   }
 ]

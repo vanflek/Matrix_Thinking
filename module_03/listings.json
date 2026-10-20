@@ -1,0 +1,62 @@
+[
+  {
+    "id": "iteration_03_01_brick_wall",
+    "file": "steps/iteration_03_01_brick_wall.py"
+  },
+  {
+    "id": "iteration_03_02_chessboard",
+    "file": "steps/iteration_03_02_chessboard.py"
+  },
+  {
+    "id": "iteration_03_03_framed_chessboard",
+    "file": "steps/iteration_03_03_framed_chessboard.py"
+  },
+  {
+    "id": "iteration_03_04_framed_chessboard_flag",
+    "file": "steps/iteration_03_04_framed_chessboard_flag.py"
+  },
+  {
+    "id": "iteration_03_05_framed_chessboard_while",
+    "file": "steps/iteration_03_05_framed_chessboard_while.py"
+  },
+  {
+    "id": "example_03_01_while_counter",
+    "file": "examples/example_03_01_while_counter.py"
+  },
+  {
+    "id": "solution_03_08_inverted_rows",
+    "file": "solutions/solution_03_08_inverted_rows.py"
+  },
+  {
+    "id": "solution_03_08_no_shift",
+    "file": "solutions/solution_03_08_no_shift.py"
+  },
+  {
+    "id": "solution_03_09_smaller_bricks",
+    "file": "solutions/solution_03_09_smaller_bricks.py"
+  },
+  {
+    "id": "solution_03_10_rectangular_board",
+    "file": "solutions/solution_03_10_rectangular_board.py"
+  },
+  {
+    "id": "solution_03_11_three_insets",
+    "file": "solutions/solution_03_11_three_insets.py"
+  },
+  {
+    "id": "solution_03_12_flag_reset",
+    "file": "solutions/solution_03_12_flag_reset.py"
+  },
+  {
+    "id": "solution_03_13_counter_fixed",
+    "file": "solutions/solution_03_13_counter_fixed.py"
+  },
+  {
+    "id": "solution_03_14_wait_16",
+    "file": "solutions/solution_03_14_wait_16.py"
+  },
+  {
+    "id": "solution_03_14_wait_8",
+    "file": "solutions/solution_03_14_wait_8.py"
+  }
+]

@@ -1,17 +1,20 @@
 [
   {
-    "patch": "iteration_14_01_to_02.patch",
-    "before": "steps/iteration_14_01_skeleton.py",
-    "after": "steps/iteration_14_02_arrow_controls.py"
+    "patch": "patches/iteration_14_01_to_02.patch",
+    "source": "steps/iteration_14_01_skeleton.py",
+    "target": "steps/iteration_14_02_arrow_controls.py",
+    "target_sha256": "46510b7d822fe7752480e7dcfbfc12a9180ca76f13a6245fb2ade920bf3f650c"
   },
   {
-    "patch": "iteration_14_02_to_03.patch",
-    "before": "steps/iteration_14_02_arrow_controls.py",
-    "after": "steps/iteration_14_03_capture.py"
+    "patch": "patches/iteration_14_02_to_03.patch",
+    "source": "steps/iteration_14_02_arrow_controls.py",
+    "target": "steps/iteration_14_03_capture.py",
+    "target_sha256": "f56efa2bed2eecca8a93fa21d8c783c0c40b773533c194a6c164f2f59a737811"
   },
   {
-    "patch": "iteration_14_03_to_04.patch",
-    "before": "steps/iteration_14_03_capture.py",
-    "after": "steps/iteration_14_04_flashlight.py"
+    "patch": "patches/iteration_14_03_to_04.patch",
+    "source": "steps/iteration_14_03_capture.py",
+    "target": "steps/iteration_14_04_flashlight.py",
+    "target_sha256": "c899023185c5e98b25a98f9b623e3c1491b5ac9a285c9a2cbd7d426e4faabafe"
   }
 ]

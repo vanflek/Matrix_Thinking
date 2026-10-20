@@ -1,0 +1,94 @@
+[
+  {
+    "id": "iteration_20_01_skeleton",
+    "file": "steps/iteration_20_01_skeleton.py"
+  },
+  {
+    "id": "iteration_20_02_airplane",
+    "file": "steps/iteration_20_02_airplane.py"
+  },
+  {
+    "id": "iteration_20_03_homogeneous",
+    "file": "steps/iteration_20_03_homogeneous.py"
+  },
+  {
+    "id": "iteration_20_04_apply_matrix",
+    "file": "steps/iteration_20_04_apply_matrix.py"
+  },
+  {
+    "id": "iteration_20_05_scaling",
+    "file": "steps/iteration_20_05_scaling.py"
+  },
+  {
+    "id": "iteration_20_06_reflections",
+    "file": "steps/iteration_20_06_reflections.py"
+  },
+  {
+    "id": "iteration_20_07_rotation",
+    "file": "steps/iteration_20_07_rotation.py"
+  },
+  {
+    "id": "iteration_20_08_composition",
+    "file": "steps/iteration_20_08_composition.py"
+  },
+  {
+    "id": "iteration_20_09_order",
+    "file": "steps/iteration_20_09_order.py"
+  },
+  {
+    "id": "iteration_20_10_keyboard",
+    "file": "steps/iteration_20_10_keyboard.py"
+  },
+  {
+    "id": "example_20_01_vertices_edges",
+    "file": "examples/example_20_01_vertices_edges.py"
+  },
+  {
+    "id": "example_20_02_homogeneous_translation",
+    "file": "examples/example_20_02_homogeneous_translation.py"
+  },
+  {
+    "id": "example_20_03_rows_columns",
+    "file": "examples/example_20_03_rows_columns.py"
+  },
+  {
+    "id": "example_20_04_scaling",
+    "file": "examples/example_20_04_scaling.py"
+  },
+  {
+    "id": "example_20_05_rotation",
+    "file": "examples/example_20_05_rotation.py"
+  },
+  {
+    "id": "example_20_06_composition",
+    "file": "examples/example_20_06_composition.py"
+  },
+  {
+    "id": "example_20_07_order",
+    "file": "examples/example_20_07_order.py"
+  },
+  {
+    "id": "solution_20_26_house",
+    "file": "solutions/solution_20_26_house.py"
+  },
+  {
+    "id": "solution_20_27_original_and_result",
+    "file": "solutions/solution_20_27_original_and_result.py"
+  },
+  {
+    "id": "solution_20_28_reflection_keys",
+    "file": "solutions/solution_20_28_reflection_keys.py"
+  },
+  {
+    "id": "solution_20_29_transformation_order",
+    "file": "solutions/solution_20_29_transformation_order.py"
+  },
+  {
+    "id": "solution_20_30_chosen_pivot",
+    "file": "solutions/solution_20_30_chosen_pivot.py"
+  },
+  {
+    "id": "affine_transformations",
+    "file": "final/affine_transformations.py"
+  }
+]

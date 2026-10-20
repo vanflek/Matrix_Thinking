@@ -1,0 +1,158 @@
+[
+  {
+    "patch": "patches/iteration_09_01_to_02.patch",
+    "source": "steps/iteration_09_01_coordinates.py",
+    "target": "steps/iteration_09_02_vstack.py",
+    "target_sha256": "99ea14b7b156a14020f45512489f6072d3ad60b38fa557d084946ce1d5f6963e"
+  },
+  {
+    "patch": "patches/iteration_09_02_to_03.patch",
+    "source": "steps/iteration_09_02_vstack.py",
+    "target": "steps/iteration_09_03_hstack.py",
+    "target_sha256": "51260c7be6259ceac91046525cb55f12a2496b7453b6a49c7872735ef342802f"
+  },
+  {
+    "patch": "patches/iteration_09_03_to_04.patch",
+    "source": "steps/iteration_09_03_hstack.py",
+    "target": "steps/iteration_09_04_append_row.py",
+    "target_sha256": "20d94d044031a19526c648fb2d06ed82295cfece0a612301b4a2cfa8bfe10011"
+  },
+  {
+    "patch": "patches/iteration_09_04_to_05.patch",
+    "source": "steps/iteration_09_04_append_row.py",
+    "target": "steps/iteration_09_05_move.py",
+    "target_sha256": "3b94d801abbeb9b625d40e4d63a7651b1a777cce5b839d933c8e4df8acf205ca"
+  },
+  {
+    "patch": "patches/iteration_09_05_to_06.patch",
+    "source": "steps/iteration_09_05_move.py",
+    "target": "steps/iteration_09_06_growth.py",
+    "target_sha256": "8663db11c02b45f4a89e58f3c0b027ed2a948dbc7432900b2b10549c7fec8e1e"
+  },
+  {
+    "patch": "patches/iteration_09_06_to_07.patch",
+    "source": "steps/iteration_09_06_growth.py",
+    "target": "steps/iteration_09_07_no_growth.py",
+    "target_sha256": "906660c75a1eda4ec1aeebd8793b0a330bd1e82600423813428dd75ff28cfae8"
+  },
+  {
+    "patch": "patches/iteration_09_07_to_08.patch",
+    "source": "steps/iteration_09_07_no_growth.py",
+    "target": "steps/iteration_09_08_free_mask.py",
+    "target_sha256": "82b04f34e80e9b50f6d6dad8edb6861cf43c20eaac94114e97dcb13e6238d149"
+  },
+  {
+    "patch": "patches/iteration_09_08_to_09.patch",
+    "source": "steps/iteration_09_08_free_mask.py",
+    "target": "steps/iteration_09_09_argwhere_where.py",
+    "target_sha256": "17a7ea78280470737916197765e6e63a618c7cbf39811512d090834cdbe2ce44"
+  },
+  {
+    "patch": "patches/iteration_09_09_to_10.patch",
+    "source": "steps/iteration_09_09_argwhere_where.py",
+    "target": "steps/iteration_09_10_random_apple.py",
+    "target_sha256": "4c768fdbe0ed52ceea7fe340dd09c0e5aacd63f4ad73012d46b5d3eaf57ac1a1"
+  },
+  {
+    "patch": "patches/iteration_09_10_to_11.patch",
+    "source": "steps/iteration_09_10_random_apple.py",
+    "target": "steps/iteration_09_11_empty_field.py",
+    "target_sha256": "21dbdc3f8c72f68df362a4efba1a96a650362ee52cdbd21fba3828deccc9df88"
+  },
+  {
+    "patch": "patches/iteration_09_11_to_12.patch",
+    "source": "steps/iteration_09_11_empty_field.py",
+    "target": "steps/iteration_09_12_spawn_function.py",
+    "target_sha256": "fa47d2c034fc1c7407aaa3f4dcdd3acea0fe3301e0842ebeaeabd1d9517a31db"
+  },
+  {
+    "patch": "patches/iteration_09_12_to_13.patch",
+    "source": "steps/iteration_09_12_spawn_function.py",
+    "target": "steps/iteration_09_13_coordinates_to_field.py",
+    "target_sha256": "438337a2ef4263022ba829153c454b93392c290ed12d157ff1e3dee6666e7f7a"
+  },
+  {
+    "patch": "patches/iteration_09_13_to_14.patch",
+    "source": "steps/iteration_09_13_coordinates_to_field.py",
+    "target": "steps/iteration_09_14_field_and_apple.py",
+    "target_sha256": "d3d416c32a0f00c1adf9bee90889dd024e2f7cfb4464b264b1fad4716d68b8b6"
+  },
+  {
+    "patch": "patches/iteration_09_14_to_15.patch",
+    "source": "steps/iteration_09_14_field_and_apple.py",
+    "target": "steps/iteration_09_15_collision_arrays.py",
+    "target_sha256": "06106e8d2995be7e3301a696b40cff280468c60b25e298600d78ede51b265a09"
+  },
+  {
+    "patch": "patches/iteration_09_15_to_16.patch",
+    "source": "steps/iteration_09_15_collision_arrays.py",
+    "target": "steps/iteration_09_16_collision_function.py",
+    "target_sha256": "4a712cb249959facccc84886ee1e77e068c0c37d27e08270458ababc081c847d"
+  },
+  {
+    "patch": "patches/iteration_09_16_to_17.patch",
+    "source": "steps/iteration_09_16_collision_function.py",
+    "target": "steps/iteration_09_17_single_step.py",
+    "target_sha256": "75e83b5d532519bb71d38dd5c4ebe8416a626b01f9ffdf6b277062fc2250b080"
+  },
+  {
+    "patch": "patches/iteration_09_17_to_18.patch",
+    "source": "steps/iteration_09_17_single_step.py",
+    "target": "steps/iteration_09_18_win.py",
+    "target_sha256": "07c14efe5f3aceb25593a48576698f49deeb2909d88953d7e0092373549e6322"
+  },
+  {
+    "patch": "patches/iteration_09_18_to_19.patch",
+    "source": "steps/iteration_09_18_win.py",
+    "target": "steps/iteration_09_19_respawn.py",
+    "target_sha256": "16739ef7c7ce11b1c55794ce78bf8432f8252a642dc44cc568c34cac2a1a6d10"
+  },
+  {
+    "patch": "patches/iteration_09_19_to_20.patch",
+    "source": "steps/iteration_09_19_respawn.py",
+    "target": "steps/iteration_09_20_wrap.py",
+    "target_sha256": "f58c761c431cf856696c49223f0c76f00d208951668239460d97189c43b7a8cf"
+  },
+  {
+    "patch": "patches/iteration_09_20_to_21.patch",
+    "source": "steps/iteration_09_20_wrap.py",
+    "target": "steps/iteration_09_21_wrapped_step.py",
+    "target_sha256": "ef0e6fda95d79e325993d8c8412c17b8da2f25a285744ce3d41fff7002c62c68"
+  },
+  {
+    "patch": "patches/iteration_09_21_to_22.patch",
+    "source": "steps/iteration_09_21_wrapped_step.py",
+    "target": "steps/iteration_09_22_opposite_direction.py",
+    "target_sha256": "8135f5f55dd396f7bf1b8aee6bc8829e168eb4e3bf5b4c80bd08e0db6a57ed4e"
+  },
+  {
+    "patch": "patches/iteration_09_22_to_23.patch",
+    "source": "steps/iteration_09_22_opposite_direction.py",
+    "target": "steps/iteration_09_23_two_turn_problem.py",
+    "target_sha256": "e84ef97fadb1c369f855badf128b4e2d934d6404f041f7689161479731c05505"
+  },
+  {
+    "patch": "patches/iteration_09_23_to_24.patch",
+    "source": "steps/iteration_09_23_two_turn_problem.py",
+    "target": "steps/iteration_09_24_turn_permission.py",
+    "target_sha256": "b31073a62d32a7b7c1134ca59cdbcd363450ec4306c6e7a5713e9f5d57b26fb9"
+  },
+  {
+    "patch": "patches/iteration_09_24_to_25.patch",
+    "source": "steps/iteration_09_24_turn_permission.py",
+    "target": "steps/iteration_09_25_arrow_events.py",
+    "target_sha256": "eae738834fdaf32c5882df81383c708d4e1bfc19b496dc691567127f18bc4ed3"
+  },
+  {
+    "patch": "patches/iteration_09_25_to_26.patch",
+    "source": "steps/iteration_09_25_arrow_events.py",
+    "target": "steps/iteration_09_26_frame_counter.py",
+    "target_sha256": "6f1ff93ba77122e1163701c6137c8bca74b57626e83d716d9500891dd44a57b3"
+  },
+  {
+    "patch": "patches/iteration_09_26_to_27.patch",
+    "source": "steps/iteration_09_26_frame_counter.py",
+    "target": "steps/iteration_09_27_snake.py",
+    "target_sha256": "a2a674e719a06b690df8e2d46a82c5d205827ccfcedf6e2d9a76862ab15a3dd9"
+  }
+]

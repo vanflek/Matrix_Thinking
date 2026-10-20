@@ -1,0 +1,14 @@
+[
+  {
+    "id": "iteration_00_01_living_window",
+    "file": "steps/iteration_00_01_living_window.py"
+  },
+  {
+    "id": "solution_00_10_two_frames",
+    "file": "solutions/solution_00_10_two_frames.py"
+  },
+  {
+    "id": "solution_00_11_blinking",
+    "file": "solutions/solution_00_11_blinking.py"
+  }
+]

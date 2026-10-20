@@ -1,0 +1,128 @@
+[
+  {
+    "patch": "patches/iteration_10_01_to_02.patch",
+    "source": "steps/iteration_10_01_world.py",
+    "target": "steps/iteration_10_02_one_neighborhood.py",
+    "target_sha256": "11ad625ee28633ad3668c882ec2d59c6ed9e3f6e39541ff25060d83187909f0e"
+  },
+  {
+    "patch": "patches/iteration_10_02_to_03.patch",
+    "source": "steps/iteration_10_02_one_neighborhood.py",
+    "target": "steps/iteration_10_03_cell_rules.py",
+    "target_sha256": "5e832dbde6587a2c1b701aa7344a20109af90300515e089eda4eb821d7070be2"
+  },
+  {
+    "patch": "patches/iteration_10_03_to_04.patch",
+    "source": "steps/iteration_10_03_cell_rules.py",
+    "target": "steps/iteration_10_04_generation_loops.py",
+    "target_sha256": "ebc974009addba01353d512cd25b32b2c21ecbf42c261a1c00db9d9e365acb09"
+  },
+  {
+    "patch": "patches/iteration_10_04_to_05.patch",
+    "source": "steps/iteration_10_04_generation_loops.py",
+    "target": "steps/iteration_10_05_generation_function.py",
+    "target_sha256": "27d83c4080322354ef77d0db7eed7bffa2269e17e50245700b89a296a332a371"
+  },
+  {
+    "patch": "patches/iteration_10_05_to_06.patch",
+    "source": "steps/iteration_10_05_generation_function.py",
+    "target": "steps/iteration_10_06_display_step.py",
+    "target_sha256": "e77a681a42e32afd7595c76c468b002254200479e7a3f5c8ad30bca22c4c7c35"
+  },
+  {
+    "patch": "patches/iteration_10_06_to_07.patch",
+    "source": "steps/iteration_10_06_display_step.py",
+    "target": "steps/iteration_10_07_mouse_edit.py",
+    "target_sha256": "1197ea3e39f6d8dfbab2918f1f4e685459e12ee0b2467e5aa25c6c8801cd21a4"
+  },
+  {
+    "patch": "patches/iteration_10_07_to_08.patch",
+    "source": "steps/iteration_10_07_mouse_edit.py",
+    "target": "steps/iteration_10_08_run_pause.py",
+    "target_sha256": "fae1256fc64a8e33fbca56713181ca4eaaae2c8c736c387a2d9ca9847903bd23"
+  },
+  {
+    "patch": "patches/iteration_10_08_to_09.patch",
+    "source": "steps/iteration_10_08_run_pause.py",
+    "target": "steps/iteration_10_09_clear.py",
+    "target_sha256": "e42d8ae28c01ecf26a9ff5539ad876583d11ed09ca0905ec608cde664b1f8e4f"
+  },
+  {
+    "patch": "patches/iteration_10_09_to_10.patch",
+    "source": "steps/iteration_10_09_clear.py",
+    "target": "steps/iteration_10_10_cursor_overlay.py",
+    "target_sha256": "be514ddb593842f82ddd2521d618108544bea454cc79954d4a1104f7a631f903"
+  },
+  {
+    "patch": "patches/iteration_10_10_to_11.patch",
+    "source": "steps/iteration_10_10_cursor_overlay.py",
+    "target": "steps/iteration_10_11_save_load.py",
+    "target_sha256": "16bc5152ffce13589e1bd27dbf25c5b08d73a147ef743443f4bc1ffc9d763f9a"
+  },
+  {
+    "patch": "patches/iteration_10_11_to_12.patch",
+    "source": "steps/iteration_10_11_save_load.py",
+    "target": "steps/iteration_10_12_patterns.py",
+    "target_sha256": "d9c69f712565462f93b24cfa69f97f5b2d2fddaacc18a477153129721d78b278"
+  },
+  {
+    "patch": "patches/iteration_10_12_to_13.patch",
+    "source": "steps/iteration_10_12_patterns.py",
+    "target": "steps/iteration_10_13_roll_directions.py",
+    "target_sha256": "4acf291f18fb77175b358583b7095a64c1cf1044dddeb841eabd34407de4b518"
+  },
+  {
+    "patch": "patches/iteration_10_13_to_14.patch",
+    "source": "steps/iteration_10_13_roll_directions.py",
+    "target": "steps/iteration_10_14_elementwise_addition.py",
+    "target_sha256": "b2fbf5c5663b2ec4a67d0016ea1e77a88f1468478144fc7644951025e68fb5b4"
+  },
+  {
+    "patch": "patches/iteration_10_14_to_15.patch",
+    "source": "steps/iteration_10_14_elementwise_addition.py",
+    "target": "steps/iteration_10_15_eight_shift_sum.py",
+    "target_sha256": "0944020bfa27d17d6e84a4031fe64273fcee9b677aa24c054117b5063404dbb3"
+  },
+  {
+    "patch": "patches/iteration_10_15_to_16.patch",
+    "source": "steps/iteration_10_15_eight_shift_sum.py",
+    "target": "steps/iteration_10_16_survive_born_masks.py",
+    "target_sha256": "ba4e4aadca37ce16fe2d7ef73461be2bbee24a6c05619741ede6be75bd7aa81f"
+  },
+  {
+    "patch": "patches/iteration_10_16_to_17.patch",
+    "source": "steps/iteration_10_16_survive_born_masks.py",
+    "target": "steps/iteration_10_17_compare_loops_roll.py",
+    "target_sha256": "0c80da51a6fc99874af1cf9e70558139073e5a1bf7abb09e13561c1f026f7c65"
+  },
+  {
+    "patch": "patches/iteration_10_17_to_18.patch",
+    "source": "steps/iteration_10_17_compare_loops_roll.py",
+    "target": "steps/iteration_10_18_life_roll.py",
+    "target_sha256": "37a570af3a31e2b403bb9a4f7957d918ad3b1b66275956721009b4a91797e371"
+  },
+  {
+    "patch": "patches/iteration_10_18_to_19.patch",
+    "source": "steps/iteration_10_18_life_roll.py",
+    "target": "steps/iteration_10_19_argwhere_coordinates.py",
+    "target_sha256": "8970e12ff588f4afca5c6f11df09f7ee143c81612763141384a5c0ba2ebca8b4"
+  },
+  {
+    "patch": "patches/iteration_10_19_to_20.patch",
+    "source": "steps/iteration_10_19_argwhere_coordinates.py",
+    "target": "steps/iteration_10_20_add_at.py",
+    "target_sha256": "baf3a8f056ab26ef14195334e08dcd818f4b20176925c18832254e2d5bbedbe0"
+  },
+  {
+    "patch": "patches/iteration_10_20_to_21.patch",
+    "source": "steps/iteration_10_20_add_at.py",
+    "target": "steps/iteration_10_21_argwhere_generation.py",
+    "target_sha256": "a78cf34dda574b764821903882e1189992bbe6c5dd075815fbf50e472ca48d38"
+  },
+  {
+    "patch": "patches/iteration_10_21_to_22.patch",
+    "source": "steps/iteration_10_21_argwhere_generation.py",
+    "target": "steps/iteration_10_22_compare_three_methods.py",
+    "target_sha256": "f9e4e6f28927b6e0fdf0cb75785a9b4af0ef1ac5d0482e28139f9085267cb5fe"
+  }
+]
