@@ -38,3 +38,10 @@ Start with [installation and setup](getting_started/), then read the [introducti
 - `patches/iteration_MM_NN_to_KK.patch`: differences between consecutive steps.
 
 Listing identifiers match filenames. They are not page numbers. Run files separately; do not concatenate them. Keep resource folders with the programs.
+
+## License
+
+The author's Python code and code patches are available under the
+[MIT license](LICENSE). Book text, narrative documentation, photographs and
+illustrations are excluded. See [Licensing and permissions](LICENSING.md)
+for the precise scope and third-party exceptions.
