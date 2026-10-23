@@ -235,7 +235,7 @@ class InputController:
             "strafe_right": False,
             "turn_left": False,
             "turn_right": False,
-            "fire": False,
+            "fire_count": 0,
             "toggle_collision_areas": False,
         }
 
@@ -248,7 +248,7 @@ class InputController:
                 elif event.key == pg.K_h:
                     actions["toggle_collision_areas"] = True
                 elif event.key == pg.K_SPACE:
-                    actions["fire"] = True
+                    actions["fire_count"] += 1
 
         # Continuous actions use the current state of the keyboard.
         keys = pg.key.get_pressed()
@@ -274,7 +274,7 @@ class GameLogic:
             "strafe_right": False,
             "turn_left": False,
             "turn_right": False,
-            "fire": False,
+            "fire_count": 0,
             "toggle_collision_areas": False,
         }
 
@@ -290,7 +290,7 @@ class GameLogic:
             return
 
         self.update_player(delta_time)
-        if self.actions["fire"]:
+        for _ in range(self.actions["fire_count"]):
             self.create_projectile()
         self.update_projectiles(delta_time)
         self.update_enemies(delta_time)

@@ -32,7 +32,7 @@ Figures in `assets/illustrations/` are reading materials, not runtime assets.
 
 Use an English keyboard layout for letter controls. Movement and turning read
 held keys; shooting uses KEYDOWN events without enabled key repeat. Several
-Space events in the same frame are represented by one fire action.
+Space events in the same frame are counted separately and each creates a projectile.
 
 Two enemies move diagonally and bounce; four move on one circle in opposing
 directions. All enemies spin independently. Enemies do not collide with one
@@ -168,3 +168,11 @@ complete manual playthrough. The chapter's final listing matches the final file.
 these numbers are not PDF page numbers. Run each program separately.
 
 `bonus/` contains the optional three-level extension.
+
+## Shot requests
+
+Each Space KEYDOWN increments `fire_count`. After updating the player, the logic
+creates one projectile per recorded press, preserving multiple presses within a
+frame. The controller resets the count every frame. Held movement still uses
+keyboard state. Restart clears shot requests for that frame; completed games
+do not create new projectiles.

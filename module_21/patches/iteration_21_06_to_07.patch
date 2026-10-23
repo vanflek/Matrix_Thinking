@@ -118,7 +118,7 @@
  
  class InputController:
 @@ -204,6 +230,7 @@
-         if self.actions["fire"]:
+         for _ in range(self.actions["fire_count"]):
              self.create_projectile()
          self.update_projectiles(delta_time)
 +        self.update_enemies(delta_time)
