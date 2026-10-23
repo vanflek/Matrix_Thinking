@@ -97,36 +97,23 @@ start in 16.06.
 
 Every solution starts from the unmodified final game. Run each separately:
 
-- `solutions/solution_16_26_horizontal_player.py`: horizontal-only movement.
+- `solutions/solution_16_26_enemy_score.py`: cumulative destroyed-enemy count.
+  Console checks: `examples/example_16_03_enemy_score_checks.py`.
 - `solutions/solution_16_27_leftmost_shooter.py`: leftmost shooter in the lowest row.
 - `solutions/solution_16_28_triangle_pattern.py`: fourth template, a 25-enemy triangle.
 - `solutions/solution_16_29_faster_waves.py`: periods 12, 10, 8, 6, 4, 3, 3, ...
 - `solutions/solution_16_30_three_waves.py`: victory after three cleared waves;
   defeat has priority, and quitting is not victory.
 
-## Applying the patches
+## Comparing steps with patches
 
-The complete files in `steps/` are the simplest way to run a stage. Patches show
-exact changes between neighboring iterations and are not Python programs.
+Run the full programs in `steps/` to follow the lesson. The files
+`patches/iteration_16_01_to_02.patch` through
+`patches/iteration_16_05_to_06.patch` show the changes between neighboring
+versions; they are not Python programs. `patches/manifest.json` identifies
+each source file, target file, patch, and target checksum.
 
-All patches target a working file named `matrix_invaders.py`. To apply them with
-Git, create a separate empty working folder, copy
-`steps/iteration_16_01_skeleton.py` into it, and rename that copy to
-`matrix_invaders.py`. From that folder, apply patches in numeric order:
-
-```console
-git apply --check /absolute/path/to/module_16/patches/16_01_to_16_02.patch
-git apply /absolute/path/to/module_16/patches/16_01_to_16_02.patch
-```
-
-Replace the example absolute path with the actual location of the patch; quote
-the path if it contains spaces. Repeat for 16.02 -> 16.03 through 16.05 -> 16.06.
-No Git repository initialization is needed for these working-file patches.
-Each resulting file was compared byte-for-byte with its target iteration.
-
-The final game differs from Iteration 16.06 only in its window title and explanatory
-comments. Its game logic is identical. Dependencies apply equally to all stages.
-
+The final game and its explanatory comments are in `final/matrix_invaders.py`.
 
 ## File and listing names
 

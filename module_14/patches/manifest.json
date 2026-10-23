@@ -3,18 +3,18 @@
     "patch": "patches/iteration_14_01_to_02.patch",
     "source": "steps/iteration_14_01_skeleton.py",
     "target": "steps/iteration_14_02_arrow_controls.py",
-    "target_sha256": "46510b7d822fe7752480e7dcfbfc12a9180ca76f13a6245fb2ade920bf3f650c"
+    "target_sha256": "1c462bd00e0891a520c8f09e114042b58445467da20353624461e50f1b1f0a4b"
   },
   {
     "patch": "patches/iteration_14_02_to_03.patch",
     "source": "steps/iteration_14_02_arrow_controls.py",
     "target": "steps/iteration_14_03_capture.py",
-    "target_sha256": "f56efa2bed2eecca8a93fa21d8c783c0c40b773533c194a6c164f2f59a737811"
+    "target_sha256": "cac917d7853d218af9a83ffe63622fbe8107c4353acb02c8b7c4c36f952f9483"
   },
   {
     "patch": "patches/iteration_14_03_to_04.patch",
     "source": "steps/iteration_14_03_capture.py",
     "target": "steps/iteration_14_04_flashlight.py",
-    "target_sha256": "c899023185c5e98b25a98f9b623e3c1491b5ac9a285c9a2cbd7d426e4faabafe"
+    "target_sha256": "446cee858c9b324380efe485ecfe7453ee1999e403c7ec3a367a9f526b38549f"
   }
 ]

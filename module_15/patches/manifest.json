@@ -3,36 +3,36 @@
     "patch": "patches/iteration_15_01_to_02.patch",
     "source": "steps/iteration_15_01_skeleton.py",
     "target": "steps/iteration_15_02_player_movement.py",
-    "target_sha256": "5f11d2dbc144801cfcb4ea32312fe303acd8f878f71b26dd30876ee830d866d0"
+    "target_sha256": "cc4e8509fb452da2434970a8aab6608c5e98a16317241357d5c7272d4b5ed2a4"
   },
   {
     "patch": "patches/iteration_15_02_to_03.patch",
     "source": "steps/iteration_15_02_player_movement.py",
     "target": "steps/iteration_15_03_bullet_movement.py",
-    "target_sha256": "c30b8b3374753f07f6b358a3680ebf9312323329c62952d33e7388860f009cb5"
+    "target_sha256": "35ebea729499d98e0e351583f0cf7ddbd4e191f41437c00174d4b0fafeb70c27"
   },
   {
     "patch": "patches/iteration_15_03_to_04.patch",
     "source": "steps/iteration_15_03_bullet_movement.py",
     "target": "steps/iteration_15_04_falling_blocks.py",
-    "target_sha256": "f5a7dcdd5edc7a8da3c8f70fcb39da019913af4364eef5efb32386d4a4a67a5f"
+    "target_sha256": "edae3b32934c35eafef695a4537bb5a87d873bc197b287d6bb5f6da4180cd783"
   },
   {
     "patch": "patches/iteration_15_04_to_05.patch",
     "source": "steps/iteration_15_04_falling_blocks.py",
     "target": "steps/iteration_15_05_bullet_collision.py",
-    "target_sha256": "f2c2212021106a49e3a5846c5f59f6c58556d5bfc0265c06990d8797e06e8c25"
+    "target_sha256": "000c6adf0e6d404a101cee81f27d65ba447166c2f0b8fa8dffe006e01a30a644"
   },
   {
     "patch": "patches/iteration_15_05_to_06.patch",
     "source": "steps/iteration_15_05_bullet_collision.py",
     "target": "steps/iteration_15_06_full_rows.py",
-    "target_sha256": "24f472745869a2da998d88aba5c1d7ba76d10b1548578b3e37bbdf6fd34b2527"
+    "target_sha256": "b4d41fbc958b15bdc85939f51f8e5a12ef49e48fe0d5858995eb7b43cc0c236e"
   },
   {
     "patch": "patches/iteration_15_06_to_07.patch",
     "source": "steps/iteration_15_06_full_rows.py",
     "target": "steps/iteration_15_07_game_over.py",
-    "target_sha256": "0510db11ceafb8e16d8b579436bf1051c4e463645c75e7f1e0a42b0572696a40"
+    "target_sha256": "620ef0c224c7a42e0bed9477f0e0f843ff1bef9de29dbf36cc0479bc99cd3c92"
   }
 ]

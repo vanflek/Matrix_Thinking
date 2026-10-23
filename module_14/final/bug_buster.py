@@ -55,11 +55,11 @@ def build_grid_surface(rows, cols, cell_size, color):
 
     for row in range(rows + 1):
         y = min(row * cell_size, height - 1)
-        pg.draw.line(surface, color, (0, y), (width - 1, y))
+        pg.draw.line(surface, color, (0, y), (width - 1, y), 1)
 
     for col in range(cols + 1):
         x = min(col * cell_size, width - 1)
-        pg.draw.line(surface, color, (x, 0), (x, height - 1))
+        pg.draw.line(surface, color, (x, 0), (x, height - 1), 1)
 
     return surface
 

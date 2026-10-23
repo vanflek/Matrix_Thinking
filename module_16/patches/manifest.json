@@ -3,30 +3,30 @@
     "patch": "patches/iteration_16_01_to_02.patch",
     "source": "steps/iteration_16_01_skeleton.py",
     "target": "steps/iteration_16_02_enemy_movement.py",
-    "target_sha256": "bebe33d0382077a3668e5d06f585f767c04747615cd14bc37ba0c83bae29c002"
+    "target_sha256": "70b1c7b9b1de434d23a88e19aa69d4931757f4c95c9d60174269c0cb2f1ec3e5"
   },
   {
     "patch": "patches/iteration_16_02_to_03.patch",
     "source": "steps/iteration_16_02_enemy_movement.py",
     "target": "steps/iteration_16_03_bullet_collision.py",
-    "target_sha256": "c773e1feefd9cb21076ec2ddf7280a1677a6517d879351369faae9d0c66d8125"
+    "target_sha256": "c29960f742861eeb1cc66d6c242631907ab8caf29a8da922dcdd761b26c72e45"
   },
   {
     "patch": "patches/iteration_16_03_to_04.patch",
     "source": "steps/iteration_16_03_bullet_collision.py",
     "target": "steps/iteration_16_04_player_collision.py",
-    "target_sha256": "4cfed2fcdd3c5c6daf3eaaca190a90c79c316b2795b3c56cf252ed20c1244251"
+    "target_sha256": "11d3f262fc0dd7dc2ae29810691e8e3c7af8924432a847a4063d2a8ef620315b"
   },
   {
     "patch": "patches/iteration_16_04_to_05.patch",
     "source": "steps/iteration_16_04_player_collision.py",
     "target": "steps/iteration_16_05_enemy_bullet.py",
-    "target_sha256": "e563b45bf86914d01ae71303e8d6015fb95817d71aa589e28626d11331620565"
+    "target_sha256": "c2124e018550727b51cead1d0f0182fc28a4b1ec596a3feeb30780c6a4bc3214"
   },
   {
     "patch": "patches/iteration_16_05_to_06.patch",
     "source": "steps/iteration_16_05_enemy_bullet.py",
     "target": "steps/iteration_16_06_waves.py",
-    "target_sha256": "85f7e29ee51ab9b8586045849f2ce73b1f59a0456de73a3f940e8838c65c1973"
+    "target_sha256": "a0294355da9e792f44acda41e604dedda77a31480f817b8b392969b23e2e85cc"
   }
 ]

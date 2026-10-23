@@ -1,6 +1,6 @@
 # Runnable files
 
-Run each file separately. Follow the module README for its working directory and required resource files, or configure the same directory in PyCharm.
+Run each file separately. Follow the module README for resources and working directory.
 
 ## steps
 
@@ -15,10 +15,11 @@ Run each file separately. Follow the module README for its working directory and
 
 - [example_16_01_shift_without_wrap](examples/example_16_01_shift_without_wrap.py)
 - [example_16_02_choose_shooter](examples/example_16_02_choose_shooter.py)
+- [example_16_03_enemy_score_checks](examples/example_16_03_enemy_score_checks.py)
 
 ## solutions
 
-- [solution_16_26_horizontal_player](solutions/solution_16_26_horizontal_player.py)
+- [solution_16_26_enemy_score](solutions/solution_16_26_enemy_score.py)
 - [solution_16_27_leftmost_shooter](solutions/solution_16_27_leftmost_shooter.py)
 - [solution_16_28_triangle_pattern](solutions/solution_16_28_triangle_pattern.py)
 - [solution_16_29_faster_waves](solutions/solution_16_29_faster_waves.py)
@@ -27,4 +28,3 @@ Run each file separately. Follow the module README for its working directory and
 ## final
 
 - [matrix_invaders](final/matrix_invaders.py)
-

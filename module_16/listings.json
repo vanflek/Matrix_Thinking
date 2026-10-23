@@ -32,8 +32,12 @@
     "file": "examples/example_16_02_choose_shooter.py"
   },
   {
-    "id": "solution_16_26_horizontal_player",
-    "file": "solutions/solution_16_26_horizontal_player.py"
+    "id": "example_16_03_enemy_score_checks",
+    "file": "examples/example_16_03_enemy_score_checks.py"
+  },
+  {
+    "id": "solution_16_26_enemy_score",
+    "file": "solutions/solution_16_26_enemy_score.py"
   },
   {
     "id": "solution_16_27_leftmost_shooter",
