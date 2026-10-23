@@ -259,9 +259,9 @@ class GameView:
         grid.fill((0, 0, 0, 0))
 
         for y in range(0, height, self.cell_size):
-            pg.draw.line(grid, GRID_COLOR, (0, y), (width - 1, y))
+            pg.draw.line(grid, GRID_COLOR, (0, y), (width - 1, y), 1)
         for x in range(0, width, self.cell_size):
-            pg.draw.line(grid, GRID_COLOR, (x, 0), (x, height - 1))
+            pg.draw.line(grid, GRID_COLOR, (x, 0), (x, height - 1), 1)
 
         pg.draw.rect(grid, GRID_COLOR, (0, 0, width, height), 1)
         return grid

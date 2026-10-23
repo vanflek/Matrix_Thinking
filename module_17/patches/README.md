@@ -1,7 +1,8 @@
 # Sequential patches
 
 Each patch compares two consecutive runnable files in `../steps/`.
-The headers name the source and destination files. Use the complete files first;
+The manifest names the source and destination stages; all patch headers target
+`tetris.py`. See the module README for sequential application. Use the complete files first;
 patches are supplied to inspect the changes, not to concatenate programs.
 
 - [iteration_17_01_to_02.patch](iteration_17_01_to_02.patch)

@@ -1,5 +1,5 @@
---- iteration_17_09_game_over.py
-+++ iteration_17_10_complete.py
+--- a/tetris.py
++++ b/tetris.py
 @@ -65,7 +65,10 @@
  
  
@@ -28,10 +28,10 @@
 +
      def get_actions(self):
          actions = {
-             "move_left": False,
-@@ -120,17 +127,21 @@
+             "commands": [],
+@@ -118,17 +125,21 @@
                  elif event.key == pg.K_UP:
-                     actions["rotate"] = True
+                     actions["commands"].append("rotate")
  
 +        # Down is a continuous action; other controls use key events.
          keys = pg.key.get_pressed()
@@ -51,7 +51,7 @@
          piece = model.current_tetromino
          matrix = piece.get_matrix()
          height, width = matrix.shape
-@@ -153,6 +164,7 @@
+@@ -151,6 +162,7 @@
              return False
  
          fixed_layer = model.glass[FIXED_LAYER]
@@ -59,7 +59,7 @@
          overlap = fixed_layer * candidate_layer
          return not np.any(overlap)
  
-@@ -165,11 +177,13 @@
+@@ -163,11 +175,13 @@
              active_layer.fill(0)
              return False
  
@@ -73,7 +73,7 @@
          old_x = piece.x
          old_y = piece.y
          old_rotation = piece.rotation
-@@ -196,11 +210,13 @@
+@@ -194,11 +208,13 @@
          if cleared == 0:
              return 0
  
@@ -87,7 +87,7 @@
          fixed_layer[:] = np.vstack((empty_rows, remaining_rows))
          model.score += 100 * cleared * cleared
          return cleared
-@@ -208,6 +224,7 @@
+@@ -206,6 +222,7 @@
      def initialize_current_tetromino(self, model):
          candidate_layer = self.create_piece_layer(model)
          if not self.layer_is_free(model, candidate_layer):
@@ -95,7 +95,7 @@
              model.glass[ACTIVE_LAYER].fill(0)
              model.game_over = True
              return False
-@@ -223,6 +240,7 @@
+@@ -221,6 +238,7 @@
          fixed_layer = model.glass[FIXED_LAYER]
          active_layer = model.glass[ACTIVE_LAYER]
  
@@ -103,7 +103,7 @@
          mask = active_layer != 0
          fixed_layer[mask] = active_layer[mask]
  
-@@ -244,21 +262,26 @@
+@@ -243,21 +261,26 @@
              FAST_FALL_INTERVAL if actions["fast"]
              else NORMAL_FALL_INTERVAL
          )
@@ -130,7 +130,7 @@
      def __init__(self, screen, cell_size=CELL_SIZE):
          self.screen = screen
          self.cell_size = cell_size
-@@ -287,7 +310,9 @@
+@@ -286,7 +309,9 @@
          pixels = np.repeat(pixels, self.cell_size, axis=0)
          pixels = np.repeat(pixels, self.cell_size, axis=1)
  
@@ -141,7 +141,7 @@
          self.screen.blit(self.grid, (0, 0))
          pg.display.set_caption(f"Matrix Tetris | Score: {score}")
  
-@@ -306,6 +331,8 @@
+@@ -305,6 +330,8 @@
  
  
  class GameApp:

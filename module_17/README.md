@@ -29,8 +29,9 @@ python steps/iteration_17_01_skeleton.py
 ## Controls and rules
 
 - Left / Right: one cell per keypress. Up: rotate 90 degrees counterclockwise.
-  Key repeat is not enabled. Different action flags in one update are applied
-  in the order left, right, rotation; repeated events of one type share one flag.
+  Key repeat is not enabled. A command list preserves the order of keypresses,
+  including repeated presses within one update. Each command is checked against
+  the state left by the previous command; the list starts empty each frame.
 - Hold Down to use the fast falling interval (0.06 s instead of 0.50 s).
   Timing uses elapsed seconds, not a count of rendered frames. Changing either
   falling mode resets its waiting timer; after locking, a new figure also starts
@@ -109,9 +110,12 @@ independently; they are not consecutive stages or cumulative patches.
 - `solutions/solution_17_26_clockwise.py`: clockwise rotation.
 - `solutions/solution_17_27_field_stats.py`: count fixed occupied cells in the title.
 - `solutions/solution_17_28_pause.py`: P toggles pause; paused time is not added to
-  the falling timer, and exit controls remain active.
+  the falling timer, and exit controls remain active. Multiple P presses are counted;
+  even counts leave pause unchanged. A frame with any pause request skips movement
+  and time accumulation.
 - `solutions/solution_17_29_restart.py`: R starts a fresh game after GAME OVER,
-  resetting both model state and the logic's falling timer.
+  resetting both model state and the logic's falling timer. Restart takes priority
+  over queued movements and elapsed time in that frame.
 - `solutions/solution_17_30_shadow.py`: a gray landing shadow computed using an
   independent probe figure; accepted state, score and time remain unchanged.
 
@@ -124,12 +128,12 @@ Create a separate working folder, copy `steps/iteration_17_01_skeleton.py` into
 it, and rename that copy to `tetris.py`. From that folder, apply patches in order:
 
 ```console
-git apply --check /absolute/path/to/module_17/patches/17_01_to_17_02.patch
-git apply /absolute/path/to/module_17/patches/17_01_to_17_02.patch
+git apply --check /absolute/path/to/module_17/patches/iteration_17_01_to_02.patch
+git apply /absolute/path/to/module_17/patches/iteration_17_01_to_02.patch
 ```
 
 Replace the example path with your actual patch location; quote paths containing
-spaces. Continue through `17_09_to_17_10.patch`. Git is only needed to apply these
+spaces. Continue through `iteration_17_09_to_10.patch`. Git is only needed to apply these
 optional patches; all complete stages can be run directly without it. No Git
 repository initialization is required in the working folder. Each applied result
 was verified byte-for-byte against its target iteration.

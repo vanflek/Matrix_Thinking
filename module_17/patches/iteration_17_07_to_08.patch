@@ -1,5 +1,5 @@
---- iteration_17_07_falling.py
-+++ iteration_17_08_clear_rows.py
+--- a/tetris.py
++++ b/tetris.py
 @@ -85,6 +85,7 @@
  class GameModel:
      def __init__(self, rows=ROWS, cols=COLS):
@@ -8,7 +8,7 @@
          self.new_tetromino()
  
      def new_tetromino(self):
-@@ -186,6 +187,23 @@
+@@ -184,6 +185,23 @@
          self.update_active_layer(model, candidate_layer)
          return True
  
@@ -32,7 +32,7 @@
      def lock_tetromino(self, model):
          fixed_layer = model.glass[FIXED_LAYER]
          active_layer = model.glass[ACTIVE_LAYER]
-@@ -193,6 +211,7 @@
+@@ -191,6 +209,7 @@
          mask = active_layer != 0
          fixed_layer[mask] = active_layer[mask]
  
@@ -40,7 +40,7 @@
          model.new_tetromino()
          self.update_active_layer(model)
  
-@@ -243,7 +262,7 @@
+@@ -242,7 +261,7 @@
          pg.draw.rect(grid, GRID_COLOR, (0, 0, width, height), 1)
          return grid
  
@@ -49,7 +49,7 @@
          fixed = glass[FIXED_LAYER]
          active = glass[ACTIVE_LAYER]
          cells = np.where(active != 0, active, fixed)
-@@ -254,6 +273,7 @@
+@@ -253,6 +272,7 @@
  
          pg.surfarray.blit_array(self.screen, np.swapaxes(pixels, 0, 1))
          self.screen.blit(self.grid, (0, 0))
@@ -57,7 +57,7 @@
  
  
  class GameApp:
-@@ -282,7 +302,7 @@
+@@ -281,7 +301,7 @@
                  self.running = False
              else:
                  self.logic.step(self.model, actions, delta_time)

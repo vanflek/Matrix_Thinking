@@ -3,54 +3,54 @@
     "patch": "patches/iteration_17_01_to_02.patch",
     "source": "steps/iteration_17_01_skeleton.py",
     "target": "steps/iteration_17_02_tetromino.py",
-    "target_sha256": "3c53370c76c1cdff258aa0a4e9e03362f281fd9c635a406da0f06f48c01f8563"
+    "target_sha256": "d2d815da7ddc54a6a9df8399a01d84a44d2e06c63bcf5c742ccf1de9f59b3737"
   },
   {
     "patch": "patches/iteration_17_02_to_03.patch",
     "source": "steps/iteration_17_02_tetromino.py",
     "target": "steps/iteration_17_03_first_figure.py",
-    "target_sha256": "c19ff04ab3d48eb138ec78d86dda74572ebd1d5d56abb6a1ad9e822f4b0fa1db"
+    "target_sha256": "bfe3e98b8798fca1c4141d37cf83365a53dd777ff08dffca3899f1e7631c1827"
   },
   {
     "patch": "patches/iteration_17_03_to_04.patch",
     "source": "steps/iteration_17_03_first_figure.py",
     "target": "steps/iteration_17_04_movement.py",
-    "target_sha256": "660858d3d7ac908d0e1ce1c61a77db3f341afce1dc7a02cccd74705bda3e7087"
+    "target_sha256": "7ce18953bab9e924a840d939f474793a6a4157ba71960d40a0b630c5c76d0df5"
   },
   {
     "patch": "patches/iteration_17_04_to_05.patch",
     "source": "steps/iteration_17_04_movement.py",
     "target": "steps/iteration_17_05_locking.py",
-    "target_sha256": "51432f41a4dc557f5a166c836b8602766722980f2b8af1e2bec6317284151213"
+    "target_sha256": "ea045af963c0b4599cf086f2b3123971041b8fc9474ae151a5fec7b8141b82e4"
   },
   {
     "patch": "patches/iteration_17_05_to_06.patch",
     "source": "steps/iteration_17_05_locking.py",
     "target": "steps/iteration_17_06_collisions.py",
-    "target_sha256": "5b134cb38c8f740bb81763734a5041219927114dc10f6bb0a00639cbb19798cc"
+    "target_sha256": "5486be9ffa6dc821d7f83cd50c1fa3bf84831752c3032c7c5cba0496db25db4a"
   },
   {
     "patch": "patches/iteration_17_06_to_07.patch",
     "source": "steps/iteration_17_06_collisions.py",
     "target": "steps/iteration_17_07_falling.py",
-    "target_sha256": "5f3e6d1aa7f85cdc87d313094b32c70a707b5ab6f90cbf48643727823f791795"
+    "target_sha256": "e6ce09b6948b916908dcb9a83c43932bed713a0872532b3d74df2fe05b9d8abc"
   },
   {
     "patch": "patches/iteration_17_07_to_08.patch",
     "source": "steps/iteration_17_07_falling.py",
     "target": "steps/iteration_17_08_clear_rows.py",
-    "target_sha256": "a496b72d267b55034602218fd8b9c5c0a75c5d01600dd2f37fdb495b1b3b08a4"
+    "target_sha256": "665710ac27859c2dba640f31f59bcbef3ea3ec81c0395a2e3145edd2c852b9ef"
   },
   {
     "patch": "patches/iteration_17_08_to_09.patch",
     "source": "steps/iteration_17_08_clear_rows.py",
     "target": "steps/iteration_17_09_game_over.py",
-    "target_sha256": "5ab1910e6f3ad27a24545752acee4d554f650946a5e00649c69fc4bb17b7a6b6"
+    "target_sha256": "4f2b247cc54d7c0d2e1a847f88589bd38b2a9447b467c5fd49d83aaba215f026"
   },
   {
     "patch": "patches/iteration_17_09_to_10.patch",
     "source": "steps/iteration_17_09_game_over.py",
     "target": "steps/iteration_17_10_complete.py",
-    "target_sha256": "67b825505a3c2dd903545879c0cf13612063c61ae8098093d1542cb62a8ab621"
+    "target_sha256": "db7cb464a88017fe6a5197c1294b1456cf966191261c9ca3b98098e5b7bd7c16"
   }
 ]

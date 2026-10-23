@@ -96,11 +96,7 @@ class GameModel:
 class InputController:
     def get_actions(self):
         actions = {
-            "move_left": False,
-            "move_right": False,
-            "move_down": False,
-            "rotate": False,
-            "lock": False,
+            "commands": [],
             "quit": False,
         }
 
@@ -111,16 +107,16 @@ class InputController:
                 if event.key == pg.K_ESCAPE:
                     actions["quit"] = True
                 elif event.key == pg.K_LEFT:
-                    actions["move_left"] = True
+                    actions["commands"].append("move_left")
                 elif event.key == pg.K_RIGHT:
-                    actions["move_right"] = True
+                    actions["commands"].append("move_right")
                 elif event.key == pg.K_DOWN:
-                    actions["move_down"] = True
+                    actions["commands"].append("move_down")
                 elif event.key == pg.K_UP:
-                    actions["rotate"] = True
+                    actions["commands"].append("rotate")
                 elif event.key == pg.K_SPACE:
                     # Temporary manual locking for this learning stage.
-                    actions["lock"] = True
+                    actions["commands"].append("lock")
 
         return actions
 
@@ -179,16 +175,17 @@ class GameLogic:
     def step(self, model, actions):
         self.update_active_layer(model)
 
-        if actions["move_left"]:
-            self.try_transform(model, dx=-1)
-        if actions["move_right"]:
-            self.try_transform(model, dx=1)
-        if actions["move_down"]:
-            self.try_transform(model, dy=1)
-        if actions["rotate"]:
-            self.try_transform(model, rotate=True)
-        if actions["lock"]:
-            self.lock_tetromino(model)
+        for command in actions["commands"]:
+            if command == "move_left":
+                self.try_transform(model, dx=-1)
+            elif command == "move_right":
+                self.try_transform(model, dx=1)
+            elif command == "move_down":
+                self.try_transform(model, dy=1)
+            elif command == "rotate":
+                self.try_transform(model, rotate=True)
+            elif command == "lock":
+                self.lock_tetromino(model)
 
 
 class GameView:
@@ -203,9 +200,9 @@ class GameView:
         grid.fill((0, 0, 0, 0))
 
         for y in range(0, height, self.cell_size):
-            pg.draw.line(grid, GRID_COLOR, (0, y), (width - 1, y))
+            pg.draw.line(grid, GRID_COLOR, (0, y), (width - 1, y), 1)
         for x in range(0, width, self.cell_size):
-            pg.draw.line(grid, GRID_COLOR, (x, 0), (x, height - 1))
+            pg.draw.line(grid, GRID_COLOR, (x, 0), (x, height - 1), 1)
 
         pg.draw.rect(grid, GRID_COLOR, (0, 0, width, height), 1)
         return grid

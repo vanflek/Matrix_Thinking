@@ -1,6 +1,6 @@
 # Runnable files
 
-Run each file separately. Follow the module README for its working directory and required resource files, or configure the same directory in PyCharm.
+Run each file separately. Follow the module README for resources and working directory.
 
 ## steps
 
@@ -36,4 +36,3 @@ Run each file separately. Follow the module README for its working directory and
 ## final
 
 - [tetris](final/tetris.py)
-

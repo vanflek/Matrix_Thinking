@@ -1,5 +1,5 @@
---- iteration_17_04_movement.py
-+++ iteration_17_05_locking.py
+--- a/tetris.py
++++ b/tetris.py
 @@ -83,8 +83,12 @@
  class GameModel:
      def __init__(self, rows=ROWS, cols=COLS):
@@ -15,28 +15,21 @@
          x = (cols - matrix.shape[1]) // 2
          self.current_tetromino = Tetromino(matrix, x=x, y=0)
  
-@@ -96,6 +100,7 @@
-             "move_right": False,
-             "move_down": False,
-             "rotate": False,
-+            "lock": False,
-             "quit": False,
-         }
- 
-@@ -113,6 +118,9 @@
-                     actions["move_down"] = True
+@@ -110,6 +114,9 @@
+                     actions["commands"].append("move_down")
                  elif event.key == pg.K_UP:
-                     actions["rotate"] = True
+                     actions["commands"].append("rotate")
 +                elif event.key == pg.K_SPACE:
 +                    # Temporary manual locking for this learning stage.
-+                    actions["lock"] = True
++                    actions["commands"].append("lock")
  
          return actions
  
-@@ -158,6 +166,16 @@
+@@ -154,6 +161,16 @@
+ 
          self.update_active_layer(model)
          return True
- 
++
 +    def lock_tetromino(self, model):
 +        fixed_layer = model.glass[FIXED_LAYER]
 +        active_layer = model.glass[ACTIVE_LAYER]
@@ -46,16 +39,15 @@
 +
 +        model.new_tetromino()
 +        self.update_active_layer(model)
-+
+ 
      def step(self, model, actions):
          self.update_active_layer(model)
- 
-@@ -169,6 +187,8 @@
-             self.try_transform(model, dy=1)
-         if actions["rotate"]:
-             self.try_transform(model, rotate=True)
-+        if actions["lock"]:
-+            self.lock_tetromino(model)
+@@ -167,6 +184,8 @@
+                 self.try_transform(model, dy=1)
+             elif command == "rotate":
+                 self.try_transform(model, rotate=True)
++            elif command == "lock":
++                self.lock_tetromino(model)
  
  
  class GameView:
