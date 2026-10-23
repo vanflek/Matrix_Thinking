@@ -14,6 +14,11 @@ Companion programs for **Matrix Thinking**. This module moves from repeated draw
 
 The complete listings in the chapter match `steps/iteration_02_01_circles_list.py`, `steps/iteration_02_03_brick_wall.py`, and `steps/iteration_02_05_grid_enumerate.py`. The other two files apply the short changes explained between those listings.
 
+## Independent range experiments
+
+- [Empty range](examples/example_02_01_empty_range.py): a negative step cannot reach a larger stop from zero; the loop body never runs.
+- [Zero step](examples/example_02_02_zero_step.py): this deliberately invalid example raises `ValueError`, because a range step cannot be zero.
+
 ## Run a program
 
 Checked with **Python 3.13.7** and **Pygame 2.6.1** on Windows. NumPy is not needed here.
@@ -51,6 +56,7 @@ Each file below is a standalone program. Start each exercise from the original c
 | 8. Observe the data | [Trace coordinates in the console](solutions/solution_02_08_trace.py) |
 | 17. One scalar changes the picture | [Smaller cells with fixed counts](solutions/solution_02_17_smaller_cells.py) |
 | 18. A collection of position vectors | [Three centers](solutions/solution_02_18_centers.py) |
+| 19. Fix a linear index | [Count preceding rows using COLS](solutions/solution_02_19_fix_linear_index.py) |
 | 25. Shift several objects | [Add the same displacement](solutions/solution_02_25_shift_centers.py) |
 
 For example:

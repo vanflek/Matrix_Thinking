@@ -29,7 +29,7 @@ for row in range(ROWS):
             color = BLACK
 
         # Fill the entire cell.
-        pg.draw.rect(screen, color, (x, y, CELL, CELL))
+        pg.draw.rect(screen, color, (x, y, CELL, CELL), 0)
 
 # Show the completed board.
 pg.display.update()

@@ -45,7 +45,7 @@ for row in range(ROWS):
             BRICK_WIDTH - 2 * inset,
             BRICK_HEIGHT - 2 * inset
         )
-        pg.draw.rect(screen, BRICK, rect)
+        pg.draw.rect(screen, BRICK, rect, 0)
 
 # Show the completed wall.
 pg.display.update()

@@ -12,10 +12,10 @@ LINE_COLOR = (80, 80, 80)
 
 # Draw each family of lines with its own loop.
 for x in range(0, width, STEP):
-    pg.draw.line(screen, LINE_COLOR, (x, 0), (x, height - 1))
+    pg.draw.line(screen, LINE_COLOR, (x, 0), (x, height - 1), 1)
 
 for y in range(0, height, STEP):
-    pg.draw.line(screen, LINE_COLOR, (0, y), (width - 1, y))
+    pg.draw.line(screen, LINE_COLOR, (0, y), (width - 1, y), 1)
 
 pg.display.update()
 pg.event.pump()

@@ -56,8 +56,9 @@ python examples/example_04_02_fps_15.py
 | 10 | [Close request](solutions/solution_04_10_close_request.py) | Complete falling-circle program with a QUIT handler; Esc handling is intentionally absent. |
 | 13 | [Window bounds](solutions/solution_04_13_bounds.py) | Console: both coordinates are corrected to (770, 570). |
 | 15 | [Visible cursor](solutions/solution_04_15_show_cursor.py) | The system cursor and our circle are both visible. |
+| 16 | [Keyboard rectangle](solutions/solution_04_16_keyboard_rectangle.py) | Move a 120-by-80 rectangle in 40-pixel steps, keeping all four sides inside the window. |
 
-The chapter contains all 15 questions and their explanations. These files provide standalone versions of the executable examples; use `steps/iteration_04_02_falling_circle_events.py` for the nested Esc check in exercise 11 and `steps/iteration_04_03_keyboard_circle.py` for the movement in exercise 12.
+The chapter contains all 16 questions and their explanations. These files provide standalone versions of the executable examples; use `steps/iteration_04_02_falling_circle_events.py` for the nested Esc check in exercise 11 and `steps/iteration_04_03_keyboard_circle.py` for the movement in exercise 12.
 
 ## Trace the data
 

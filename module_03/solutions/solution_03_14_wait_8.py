@@ -48,7 +48,7 @@ for row, y in enumerate(range(0, ROWS * CELL, CELL)):
                 color = BLACK
 
         # Draw the cell after choosing its color
-        pg.draw.rect(screen, color, (x, y, CELL, CELL))
+        pg.draw.rect(screen, color, (x, y, CELL, CELL), 0)
 
 # Show the completed image
 pg.display.update()
