@@ -76,7 +76,7 @@ while running:
             x = col * CELL_SIZE
             y = row * CELL_SIZE
 
-            pg.draw.rect(screen, color, (x, y, CELL_SIZE, CELL_SIZE))
+            pg.draw.rect(screen, color, (x, y, CELL_SIZE, CELL_SIZE), 0)
             pg.draw.rect(
                 screen, GRID_COLOR, (x, y, CELL_SIZE, CELL_SIZE), 1
             )

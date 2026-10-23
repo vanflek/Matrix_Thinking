@@ -60,7 +60,7 @@ while running:
             y = row * CELL_SIZE
 
             # Draw the filled cell and its one-pixel border.
-            pg.draw.rect(screen, color, (x, y, CELL_SIZE, CELL_SIZE))
+            pg.draw.rect(screen, color, (x, y, CELL_SIZE, CELL_SIZE), 0)
             pg.draw.rect(screen, GRID, (x, y, CELL_SIZE, CELL_SIZE), 1)
 
     # Show the completed frame.

@@ -19,13 +19,13 @@ ROWS, COLS = matrix.shape
 
 # --- PATTERN START ---
 matrix.fill(0)
-
-matrix[0, :] = 1
-matrix[-1, :] = 1
-matrix[:, 0] = 1
-matrix[:, -1] = 1
-
-matrix[0, 6:10] = 0
+row_indices, col_indices = np.indices(matrix.shape)
+edge = (
+    (row_indices == 0) | (row_indices == ROWS - 1)
+    | (col_indices == 0) | (col_indices == COLS - 1)
+)
+opening = (row_indices == 0) & (col_indices >= 6) & (col_indices <= 9)
+matrix[edge & ~opening] = 1
 print(matrix)
 # --- PATTERN END ---
 
@@ -67,7 +67,7 @@ while running:
             y = row * CELL_SIZE
 
             # Draw the filled cell and its one-pixel border.
-            pg.draw.rect(screen, color, (x, y, CELL_SIZE, CELL_SIZE))
+            pg.draw.rect(screen, color, (x, y, CELL_SIZE, CELL_SIZE), 0)
             pg.draw.rect(screen, GRID, (x, y, CELL_SIZE, CELL_SIZE), 1)
 
     # Show the completed frame.

@@ -24,6 +24,8 @@ Keep `matrix`, `ROWS`, `COLS`, and `CELL_SIZE` consistent with the book.
 
 ## Console experiments
 
+The part II revision adds `examples/example_06_36_slice_bounds.py` (clipped and empty selections) and `examples/example_06_37_simple_timing.py` (a complete introductory timing experiment). Solution 22 selects values through a Boolean mask; solution 23 combines and inverts masks. Their expected pictures are unchanged.
+
 | File | Topic |
 | --- | --- |
 | [examples/example_06_34_slices_1d.py](examples/example_06_34_slices_1d.py) | Start, exclusive stop, step, omitted bounds, and negative indices. |
@@ -120,3 +122,4 @@ It is not a general NumPy speedup and does not measure rendering speed or FPS.
 `solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
 `final/` contains complete programs, where provided. Listing identifiers match file stems;
 these numbers are not PDF page numbers. Run each program separately.
+
