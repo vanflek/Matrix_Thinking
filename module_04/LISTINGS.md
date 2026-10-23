@@ -23,4 +23,4 @@ Run each file separately. Follow the module README for its working directory and
 - [solution_04_10_close_request](solutions/solution_04_10_close_request.py)
 - [solution_04_13_bounds](solutions/solution_04_13_bounds.py)
 - [solution_04_15_show_cursor](solutions/solution_04_15_show_cursor.py)
-
+- [solution_04_16_keyboard_rectangle](solutions/solution_04_16_keyboard_rectangle.py)

@@ -50,5 +50,9 @@
   {
     "id": "solution_04_15_show_cursor",
     "file": "solutions/solution_04_15_show_cursor.py"
+  },
+  {
+    "id": "solution_04_16_keyboard_rectangle",
+    "file": "solutions/solution_04_16_keyboard_rectangle.py"
   }
 ]

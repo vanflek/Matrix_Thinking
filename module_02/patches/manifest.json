@@ -9,13 +9,13 @@
     "patch": "patches/iteration_02_02_to_03.patch",
     "source": "steps/iteration_02_02_circles_range.py",
     "target": "steps/iteration_02_03_brick_wall.py",
-    "target_sha256": "14641a6f0fba82ce4fe10149e5d08e445e2c82beed34c6dbc97dc430181e24c1"
+    "target_sha256": "7b628b8ce2e015cb305ec2e8aa034ba3fa180325f776f0a80965a7cd1b987c6e"
   },
   {
     "patch": "patches/iteration_02_03_to_04.patch",
     "source": "steps/iteration_02_03_brick_wall.py",
     "target": "steps/iteration_02_04_brick_wall_labels.py",
-    "target_sha256": "3a16716d3051f88578558944c5b08ba3edc238e6235ac4170a6c21e7d374c6af"
+    "target_sha256": "57c555dc9894baf84683100ac86ca3ecfd31406ac6a27f63888c44d62546f3e7"
   },
   {
     "patch": "patches/iteration_02_04_to_05.patch",

@@ -53,7 +53,7 @@
 -            BRICK_WIDTH - 4,
 -            BRICK_HEIGHT - 4
 -        )
--        pg.draw.rect(screen, BRICK, rect)
+-        pg.draw.rect(screen, BRICK, rect, 0)
 +        # Choose a color for this cell.
 +        if (row + col) % 2 == 0:
 +            color = WHITE
@@ -62,7 +62,7 @@
  
 -# Show the completed wall.
 +        # Fill the entire cell.
-+        pg.draw.rect(screen, color, (x, y, CELL, CELL))
++        pg.draw.rect(screen, color, (x, y, CELL, CELL), 0)
 +
 +# Show the completed board.
  pg.display.update()

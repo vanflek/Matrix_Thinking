@@ -3,6 +3,6 @@
     "patch": "patches/iteration_05_01_to_02.patch",
     "source": "steps/iteration_05_01_first_matrix.py",
     "target": "steps/iteration_05_02_matrix_visualization.py",
-    "target_sha256": "d841aa804948156dae06d0d56e0b5d2bf9d88d78e18a69585f50301c844733ed"
+    "target_sha256": "778b386429f7b3d01d4234ba13626f0563a12b5f63c53cc548235d007550fd30"
   }
 ]

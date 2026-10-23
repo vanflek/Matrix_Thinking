@@ -140,6 +140,14 @@
     "file": "examples/example_06_35_slices_2d.py"
   },
   {
+    "id": "example_06_36_slice_bounds",
+    "file": "examples/example_06_36_slice_bounds.py"
+  },
+  {
+    "id": "example_06_37_simple_timing",
+    "file": "examples/example_06_37_simple_timing.py"
+  },
+  {
     "id": "solution_06_21_two_walls",
     "file": "solutions/solution_06_21_two_walls.py"
   },

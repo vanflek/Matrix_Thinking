@@ -10,6 +10,11 @@ Run each file separately. Follow the module README for its working directory and
 - [iteration_02_04_brick_wall_labels](steps/iteration_02_04_brick_wall_labels.py)
 - [iteration_02_05_grid_enumerate](steps/iteration_02_05_grid_enumerate.py)
 
+## examples
+
+- [example_02_01_empty_range](examples/example_02_01_empty_range.py)
+- [example_02_02_zero_step](examples/example_02_02_zero_step.py)
+
 ## solutions
 
 - [solution_02_02_wider_outlines](solutions/solution_02_02_wider_outlines.py)
@@ -21,5 +26,5 @@ Run each file separately. Follow the module README for its working directory and
 - [solution_02_08_trace](solutions/solution_02_08_trace.py)
 - [solution_02_17_smaller_cells](solutions/solution_02_17_smaller_cells.py)
 - [solution_02_18_centers](solutions/solution_02_18_centers.py)
+- [solution_02_19_fix_linear_index](solutions/solution_02_19_fix_linear_index.py)
 - [solution_02_25_shift_centers](solutions/solution_02_25_shift_centers.py)
-

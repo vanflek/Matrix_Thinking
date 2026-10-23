@@ -20,6 +20,14 @@
     "file": "steps/iteration_02_05_grid_enumerate.py"
   },
   {
+    "id": "example_02_01_empty_range",
+    "file": "examples/example_02_01_empty_range.py"
+  },
+  {
+    "id": "example_02_02_zero_step",
+    "file": "examples/example_02_02_zero_step.py"
+  },
+  {
     "id": "solution_02_02_wider_outlines",
     "file": "solutions/solution_02_02_wider_outlines.py"
   },
@@ -54,6 +62,10 @@
   {
     "id": "solution_02_18_centers",
     "file": "solutions/solution_02_18_centers.py"
+  },
+  {
+    "id": "solution_02_19_fix_linear_index",
+    "file": "solutions/solution_02_19_fix_linear_index.py"
   },
   {
     "id": "solution_02_25_shift_centers",

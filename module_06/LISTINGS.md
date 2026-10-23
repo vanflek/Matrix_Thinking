@@ -1,6 +1,6 @@
 # Runnable files
 
-Run each file separately. Follow the module README for its working directory and required resource files, or configure the same directory in PyCharm.
+Run each file separately. Follow the module README for its working directory and required resources.
 
 ## examples
 
@@ -39,6 +39,8 @@ Run each file separately. Follow the module README for its working directory and
 - [example_06_33_scalar_logic](examples/example_06_33_scalar_logic.py)
 - [example_06_34_slices_1d](examples/example_06_34_slices_1d.py)
 - [example_06_35_slices_2d](examples/example_06_35_slices_2d.py)
+- [example_06_36_slice_bounds](examples/example_06_36_slice_bounds.py)
+- [example_06_37_simple_timing](examples/example_06_37_simple_timing.py)
 
 ## solutions
 
@@ -53,4 +55,3 @@ Run each file separately. Follow the module README for its working directory and
 - [solution_06_29_thick_cross](solutions/solution_06_29_thick_cross.py)
 - [solution_06_29_thick_cross_mask](solutions/solution_06_29_thick_cross_mask.py)
 - [solution_06_30_staircase](solutions/solution_06_30_staircase.py)
-

@@ -3,36 +3,36 @@
     "patch": "patches/iteration_07_01_to_02.patch",
     "source": "steps/iteration_07_01_pixel_art_editor.py",
     "target": "steps/iteration_07_02_pixel_art_editor_io.py",
-    "target_sha256": "cdbc9736270129cc114f7218ad03c50dc6134dc04333dc5d1e604593248f9f3e"
+    "target_sha256": "456313efae6526ed120447a2433810de40b26f6b6397fe8262665e7da963dc69"
   },
   {
     "patch": "patches/iteration_07_02_to_03.patch",
     "source": "steps/iteration_07_02_pixel_art_editor_io.py",
     "target": "steps/iteration_07_03_pixel_art_editor_png.py",
-    "target_sha256": "3b1f606e9e70b960be266637f5818b7bf7537f064bcd93bf7d9ae19287f4eef0"
+    "target_sha256": "42f9c2b8be15f8909fabbc1be96866cdc71263e8f81c49b17ee15010a698eaff"
   },
   {
     "patch": "patches/iteration_07_03_to_04.patch",
     "source": "steps/iteration_07_03_pixel_art_editor_png.py",
     "target": "steps/iteration_07_04_pixel_art_editor_brush_center.py",
-    "target_sha256": "bdd361115ea1dc0237c9dd9f9ff996cad350a20500712f756786ab078496045e"
+    "target_sha256": "31e64eba98de9de1ce5a857f8b0624c206a6ae2c71f95774a8fe4bbb84fceb3c"
   },
   {
     "patch": "patches/iteration_07_04_to_05.patch",
     "source": "steps/iteration_07_04_pixel_art_editor_brush_center.py",
     "target": "steps/iteration_07_05_pixel_art_editor_brush.py",
-    "target_sha256": "29c362ed6dcaf56020c20085488349ca0c5d23ecfd36b74c382f2d6e91c25f9a"
+    "target_sha256": "3fb7bcfa1b2f3b074706074becc636deb321a7e2878c47a18a20627b54de1b8c"
   },
   {
     "patch": "patches/iteration_07_05_to_06.patch",
     "source": "steps/iteration_07_05_pixel_art_editor_brush.py",
     "target": "steps/iteration_07_06_pixel_art_editor_shift.py",
-    "target_sha256": "3d3f1b65ce86b0107aebb4ee857138178bc5588e2998ec23d04123cb24b14c9e"
+    "target_sha256": "7e886513dffd6639c5a57f45a18fb11061933949f51ecc0939cddc71caec18f8"
   },
   {
     "patch": "patches/iteration_07_06_to_07.patch",
     "source": "steps/iteration_07_06_pixel_art_editor_shift.py",
     "target": "steps/iteration_07_07_pixel_art_editor_info.py",
-    "target_sha256": "9f7bb6c91af72c4910c90eb2b0ed44eb431b214034aca334d1288fc032e6143c"
+    "target_sha256": "939707f3c39296feeab5569eba15c7b942f0806bf44e2bd1ef2c28dc87afbaa4"
   }
 ]
