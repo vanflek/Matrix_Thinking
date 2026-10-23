@@ -1,6 +1,6 @@
 # Runnable files
 
-Run each file separately. Follow the module README for its working directory and required resource files, or configure the same directory in PyCharm.
+Run each file separately. Follow the module README for its working directory and required resources.
 
 ## steps
 
@@ -43,4 +43,3 @@ Run each file separately. Follow the module README for its working directory and
 ## final
 
 - [life_roll](final/life_roll.py)
-

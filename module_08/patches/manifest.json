@@ -147,31 +147,31 @@
     "patch": "patches/iteration_08_25_to_26.patch",
     "source": "steps/iteration_08_25_transparent_overlay.py",
     "target": "steps/iteration_08_26_grid_lines.py",
-    "target_sha256": "fe4cae4c468917810b183642e56ef49ffa1b370dece8c13bd9f5a4483d7e352f"
+    "target_sha256": "81853654a9b7a21047036aceef9a2f2a850b4aa72c422fcd34f2e5430885406b"
   },
   {
     "patch": "patches/iteration_08_26_to_27.patch",
     "source": "steps/iteration_08_26_grid_lines.py",
     "target": "steps/iteration_08_27_grid_border.py",
-    "target_sha256": "fa60123bbf508e9c864161e9ea2c6ec85ca0e725f12762ea91414cc796a947e1"
+    "target_sha256": "3ae284cf8ace8eac77558a6d4d6eb74b5a8359a4c16a6fc6a0af05d2414b5b75"
   },
   {
     "patch": "patches/iteration_08_27_to_28.patch",
     "source": "steps/iteration_08_27_grid_border.py",
     "target": "steps/iteration_08_28_grid_function.py",
-    "target_sha256": "35a091962b042f967688cbe6345398f49c0719880913a0a7d0d5f887c92ef3f6"
+    "target_sha256": "f34a20e790a7f0b72df4c5c474637e52103aa9a4c468d27087dc355be3deba08"
   },
   {
     "patch": "patches/iteration_08_28_to_29.patch",
     "source": "steps/iteration_08_28_grid_function.py",
     "target": "steps/iteration_08_29_quit_function.py",
-    "target_sha256": "2b357633d3138cb7aa9e4fbf294b8b1335d67f20a1b9bded1744d2724ba24afb"
+    "target_sha256": "b974d56eb1a451905d9d1e7ed73aaca320c16906080017f83497dd11142ba91a"
   },
   {
     "patch": "patches/iteration_08_29_to_30.patch",
     "source": "steps/iteration_08_29_quit_function.py",
     "target": "steps/iteration_08_30_collector_every_frame.py",
-    "target_sha256": "b5ca555e72a3989909a0f02fb2471e892aba4418c65083f8233acd5de6eee163"
+    "target_sha256": "3aa3af7b1b657862c0442f67b2f233b9511850bd148bd1c917ac53d00f9aaaef"
   },
   {
     "patch": "patches/iteration_08_30_to_31.patch",
@@ -183,6 +183,6 @@
     "patch": "patches/iteration_08_31_to_32.patch",
     "source": "steps/iteration_08_31_step_counter.py",
     "target": "steps/iteration_08_32_collector_timed.py",
-    "target_sha256": "82af4c2bde18563c2cafd4f379493c3fa49bb555a1fffe52170b6d2ccfc5c679"
+    "target_sha256": "4676e440f204fea5d7c3bebc3805aff8210e7d66de708884c06de22e79a1d679"
   }
 ]

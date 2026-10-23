@@ -1,6 +1,6 @@
 # Runnable files
 
-Run each file separately. Follow the module README for its working directory and required resource files, or configure the same directory in PyCharm.
+Run each file separately. Follow the module README for its working directory and required resources.
 
 ## steps
 
@@ -49,6 +49,7 @@ Run each file separately. Follow the module README for its working directory and
 ## solutions
 
 - [solution_08_26_eight_targets](solutions/solution_08_26_eight_targets.py)
+- [solution_08_27_position_check](solutions/solution_08_27_position_check.py)
 - [solution_08_27_rectangular_field](solutions/solution_08_27_rectangular_field.py)
 - [solution_08_28_dark_palette](solutions/solution_08_28_dark_palette.py)
 - [solution_08_29_pause](solutions/solution_08_29_pause.py)
@@ -57,4 +58,3 @@ Run each file separately. Follow the module README for its working directory and
 ## final
 
 - [collector](final/collector.py)
-

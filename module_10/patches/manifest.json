@@ -27,37 +27,37 @@
     "patch": "patches/iteration_10_05_to_06.patch",
     "source": "steps/iteration_10_05_generation_function.py",
     "target": "steps/iteration_10_06_display_step.py",
-    "target_sha256": "e77a681a42e32afd7595c76c468b002254200479e7a3f5c8ad30bca22c4c7c35"
+    "target_sha256": "cbfdd06df7f63094560a051937667901a41377b122f8898bc9c63f6d1afbe956"
   },
   {
     "patch": "patches/iteration_10_06_to_07.patch",
     "source": "steps/iteration_10_06_display_step.py",
     "target": "steps/iteration_10_07_mouse_edit.py",
-    "target_sha256": "1197ea3e39f6d8dfbab2918f1f4e685459e12ee0b2467e5aa25c6c8801cd21a4"
+    "target_sha256": "ae8aac5061fc14077693649caa6f7faa023c963365e92989d750c1ba9834c899"
   },
   {
     "patch": "patches/iteration_10_07_to_08.patch",
     "source": "steps/iteration_10_07_mouse_edit.py",
     "target": "steps/iteration_10_08_run_pause.py",
-    "target_sha256": "fae1256fc64a8e33fbca56713181ca4eaaae2c8c736c387a2d9ca9847903bd23"
+    "target_sha256": "b286989cc919ed29639d499b3a814a702e638f2b458ffbf57006d81eb3d42417"
   },
   {
     "patch": "patches/iteration_10_08_to_09.patch",
     "source": "steps/iteration_10_08_run_pause.py",
     "target": "steps/iteration_10_09_clear.py",
-    "target_sha256": "e42d8ae28c01ecf26a9ff5539ad876583d11ed09ca0905ec608cde664b1f8e4f"
+    "target_sha256": "a0cd1ed5f2d7b3053152769cf615298d3bba176d6a36b7ece307b4e2e409b40b"
   },
   {
     "patch": "patches/iteration_10_09_to_10.patch",
     "source": "steps/iteration_10_09_clear.py",
     "target": "steps/iteration_10_10_cursor_overlay.py",
-    "target_sha256": "be514ddb593842f82ddd2521d618108544bea454cc79954d4a1104f7a631f903"
+    "target_sha256": "b1fbc77e284f0624ebb9aa40d19dd9521672fd36674369433f7d697c86bf3281"
   },
   {
     "patch": "patches/iteration_10_10_to_11.patch",
     "source": "steps/iteration_10_10_cursor_overlay.py",
     "target": "steps/iteration_10_11_save_load.py",
-    "target_sha256": "16bc5152ffce13589e1bd27dbf25c5b08d73a147ef743443f4bc1ffc9d763f9a"
+    "target_sha256": "b24769d02b6623c092c4d65f572667dfc88073c7990d7907a97a74168ebc9b0e"
   },
   {
     "patch": "patches/iteration_10_11_to_12.patch",
@@ -99,7 +99,7 @@
     "patch": "patches/iteration_10_17_to_18.patch",
     "source": "steps/iteration_10_17_compare_loops_roll.py",
     "target": "steps/iteration_10_18_life_roll.py",
-    "target_sha256": "37a570af3a31e2b403bb9a4f7957d918ad3b1b66275956721009b4a91797e371"
+    "target_sha256": "8cf20bc760ef329af1e9048219af32a4b4bc3d457232ddb6fd8203ed6add15c3"
   },
   {
     "patch": "patches/iteration_10_18_to_19.patch",

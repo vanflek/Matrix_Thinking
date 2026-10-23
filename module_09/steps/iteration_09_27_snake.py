@@ -146,14 +146,14 @@ def build_grid_surface(rows, cols, cell_size, grid_color):
         x = col * cell_size
         pg.draw.line(
             grid_surface, grid_color,
-            (x, 0), (x, height - 1)
+            (x, 0), (x, height - 1), 1
         )
 
     for row in range(1, rows):
         y = row * cell_size
         pg.draw.line(
             grid_surface, grid_color,
-            (0, y), (width - 1, y)
+            (0, y), (width - 1, y), 1
         )
 
     pg.draw.rect(

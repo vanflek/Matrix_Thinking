@@ -31,10 +31,10 @@ grid_surface = pg.Surface((width, height), pg.SRCALPHA)
 grid_surface.fill((0, 0, 0, 0))
 for col in range(1, cols):
     x = col * cell_size
-    pg.draw.line(grid_surface, grid_color, (x, 0), (x, height - 1))
+    pg.draw.line(grid_surface, grid_color, (x, 0), (x, height - 1), 1)
 for row in range(1, rows):
     y = row * cell_size
-    pg.draw.line(grid_surface, grid_color, (0, y), (width - 1, y))
+    pg.draw.line(grid_surface, grid_color, (0, y), (width - 1, y), 1)
 pg.draw.rect(grid_surface, grid_color, (0, 0, width, height), 1)
 
 screen = pg.display.set_mode(field_surface.get_size())

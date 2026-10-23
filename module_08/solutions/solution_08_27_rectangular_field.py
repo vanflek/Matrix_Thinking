@@ -21,6 +21,16 @@ PLAYER_COLOR_INDEX = 5
 GRID_COLOR = (80, 80, 80)
 
 
+# Check a proposed initial position without changing it.
+def is_inside(position, shape):
+    row, col = position
+    rows, cols = shape
+    return (
+        row >= 0 and row < rows
+        and col >= 0 and col < cols
+    )
+
+
 # Read the same event list that is later used for movement.
 def handle_quit(events):
     for event in events:
@@ -106,14 +116,14 @@ def build_grid_surface(rows, cols, cell_size, grid_color):
         x = col * cell_size
         pg.draw.line(
             grid_surface, grid_color,
-            (x, 0), (x, height - 1)
+            (x, 0), (x, height - 1), 1
         )
 
     for row in range(1, rows):
         y = row * cell_size
         pg.draw.line(
             grid_surface, grid_color,
-            (0, y), (width - 1, y)
+            (0, y), (width - 1, y), 1
         )
 
     pg.draw.rect(
@@ -142,6 +152,11 @@ state = {
         [8, 16],
     ], dtype=np.int16),
 }
+
+# Check initial data before starting the game loop.
+print("Player inside:", is_inside(state["pos"], matrix.shape))
+for target in state["targets"]:
+    print("Target inside:", is_inside(target, matrix.shape))
 
 # Prepare the unchanged grid once.
 grid_surface = build_grid_surface(

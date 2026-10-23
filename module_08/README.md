@@ -102,3 +102,10 @@ python solutions/solution_08_29_pause.py
 `solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
 `final/` contains complete programs, where provided. Listing identifiers match file stems;
 these numbers are not PDF page numbers. Run each program separately.
+
+## Position-checking practice
+
+Exercise 27 includes a pure `is_inside(position, shape)` function. Run
+`python solutions/solution_08_27_position_check.py` to check corners and
+out-of-bounds coordinates without opening a window. The rectangular-field
+solution also checks its initial player and target positions before play.

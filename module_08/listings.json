@@ -156,6 +156,10 @@
     "file": "solutions/solution_08_26_eight_targets.py"
   },
   {
+    "id": "solution_08_27_position_check",
+    "file": "solutions/solution_08_27_position_check.py"
+  },
+  {
     "id": "solution_08_27_rectangular_field",
     "file": "solutions/solution_08_27_rectangular_field.py"
   },

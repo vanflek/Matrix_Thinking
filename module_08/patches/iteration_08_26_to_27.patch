@@ -9,7 +9,7 @@
 @@ -35,6 +35,7 @@
  for row in range(1, rows):
      y = row * cell_size
-     pg.draw.line(grid_surface, grid_color, (0, y), (width - 1, y))
+     pg.draw.line(grid_surface, grid_color, (0, y), (width - 1, y), 1)
 +pg.draw.rect(grid_surface, grid_color, (0, 0, width, height), 1)
  
  screen = pg.display.set_mode(field_surface.get_size())

@@ -153,6 +153,6 @@
     "patch": "patches/iteration_09_26_to_27.patch",
     "source": "steps/iteration_09_26_frame_counter.py",
     "target": "steps/iteration_09_27_snake.py",
-    "target_sha256": "a2a674e719a06b690df8e2d46a82c5d205827ccfcedf6e2d9a76862ab15a3dd9"
+    "target_sha256": "398579116a5d90c69deaa9ecb44934dc48b23defcd5e82cf2fd11608c891e94f"
   }
 ]
