@@ -1,6 +1,6 @@
 --- iteration_13_09_numpy_coordinates.py
 +++ iteration_13_10_numpy_edges.py
-@@ -268,21 +268,14 @@
+@@ -267,21 +267,14 @@
  
  
  def count_edges_between_paths(maze):

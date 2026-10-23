@@ -1,6 +1,6 @@
 # Runnable files
 
-Run each file separately. Follow the module README for its working directory and required resource files, or configure the same directory in PyCharm.
+Run each file separately. Follow the module README for its working directory and required resources.
 
 ## steps
 
@@ -65,6 +65,7 @@ Run each file separately. Follow the module README for its working directory and
 - [example_12_27_exercise_where](examples/example_12_27_exercise_where.py)
 - [example_12_28_compare_averages](examples/example_12_28_compare_averages.py)
 - [example_12_29_keep_rgb_axis](examples/example_12_29_keep_rgb_axis.py)
+- [example_12_30_repair_paired_arrays](examples/example_12_30_repair_paired_arrays.py)
 
 ## solutions
 
@@ -78,4 +79,3 @@ Run each file separately. Follow the module README for its working directory and
 
 - [analyze_symbols](final/analyze_symbols.py)
 - [image_to_ascii](final/image_to_ascii.py)
-

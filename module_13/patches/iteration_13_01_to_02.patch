@@ -6,8 +6,7 @@
  
 +def handle_controls(events, state, cell_size, rows, cols):
 +    """Translate input events into commands for the current frame."""
-+    state["paint_path"] = False
-+    state["paint_wall"] = False
++    state["paint_commands"] = []
 +    state["clear"] = False
 +
 +    for event in events:
@@ -17,9 +16,9 @@
 +                x, y = event.pos
 +                col = x // cell_size
 +                row = y // cell_size
-+                state["cell"] = clamp_cell(col, row, rows, cols)
-+                state["paint_path"] = event.button == 1
-+                state["paint_wall"] = event.button == 3
++                row, col = clamp_cell(row, col, rows, cols)
++                state["cell"] = (row, col)
++                state["paint_commands"].append((row, col, event.button))
 +
 +        if event.type == pg.KEYDOWN:
 +            if event.key == pg.K_c:
@@ -28,20 +27,21 @@
 +
 +def apply_actions(maze, state):
 +    """Change maze values according to the current commands."""
-+    col, row = state["cell"]
-+
 +    if state["clear"]:
 +        maze[:] = 0
-+    elif state["paint_wall"]:
-+        maze[row, col] = 0
-+    elif state["paint_path"]:
-+        maze[row, col] = 1
++        return
++
++    for row, col, button in state["paint_commands"]:
++        if button == 3:
++            maze[row, col] = 0
++        elif button == 1:
++            maze[row, col] = 1
 +
 +
  def indices_to_surface_fast(indices, palette, cell_size):
      """Map indices to RGB and enlarge each cell into a pixel block."""
      rgb = palette[indices]
-@@ -92,12 +126,17 @@
+@@ -92,12 +126,16 @@
  
  
  screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -54,14 +54,13 @@
 -state = {"cell": (0, 0)}
 +state = {
 +    "cell": (0, 0),
-+    "paint_path": False,
-+    "paint_wall": False,
++    "paint_commands": [],
 +    "clear": False,
 +}
  
  grid_surface = build_grid_surface(ROWS, COLS, CELL_SIZE, GRID_COLOR)
  pg.mouse.set_visible(False)
-@@ -107,6 +146,8 @@
+@@ -107,6 +145,8 @@
      events = pg.event.get()
      running = handle_quit(events)
      update_cursor(state, CELL_SIZE, ROWS, COLS)

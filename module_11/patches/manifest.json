@@ -3,49 +3,49 @@
     "patch": "patches/iteration_11_01_to_02.patch",
     "source": "steps/iteration_11_01_rgb_canvas.py",
     "target": "steps/iteration_11_02_cursor_frame.py",
-    "target_sha256": "98392585bac7664391bd0dd3e0ff663015f19f541e4952ec3bad08e1d3ea7578"
+    "target_sha256": "2dcc9e8cbbb363a248df41aee54bdd53ced2cc0e4c0bcd630d85514c244855be"
   },
   {
     "patch": "patches/iteration_11_02_to_03.patch",
     "source": "steps/iteration_11_02_cursor_frame.py",
     "target": "steps/iteration_11_03_editor_state.py",
-    "target_sha256": "8f703a5b5680f31a6d5242d467d3095848b2513e67084be305d50230a2ebefec"
+    "target_sha256": "e586828513b25cd02f2f62fb9f04985f11292a3c542b8e0655c4071f5c13254a"
   },
   {
     "patch": "patches/iteration_11_03_to_04.patch",
     "source": "steps/iteration_11_03_editor_state.py",
     "target": "steps/iteration_11_04_channel_controls.py",
-    "target_sha256": "7f504796469e059d72e73dfcbeb472b76815d77e32c642cfc6afe6eb8a1401b3"
+    "target_sha256": "66c579e7a259d2b0b9bdaea33502537a36efe04d974054f439e32b1bafe33003"
   },
   {
     "patch": "patches/iteration_11_04_to_05.patch",
     "source": "steps/iteration_11_04_channel_controls.py",
     "target": "steps/iteration_11_05_brush_frame.py",
-    "target_sha256": "dca08f7b1105090cbdedf653aad20462073808f2ec2ee0b5e768679eca2ff58b"
+    "target_sha256": "01b8da085b9be42689e229c6bf1cd5003149746241f53894a39f1bfaa7249181"
   },
   {
     "patch": "patches/iteration_11_05_to_06.patch",
     "source": "steps/iteration_11_05_brush_frame.py",
     "target": "steps/iteration_11_06_click_paint.py",
-    "target_sha256": "1a1c8cee218da97b4be417ff299626424cc305ad197fdb797284aaba4ba0b3e5"
+    "target_sha256": "8b31121aaa735b6404d6db4f9ec69f292ff82ab4d4d7581ac96b9a8b597ecdfc"
   },
   {
     "patch": "patches/iteration_11_06_to_07.patch",
     "source": "steps/iteration_11_06_click_paint.py",
     "target": "steps/iteration_11_07_drag_paint.py",
-    "target_sha256": "25e07785396609a8d62663e28b9a7d72c3448ad56abce0cf0c5df5dec836f3ae"
+    "target_sha256": "a8c21a2828df5aa4c097393ef5666d8f8288d74bb4bef25dc3a36d69e5cd3bf1"
   },
   {
     "patch": "patches/iteration_11_07_to_08.patch",
     "source": "steps/iteration_11_07_drag_paint.py",
     "target": "steps/iteration_11_08_erase.py",
-    "target_sha256": "ec414775143d8fb41ff214ea427888a23997c84fbf131e3b7e75723304120d64"
+    "target_sha256": "224d8eca9782f905b1a15b548a5f4bf92c8c65afe3f1cd79437be7f9dfd69e5c"
   },
   {
     "patch": "patches/iteration_11_08_to_09.patch",
     "source": "steps/iteration_11_08_erase.py",
     "target": "steps/iteration_11_09_pipette.py",
-    "target_sha256": "96fb1cb44833fdbfacb881a4f0769ab7fc953a1e574251abff97978c68aeffa4"
+    "target_sha256": "957b114743c03b1ff28943d456db539b8d4892766590a5f14fb275f1f1d88a55"
   },
   {
     "patch": "patches/iteration_11_09_to_10.patch",
@@ -57,18 +57,18 @@
     "patch": "patches/iteration_11_10_to_11.patch",
     "source": "steps/iteration_11_10_view_and_copy.py",
     "target": "steps/iteration_11_11_clear.py",
-    "target_sha256": "7ffe9ec0345eac9140d67af5088216b4a5e0605fdfa79c507599b9f675bea2b5"
+    "target_sha256": "83181f7fc0f09a2e980a11ff1e704b66e522cab8ffefe260cda2d4d410395f46"
   },
   {
     "patch": "patches/iteration_11_11_to_12.patch",
     "source": "steps/iteration_11_11_clear.py",
     "target": "steps/iteration_11_12_save_load_npy.py",
-    "target_sha256": "cf8c7662493007e5dd30e5130ae78c1b780b328fb06dda10ea3fc4555dc36b95"
+    "target_sha256": "5a622ee5b9f5afe8199f96e370c076e933a5cc22d8a897251df08d98e28506fc"
   },
   {
     "patch": "patches/iteration_11_12_to_13.patch",
     "source": "steps/iteration_11_12_save_load_npy.py",
     "target": "steps/iteration_11_13_export_png.py",
-    "target_sha256": "5317d35f4ba22aa7322bcedfff5580928914b57eb4df48321331a82906c3788c"
+    "target_sha256": "52befbacf908d95d77bdc7e2930175df604cfb06bed9536fc506d0df24c1f002"
   }
 ]

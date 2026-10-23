@@ -1,6 +1,6 @@
 --- iteration_13_02_manual_building.py
 +++ iteration_13_03_local_rule.py
-@@ -90,8 +90,52 @@
+@@ -89,8 +89,52 @@
                  state["clear"] = True
  
  
@@ -51,16 +51,16 @@
  def apply_actions(maze, state):
 -    """Change maze values according to the current commands."""
 +    """Apply commands; open a passage only when the local rule allows it."""
-     col, row = state["cell"]
- 
      if state["clear"]:
+         maze[:] = 0
+         return
 @@ -99,7 +143,8 @@
-     elif state["paint_wall"]:
-         maze[row, col] = 0
-     elif state["paint_path"]:
--        maze[row, col] = 1
-+        if can_open_by_local_rule(maze, row, col):
-+            maze[row, col] = 1
+         if button == 3:
+             maze[row, col] = 0
+         elif button == 1:
+-            maze[row, col] = 1
++            if can_open_by_local_rule(maze, row, col):
++                maze[row, col] = 1
  
  
  def indices_to_surface_fast(indices, palette, cell_size):

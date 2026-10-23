@@ -13,7 +13,7 @@
 @@ -162,16 +163,21 @@
      screen.blit(grid_surface, (0, 0))
  
-     col, row = state["cell"]
+     row, col = state["cell"]
 +    if can_open_by_local_rule(maze, row, col):
 +        outline_color = CURSOR_OK
 +    else:

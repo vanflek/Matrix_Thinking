@@ -1,6 +1,6 @@
 --- iteration_13_05_frontier_display.py
 +++ iteration_13_06_automatic_growth.py
-@@ -90,6 +90,9 @@
+@@ -89,6 +89,9 @@
          if event.type == pg.KEYDOWN:
              if event.key == pg.K_c:
                  state["clear"] = True
@@ -10,7 +10,7 @@
  
  
  def get_neighbors4(row, col, rows, cols):
-@@ -149,6 +152,40 @@
+@@ -148,6 +151,40 @@
      return frontier
  
  
@@ -50,7 +50,7 @@
 +
  def apply_actions(maze, state):
      """Apply commands; open a passage only when the local rule allows it."""
-     col, row = state["cell"]
+     if state["clear"]:
 @@ -199,7 +236,7 @@
  
  
@@ -60,15 +60,15 @@
  clock = pg.time.Clock()
  
  # The maze stores walls and passages; the cursor has its own state.
-@@ -209,6 +246,7 @@
-     "paint_path": False,
-     "paint_wall": False,
+@@ -208,6 +245,7 @@
+     "cell": (0, 0),
+     "paint_commands": [],
      "clear": False,
 +    "auto_grow": False,
  }
  
  grid_surface = build_grid_surface(ROWS, COLS, CELL_SIZE, GRID_COLOR)
-@@ -223,6 +261,19 @@
+@@ -222,6 +260,19 @@
      apply_actions(maze, state)
  
      frontier = build_frontier(maze)

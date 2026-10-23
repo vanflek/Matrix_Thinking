@@ -8,16 +8,16 @@
  
  PALETTE = np.array(
      [
-@@ -75,6 +76,8 @@
-     state["paint_path"] = False
-     state["paint_wall"] = False
+@@ -74,6 +75,8 @@
+     """Translate input events into commands for the current frame."""
+     state["paint_commands"] = []
      state["clear"] = False
 +    state["save"] = False
 +    state["load"] = False
  
      for event in events:
          if event.type == pg.MOUSEBUTTONDOWN:
-@@ -93,6 +96,10 @@
+@@ -92,6 +95,10 @@
                  state["auto_grow"] = False
              elif event.key == pg.K_g:
                  state["auto_grow"] = not state["auto_grow"]
@@ -28,7 +28,7 @@
  
  
  def get_neighbors4(row, col, rows, cols):
-@@ -186,6 +193,49 @@
+@@ -185,6 +192,49 @@
      return True
  
  
@@ -77,17 +77,17 @@
 +
  def apply_actions(maze, state):
      """Apply commands; open a passage only when the local rule allows it."""
-     col, row = state["cell"]
-@@ -246,6 +296,8 @@
-     "paint_path": False,
-     "paint_wall": False,
+     if state["clear"]:
+@@ -245,6 +295,8 @@
+     "cell": (0, 0),
+     "paint_commands": [],
      "clear": False,
 +    "save": False,
 +    "load": False,
      "auto_grow": False,
  }
  
-@@ -260,6 +312,14 @@
+@@ -259,6 +311,14 @@
      handle_controls(events, state, CELL_SIZE, ROWS, COLS)
      apply_actions(maze, state)
  

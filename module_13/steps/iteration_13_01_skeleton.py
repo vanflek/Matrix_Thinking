@@ -31,22 +31,22 @@ def build_grid_surface(rows, cols, cell_size, grid_color):
 
     for row in range(1, rows):
         y = row * cell_size
-        pg.draw.line(grid, grid_color, (0, y), (width - 1, y))
+        pg.draw.line(grid, grid_color, (0, y), (width - 1, y), 1)
 
     for col in range(1, cols):
         x = col * cell_size
-        pg.draw.line(grid, grid_color, (x, 0), (x, height - 1))
+        pg.draw.line(grid, grid_color, (x, 0), (x, height - 1), 1)
 
     # Keep all four borders inside the surface.
     pg.draw.rect(grid, grid_color, (0, 0, width, height), 1)
     return grid
 
 
-def clamp_cell(col, row, rows, cols):
+def clamp_cell(row, col, rows, cols):
     """Keep the selected cell inside the matrix."""
     col = max(0, min(col, cols - 1))
     row = max(0, min(row, rows - 1))
-    return col, row
+    return row, col
 
 
 def update_cursor(state, cell_size, rows, cols):
@@ -54,7 +54,7 @@ def update_cursor(state, cell_size, rows, cols):
     x, y = pg.mouse.get_pos()
     col = x // cell_size
     row = y // cell_size
-    state["cell"] = clamp_cell(col, row, rows, cols)
+    state["cell"] = clamp_cell(row, col, rows, cols)
 
 
 def handle_quit(events):
@@ -82,7 +82,7 @@ def render(screen, maze, grid_surface, state, cell_size):
     screen.blit(frame, (0, 0))
     screen.blit(grid_surface, (0, 0))
 
-    col, row = state["cell"]
+    row, col = state["cell"]
     pg.draw.rect(
         screen,
         CURSOR_COLOR,

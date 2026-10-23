@@ -1,6 +1,6 @@
 --- iteration_13_07_save_load.py
 +++ iteration_13_08_check_maze.py
-@@ -78,6 +78,7 @@
+@@ -77,6 +77,7 @@
      state["clear"] = False
      state["save"] = False
      state["load"] = False
@@ -8,7 +8,7 @@
  
      for event in events:
          if event.type == pg.MOUSEBUTTONDOWN:
-@@ -100,6 +101,9 @@
+@@ -99,6 +100,9 @@
                  state["save"] = True
              elif event.key == pg.K_l:
                  state["load"] = True
@@ -18,7 +18,7 @@
  
  
  def get_neighbors4(row, col, rows, cols):
-@@ -236,17 +240,89 @@
+@@ -235,18 +239,91 @@
      return loaded
  
  
@@ -91,25 +91,29 @@
  def apply_actions(maze, state):
 -    """Apply commands; open a passage only when the local rule allows it."""
 +    """Apply manual commands and return whether maze values changed."""
-     col, row = state["cell"]
-+    changed = False
- 
      if state["clear"]:
-+        changed = np.any(maze == 1)
++        changed = bool(np.any(maze == 1))
          maze[:] = 0
-     elif state["paint_wall"]:
-+        changed = maze[row, col] == 1
-         maze[row, col] = 0
-     elif state["paint_path"]:
-         if can_open_by_local_rule(maze, row, col):
-             maze[row, col] = 1
-+            changed = True
+-        return
+-
++        return changed
++
++    changed = False
+     for row, col, button in state["paint_commands"]:
+         if button == 3:
++            if maze[row, col] == 1:
++                changed = True
+             maze[row, col] = 0
+         elif button == 1:
+             if can_open_by_local_rule(maze, row, col):
+                 maze[row, col] = 1
++                changed = True
 +
 +    return changed
  
  
  def build_frame_indices(maze, frontier):
-@@ -286,7 +362,7 @@
+@@ -286,7 +363,7 @@
  
  
  screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -118,7 +122,7 @@
  clock = pg.time.Clock()
  
  # The maze stores walls and passages; the cursor has its own state.
-@@ -298,6 +374,8 @@
+@@ -297,6 +374,8 @@
      "clear": False,
      "save": False,
      "load": False,
@@ -127,7 +131,7 @@
      "auto_grow": False,
  }
  
-@@ -310,7 +388,9 @@
+@@ -309,7 +388,9 @@
      running = handle_quit(events)
      update_cursor(state, CELL_SIZE, ROWS, COLS)
      handle_controls(events, state, CELL_SIZE, ROWS, COLS)
@@ -138,7 +142,7 @@
  
      if state["save"]:
          save_maze(maze, MAZE_FILE)
-@@ -319,19 +399,30 @@
+@@ -318,19 +399,30 @@
          if loaded is not None:
              maze = loaded
              state["auto_grow"] = False

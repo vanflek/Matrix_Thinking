@@ -1,6 +1,6 @@
 --- iteration_13_08_check_maze.py
 +++ iteration_13_09_numpy_coordinates.py
-@@ -164,15 +164,11 @@
+@@ -163,15 +163,11 @@
  
  
  def frontier_cells(frontier):
@@ -20,7 +20,7 @@
      return cells
  
  
-@@ -241,15 +237,11 @@
+@@ -240,15 +236,11 @@
  
  
  def get_path_cells(maze):

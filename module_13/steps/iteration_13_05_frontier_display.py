@@ -33,22 +33,22 @@ def build_grid_surface(rows, cols, cell_size, grid_color):
 
     for row in range(1, rows):
         y = row * cell_size
-        pg.draw.line(grid, grid_color, (0, y), (width - 1, y))
+        pg.draw.line(grid, grid_color, (0, y), (width - 1, y), 1)
 
     for col in range(1, cols):
         x = col * cell_size
-        pg.draw.line(grid, grid_color, (x, 0), (x, height - 1))
+        pg.draw.line(grid, grid_color, (x, 0), (x, height - 1), 1)
 
     # Keep all four borders inside the surface.
     pg.draw.rect(grid, grid_color, (0, 0, width, height), 1)
     return grid
 
 
-def clamp_cell(col, row, rows, cols):
+def clamp_cell(row, col, rows, cols):
     """Keep the selected cell inside the matrix."""
     col = max(0, min(col, cols - 1))
     row = max(0, min(row, rows - 1))
-    return col, row
+    return row, col
 
 
 def update_cursor(state, cell_size, rows, cols):
@@ -56,7 +56,7 @@ def update_cursor(state, cell_size, rows, cols):
     x, y = pg.mouse.get_pos()
     col = x // cell_size
     row = y // cell_size
-    state["cell"] = clamp_cell(col, row, rows, cols)
+    state["cell"] = clamp_cell(row, col, rows, cols)
 
 
 def handle_quit(events):
@@ -72,8 +72,7 @@ def handle_quit(events):
 
 def handle_controls(events, state, cell_size, rows, cols):
     """Translate input events into commands for the current frame."""
-    state["paint_path"] = False
-    state["paint_wall"] = False
+    state["paint_commands"] = []
     state["clear"] = False
 
     for event in events:
@@ -83,9 +82,9 @@ def handle_controls(events, state, cell_size, rows, cols):
                 x, y = event.pos
                 col = x // cell_size
                 row = y // cell_size
-                state["cell"] = clamp_cell(col, row, rows, cols)
-                state["paint_path"] = event.button == 1
-                state["paint_wall"] = event.button == 3
+                row, col = clamp_cell(row, col, rows, cols)
+                state["cell"] = (row, col)
+                state["paint_commands"].append((row, col, event.button))
 
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_c:
@@ -151,15 +150,16 @@ def build_frontier(maze):
 
 def apply_actions(maze, state):
     """Apply commands; open a passage only when the local rule allows it."""
-    col, row = state["cell"]
-
     if state["clear"]:
         maze[:] = 0
-    elif state["paint_wall"]:
-        maze[row, col] = 0
-    elif state["paint_path"]:
-        if can_open_by_local_rule(maze, row, col):
-            maze[row, col] = 1
+        return
+
+    for row, col, button in state["paint_commands"]:
+        if button == 3:
+            maze[row, col] = 0
+        elif button == 1:
+            if can_open_by_local_rule(maze, row, col):
+                maze[row, col] = 1
 
 
 def build_frame_indices(maze, frontier):
@@ -184,7 +184,7 @@ def render(screen, maze, frontier, grid_surface, state, cell_size):
     screen.blit(frame, (0, 0))
     screen.blit(grid_surface, (0, 0))
 
-    col, row = state["cell"]
+    row, col = state["cell"]
     if frontier[row, col] == 1:
         outline_color = CURSOR_OK
     else:
@@ -206,8 +206,7 @@ clock = pg.time.Clock()
 maze = np.zeros((ROWS, COLS), dtype=np.uint8)
 state = {
     "cell": (0, 0),
-    "paint_path": False,
-    "paint_wall": False,
+    "paint_commands": [],
     "clear": False,
 }
 

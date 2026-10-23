@@ -1,6 +1,6 @@
 --- iteration_13_10_numpy_edges.py
 +++ iteration_13_11_numpy_frontier.py
-@@ -151,16 +151,22 @@
+@@ -150,16 +150,22 @@
  
  
  def build_frontier(maze):

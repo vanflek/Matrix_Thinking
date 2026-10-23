@@ -89,7 +89,7 @@ would change the rule being taught.
 
 `maze` stores 0 for a wall and 1 for a passage. `frontier` marks allowed next openings.
 Color indices 2 and 3 are display data and never enter `maze`.
-Passage coordinates are (row, col); the screen cursor uses (col, row).
+Passage coordinates and the stored cursor cell both use (row, col).
 Starting with one passage and adding only allowed cells preserves a tree. Erasing passages
 or loading arbitrary binary arrays can break that property, so global checks are separate.
 An empty field is not a perfect maze in this program; one isolated passage is.
@@ -102,3 +102,9 @@ An empty field is not a perfect maze in this program; one isolated passage is.
 `solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
 `final/` contains complete programs, where provided. Listing identifiers match file stems;
 these numbers are not PDF page numbers. Run each program separately.
+
+## Coordinate convention
+
+`state["cell"]` and matrix indices both use `(row, col)`, consistently
+with the RGB editor. `clamp_cell(row, col, rows, cols)` returns that same order.
+Only Pygame positions and drawing coordinates use `(x, y)` or `(col, row)`.

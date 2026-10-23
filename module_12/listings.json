@@ -232,6 +232,10 @@
     "file": "examples/example_12_29_keep_rgb_axis.py"
   },
   {
+    "id": "example_12_30_repair_paired_arrays",
+    "file": "examples/example_12_30_repair_paired_arrays.py"
+  },
+  {
     "id": "solution_12_26_exercise",
     "file": "solutions/solution_12_26_exercise.py"
   },

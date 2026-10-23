@@ -95,6 +95,7 @@ Task 30 prints measurements; observations about recognizability are the reader's
 - `examples/example_12_27_exercise_where.py` — Example 12.27.
 - `examples/example_12_28_compare_averages.py` — Example 12.28.
 - `examples/example_12_29_keep_rgb_axis.py` — Example 12.29.
+- `examples/example_12_30_repair_paired_arrays.py` — Example 12.30: restore measured pairs.
 
 ## Illustrations
 
@@ -116,3 +117,10 @@ The 19 diagrams and example images in `assets/illustrations/` accompany the chap
 `solutions/solution_MM_TT_name.py` contains exercise solutions (TT is the exercise number).
 `final/` contains complete programs, where provided. Listing identifiers match file stems;
 these numbers are not PDF page numbers. Run each program separately.
+
+## Paired-array practice
+
+`examples/example_12_21_exercise_paired_arrays.py` deliberately contains
+misaligned symbol/brightness pairs for self-check question 6. Use the measurement
+table in the chapter to restore the pairs. The standalone answer is
+`examples/example_12_30_repair_paired_arrays.py`.
