@@ -1,0 +1,6 @@
+Matrix Thinking companion website
+Author: Oleg Gornov, PhD
+
+Book covers, illustrations, photographs and prose are reserved to their respective rights holders. The MIT license for program examples in the companion repository does not grant rights to these book assets.
+
+The website includes JavaScript learning models, not a Python execution engine.
