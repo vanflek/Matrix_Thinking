@@ -8,7 +8,7 @@ function gateFits(s,g){return Math.abs(s.x-g.x)<=1.7+1e-9&&Math.abs(s.y-g.y)<=1.
 function advance(s,input,dt){if(s.status==='won'||s.status==='lost')return s;dt=clamp(dt,0,1/20);s.time+=dt;const tx=(input.right?1:0)-(input.left?1:0),ty=(input.up?1:0)-(input.down?1:0);s.vx+=(tx*4.8-s.vx)*Math.min(1,dt*9);s.vy+=(ty*3.8-s.vy)*Math.min(1,dt*9);s.x=clamp(s.x+s.vx*dt,-6,6);s.y=clamp(s.y+s.vy*dt,1,6);s.roll=-s.vx*.12;s.pitch=s.vy*.06;const old=s.distance;s.distance+=s.speed*dt;const g=s.gates[s.next];if(g&&old<g.z-4&&s.distance>=g.z-4){if(gateFits(s,g)){s.passed++;s.last='Gate '+(s.next+1)+' cleared. Position was inside the opening.';}else{s.missed++;s.last='Gate '+(s.next+1)+' missed. Align the blue aircraft marker with the yellow opening.';}s.next++;if(s.missed>=3){s.status='lost';s.last='Flight ended: three missed gates. Restart and try smaller movements.';}else if(s.next===s.gates.length){s.status='won';s.last='Course complete! '+s.passed+' of eight gates cleared.';}}return s;}
 function transform(s){const c=Math.cos(s.roll),q=Math.sin(s.roll),p=Math.cos(s.pitch),r=Math.sin(s.pitch);return [[c,-q*p,q*r,s.x],[q,c*p,-c*r,s.y],[0,r,p,4],[0,0,0,1]];}
 function multiply(m,v){return m.map(row=>row.reduce((sum,a,i)=>sum+a*v[i],0));}
-function camera(v){return [v[0],v[1]-4,v[2]+14];}
+function camera(v){return [v[0],v[1]-7,v[2]+10];}
 function project(v,w,h,fov=65){if(v[2]<.5)return null;const f=w/2/Math.tan(fov*Math.PI/360);return [w/2+f*v[0]/v[2],h*.43-f*v[1]/v[2]];}
 function clip(a,b,near=.5){if(a[2]<near&&b[2]<near)return null;if(a[2]<near||b[2]<near){const t=(near-a[2])/(b[2]-a[2]);const p=a.map((v,i)=>v+t*(b[i]-v));p[2]=near;if(a[2]<near)a=p;else b=p;}return [a,b];}
 return {vertices,edges,create,advance,gateFits,transform,multiply,camera,project,clip};
