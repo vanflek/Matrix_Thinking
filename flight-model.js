@@ -37,5 +37,5 @@ const spent=new Set();for(const b of s.bullets){for(const e of s.enemies){if(e.h
 s.bullets=s.bullets.filter(b=>!spent.has(b)&&Math.abs(b.x)<425&&Math.abs(b.y)<425);s.enemies=s.enemies.filter(e=>e.hp>0);
 const hitHostile=new Set();for(const b of s.hostile)if(swept(b,p,b.r+p.r)){if(s.invulnerable<=0)hurt(s);hitHostile.add(b);}s.hostile=s.hostile.filter(b=>!hitHostile.has(b)&&Math.abs(b.x)<425&&Math.abs(b.y)<425);
 for(const e of s.enemies)if(swept(e,p,e.r+p.r))hurt(s);s.effects=s.effects.filter(e=>(e.life-=dt)>0);
-if(s.status==='playing'&&s.enemies.length===0){s.status=s.level===2?'won':'cleared';s.message=s.level===2?'All three sectors secured. You control the world through its data.':'Sector cleared. Inspect the final state, then continue to the next level.';}return s;}
+if(s.status==='playing'&&s.enemies.length===0){s.status=s.level===2?'won':'cleared';s.message=s.level===2?'Command sector secured. You control the world through its data.':'Sector cleared. Inspect the final state, then continue to the next level.';}return s;}
 return {planeV,planeE,starV,starE,bulletV,bulletE,levels,create,step,world,screen,matrices,mul,mv,swept,segmentDistance};});
