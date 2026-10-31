@@ -1,0 +1,13 @@
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.RaycastModel=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){'use strict';
+const CELL=30,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function create(maze){return {maze,y:8.5*CELL,x:16.5*CELL,angle:0,fov:60,rays:100};}
+function inside(s,y,x){return y>=0&&x>=0&&y<s.maze.length*CELL&&x<s.maze[0].length*CELL;}
+function canMove(s,y,x){return inside(s,y,x)&&s.maze[Math.floor(y/CELL)][Math.floor(x/CELL)]===1;}
+function move(s,input,dt){dt=clamp(dt,0,.05);s.angle=(s.angle+((input.turnRight?1:0)-(input.turnLeft?1:0))*1.6*dt+Math.PI*2)%(Math.PI*2);const a=s.angle,forward=[Math.sin(a),Math.cos(a)],right=[Math.cos(a),-Math.sin(a)];let dy=forward[0]*((input.forward?1:0)-(input.backward?1:0))+right[0]*((input.right?1:0)-(input.left?1:0)),dx=forward[1]*((input.forward?1:0)-(input.backward?1:0))+right[1]*((input.right?1:0)-(input.left?1:0));const l=Math.hypot(dy,dx);if(!l)return;const d=90*dt,n=Math.floor(d/(CELL/4))+1;dy=dy/l*d/n;dx=dx/l*d/n;for(let i=0;i<n;i++){if(canMove(s,s.y+dy,s.x))s.y+=dy;if(canMove(s,s.y,s.x+dx))s.x+=dx;}}
+function cast(s,width=640){const length=Math.hypot(s.maze.length*CELL,s.maze[0].length*CELL),count=Math.floor(length*16)+2,step=length/(count-1),f=width/(2*Math.tan(s.fov*Math.PI/360)),out=[];
+for(let i=0;i<s.rays;i++){const rel=Math.atan(((i+.5)*width/s.rays-width/2)/f),a=s.angle+rel,sy=Math.sin(a),cx=Math.cos(a);let hit=false,k=count-1,row=-1,col=-1;for(let j=0;j<count;j++){const d=j*step,y=s.y+d*sy,x=s.x+d*cx;if(!inside(s,y,x))break;const r=Math.floor(y/CELL),c=Math.floor(x/CELL);if(s.maze[r][c]===0){hit=true;k=j;row=r;col=c;break;}}const distance=k*step,depth=distance*Math.cos(rel);out.push({i,relative:rel,angle:a,sin:sy,cos:cx,hit,k,row,col,distance,depth,y:s.y+distance*sy,x:s.x+distance*cx,height:hit?CELL*f/Math.max(depth,1):0});}
+return {rays:out,step,sampleCount:count,projection:f};}
+function camera(s,y,x){const dy=y-s.y,dx=x-s.x;return [dy*Math.cos(s.angle)-dx*Math.sin(s.angle),dy*Math.sin(s.angle)+dx*Math.cos(s.angle)];}
+function clip(a,b,near=1){if(a[1]<near&&b[1]<near)return null;if(a[1]<near||b[1]<near){const t=(near-a[1])/(b[1]-a[1]),p=[a[0]+t*(b[0]-a[0]),near];if(a[1]<near)a=p;else b=p;}return [a,b];}
+function samples(s,ray,step){const start=Math.max(0,ray.k-5),out=[];if(!ray.hit)return out;for(let k=start;k<=Math.min(ray.k+1,ray.k+1);k++){const d=k*step,y=s.y+d*ray.sin,x=s.x+d*ray.cos,r=Math.floor(y/CELL),c=Math.floor(x/CELL);out.push({k,d,y,x,row:r,col:c,value:inside(s,y,x)?s.maze[r][c]:null});}return out;}
+return {CELL,create,canMove,move,cast,camera,clip,samples};});
