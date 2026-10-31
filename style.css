@@ -39,3 +39,5 @@
 .lab-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.flight-visual{background:linear-gradient(135deg,#eaf3fa,#fff9df)}@media(max-width:1000px){.lab-cards{grid-template-columns:1fr}}
 
 .lab-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.ray-visual{background:linear-gradient(135deg,#eaf3fa,#fff7df)}@media(max-width:750px){.lab-cards{grid-template-columns:1fr}}
+
+.xonix-visual{background:linear-gradient(135deg,#edf4fa,#e5f6f2)}
