@@ -6,6 +6,7 @@
   const palette = ['#f0f5fa', '#ffd343', '#1165db', '#132d45'];
   const moveNames = ['stay', 'fall with gravity', 'fall diagonally', 'spread sideways', 'swap sand and water'];
   let W = M.preset(), tick = 0, brush = 1, radius = 1;
+  let state = M.fromWorld(W, rows, cols);
   let selected = 8 * cols + 18, running = false, timer = null, analysis;
   let painting = false, lastPoint = null, inspected = false;
 
@@ -29,10 +30,13 @@
     announce('Running. The two upper views show the same current matrix; the lower views preview the next step.');
     schedule();
   }
-  function rebuild() { analysis = M.analyze(W, rows, cols, options()); render(); }
+  function rebuild(edited = false) {
+    if (edited) state = M.fromWorld(W, rows, cols);
+    analysis = M.display(state, M.analyzeState(state, options())); render();
+  }
   function commit(manual = true) {
     const moves = analysis.accepted.length;
-    W = analysis.next; tick++; inspected = false; rebuild();
+    state = analysis.nextState; W = analysis.next; tick++; inspected = false; rebuild();
     if (manual) announce(`Applied step ${tick}: ${moves} accepted moves. The preview now shows step ${tick + 1}.`);
     if (!moves && running) pause(`No moves remain at step ${tick}. Change the world or its rules to continue.`);
   }
@@ -115,7 +119,13 @@
     $('tick').textContent = `STEP ${tick}`;
     $('next-label').textContent = `STEP ${tick + 1} · PREVIEW`;
     $('counts').textContent = `Sand: ${analysis.counts[1]}  ·  Water: ${analysis.counts[2]}  ·  Walls: ${analysis.counts[3]}. Counts are conserved during simulation.`;
-    $('mask-caption').textContent = `${analysis.requested.reduce((a, b) => a + b, 0)} source proposals → ${analysis.accepted.length} accepted moves. ${analysis.rejected.length} orange-outlined sources wait. Uncheck Boolean to see each move type. Swapped water is carried back to the sand's source; it has no separate accepted source proposal.`;
+    $('mask-caption').textContent = `${analysis.proposedCount} source proposals → ${analysis.acceptedCount} accepted moves. ${analysis.rejected.length} orange-outlined sources wait. Uncheck Boolean to see each move type. Swapped water is carried back to the sand's source; it has no separate accepted source proposal.`;
+    const directions = {'1,0': '↓', '-1,0': '↑', '0,1': '→', '0,-1': '←', '1,1': '↘', '1,-1': '↙', '-1,1': '↗', '-1,-1': '↖'};
+    $('operations').replaceChildren(...analysis.groups.map((group, i) => {
+      const item = document.createElement('li');
+      item.textContent = `${i + 1}. ${directions[`${group.dr},${group.dc}`]} ${moveNames[group.kind]} · candidate mask: ${M.population(group.proposed, state.g)} · accepted mask: ${M.population(group.accepted, state.g)}`;
+      return item;
+    }));
     for (let i = 0; i < 3; i++) $('stage' + i).classList.toggle('active', i === 0 || inspected);
   }
   function point(event, canvas) {
@@ -136,13 +146,13 @@
     if (e.button !== 0) return;
     e.preventDefault(); pause(); $('world').focus({preventScroll: true});
     painting = true; lastPoint = point(e, $('world')); $('world').setPointerCapture(e.pointerId);
-    paintAt(lastPoint.r, lastPoint.c); rebuild();
+    paintAt(lastPoint.r, lastPoint.c); rebuild(true);
   });
   $('world').addEventListener('pointermove', e => {
     if (!painting) return;
     const p = point(e, $('world')), n = Math.max(Math.abs(p.r - lastPoint.r), Math.abs(p.c - lastPoint.c));
     for (let k = 1; k <= n; k++) paintAt(Math.round(lastPoint.r + (p.r - lastPoint.r) * k / n), Math.round(lastPoint.c + (p.c - lastPoint.c) * k / n));
-    lastPoint = p; rebuild();
+    lastPoint = p; rebuild(true);
   });
   const endPaint = () => {
     if (!painting) return;
@@ -161,7 +171,7 @@
       selected = Math.max(0, Math.min(rows - 1, r + dr)) * cols + Math.max(0, Math.min(cols - 1, c + dc)); render();
     } else if (e.key === ' ') {
       e.preventDefault(); pause();
-      if (canvas === $('world')) { paintAt(Math.floor(selected / cols), selected % cols); rebuild(); announce('Cell painted.'); }
+      if (canvas === $('world')) { paintAt(Math.floor(selected / cols), selected % cols); rebuild(true); announce('Cell painted.'); }
       else { inspect(); }
     } else if (e.key.toLowerCase() === 'i') { e.preventDefault(); inspect(); }
   });
@@ -175,17 +185,17 @@
   $('inspect').addEventListener('click', inspect);
   function reset() {
     pause(); W = M.preset($('preset').value); tick = 0; inspected = false;
-    $('gate').disabled = $('preset').value !== 'reservoirs'; rebuild();
+    $('gate').disabled = $('preset').value !== 'reservoirs'; rebuild(true);
     announce('Scene reset. Predict what will move, then inspect the rules.');
   }
   $('preset').addEventListener('change', reset); $('reset').addEventListener('click', reset);
   $('clear').addEventListener('click', () => {
-    pause(); W = W.map(v => v === 3 ? 3 : 0); inspected = false; rebuild();
+    pause(); W = W.map(v => v === 3 ? 3 : 0); inspected = false; rebuild(true);
     announce('Particles cleared. Walls remain; paint new sand or water.');
   });
   $('gate').addEventListener('click', () => {
     pause(); for (let r = 8; r <= 9; r++) W[r * cols + 18] = 0;
-    $('gate').disabled = true; inspected = false; rebuild();
+    $('gate').disabled = true; inspected = false; rebuild(true);
     announce('Upper gate opened. Water has a route down. Press Play or apply one step.');
   });
   for (const id of ['gravity', 'diagonals', 'spread']) $(id).addEventListener('change', () => {
