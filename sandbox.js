@@ -53,7 +53,7 @@
       ctx.strokeStyle = v === 3 ? '#31506b' : '#d5e2ee'; ctx.lineWidth = .6;
       ctx.strokeRect(x + .5, y + .5, cell - 1, cell - 1);
       if (numbers) {
-        ctx.fillStyle = v >= 2 ? '#fff' : (v === 0 ? '#6e879c' : '#132d45');
+        ctx.fillStyle = v >= 2 ? '#fff' : (v === 0 ? '#526b80' : '#132d45');
         ctx.fillText(v, x + cell / 2, y + cell / 2 + .5);
       } else if (v === 1) {
         ctx.fillStyle = '#fff1a2'; ctx.fillRect(x + 3, y + 3, 8, 3);
@@ -76,7 +76,7 @@
     for (let i = 0; i < W.length; i++) {
       const kind = boolean ? +(analysis.moves[i] > 0) : analysis.moves[i], x = i % cols * cell, y = Math.floor(i / cols) * cell;
       ctx.fillStyle = colors[kind]; ctx.fillRect(x + 1, y + 1, cell - 2, cell - 2);
-      ctx.fillStyle = kind === 0 ? '#8194a5' : kind === 4 ? '#132d45' : '#fff';
+      ctx.fillStyle = kind === 0 ? '#526b80' : kind === 4 ? '#132d45' : '#fff';
       ctx.fillText(kind, x + 10, y + 10);
     }
     for (const move of analysis.rejected) outline(ctx, move.source, '#b56118', 1.7);
