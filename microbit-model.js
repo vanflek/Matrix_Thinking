@@ -1,0 +1,20 @@
+(function (root) {
+  'use strict';
+  const size = 5;
+  const initial = lesson => lesson === 'shift'
+    ? ['09000', '09900', '00000', '00000', '00000'].map(row => [...row].map(Number))
+    : Array.from({length: size}, (_, row) => Array.from({length: size}, (_, col) => row + col));
+  const copy = world => world.map(row => row.slice());
+  function transform(world, lesson, action) {
+    if (action === 'reset') return initial(lesson);
+    if (lesson === 'shift' && action === 'down') return [Array(size).fill(0), ...copy(world).slice(0, -1)];
+    if (lesson === 'brightness' && (action === 'increase' || action === 'decrease')) {
+      const amount = action === 'increase' ? 1 : -1;
+      return world.map(row => row.map(value => Math.max(0, Math.min(9, value + amount))));
+    }
+    throw new Error('Unknown lesson action');
+  }
+  const api = {size, initial, copy, transform};
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.MicrobitMatrix = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
