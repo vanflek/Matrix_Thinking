@@ -1,0 +1,22 @@
+/* Tutoring contact section: scoped to the home page. */
+nav .tutoring-nav{display:inline-flex;align-items:center;background:var(--ink);color:#fff;border-radius:4px;padding:8px 12px;margin:-8px 0;text-decoration:none;font-weight:600}
+nav .tutoring-nav:hover{background:var(--blue);text-decoration:none}
+.tutoring-hero-link{white-space:normal}
+.tutoring-section{max-width:1440px;margin:auto;padding:75px 5%;border-top:1px solid var(--line);scroll-margin-top:20px}
+.tutoring-layout{display:grid;grid-template-columns:1.35fr 1fr;align-items:start;gap:65px}
+.tutoring-intro{max-width:560px;font-size:18px;color:var(--muted)}
+.tutoring-formats{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:30px 0}
+.tutoring-formats article{border-top:2px solid var(--blue);padding-top:12px;min-width:0}
+.tutoring-formats h3{font-size:22px;margin:12px 0}
+.tutoring-formats article>p:last-child,.tutoring-program{font-size:15px;color:var(--muted)}
+.tutoring-contact{padding:34px;background:var(--ink);color:#fff;border-radius:8px;min-width:0}
+.tutoring-contact .eyebrow{color:var(--yellow);margin-top:0}
+.tutoring-contact h3{font-size:32px;margin:16px 0 22px}
+.tutoring-contact>p:not(.eyebrow){color:#d7e3eb}
+.tutoring-contact .button{margin-top:12px;background:var(--yellow);color:var(--ink)}
+.tutoring-contact .button:hover{background:#ffe477}
+.tutoring-email{font-size:14px;overflow-wrap:anywhere}
+.tutoring-nextdoor{display:inline-block;margin-top:8px;font-size:14px;text-underline-offset:4px}
+@media(max-width:850px){.tutoring-layout{grid-template-columns:1fr;gap:30px}.tutoring-contact{max-width:600px}}
+@media(max-width:650px){nav .tutoring-nav{margin:0;padding:8px 10px}.tutoring-section{padding:45px 5%}.tutoring-contact{padding:26px}}
+@media(max-width:420px){.tutoring-formats{grid-template-columns:1fr}}
