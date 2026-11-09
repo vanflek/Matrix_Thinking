@@ -59,4 +59,11 @@ These tests compare behavior and display mapping; they are not firmware tests.
 
 This directory is the shared source-and-export archive for the two tracks. A downloaded HEX contains a MakeCode project and can be imported into the editor. Saving a project in MakeCode or saving files on a computer does not automatically update this directory: revised sources and exports must be committed to GitHub.
 
-MakeCode's direct GitHub integration is a separate connection. Do not connect it by replacing the root of this book repository with a single MakeCode project. Keep the existing book modules and the website branch intact.
+Both MakeCode editor projects are connected to their own GitHub repositories:
+
+- [Brightness matrix](https://github.com/vanflek/matrix-thinking-microbit-brightness)
+- [Shift the whole world](https://github.com/vanflek/matrix-thinking-microbit-shift)
+
+In a connected project, click the GitHub button, review the changes, enter a short message, and choose **Commit & push**. Use **Pull changes** to retrieve edits made on GitHub. Ordinary editor or cloud saving is not a GitHub commit.
+
+These repositories contain editable MakeCode blocks and generated TypeScript. This directory remains the shared archive for MakeCode exports, MicroPython sources and teacher notes; it is not automatically updated by commits in the separate MakeCode repositories. Copy revised sources and exports here when updating the shared lesson package. The book repository root and website branch remain independent.
