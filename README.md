@@ -4,6 +4,8 @@ Hands-on Python, NumPy and Pygame projects.
 
 Start with [installation and setup](getting_started/), then read the [introduction](introduction/).
 
+Explore the companion [micro:bit laboratories](microbit/) in MicroPython and MakeCode Blocks.
+
 - [Module 0](module_00/)
 - [Module 1](module_01/)
 - [Module 2](module_02/)

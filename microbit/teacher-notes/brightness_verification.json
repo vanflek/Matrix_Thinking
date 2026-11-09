@@ -1,0 +1,9 @@
+{
+  "date": "2026-11-08",
+  "controls": {"A":"subtract 1 from every cell; lower bound 0","B":"add 1 to every cell; upper bound 9","shake":"restore initial gradient"},
+  "initial_rows": ["01234","12345","23456","34567","45678"],
+  "microPython": {"source":"02_brightness_world.py","desktop_adapter":"130 scenarios passed","official_simulator":"not run","physical_device":"not run"},
+  "makeCode": {"source":"02_brightness_world_makecode.ts","project":"02_brightness_world_makecode.hex","desktop_adapter":"same 130 scenarios and all displayed brightness mappings passed","official_editor_version":"9.0.12","native_editable_blocks":"7 stacks; no text-only blocks","simulator_checks":["B increases all cells","nine A presses give all zero","nine B presses from zero give all nine","shake restores initial gradient"],"physical_device":"not run","public_share":"not created"},
+  "screenshots": ["brightness_B_plus_one.png","brightness_all_zero.png","brightness_all_nine.png","brightness_shake_reset.png"],
+  "implementation_note":"Same pointwise rule, transparently implemented with loops over the stored field. No claim of native NumPy vectorization."
+}

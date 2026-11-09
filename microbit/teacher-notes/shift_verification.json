@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-07",
+  "lesson": "One world, one step",
+  "tracks": ["MicroPython", "MakeCode Blocks"],
+  "microPython": {"syntax": "passed", "desktop_control_flow": "passed with Image adapter", "official_simulator": "not run", "hardware": "not run"},
+  "makeCode": {"editor_version": "9.0.12", "decompilation": "four editable native block stacks, no text-only blocks", "simulator_initial": "passed", "simulator_one_A": "passed", "simulator_five_A_empty": "passed", "simulator_B_reset": "passed", "hex_export": "01_shift_world_makecode.hex", "intel_hex_checksums": "17269 valid records and EOF", "hardware": "not run", "public_share_link": "not created"},
+  "evidence": ["makecode_one_step.png", "makecode_empty_after_five.png", "makecode_reset.png"],
+  "parity": "Same initial lit cells, one-row downward shift, zero-filled boundary and B reset; desktop checks passed for both implementations.",
+  "brightness_scope": "Binary occupancy demonstration only: identical lit positions, not identical brightness API ranges."
+}
