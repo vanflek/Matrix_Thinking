@@ -65,6 +65,7 @@
     const text = words[lesson];
     $('mb-lab-title').textContent = text.title;
     $('mb-lab-intro').textContent = text.intro;
+    $('mb-open-project').href = 'https://makecode.microbit.org/#pub:github:vanflek/matrix-thinking-microbit-' + lesson;
     $('mb-a').textContent = text.a; $('mb-b').textContent = text.b;
     $('mb-b').dataset.mbAction = lesson === 'shift' ? 'reset' : 'step';
     $('mb-shake').hidden = lesson === 'shift';
