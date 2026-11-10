@@ -3,10 +3,14 @@
   const size = 5;
   const initial = lesson => lesson === 'shift'
     ? ['09000', '09900', '00000', '00000', '00000'].map(row => [...row].map(Number))
+    : lesson === 'mirror'
+    ? ['90000', '90000', '90000', '99990', '00000'].map(row => [...row].map(Number))
     : Array.from({length: size}, (_, row) => Array.from({length: size}, (_, col) => row + col));
   const copy = world => world.map(row => row.slice());
   function transform(world, lesson, action) {
     if (action === 'reset') return initial(lesson);
+    if (lesson === 'mirror' && action === 'left-right') return world.map(row => row.slice().reverse());
+    if (lesson === 'mirror' && action === 'top-bottom') return copy(world).reverse();
     if (lesson === 'shift' && action === 'down') return [Array(size).fill(0), ...copy(world).slice(0, -1)];
     if (lesson === 'brightness' && (action === 'increase' || action === 'decrease')) {
       const amount = action === 'increase' ? 1 : -1;
