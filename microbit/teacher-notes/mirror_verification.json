@@ -1,0 +1,40 @@
+{
+  "lesson": "Mirror the whole world",
+  "date": "2026-11-09",
+  "controls": {
+    "A": "left-right reflection",
+    "B": "top-bottom reflection",
+    "shake": "restore initial pattern"
+  },
+  "initial": [
+    "90000",
+    "90000",
+    "90000",
+    "99990",
+    "00000"
+  ],
+  "desktop_checks": {
+    "matrices": 101,
+    "source_unchanged": true,
+    "brightness_values_preserved": true,
+    "double_reflection_restores": true,
+    "axes_commute": true,
+    "makecode_matches_micropython": true,
+    "led_api_mapping": true
+  },
+  "official_makecode_simulator": {
+    "editable_block_stacks": 7,
+    "A": true,
+    "B": true,
+    "double_A": true,
+    "double_B": true,
+    "shake_reset": true
+  },
+  "hex": {
+    "checksum_and_eof_valid": true,
+    "bytes": 1309196,
+    "sha256": "6cd9f30dbe85a6d0411ab27d6220862d4befcd710dcf550ac3bdf4234ff4e281"
+  },
+  "physical_board_tested": false,
+  "micropython_hardware_tested": false
+}

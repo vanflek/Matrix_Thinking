@@ -36,6 +36,29 @@ MicroPython uses an `Image`. MakeCode stores the logical matrix as 25 numbers in
 - [MakeCode TypeScript source](makecode/01_shift_world_makecode.ts)
 - [Russian block-building instructions](teacher-notes/makecode_blocks_ru.txt)
 
+## Third experiment: mirror the whole world
+
+Start with an asymmetric L-shaped matrix. **A** reflects left to right, **B** reflects top to bottom, and **shake** restores the starting picture.
+
+```text
+9 0 0 0 0
+9 0 0 0 0
+9 0 0 0 0
+9 9 9 9 0
+0 0 0 0 0
+```
+
+Predict the destination of one value, then a row, then the whole picture. Press A twice or B twice and explain why the picture returns. Compare A then B with B then A. Reflections preserve every brightness value; unlike clipping or shifting past an edge, they do not lose information. One reflection in each direction produces a 180-degree turn.
+
+- [MicroPython program](micropython/03_mirror_world.py)
+- [MakeCode Blocks HEX](makecode/03_mirror_world_makecode.hex?raw=1)
+- [MakeCode TypeScript source](makecode/03_mirror_world_makecode.ts)
+- [Open in MakeCode](https://makecode.microbit.org/#pub:github:vanflek/matrix-thinking-microbit-mirror)
+- [Teacher notes in Russian](teacher-notes/mirror_ru.txt)
+- [Validation record](teacher-notes/mirror_verification.json)
+
+The implementations build a new matrix from the old matrix before drawing. MicroPython's image helper and MakeCode's array helper use explicit loops; this is not native NumPy vectorization.
+
 ## Teacher notes and validation
 
 - [Brightness activity in Russian](teacher-notes/brightness_ru.txt)
@@ -51,6 +74,8 @@ python microbit/tests/check_shift.py
 node microbit/tests/check_makecode.cjs
 python microbit/tests/check_brightness.py
 node microbit/tests/check_brightness_makecode.cjs
+python microbit/tests/check_mirror.py
+node microbit/tests/check_mirror_makecode.cjs
 ```
 
 These tests compare behavior and display mapping; they are not firmware tests.
@@ -59,10 +84,11 @@ These tests compare behavior and display mapping; they are not firmware tests.
 
 This directory is the shared source-and-export archive for the two tracks. A downloaded HEX contains a MakeCode project and can be imported into the editor. Saving a project in MakeCode or saving files on a computer does not automatically update this directory: revised sources and exports must be committed to GitHub.
 
-Both MakeCode editor projects are connected to their own GitHub repositories:
+All three MakeCode editor projects are connected to their own GitHub repositories:
 
 - [Brightness matrix](https://github.com/vanflek/matrix-thinking-microbit-brightness)
 - [Shift the whole world](https://github.com/vanflek/matrix-thinking-microbit-shift)
+- [Mirror the whole world](https://github.com/vanflek/matrix-thinking-microbit-mirror)
 
 In a connected project, click the GitHub button, review the changes, enter a short message, and choose **Commit & push**. Use **Pull changes** to retrieve edits made on GitHub. Ordinary editor or cloud saving is not a GitHub commit.
 
