@@ -1,5 +1,5 @@
 const ORIGINS = new Set(['https://matrixthinking.org', 'https://www.matrixthinking.org', 'https://vanflek.github.io']);
-const GAMES = new Set(['index','snake','tetris','flight','raycast','xonix','faces','life','edges','sandbox']);
+const GAMES = new Set(['index','snake','tetris','flight','raycast','xonix','faces','life','edges','sandbox','microbit']);
 const EVENTS = new Set(['interacted','engaged','active30','active120','play','step','edit','restart','inspect','control','rule','question','guess']);
 export default {
   async fetch(request, env, ctx) {

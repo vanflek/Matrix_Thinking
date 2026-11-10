@@ -1,6 +1,6 @@
 Matrix Thinking game activity — deployed 2026-11-07 (America/Los_Angeles)
 
-Frontend: game-activity.js, shared by all nine published interactive pages.
+Frontend: game-activity.js, shared by all ten published interactive pages.
 Backend: matrix-game-events.vanflek.workers.dev; Cloudflare Workers Free.
 D1: matrix-game-activity, binding DB; ID e01a11b3-c4e0-438f-8ef1-546eddb0665b.
 The main book-code branch and the GitHub Pages CNAME must remain unchanged.
@@ -39,3 +39,5 @@ Deployment source: worker.js and schema.sql; use Cloudflare dashboard code edito
 and D1 console. Flatten whitespace before pasting SQL into the single-line console.
 Never put Cloudflare API tokens, database access tokens or private reports in the
 public frontend or GitHub Pages branch. The frontend endpoint URL is public.
+
+Micro:bit added 2026-11-09: step records A and brightness B; restart records shake and shift B reset; inspect records cell selection; control records experiment selection. Each category is a per-session milestone, not a raw count of button presses. The existing engagement thresholds and privacy exclusions are unchanged.
