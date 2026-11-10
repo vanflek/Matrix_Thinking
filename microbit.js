@@ -52,6 +52,7 @@
     $('mb-lab-title').textContent = text.title;
     $('mb-lab-intro').textContent = text.intro;
     $('mb-a').textContent = text.a; $('mb-b').textContent = text.b;
+    $('mb-b').dataset.mbAction = lesson === 'brightness' ? 'step' : 'reset';
     $('mb-shake').hidden = lesson !== 'brightness';
     $('mb-rule').textContent = text.rule;
     $('mb-last-rule').textContent = text.initial;
