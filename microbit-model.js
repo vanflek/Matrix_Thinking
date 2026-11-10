@@ -3,6 +3,8 @@
   const size = 5;
   const initial = lesson => lesson === 'shift'
     ? ['09000', '09900', '00000', '00000', '00000'].map(row => [...row].map(Number))
+    : lesson === 'duck'
+    ? ['00090', '00999', '99990', '09990', '00900'].map(row => [...row].map(Number))
     : lesson === 'mirror'
     ? ['90000', '90000', '90000', '99990', '00000'].map(row => [...row].map(Number))
     : Array.from({length: size}, (_, row) => Array.from({length: size}, (_, col) => row + col));
@@ -18,7 +20,14 @@
     }
     throw new Error('Unknown lesson action');
   }
-  const api = {size, initial, copy, transform};
+  const axisState = (reading, previous) => reading < -300 ? true : reading > 300 ? false : previous;
+  function duckWorld(leftRight, topBottom) {
+    let world = initial('duck');
+    if (leftRight) world = world.map(row => row.slice().reverse());
+    if (topBottom) world.reverse();
+    return world;
+  }
+  const api = {size, initial, copy, transform, axisState, duckWorld};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.MicrobitMatrix = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

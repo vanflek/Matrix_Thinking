@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const config = {
-    microbit: ['main', '', '#mb-a,#mb-b[data-mb-action="step"]', '', '#mb-shake,#mb-b[data-mb-action="reset"]', '#mb-matrix button', '[data-mb-lesson]'],
+    microbit: ['main', '', '#mb-a,#mb-b[data-mb-action="step"],[data-mb-tilt]', '', '#mb-shake,#mb-b[data-mb-action="reset"]', '#mb-matrix button', '[data-mb-lesson]'],
     life: ['main', '#life-play', '#life-generation,#life-operation', '#life-world', '#life-reset,#life-clear', '#life-shifts button', '#life-preset,#life-numbers,#life-speed'],
     sandbox: ['main', '#sand-play', '#sand-step', '#sand-world', '#sand-reset,#sand-clear', '#sand-inspect,#sand-data', '#sand-gravity,#sand-diagonals,#sand-spread,#sand-preset'],
     snake: ['snake-lab', '#snake-play', '#snake-step', '', '#snake-restart', '#snake-board button,#snake-matrix button', '[data-turn]'],
