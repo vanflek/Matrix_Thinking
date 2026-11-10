@@ -59,6 +59,27 @@ Predict the destination of one value, then a row, then the whole picture. Press 
 
 The implementations build a new matrix from the old matrix before drawing. MicroPython's image helper and MakeCode's array helper use explicit loops; this is not native NumPy vectorization.
 
+## Fourth experiment: tilt the duck
+
+The unchanged 5 × 5 duck matrix is transformed by accelerometer input. With the display facing up and contacts towards you:
+
+- Left edge down (x < −300 mg): reverse columns. Right edge down (x > 300 mg): restore column order.
+- Top/logo edge down (y < −300 mg): reverse rows. Bottom/contact edge down (y > 300 mg): restore row order.
+- Inside −300 to +300 mg, retain the previous choice on that axis. Holding a tilt does not repeatedly toggle the picture.
+- Hold flat and shake to reset both choices; tilting again selects the orientation again.
+
+Both axes can be combined. Every output reads the unchanged source matrix, so values and lit-pixel counts are preserved. Buttons A and B are not used.
+
+- [Interactive matrix and LED preview](https://matrixthinking.org/microbit.html?lesson=duck#experiment)
+- [Open editable MakeCode Blocks](https://makecode.microbit.org/#pub:github:vanflek/matrix-thinking-microbit-duck)
+- [MicroPython source](micropython/04_tilt_duck.py)
+- [MakeCode Blocks HEX](makecode/04_tilt_duck_makecode.hex?raw=1)
+- [MakeCode TypeScript](makecode/04_tilt_duck_makecode.ts)
+- [Teacher notes in Russian](teacher-notes/tilt_duck_ru.txt)
+- [Validation record](teacher-notes/tilt_duck_verification.json)
+
+The programs use explicit loops, not NumPy. Matrix transformations and sensor selection were compared across MicroPython, MakeCode and the browser model using desktop API adapters. The official MakeCode compiler produced editable blocks and a valid HEX; the initial duck was visually checked in its simulator. Physical-board tilt testing is still needed.
+
 ## Teacher notes and validation
 
 - [Brightness activity in Russian](teacher-notes/brightness_ru.txt)
@@ -76,6 +97,8 @@ python microbit/tests/check_brightness.py
 node microbit/tests/check_brightness_makecode.cjs
 python microbit/tests/check_mirror.py
 node microbit/tests/check_mirror_makecode.cjs
+python microbit/tests/check_tilt_duck.py
+node microbit/tests/check_tilt_duck_makecode.cjs
 ```
 
 These tests compare behavior and display mapping; they are not firmware tests.
@@ -84,12 +107,14 @@ These tests compare behavior and display mapping; they are not firmware tests.
 
 This directory is the shared source-and-export archive for the two tracks. A downloaded HEX contains a MakeCode project and can be imported into the editor. Saving a project in MakeCode or saving files on a computer does not automatically update this directory: revised sources and exports must be committed to GitHub.
 
-All three MakeCode editor projects are connected to their own GitHub repositories:
+All four MakeCode editor projects are connected to their own GitHub repositories:
 
 - [Brightness matrix](https://github.com/vanflek/matrix-thinking-microbit-brightness)
 - [Shift the whole world](https://github.com/vanflek/matrix-thinking-microbit-shift)
 - [Mirror the whole world](https://github.com/vanflek/matrix-thinking-microbit-mirror)
+- [Tilt duck](https://github.com/vanflek/matrix-thinking-microbit-duck)
 
 In a connected project, click the GitHub button, review the changes, enter a short message, and choose **Commit & push**. Use **Pull changes** to retrieve edits made on GitHub. Ordinary editor or cloud saving is not a GitHub commit.
 
 These repositories contain editable MakeCode blocks and generated TypeScript. This directory remains the shared archive for MakeCode exports, MicroPython sources and teacher notes; it is not automatically updated by commits in the separate MakeCode repositories. Copy revised sources and exports here when updating the shared lesson package. The book repository root and website branch remain independent.
+

@@ -1,0 +1,38 @@
+{
+  "lesson": "Tilt duck",
+  "date": "2026-11-10",
+  "initial": [
+    "00090",
+    "00999",
+    "99990",
+    "09990",
+    "00900"
+  ],
+  "desktop_checks": {
+    "random_matrices": 101,
+    "orientations": 404,
+    "sensor_frames": 1208,
+    "held_tilt_no_toggle": true,
+    "neutral_band": [
+      -300,
+      300
+    ],
+    "makecode_matches_micropython_and_browser": true,
+    "led_mapping": true
+  },
+  "official_makecode": {
+    "editable_block_stacks": 7,
+    "compiled": true,
+    "initial_duck_display_checked": true,
+    "tilt_ui_tested": false,
+    "tilt_ui_limit": "Browser input could not safely address fractional simulator iframe coordinates; sensor behavior checked with desktop API adapters."
+  },
+  "physical_board_tested": false,
+  "hex": {
+    "bytes": 1311756,
+    "sha256": "2e88464c3b0c74a2df8ada1449cfd8356f9f9564740345002249149fdabbccfe",
+    "git_blob": "678bace1b319de029479232e754880731491a596",
+    "checksum_and_eof_valid": true,
+    "blank_padding_lines": 8
+  }
+}
