@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ten fruits, a world of possibilities — Matrix Thinking</title>
+  <meta name="description" content="Turn a fourth-grade fruit problem into a whole world of possibilities. Explore 567 candidate baskets, Boolean masks and all 46 solutions, with complete downloadable NumPy code.">
+  <meta property="og:title" content="Ten fruits. A whole world of possibilities.">
+  <meta property="og:description" content="One school maths problem. 567 candidate states. One mask that finds every solution.">
+  <meta property="og:url" content="https://matrixthinking.org/fruit.html">
+  <link rel="canonical" href="https://matrixthinking.org/fruit.html">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="fruit.css?v=20261111-1">
+  <link rel="icon" href="favicon.ico?v=matrix1" sizes="any"><link rel="icon" href="favicon.svg?v=matrix1" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><a class="brand" href="index.html">▦ MATRIX THINKING</a><nav aria-label="Main navigation"><a href="index.html#game-labs">← All labs</a><a href="faces.html">Face detective</a><a href="life.html">Game of Life</a><a href="#numpy">NumPy code</a></nav></header>
+<main id="main" class="fruit-page">
+  <section class="fruit-hero">
+    <div><p class="eyebrow">FRUIT MARKET / A WORLD OF POSSIBILITIES</p><h1>Ten fruits.<br><em>One rule for<br>every possibility.</em></h1><p class="lead">My fourth-grade daughter came home with a maths problem. It became a way to see how the same rules can filter an entire world of possible answers.</p></div>
+    <div class="fruit-question"><span class="question-tag">THE HOMEWORK</span><div class="question-numbers"><span><b>10</b> fruits</span><span><b>72</b> coins</span></div><p>Only apples and bananas. All apples have the same price. All bananas have the same price.</p><h2>What could<br>one apple cost?</h2><p class="fruit-assumptions">We explore positive whole-number prices and at least one of each fruit. The worksheet needs one possible answer; this experiment finds every one.</p><a class="text-link" href="#experiment">Explore the possibilities ↓</a></div>
+  </section>
+  <section id="experiment" aria-labelledby="fruit-lab-title">
+    <div class="fruit-section-heading"><div><p class="eyebrow">BUILD A WORLD. APPLY ITS RULES.</p><h2 id="fruit-lab-title">One basket.<br>Every possible basket.</h2></div><p>Rows choose how many apples to buy. Columns choose their price. Every cell is one candidate purchase.</p></div>
+    <div class="fruit-layout">
+      <section class="fruit-inspector" aria-labelledby="fruit-inspector-title">
+        <p class="eyebrow">01 / INSPECT ONE STATE</p><h3 id="fruit-inspector-title">Your basket</h3>
+        <div class="fruit-range-heading"><label for="fruit-count">Number of apples</label><output id="fruit-count-value" for="fruit-count">8</output></div><input id="fruit-count" type="range" min="1" max="9" step="1" value="8">
+        <div class="fruit-range-heading"><label for="fruit-price">Price of one apple</label><output id="fruit-price-value" for="fruit-price">7 coins</output></div><input id="fruit-price" type="range" min="1" max="63" step="1" value="7">
+        <div id="fruit-basket" class="fruit-basket" role="img" aria-label="Eight apples and two bananas"></div>
+        <div id="fruit-breakdown" class="fruit-breakdown"></div>
+        <p id="fruit-status" class="fruit-status" role="status" aria-live="polite"></p>
+        <div class="fruit-examples" role="group" aria-label="Inspect an example"><button type="button" data-example="valid">A valid basket</button><button type="button" data-example="fraction">A fractional price</button><button type="button" data-example="over">Over the budget</button></div>
+      </section>
+      <section class="fruit-field" aria-labelledby="fruit-field-title">
+        <p class="eyebrow">02 / APPLY THE RULE TO ALL STATES</p><div class="fruit-field-heading"><h3 id="fruit-field-title">The world matrix</h3><span id="fruit-shape">9 × 63</span></div>
+        <div class="fruit-stages" role="group" aria-label="Calculation step"><button type="button" data-stage="0" aria-pressed="true">1 · Apple cost</button><button type="button" data-stage="1" aria-pressed="false">2 · Money left</button><button type="button" data-stage="2" aria-pressed="false">3 · Mask</button><button type="button" data-stage="3" aria-pressed="false">4 · All solutions</button></div>
+        <pre class="fruit-active-code"><code id="fruit-rule"></code></pre><p id="fruit-stage-note" class="fruit-stage-note"></p>
+        <svg id="fruit-world" class="fruit-world" role="grid" aria-label="Candidate purchases; rows are apple counts, columns are apple prices" aria-rowcount="9" aria-colcount="63"><g id="fruit-axes" aria-hidden="true"></g><g id="fruit-marks"></g><g id="fruit-result-values" aria-hidden="true"></g></svg>
+        <div class="fruit-world-footer"><span id="fruit-legend"></span><span id="fruit-selection"></span></div>
+        <details id="fruit-numeric"><summary>Show the complete numeric matrix</summary><div class="fruit-table-scroll"><table id="fruit-matrix-table"></table></div></details>
+      </section>
+    </div>
+    <section class="fruit-answer" aria-label="All solutions"><div><p class="eyebrow">03 / COLLECT THE TRUE CELLS</p><h3><span id="fruit-answer-count">46</span> baskets.<br><span id="fruit-price-count">24</span> possible apple prices.</h3></div><div><p>Each selected cell becomes one row: <code>[apples, bananas, apple price, banana price]</code>.</p><div id="fruit-possible-prices" class="fruit-possible-prices" aria-label="Possible apple prices"></div><button type="button" class="button secondary" id="fruit-download-csv">Download all 46 solutions · CSV</button></div></section>
+  </section>
+  <section class="fruit-learning" aria-labelledby="fruit-learning-title"><div><p class="eyebrow">START WITH THREE POSSIBILITIES</p><h2 id="fruit-learning-title">An array is a row<br>of possible answers.</h2><p>Fix the basket at 8 apples and 2 bananas. Try apple prices of 6, 7 and 8 coins. The same operation calculates all three columns at once.</p></div><div><div class="fruit-table-scroll"><table class="fruit-small-table"><thead><tr><th>Whole-array operation</th><th>Try 6</th><th>Try 7</th><th>Try 8</th></tr></thead><tbody><tr><th><code>prices</code></th><td>6</td><td>7</td><td>8</td></tr><tr><th><code>8 * prices</code></th><td>48</td><td>56</td><td>64</td></tr><tr><th><code>72 - 8 * prices</code></th><td>24</td><td>16</td><td>8</td></tr><tr><th><code>(72 - 8 * prices) / 2</code></th><td>12</td><td>8</td><td>4</td></tr></tbody></table></div><p>The full world adds a second axis: the number of apples. The row of prices becomes a matrix of candidate states.</p></div></section>
+  <section class="fruit-explanation"><article><p class="eyebrow">WHY THESE BOUNDS?</p><h3>9 counts. 63 prices.</h3><p>Both kinds of fruit must be present, so there can be 1–9 apples. Every one of the other nine fruits costs at least one coin, so a single apple cannot cost more than 72 − 9 = 63 coins. These bounds cover every possible solution.</p></article><article><p class="eyebrow">WHAT DOES THE MASK MEAN?</p><h3>One condition, everywhere.</h3><p>After paying for apples, the remaining money must be positive and must divide exactly by the number of bananas. The mask combines these two tests for the entire grid. A 1 keeps the state; a 0 rejects it.</p></article><article><p class="eyebrow">A PATTERN TO NOTICE</p><h3>Why is row five empty?</h3><p>Five apples and five bananas would cost 5 × (apple price + banana price). That total must be divisible by 5. Since 72 is not, no whole-number prices can work in that row.</p></article></section>
+  <section id="numpy" class="fruit-numpy" aria-labelledby="fruit-numpy-title"><div class="fruit-section-heading"><div><p class="eyebrow">THE COMPLETE NUMPY PROGRAM</p><h2 id="fruit-numpy-title">Write the rules.<br>Let arrays carry the possibilities.</h2></div><p>The interactive browser model uses JavaScript. Download this matching Python program to run the whole-array calculations in NumPy.</p></div><div class="fruit-code-actions"><a class="button" href="fruit-market.py" download>Download Python code ↓</a><button type="button" class="button secondary" id="fruit-copy-code">Copy complete code</button><a class="text-link" href="https://github.com/vanflek/Matrix_Thinking/blob/gh-pages/fruit-market.py">View on GitHub ↗</a><span id="fruit-copy-status" role="status" aria-live="polite"></span></div><pre class="fruit-full-code"><code id="fruit-python-code">"""Ten fruits, 72 coins: whole-world rules with NumPy.
+
+Assumptions: positive whole-number prices, at least one apple and one banana.
+Each position in the 9 x 63 grid represents one candidate purchase.
+Columns in the answer: apples, bananas, apple price, banana price.
+"""
+import numpy as np
+
+
+def build_world():
+    # Rows choose the apple count; columns choose the apple price.
+    apples, apple_price = np.meshgrid(
+        np.arange(1, 10),
+        np.arange(1, 64),
+        indexing="ij",
+    )
+
+    # These rules act on all 567 candidates at once.
+    bananas = 10 - apples
+    apple_cost = apples * apple_price
+    remaining = 72 - apple_cost
+
+    # A valid basket leaves a positive, whole-number price for each banana.
+    enough_money = remaining &gt; 0
+    whole_price = remaining % bananas == 0
+    mask = enough_money &amp; whole_price
+
+    # Integer division is exact for the cells selected by the mask.
+    banana_price = remaining // bananas
+    solutions = np.column_stack((
+        apples[mask],
+        bananas[mask],
+        apple_price[mask],
+        banana_price[mask],
+    ))
+
+    return {
+        "apples": apples,
+        "apple_price": apple_price,
+        "bananas": bananas,
+        "apple_cost": apple_cost,
+        "remaining": remaining,
+        "enough_money": enough_money,
+        "whole_price": whole_price,
+        "mask": mask,
+        "banana_price": banana_price,
+        "solutions": solutions,
+    }
+
+
+if __name__ == "__main__":
+    world = build_world()
+    solutions = world["solutions"]
+
+    print("Columns: apples, bananas, apple price, banana price")
+    print(solutions)
+    print("Solution matrix shape:", solutions.shape)
+    print("Possible apple prices:", np.unique(solutions[:, 2]))
+    print("Number of possible apple prices:", np.unique(solutions[:, 2]).size)
+</code></pre><div class="fruit-run"><h3>Run it in PyCharm</h3><ol><li>Download <code>fruit-market.py</code> and open it in your Python project.</li><li>Install NumPy in that project: <code>python -m pip install numpy</code>.</li><li>Run the file. The output includes all 46 rows and the 24 distinct apple prices.</li></ol><a href="fruit-requirements.txt" download>Download requirements.txt</a><p>Try inspecting <code>world["remaining"]</code> or <code>world["mask"].astype(int)</code>. Each has the same 9 × 63 shape as the browser field.</p></div></section>
+</main>
+<footer><a href="index.html#game-labs">← All laboratories</a><span>Fruit, prices, possibilities. One matrix approach.</span><a href="privacy.html">Privacy &amp; analytics</a></footer>
+<script src="fruit-model.js?v=20261111-1"></script><script src="fruit.js?v=20261111-1"></script>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"2eb5449b4581422e91fc6e8a7390d8d4"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
