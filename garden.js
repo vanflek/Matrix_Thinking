@@ -13,7 +13,7 @@ const rules=[
 'solutions = np.column_stack((\n    width[mask], length[mask],\n    perimeter[mask], area[mask],\n))'
 ];
 const notes=[
-'Each cell shows the metres of fence needed for one garden. Darker cells need more fence. Select a cell to see its plot.',
+'The whole candidate world is still here, including gardens that will fail. Each cell shows its perimeter; no mask has selected solutions yet. Select any cell to inspect it.',
 'True means the four sides can be fenced within the budget. Unused fence is allowed. The whole triangle of choices is checked at once.',
 'True means the area meets the minimum. This mask alone does not check whether enough fence is available.',
 'Blue cells pass both tests. Yellow passes only the fence rule; violet passes only the area rule. The intersection is the solution set.',
@@ -199,6 +199,10 @@ function render(){
  drawPlan();drawMatrix();drawTable();renderLesson();
 }
 function renderLesson(){
+ $('g-principle-world').textContent=`${world.cells.length} candidates`;
+ $('g-principle-range').textContent=`All pairs of whole-number side lengths from 1 to ${world.n} m. No condition has filtered them yet.`;
+ $('g-principle-masks').textContent=`${world.fenceCount} fit the fence. ${world.areaCount} have enough area. Each mask checks a different property of the same ${world.cells.length} candidates.`;
+ $('g-principle-solutions').textContent=`${world.solutions.length} solution${world.solutions.length===1?'':'s'}`;
  const lesson=window.GardenLesson.steps(world)[state.lessonStep];
  $('g-lesson-heading').textContent=lesson.title;
  $('g-lesson-progress').textContent=`Step ${state.lessonStep+1} of 6`;
