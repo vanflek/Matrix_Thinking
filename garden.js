@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 const M=window.GardenWorld,$=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
-const state={fence:24,minimum:30,width:4,length:8,stage:0};
+const state={fence:24,minimum:30,width:4,length:8,stage:0,lessonStep:0};
 let world=M.buildWorld(),glyphs=[],drawnN=0,lastWidth=0,dragging=false;
 const svg=$('g-world'),plan=$('g-plan'),wrap=$('g-map-wrap');
 const make=(tag,attrs,parent,text)=>{const e=document.createElementNS(NS,tag);Object.entries(attrs||{}).forEach(([k,v])=>e.setAttribute(k,v));if(text!==undefined)e.textContent=text;if(parent)parent.appendChild(e);return e;};
@@ -196,9 +196,21 @@ function render(){
   $('g-best-reason').textContent=`The largest area within ${state.fence} m of fence is ${world.largestWithinFence} m², below the ${state.minimum} m² minimum. Increase the fence budget or lower the minimum.`;
  }
  $('g-command').textContent=`python garden-numpy.py --fence ${state.fence} --minimum ${state.minimum}`;
- drawPlan();drawMatrix();drawTable();
+ drawPlan();drawMatrix();drawTable();renderLesson();
 }
-function preset(w,l){Object.assign(state,{fence:24,minimum:30,width:w,length:l,stage:0});wrap.scrollTop=0;refreshWorld();}
+function renderLesson(){
+ const lesson=window.GardenLesson.steps(world)[state.lessonStep];
+ $('g-lesson-heading').textContent=lesson.title;
+ $('g-lesson-progress').textContent=`Step ${state.lessonStep+1} of 6`;
+ $('g-lesson-explanation').textContent=lesson.explanation;
+ $('g-lesson-code').textContent=lesson.code;
+ $('g-lesson-output').textContent=lesson.output;
+ document.querySelectorAll('[data-lesson]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.lesson)===state.lessonStep)));
+ $('g-lesson-back').disabled=state.lessonStep===0;
+ $('g-lesson-next').disabled=state.lessonStep===5;
+}
+function chooseLesson(step){state.lessonStep=step;state.stage=window.GardenLesson.steps(world)[step].stage;wrap.scrollTop=0;render();}
+function preset(w,l){Object.assign(state,{fence:24,minimum:30,width:w,length:l,stage:0,lessonStep:0});wrap.scrollTop=0;refreshWorld();}
 $('g-fence').addEventListener('input',e=>{state.fence=Number(e.target.value);wrap.scrollTop=0;refreshWorld();});
 $('g-minimum').addEventListener('input',e=>{state.minimum=Number(e.target.value);wrap.scrollTop=0;refreshWorld();});
 $('g-width').addEventListener('input',e=>choose(Number(e.target.value),state.length));
@@ -206,8 +218,11 @@ $('g-length').addEventListener('input',e=>choose(state.width,Number(e.target.val
 $('g-reset').addEventListener('click',()=>preset(4,8));
 const presets={fits:[4,8],spare:[5,6],fence:[7,7],area:[3,9]};
 document.querySelectorAll('[data-example]').forEach(b=>b.addEventListener('click',()=>preset(...presets[b.dataset.example])));
-document.querySelectorAll('[data-stage]').forEach(b=>b.addEventListener('click',()=>{state.stage=Number(b.dataset.stage);wrap.scrollTop=0;render();}));
-$('g-best').addEventListener('click',()=>{if(world.best.length){state.stage=4;wrap.scrollTop=0;choose(world.best[0].width,world.best[0].length);}});
+document.querySelectorAll('[data-stage]').forEach(b=>b.addEventListener('click',()=>{state.stage=Number(b.dataset.stage);state.lessonStep=[1,2,3,4,5][state.stage];wrap.scrollTop=0;render();}));
+document.querySelectorAll('[data-lesson]').forEach(b=>b.addEventListener('click',()=>chooseLesson(Number(b.dataset.lesson))));
+$('g-lesson-back').addEventListener('click',()=>chooseLesson(Math.max(0,state.lessonStep-1)));
+$('g-lesson-next').addEventListener('click',()=>chooseLesson(Math.min(5,state.lessonStep+1)));
+$('g-best').addEventListener('click',()=>{if(world.best.length){state.stage=4;state.lessonStep=5;wrap.scrollTop=0;choose(world.best[0].width,world.best[0].length);}});
 $('g-table-details').addEventListener('toggle',drawTable);
 $('g-copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('g-python').textContent);$('g-copy-status').textContent='Complete Python code copied.';}catch(_){$('g-copy-status').textContent='Copy unavailable here; download the Python file instead.';}});
 $('g-csv').addEventListener('click',()=>{const csv='width_m,length_m,fence_m,area_m2\n'+M.rows(world).map(r=>r.join(',')).join('\n')+'\n';const a=document.createElement('a'),url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.href=url;a.download=`gardens-fence-${state.fence}-area-${state.minimum}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
