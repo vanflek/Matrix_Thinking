@@ -108,14 +108,14 @@ function drawMatrix(){
   ['Width','Length','Fence','Area'].forEach((v,i)=>make('text',{x:14+(W-28)*(i+.5)/4,y:27,'text-anchor':'middle','font-weight':'bold'},axes,v));
   if(!world.solutions.length)make('text',{x:W/2,y:77,'text-anchor':'middle'},axes,'No suitable gardens.');
  }else{
-  const side=W-left-right,H0=side;
-  H=top+H0+32;
+  const side=W-left-right,gridH=Math.min(side,340,world.n*28);
+  H=top+gridH+32;
   make('text',{x:left+side/2,y:15,'text-anchor':'middle'},axes,'length →');
-  make('text',{x:10,y:top+side/2,transform:`rotate(-90 10 ${top+side/2})`,'text-anchor':'middle'},axes,'width →');
+  make('text',{x:10,y:top+gridH/2,transform:`rotate(-90 10 ${top+gridH/2})`,'text-anchor':'middle'},axes,'width →');
   for(let i=0;i<world.n;i++){
    if(world.n<=14||i===0||i===world.n-1||(i+1)%2===0){
     make('text',{x:left+(i+.5)*side/world.n,y:top-10,'text-anchor':'middle'},axes,String(i+1));
-    make('text',{x:left-10,y:top+(i+.5)*side/world.n+4,'text-anchor':'end'},axes,String(i+1));
+    make('text',{x:left-10,y:top+(i+.5)*gridH/world.n+4,'text-anchor':'end'},axes,String(i+1));
    }
   }
  }
@@ -125,9 +125,9 @@ function drawMatrix(){
  svg.setAttribute('aria-label',mode===4?'All suitable gardens: width, length, fence needed, area.':'Candidate gardens: width in rows, length in columns. Arrow keys select a cell.');
  const c0=selected();
  for(const g of glyphs){
-  const c=g.c,visible=mode!==4||c.valid,s=mode===4?0:(W-left-right)/world.n;
-  const x=mode===4?14:left+(c.length-1)*s+1.1,y=mode===4?42+c.solutionIndex*24:top+(c.width-1)*s+1.1;
-  const w=mode===4?W-28:Math.max(1,s-2.2),h=mode===4?21:Math.max(1,s-2.2);
+  const c=g.c,visible=mode!==4||c.valid,s=mode===4?0:(W-left-right)/world.n,sy=Math.min(s,28,340/world.n);
+  const x=mode===4?14:left+(c.length-1)*s+1.1,y=mode===4?42+c.solutionIndex*24:top+(c.width-1)*sy+1.1;
+  const w=mode===4?W-28:Math.max(1,s-2.2),h=mode===4?21:Math.max(1,sy-2.2);
   const isSelected=c.width===c0.width&&c.length===c0.length;
   let fill='#edf2f7',text='',white=false;
   if(mode===0){const t=c.perimeter/(4*world.n);fill=`rgb(${Math.round(238-220*t)},${Math.round(245-145*t)},${Math.round(251-35*t)})`;text=String(c.perimeter);white=t>.56;}
@@ -136,7 +136,7 @@ function drawMatrix(){
   if(mode===3){fill=c.valid?'#1165db':c.fenceOk?'#ffe59a':c.areaOk?'#e6ddf7':'#edf2f7';text=c.valid?'1':'0';white=c.valid;}
   if(mode===4)fill=isSelected?'#dceaff':'#edf4fc';
   Object.entries({x,y,width:w,height:h,fill,opacity:visible?1:0,visibility:visible?'visible':'hidden','aria-hidden':String(!visible),'aria-selected':String(isSelected),'aria-rowindex':mode===4?c.solutionIndex+1:c.width,'aria-colindex':mode===4?1:c.length,'aria-colspan':mode===4?4:1,tabindex:visible&&isSelected?0:-1,'aria-label':`${c.width} by ${c.length} m; fence ${c.perimeter}; area ${c.area}; fence ${c.fenceOk?'fits':'fails'}, area ${c.areaOk?'fits':'fails'}; ${c.valid?'suitable':'not suitable'}`}).forEach(([k,v])=>g.rect.setAttribute(k,v));
-  g.label.setAttribute('x',x+w/2);g.label.setAttribute('y',y+h/2+3.7);g.label.style.fill=white?'white':'#526b81';g.label.textContent=text;g.label.style.display=mode!==4&&s>=17?'':'none';g.label.style.fontSize=Math.min(12,s*.42)+'px';
+  g.label.setAttribute('x',x+w/2);g.label.setAttribute('y',y+h/2+3.7);g.label.style.fill=white?'white':'#526b81';g.label.textContent=text;g.label.style.display=mode!==4&&s>=17?'':'none';g.label.style.fontSize=Math.min(12,s*.42,sy*.6)+'px';
   g.rowValues.forEach((t,i)=>{t.setAttribute('x',14+(W-28)*(i+.5)/4);t.setAttribute('y',y+14);t.style.display=mode===4?'':'none';t.style.fill='#132d45';t.style.fontSize='12px';});
  }
  // Retain a keyboard entry point when the selected garden is filtered out.
