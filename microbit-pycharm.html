@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Connect micro:bit to PyCharm and NumPy — Matrix Thinking</title>
+<meta name="description" content="Connect micro:bit to Python in PyCharm using bitio. Install the library, flash the board, and turn a NumPy brightness matrix into real LED light. Complete downloadable example.">
+<link rel="canonical" href="https://matrixthinking.org/microbit-pycharm.html">
+<meta property="og:title" content="From NumPy to real light"><meta property="og:description" content="PyCharm → USB → micro:bit. One matrix on the computer becomes a physical picture."><meta property="og:image" content="https://matrixthinking.org/assets/matrik-pycharm-microbit.jpg"><meta property="og:url" content="https://matrixthinking.org/microbit-pycharm.html"><meta property="og:type" content="article">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="microbit-pycharm.css?v=20261112-1">
+<link rel="icon" href="favicon.ico?v=matrix1" sizes="any"><link rel="icon" href="favicon.svg?v=matrix1" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head><body><a class="skip" href="#main">Skip to content</a>
+<header><a class="brand" href="index.html">▦ MATRIX THINKING</a><nav aria-label="Main navigation"><a href="microbit.html">micro:bit labs</a><a href="index.html#game-labs">All labs</a><a href="setup.html">Get started</a><a href="https://github.com/whaleygeek/bitio/tree/newarch">bitio ↗</a></nav></header>
+<main id="main" class="bp-page">
+<div class="bp-hero"><p class="eyebrow">MICRO:BIT / FROM THE COMPUTER TO THE PHYSICAL WORLD</p><h1>From NumPy<br>to <em>real light.</em></h1>
+<p class="lead">Write Python in PyCharm. Transform a matrix with NumPy. Send the result over USB to the twenty-five LEDs of a micro:bit.</p>
+<p class="bp-meta">Oleg Gornov · 12 November 2026 · Setup guide</p>
+<div class="actions"><a class="button" href="#setup">Connect your board ↓</a><a class="button secondary" href="microbit-numpy-bitio.py" download>Download the NumPy example ↓</a></div></div>
+<figure class="bp-figure"><a href="assets/matrik-pycharm-microbit.jpg" aria-label="Open the full-resolution Matrik illustration"><img src="assets/matrik-pycharm-microbit.jpg" width="1672" height="941" alt="Matrik points to a PyCharm laptop containing a 5 by 5 NumPy matrix with five values of 5 on its diagonal. A USB cable connects the laptop to a micro:bit showing the same five diagonal LEDs."></a><figcaption>A matrix on the computer, the same state as light on the board. Illustration created with AI.</figcaption></figure>
+<div class="bp-body">
+<article class="bp-article">
+<section id="where"><h2>Where does the code run?</h2>
+<p>We have been exploring Matrix Thinking on micro:bit. Connecting the board to Python on a computer opens another route: the computer can use NumPy to calculate a whole matrix, while the board provides the physical display, buttons and supported sensors.</p>
+<div class="bp-note"><strong>NumPy runs on the computer.</strong> Your Python program communicates with the micro:bit over USB through <a href="https://github.com/whaleygeek/bitio/tree/newarch">bitio</a>, David Whale’s Python I/O library. The board runs its bridge firmware. The NumPy program stays on the computer and needs the USB connection while running.</div>
+<p>This guide follows the <code>newarch</code> branch used in our setup. bitio is a third-party project; available board features depend on its firmware and API. The author’s <a href="https://github.com/whaleygeek/bitio/blob/newarch/README.md">README</a> is the reference for the library.</p></section>
+<section id="setup"><h2>Connect your micro:bit</h2>
+<ol class="bp-steps">
+<li><h3>Connect a data-capable USB cable</h3><p>Plug the board into your computer. It should appear as a drive named <strong>MICROBIT</strong>. A charging-only cable cannot provide the connection needed here.</p></li>
+<li><h3>Prepare the board</h3><p>Open <a href="https://github.com/whaleygeek/bitio/blob/newarch/bitio.hex">bitio.hex in the author’s repository</a> and use <strong>Download raw file</strong>. Copy the downloaded HEX file onto the MICROBIT drive. This replaces the program currently on the board; keep the source of any project you want to restore.</p><p>Wait for flashing to finish. The bitio logo should appear. Use the HEX file and Python package from the same <code>newarch</code> branch.</p></li>
+<li><h3>Install bitio in your PyCharm project</h3><p>Open a Python project in PyCharm and its <strong>Terminal</strong>. Use the Python interpreter belonging to that project’s environment. The command below downloads bitio from GitHub and requires <a href="https://git-scm.com/downloads">Git</a> to be installed.</p>
+<pre><code>python -m pip install "git+https://github.com/whaleygeek/bitio.git@newarch#subdirectory=src"
+python -m pip install numpy</code></pre>
+<p>To check which interpreter the Terminal is using:</p><pre><code>python -c "import sys; print(sys.executable)"</code></pre><p>It should match the interpreter selected for running the project. For a new Python installation, start with our <a href="setup.html">workspace setup guide</a>.</p></li>
+<li><h3>Run a happy-face test</h3><p>Create a file named <code>hello_microbit.py</code> and run this code. Avoid naming your file <code>microbit.py</code>, which would hide the installed package.</p><pre><code>import microbit
+
+microbit.display.show(microbit.Image.HAPPY)
+microbit.sleep(3000)</code></pre>
+<p>On the first run, follow the instructions in PyCharm’s Run console. bitio may ask you to unplug the board, press Enter, reconnect it, and press Enter again to identify its serial port. The happy face is displayed for three seconds; after the program ends, bitio may restore its logo.</p></li>
+</ol></section>
+<section id="numpy"><h2>One NumPy matrix, one LED picture</h2>
+<p>The display has five rows and five columns. Each value represents brightness: <strong>0 is off, 9 is brightest</strong>. This example creates a diagonal with brightness 5:</p>
+<pre><code>world = np.eye(5, dtype=int) * 5</code></pre>
+<div class="bp-numeric" aria-label="The 5 by 5 diagonal brightness matrix"><pre><code>[[5 0 0 0 0]
+ [0 5 0 0 0]
+ [0 0 5 0 0]
+ [0 0 0 5 0]
+ [0 0 0 0 5]]</code></pre><p>One cell in the array corresponds to one LED. Row 0 is the top of the picture; column 0 is its left edge.</p></div>
+<p>The whole picture can then be reflected with:</p><pre><code>world = np.fliplr(world)</code></pre>
+<p>The values remain the same; their positions change. The bright diagonal now runs from the top right to the bottom left.</p>
+<h3>The complete program</h3>
+<p>Save this as <code>microbit_numpy.py</code>, or download the file below. It displays the original matrix for three seconds, then its reflection for three seconds.</p>
+<pre id="bp-python"><code>"""Run on your computer with NumPy, bitio and a USB-connected micro:bit."""
+import numpy as np
+import microbit
+
+
+def show_world(world):
+    """Convert a 5 x 5 brightness matrix into a micro:bit image."""
+    if world.shape != (5, 5):
+        raise ValueError("The micro:bit display needs a 5 x 5 matrix.")
+    pixels = np.clip(world, 0, 9).astype(int)
+    bitmap = ":".join("".join(str(value) for value in row) for row in pixels)
+    microbit.display.show(microbit.Image(bitmap))
+
+
+world = np.eye(5, dtype=int) * 5
+print("Original matrix:\n", world)
+show_world(world)
+microbit.sleep(3000)
+
+world = np.fliplr(world)
+print("Reflected matrix:\n", world)
+show_world(world)
+microbit.sleep(3000)
+</code></pre>
+<div class="actions"><a class="button" href="microbit-numpy-bitio.py" download>Download Python code ↓</a><a class="text-link" href="https://github.com/vanflek/Matrix_Thinking/blob/gh-pages/microbit-numpy-bitio.py">View source on GitHub ↗</a></div>
+<div class="bp-note"><strong>The matrix operation and the display adapter have different jobs.</strong> <code>np.fliplr</code> transforms the whole array. The small loops inside <code>show_world</code> only turn its rows into the colon-separated image string understood by micro:bit. <code>np.clip</code> keeps output brightness in the range 0–9.</div>
+</section>
+<section id="troubleshooting"><h2>If the connection does not work</h2>
+<ul><li><strong>No MICROBIT drive:</strong> check the USB cable and port.</li><li><strong>No module named microbit:</strong> check that the package is installed in the same interpreter used by the Run configuration.</li><li><strong>Port busy:</strong> close other programs or browser sessions that are connected to the board’s serial port.</li><li><strong>The connection opens but commands fail:</strong> check the matching bitio firmware and consult the author’s README for board support and driver notes.</li></ul>
+<p>This article’s example was checked for array transformation and image formatting. The basic bitio connection and display workflow were also tried on our board. Behaviour on other board and operating-system combinations follows the bitio project’s compatibility limits.</p>
+</section>
+<section id="next"><h2>Make a rule visible</h2><p>Once connected, students can keep a complete brightness matrix on the computer and transform it with reflections, shifts, masks and shared arithmetic rules. The physical result gives every number an immediate meaning.</p>
+<p>For experiments that run directly on the board, explore our <a href="microbit.html">micro:bit labs with MakeCode and MicroPython</a>.</p></section>
+</article>
+<aside class="bp-toc"><p class="eyebrow">IN THIS GUIDE</p><nav aria-label="Article contents"><a href="#where">Where the code runs</a><a href="#setup">Connect your board</a><a href="#numpy">The NumPy example</a><a href="#troubleshooting">Connection checks</a><a href="#next">What to try next</a></nav><p>Computer → matrix operation → USB → physical picture.</p><a class="text-link" href="microbit.html">Explore the micro:bit labs →</a></aside>
+</div></main><footer><a class="brand" href="index.html">▦ MATRIX THINKING</a><p>Create worlds and control them with matrices.</p><a href="microbit.html">micro:bit labs</a> · <a href="privacy.html">Privacy</a></footer>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"2eb5449b4581422e91fc6e8a7390d8d4"}'></script>
+</body></html>
