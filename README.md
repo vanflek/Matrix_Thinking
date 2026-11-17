@@ -31,6 +31,10 @@ Explore the companion [micro:bit laboratories](microbit/) in MicroPython and Mak
 - [Module 22](module_22/)
 - [Module 23](module_23/)
 
+## Website laboratories
+
+- [Motion detection: two frames, one matrix rule](labs/motion/) — runnable NumPy and Pygame example.
+
 ## Shared organization
 
 - `steps/iteration_MM_NN_name.py`: runnable stages, in chapter order.
@@ -47,3 +51,4 @@ The author's Python code and code patches are available under the
 [MIT license](LICENSE). Book text, narrative documentation, photographs and
 illustrations are excluded. See [Licensing and permissions](LICENSING.md)
 for the precise scope and third-party exceptions.
+
