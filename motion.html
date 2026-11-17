@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Two frames. One matrix rule. — Matrix Thinking</title><meta name="description" content="Move a pixel duck. Compare two whole camera frames with NumPy subtraction, absolute difference and a Boolean mask. Explore noise, light and thresholds."><meta property="og:title" content="Two frames. One matrix rule."><meta property="og:description" content="See how whole-array operations reveal changes in a world of pixels."><link rel="canonical" href="https://matrixthinking.org/motion.html"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="motion.css?v=20261116-1"><link rel="icon" href="favicon.svg?v=matrix1" type="image/svg+xml"></head>
+<body><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="index.html">▦ MATRIX THINKING</a><nav aria-label="Main navigation"><a href="index.html#game-labs">All labs</a><a href="#experiment">Experiment</a><a href="#numpy">NumPy &amp; GitHub</a></nav></header><main id="main" class="mo-page">
+<section class="mo-hero"><p class="eyebrow">COMPUTER VISION / A RULE FOR THE WHOLE FRAME</p><h1>Two frames.<br>One <em>matrix rule.</em></h1><p class="lead">A camera frame is a matrix of brightness values. Subtract two states of the whole world, take the absolute difference, then apply a Boolean mask. Watch the changed pixels appear.</p><div class="mo-flow"><span><b>01</b> Two states of the world</span><span aria-hidden="true">→</span><span><b>02</b> Absolute difference</span><span aria-hidden="true">→</span><span><b>03</b> A mask of changes</span></div><a class="text-link" href="#experiment">Move the duck. Inspect every pixel ↓</a></section>
+<section id="experiment" aria-labelledby="mo-title"><div class="mo-heading"><div><p class="eyebrow">THE EXPERIMENT</p><h2 id="mo-title">See the frames.<br>Read the transformation.</h2></div><p>A simulated camera with 24 rows and 32 columns. Each frame contains 768 values from 0 (black) to 255 (white). No webcam is needed.</p></div>
+<div class="mo-toolbar"><div class="mo-presets" role="group" aria-label="Choose an experiment"><button type="button" data-scene="movement" aria-pressed="true">Move the duck</button><button type="button" data-scene="noise" aria-pressed="false">Small noise</button><button type="button" data-scene="lighting" aria-pressed="false">Lighting change</button><button type="button" data-scene="contrast" aria-pressed="false">Low contrast</button></div><p id="mo-scenario" role="status"></p><div class="mo-actions"><button type="button" class="button" id="mo-capture">Use current as previous</button><button type="button" class="mo-secondary" id="mo-play" aria-pressed="false">Start animation</button><button type="button" class="mo-secondary" id="mo-frame">New noise sample</button><button type="button" class="mo-link" id="mo-reset">Reset</button></div><p id="mo-reference" class="mo-small"></p></div>
+<div class="mo-controls"><label for="mo-threshold">Change threshold <output id="mo-threshold-value">30</output><input id="mo-threshold" type="range" min="0" max="255" value="30"></label><label for="mo-row">Duck row <output id="mo-row-value">8</output><input id="mo-row" type="range" min="0" max="16" value="8"></label><label for="mo-col">Duck column <output id="mo-col-value">12</output><input id="mo-col" type="range" min="0" max="24" value="12"></label></div>
+<div class="mo-worlds">
+<article class="mo-panel"><div class="mo-panel-title"><p class="eyebrow">01 / PREVIOUS STATE</p><span>previous</span></div><canvas id="mo-previous" width="640" height="480" role="img" aria-label="Previous frame. Exact brightness values are available in the pixel inspector and matrix table."></canvas><p>The reference frame stays fixed until you capture a new reference or start animation.</p></article>
+<article class="mo-panel"><div class="mo-panel-title"><p class="eyebrow">02 / CURRENT STATE</p><span>current</span></div><canvas id="mo-current" width="640" height="480" role="application" tabindex="0" aria-label="Current camera frame. Drag the duck or use arrow keys to move it. Use the row and column sliders as an alternative."></canvas><p>Drag the duck or focus this picture and use arrow keys. Point at any pixel to inspect the same position in all four matrices.</p></article>
+<article class="mo-panel"><div class="mo-panel-title"><p class="eyebrow">03 / COMPARE EVERY PIXEL</p><span>difference</span></div><canvas id="mo-difference" width="640" height="480" role="img" aria-label="Absolute difference of both whole frames, shown as a blue intensity map."></canvas><p>Blue intensity represents the absolute difference, from 0 to 255. Both the old and new positions can change brightness.</p></article>
+<article class="mo-panel"><div class="mo-panel-title"><p class="eyebrow">04 / SELECT CHANGES</p><span>motion_mask</span></div><canvas id="mo-mask" width="640" height="480" role="img" aria-label="Boolean change mask. Yellow means True, pale cells mean False."></canvas><p>Yellow = True: the difference is greater than the threshold. Pale = False. The same condition applies to all 768 cells.</p></article>
+</div>
+<div class="mo-counts"><div><span>Whole world</span><strong>24 × 32 = 768</strong></div><div><span>Changed pixels</span><strong id="mo-count">0</strong><code>np.count_nonzero(motion_mask)</code></div><div><span>Fraction of the frame</span><strong id="mo-fraction">0%</strong><code>np.mean(motion_mask)</code></div></div>
+<section class="mo-inspector" aria-labelledby="mo-inspect-title"><div><p class="eyebrow">ONE POSITION / THE SAME RULE EVERYWHERE</p><h3 id="mo-inspect-title">Trace one cell through the whole operation.</h3><div class="mo-probe-controls"><label for="mo-probe-row">Inspect row<input id="mo-probe-row" type="number" min="0" max="23" value="9"></label><label for="mo-probe-col">Inspect column<input id="mo-probe-col" type="number" min="0" max="31" value="11"></label></div><p id="mo-pixel-label"></p></div><div><div id="mo-pixel-values" class="mo-pixel-values"></div><pre id="mo-pixel-rule"></pre><p class="mo-small">The pixel inspector explains one position. NumPy applies this operation to the entire matrix at once.</p></div></section>
+<details id="mo-matrix-details"><summary>Read all the numbers in a matrix</summary><label for="mo-matrix-choice">Matrix to inspect<select id="mo-matrix-choice"><option value="previous">Previous frame</option><option value="current">Current frame</option><option value="difference" selected>Absolute difference</option><option value="mask">Boolean mask (0 / 1)</option></select></label><p class="mo-small">Rows and columns start at 0. All 768 values are present. Scroll inside the table; select a value to inspect its position.</p><div class="mo-table-wrap" tabindex="0" aria-label="Scrollable full matrix"><table id="mo-table"></table></div></details>
+<details class="mo-camera-options"><summary>Adjust the simulated camera</summary><div class="mo-controls"><label for="mo-light">Lighting change <output id="mo-light-value">0</output><input id="mo-light" type="range" min="-60" max="60" value="0"></label><label for="mo-noise">Noise amplitude <output id="mo-noise-value">0</output><input id="mo-noise" type="range" min="0" max="12" value="0"></label><label for="mo-brightness">Current duck brightness <output id="mo-brightness-value">210</output><input id="mo-brightness" type="range" min="32" max="240" value="210"></label></div><p class="mo-small">These controls change the current frame. Capture it as the previous frame when you want a new reference. Values are clipped to 0–255, just as brightness values must be.</p></details>
+</section>
+<section id="numpy" class="mo-numpy"><p class="eyebrow">THE METHOD / REAL NUMPY</p><h2>Describe the transformation<br>of the whole world.</h2><p>Both frames have shape <code>(24, 32)</code>. Every output position refers to the same row and column in the two input matrices.</p>
+<div class="mo-code-steps"><article><h3>1. Allow signed subtraction</h3><pre><code>previous = previous.astype(np.int16)
+current = current.astype(np.int16)</code></pre><p>Camera values often use <code>uint8</code>. Its range is 0–255. Convert both arrays before subtraction so a darker pixel can produce a negative difference correctly.</p></article><article><h3>2. Measure change everywhere</h3><pre><code>difference = np.abs(current - previous)</code></pre><p>Subtraction compares corresponding cells. Absolute value turns both lightening and darkening into positive magnitudes of change.</p></article><article><h3>3. Apply one shared condition</h3><pre><code>motion_mask = difference &gt; threshold
+
+changed = np.count_nonzero(motion_mask)
+fraction = np.mean(motion_mask)</code></pre><p>The mask contains a Boolean for every pixel. Counting True cells gives the changed area in pixels; their mean gives the changed fraction of the frame.</p></article></div>
+<div class="mo-callout"><h3>What does the mask actually tell us?</h3><p>It marks brightness changes between two frames. The duck’s old location may become darker while its new location becomes lighter, so both can be selected. Noise and a change in lighting can also trigger the mask. Interpreting which object moved is a further step.</p></div>
+<div class="mo-prompts"><h3>Predict, try, explain.</h3><ul><li>Why are pixels selected where the duck used to be?</li><li>Capture a new reference without moving the duck. How many changes remain?</li><li>Try Small noise, then raise the threshold above 8. What disappears?</li><li>Try Lighting change. Why does most or all of the frame respond?</li><li>Try Low contrast. Lower the threshold: when does the duck become detectable?</li><li>Compare <code>difference &gt; threshold</code> with <code>difference &gt;= threshold</code>. What happens at equality?</li></ul></div>
+<h3>Run the complete example in PyCharm.</h3><p>The browser illustrates the arrays in JavaScript. The downloadable Python program performs the calculations with NumPy and displays four views using Pygame. It uses a simulated camera and requires no hardware.</p><div class="mo-actions"><a class="button" href="https://github.com/vanflek/Matrix_Thinking/tree/main/labs/motion">Code and instructions on GitHub ↗</a><a class="mo-link" href="motion_numpy.py" download>Download Python file ↓</a></div><pre><code>python -m pip install numpy pygame
+python motion_numpy.py</code></pre><p class="mo-small">Arrows: move. Space: capture reference. Page Up / Down: threshold. N: noise. L: lighting. C: contrast. R: reset. Escape: exit. For a console-only check: <code>python motion_numpy.py --check</code>.</p><details class="mo-source"><summary>Read the complete Python program</summary><pre><code>"""Matrix Thinking: two whole camera frames, one difference, one Boolean mask.
+
+Run: python motion_numpy.py
+Console only: python motion_numpy.py --check
+"""
+import argparse
+import numpy as np
+
+ROWS, COLS = 24, 32
+DUCK = np.array([
+    [0, 0, 0, 1, 1, 1, 0, 0],
+    [0, 0, 0, 1, 0, 1, 1, 0],
+    [0, 0, 0, 1, 1, 1, 0, 0],
+    [1, 0, 0, 1, 1, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+], dtype=bool)
+
+
+def make_frame(row=8, col=8, brightness=210, light=0, noise=0, seed=1):
+    """Synthetic grayscale camera, no hardware required. Brightness is 0..255."""
+    if not (0 &lt;= row &lt;= ROWS - 8 and 0 &lt;= col &lt;= COLS - 8):
+        raise ValueError("The duck must fit inside the frame.")
+    yy, xx = np.indices((ROWS, COLS))
+    frame = 32 + ((yy // 4 + xx // 4) % 2) * 6
+    patch = frame[row:row + 8, col:col + 8]
+    patch[DUCK] = brightness
+    # Deterministic noise: the website and Python use this same expression.
+    indices = np.arange(ROWS * COLS).reshape(ROWS, COLS)
+    perturbation = (((indices * 37 + seed * 101) % 17 - 8) * noise) // 8
+    return np.clip(frame + light + perturbation, 0, 255).astype(np.uint8)
+
+
+def detect_changes(previous, current, threshold=30):
+    """Calculate the whole field at once, with no loop over individual pixels."""
+    previous = np.asarray(previous)
+    current = np.asarray(current)
+    if previous.shape != current.shape or previous.ndim != 2:
+        raise ValueError("Use two grayscale matrices with the same shape.")
+    if not 0 &lt;= threshold &lt;= 255:
+        raise ValueError("Threshold must be between 0 and 255.")
+    # Convert BEFORE subtraction: uint8 cannot represent negative differences.
+    difference = np.abs(current.astype(np.int16) - previous.astype(np.int16))
+    motion_mask = difference &gt; threshold
+    changed_pixels = int(np.count_nonzero(motion_mask))
+    changed_fraction = float(np.mean(motion_mask))
+    return difference, motion_mask, changed_pixels, changed_fraction
+
+
+def run():
+    import pygame
+    pygame.init()
+    screen = pygame.display.set_mode((1000, 900))
+    pygame.display.set_caption("Matrix Thinking — whole-frame change detection")
+    font = pygame.font.SysFont("consolas", 18)
+    small = pygame.font.SysFont("consolas", 15)
+    clock = pygame.time.Clock()
+    row, col, brightness, light, noise, seed, threshold = 8, 12, 210, 0, 0, 1, 30
+    previous = make_frame(8, 8)
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+                elif event.key == pygame.K_LEFT:
+                    col = max(0, col - 1)
+                elif event.key == pygame.K_RIGHT:
+                    col = min(COLS - 8, col + 1)
+                elif event.key == pygame.K_UP:
+                    row = max(0, row - 1)
+                elif event.key == pygame.K_DOWN:
+                    row = min(ROWS - 8, row + 1)
+                elif event.key == pygame.K_SPACE:
+                    previous = make_frame(row, col, brightness, light, noise, seed)
+                elif event.key == pygame.K_n:
+                    noise = 8 if noise == 0 else 0
+                    seed += 1
+                elif event.key == pygame.K_l:
+                    light = 55 if light == 0 else 0
+                elif event.key == pygame.K_c:
+                    brightness = 55 if brightness == 210 else 210
+                    previous = make_frame(8, 8, brightness)
+                elif event.key == pygame.K_PAGEUP:
+                    threshold = min(255, threshold + 5)
+                elif event.key == pygame.K_PAGEDOWN:
+                    threshold = max(0, threshold - 5)
+                elif event.key == pygame.K_r:
+                    row, col, brightness, light, noise, seed, threshold = 8, 12, 210, 0, 0, 1, 30
+                    previous = make_frame(8, 8)
+        current = make_frame(row, col, brightness, light, noise, seed)
+        difference, mask, count, fraction = detect_changes(previous, current, threshold)
+        screen.fill((250, 251, 248))
+        # Rendering adapts whole matrices to RGB surfaces. It does not calculate
+        # the change mask; detect_changes above performs that calculation.
+        for i, (title, data) in enumerate([
+            ("01 / Previous frame", previous), ("02 / Current frame", current),
+            ("03 / Absolute difference", difference), ("04 / Boolean mask", mask * 255),
+        ]):
+            x, y = 24 + (i % 2) * 490, 50 + (i // 2) * 380
+            screen.blit(font.render(title, True, (19, 45, 69)), (x, y - 27))
+            rgb = np.repeat(data.astype(np.uint8)[..., None], 3, axis=2)
+            surface = pygame.surfarray.make_surface(rgb.swapaxes(0, 1))
+            screen.blit(pygame.transform.scale(surface, (448, 336)), (x, y))
+        lines = [
+            f"threshold = {threshold}    changed = {count}/{ROWS * COLS} ({fraction:.1%})",
+            "Arrows: move duck | Space: current -&gt; previous | Page Up/Down: threshold",
+            "N: noise | L: lighting | C: contrast (resets previous) | R: reset | Esc: exit",
+            "Both the old and new duck positions can be marked. This detects change, not objects.",
+        ]
+        for i, line in enumerate(lines):
+            screen.blit(small.render(line, True, (19, 45, 69)), (24, 805 + i * 23))
+        pygame.display.flip()
+        clock.tick(30)
+    pygame.quit()
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true", help="Run a console example without a window")
+    args = parser.parse_args()
+    if args.check:
+        previous = make_frame(8, 8)
+        current = make_frame(8, 12)
+        difference, mask, count, fraction = detect_changes(previous, current)
+        print("Frame shape:", current.shape)
+        print("Changed pixels:", count)
+        print("Changed fraction:", fraction)
+        print("Difference range:", int(difference.min()), int(difference.max()))
+    else:
+        run()
+</code></pre></details>
+</section></main><footer><a class="brand" href="index.html">▦ MATRIX THINKING</a><a href="life.html">Explore Game of Life →</a><a href="privacy.html">Privacy</a></footer><script src="motion-model.js?v=20261116-1"></script><script src="motion.js?v=20261116-1"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"2eb5449b4581422e91fc6e8a7390d8d4"}'></script></body></html>
