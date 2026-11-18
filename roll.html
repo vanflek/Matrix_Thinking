@@ -1,0 +1,135 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Roll the whole world — Matrix Thinking</title><meta name="description" content="Move one pixel, a duck or your own drawing by rolling an entire matrix. Explore NumPy roll, axes and wraparound. Download the complete Python and Pygame example."><meta property="og:title" content="One cell moves. The whole matrix rolls."><link rel="canonical" href="https://matrixthinking.org/roll.html"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="roll.css?v=20261117-1"><link rel="icon" href="favicon.svg?v=matrix1" type="image/svg+xml"></head>
+<body><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="index.html">▦ MATRIX THINKING</a><nav aria-label="Main navigation"><a href="index.html#game-labs">All labs</a><a href="#experiment">Experiment</a><a href="#numpy">Python &amp; GitHub</a></nav></header>
+<main id="main" class="ro-page"><section class="ro-hero"><p class="eyebrow">MATRIX THINKING / MOVE EVERY VALUE TOGETHER</p><h1>One cell moves.<br>The whole <em>matrix rolls.</em></h1><p class="lead">Start with one yellow pixel. Roll every value in its world, including all the zeros. Then try a duck or draw a picture: the same transformation moves them all.</p><div class="ro-promise"><span>One world: <b>10 × 10</b></span><span>One operation: <b>np.roll</b></span><span>Four directions. <b>No lost pixels.</b></span></div></section>
+<section id="experiment" tabindex="0" aria-labelledby="ro-title"><div class="ro-heading"><div><p class="eyebrow">THE EXPERIMENT</p><h2 id="ro-title">A picture and its matrix.<br>One shared state.</h2></div><p>Focus either view and use the arrow keys. Touch controls work too. Every move wraps through the edges.</p></div>
+<div class="ro-toolbar"><div class="ro-presets" role="group" aria-label="Load a world"><button type="button" data-preset="cell" aria-pressed="true">One cell <kbd>C</kbd></button><button type="button" data-preset="duck" aria-pressed="false">Draw a duck <kbd>Space</kbd></button><button type="button" data-preset="blank" aria-pressed="false">Blank canvas</button></div><button type="button" id="ro-reset">Reset <kbd>R</kbd></button></div>
+<div class="ro-live"><div><span class="eyebrow">THE WHOLE-WORLD OPERATION</span><pre id="ro-operation" aria-live="polite">world[4, 4] = 1</pre><p id="ro-operation-note">One lit cell, 99 zeros. They are all part of the world.</p></div><div class="ro-invariant"><span>Lit cells</span><strong id="ro-count">1</strong><small id="ro-conservation">The picture and numbers share all 100 values.</small></div></div>
+<div class="ro-worlds"><article class="ro-panel"><div class="ro-panel-title"><p class="eyebrow">01 / THE WORLD, DRAWN</p><span>0 = empty · 1 = lit</span></div><canvas id="ro-world" width="520" height="520" tabindex="0" role="application" aria-label="Drawn 10 by 10 world. Use arrow keys to roll; click or drag to paint. Choose erase to remove pixels. Exact values are also in the matrix alongside."></canvas><div class="ro-tools" role="group" aria-label="Drawing tool"><button type="button" data-tool="paint" aria-pressed="true">Paint 1</button><button type="button" data-tool="erase" aria-pressed="false">Erase 0</button><button type="button" data-tool="inspect" aria-pressed="false">Inspect</button></div><p>Click or drag to draw. Right-drag also erases. Arrow keys move the whole picture.</p></article>
+<article class="ro-panel"><div class="ro-panel-title"><p class="eyebrow">02 / THE SAME WORLD, AS NUMBERS</p><span>world.shape = (10, 10)</span></div><div id="ro-matrix" class="ro-grid" aria-label="World matrix. Rows and columns start at zero."></div><p>Select a number to trace where it came from. Even a zero has a source and a destination.</p></article></div>
+<div class="ro-below"><div class="ro-steering"><p class="eyebrow">CHOOSE A DIRECTION</p><div class="ro-dpad" role="group" aria-label="Roll direction"><button type="button" data-direction="up" aria-label="Roll up">↑</button><button type="button" data-direction="left" aria-label="Roll left">←</button><button type="button" data-direction="down" aria-label="Roll down">↓</button><button type="button" data-direction="right" aria-label="Roll right">→</button></div><p><code>axis=0</code>: up / down<br><code>axis=1</code>: left / right</p></div><div class="ro-inspector"><p class="eyebrow">FOLLOW ONE VALUE</p><h3 id="ro-inspect-title">Choose a direction, then inspect a number.</h3><pre id="ro-inspect-rule">world[4, 4] = 1</pre><p id="ro-inspect-note">The gold outline links the same coordinate in both views.</p><p class="ro-wrap-note">The edges connect. Column 9 rolls into column 0; row 9 rolls into row 0. Moving left or up wraps the other way.</p></div></div>
+<div class="ro-trace"><div><p class="eyebrow">FOLLOW A WHOLE ROW OR COLUMN</p><h3 id="ro-trace-title">Row 4</h3><p>Compare every position, including the zeros. The outlined value crosses the boundary.</p></div><div class="ro-vectors"><span id="ro-before-label">Before</span><div id="ro-before" class="ro-vector"></div><span id="ro-after-label">After</span><div id="ro-after" class="ro-vector"></div></div></div>
+</section>
+<section id="numpy" class="ro-numpy"><p class="eyebrow">THE METHOD / REAL NUMPY</p><h2>The drawing changes.<br>The movement code stays the same.</h2><div class="ro-code-grid"><article><h3>1. Describe the world</h3><pre><code>world = np.zeros((10, 10), dtype=np.uint8)
+world[4, 4] = 1</code></pre><p>One array stores the complete state. Its indices are <code>[row, column]</code>, starting at zero.</p></article><article><h3>2. Transform the whole array</h3><pre><code>world = np.roll(world, 1, axis=1)</code></pre><p>Shift one position to the right. No search for the lit cell, no separate coordinate update: NumPy moves all values together.</p></article></div>
+<div class="ro-directions"><div><strong>← Left</strong><code>np.roll(world, -1, axis=1)</code></div><div><strong>→ Right</strong><code>np.roll(world, 1, axis=1)</code></div><div><strong>↑ Up</strong><code>np.roll(world, -1, axis=0)</code></div><div><strong>↓ Down</strong><code>np.roll(world, 1, axis=0)</code></div></div>
+<div class="ro-callout"><h3>Roll means wrap, not erase.</h3><p>The array keeps its shape and every value. A duck may split across the screen edges; its parts meet again when they roll back. The number of lit cells stays constant during movement. Painting can change that number.</p><p>Always specify <code>axis</code> for these movements. With no axis, NumPy rolls the flattened array, which is a different transformation.</p></div>
+<h3>Predict. Try. Explain.</h3><ul class="ro-prompts"><li>Move the single cell right until it crosses the edge. Which matrix indices change?</li><li>Move right ten times. Why do you get the original matrix?</li><li>Move right, then left. Does it work for a duck and your own drawing too?</li><li>Select a zero in the numeric view. Where did that zero come from?</li><li>Draw near two edges. Can one picture appear in all four corners?</li></ul>
+<h3>Download the complete program. No classes.</h3><p>The browser illustrates the transformation in JavaScript. The downloadable Python file performs the movement with real NumPy and opens a Pygame window with both views. It requires no images or hardware.</p><div class="ro-downloads"><a class="button" href="roll-example.zip" download>Download complete example ↓</a><a href="roll_numpy.py" download>Python file ↓</a><a href="https://github.com/vanflek/Matrix_Thinking/tree/main/labs/roll">Code &amp; instructions on GitHub ↗</a></div><pre><code>python -m pip install numpy pygame
+python roll_numpy.py</code></pre><p>Arrows: move. Space: duck. C: single cell. Left / right mouse: draw / erase. R: restore the last loaded preset. Escape: close. Click the Pygame window before using the keyboard.</p><details class="ro-source"><summary>Read the complete Python program</summary><pre><code>import numpy as np
+import pygame
+
+pygame.init()
+screen = pygame.display.set_mode((1000, 620))
+pygame.display.set_caption("Matrix Thinking: move the whole world")
+pygame.key.set_repeat(220, 110)
+
+font = pygame.font.SysFont("consolas", 24)
+small_font = pygame.font.SysFont("consolas", 18)
+clock = pygame.time.Clock()
+
+size = 10
+cell_size = 40
+field_x, matrix_x, top = 40, 560, 150
+
+initial = np.zeros((size, size), dtype=np.uint8)
+initial[4, 4] = 1
+world = initial.copy()
+
+duck = np.array([
+    [0, 0, 1, 1, 0],
+    [0, 0, 1, 1, 1],
+    [1, 0, 1, 1, 0],
+    [1, 1, 1, 1, 0],
+    [0, 1, 1, 0, 0],
+], dtype=np.uint8)
+
+moves = {
+    pygame.K_LEFT:  (-1, 1),
+    pygame.K_RIGHT: (1, 1),
+    pygame.K_UP:    (-1, 0),
+    pygame.K_DOWN:  (1, 0),
+}
+
+operation = "world[4, 4] = 1"
+running = True
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
+
+            elif event.key in moves:
+                shift, axis = moves[event.key]
+                world = np.roll(world, shift, axis=axis)
+                operation = f"world = np.roll(world, {shift}, axis={axis})"
+
+            elif event.key == pygame.K_SPACE:
+                initial = np.zeros((size, size), dtype=np.uint8)
+                initial[2:7, 2:7] = duck
+                world = initial.copy()
+                operation = "A duck is now stored in the matrix."
+
+            elif event.key == pygame.K_c:
+                initial = np.zeros((size, size), dtype=np.uint8)
+                initial[4, 4] = 1
+                world = initial.copy()
+                operation = "One cell is now stored in the matrix."
+
+            elif event.key == pygame.K_r:
+                world = initial.copy()
+                operation = "world = initial.copy()"
+
+        if event.type in (pygame.MOUSEBUTTONDOWN, pygame.MOUSEMOTION):
+            buttons = pygame.mouse.get_pressed()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                paint = event.button == 1
+                erase = event.button == 3
+            else:
+                paint, erase = buttons[0], buttons[2]
+
+            x, y = event.pos
+            column = (x - field_x) // cell_size
+            row = (y - top) // cell_size
+            if (paint or erase) and 0 &lt;= row &lt; size and 0 &lt;= column &lt; size:
+                world[row, column] = 1 if paint else 0
+                operation = f"world[{row}, {column}] = {world[row, column]}"
+
+    screen.fill("#F8FAF7")
+    screen.blit(font.render("THE WORLD", True, "#132D45"), (40, 35))
+    screen.blit(font.render("THE SAME WORLD AS NUMBERS", True, "#132D45"), (560, 35))
+    screen.blit(small_font.render(operation, True, "#1165DB"), (40, 90))
+
+    for row in range(size):
+        for column in range(size):
+            value = int(world[row, column])
+            colour = "#FFD33D" if value else "#EAF0F6"
+
+            for left in (field_x, matrix_x):
+                rectangle = pygame.Rect(
+                    left + column * cell_size,
+                    top + row * cell_size,
+                    cell_size - 3,
+                    cell_size - 3,
+                )
+                pygame.draw.rect(screen, colour, rectangle, border_radius=4)
+                if left == matrix_x:
+                    number = font.render(str(value), True, "#132D45")
+                    screen.blit(number, number.get_rect(center=rectangle.center))
+
+    controls = [
+        "Arrows: roll | Space: duck | C: one cell | R: reset | Esc: quit",
+        "Draw on the left: left mouse = 1, right mouse = 0.",
+    ]
+    for line, text in enumerate(controls):
+        screen.blit(small_font.render(text, True, "#132D45"), (40, 565 + line * 25))
+
+    pygame.display.flip()
+    clock.tick(60)
+
+pygame.quit()
+</code></pre></details><p class="ro-small">Drawing loops only render the picture and numbers. The matrix movement is the single <code>np.roll</code> operation. <a href="https://numpy.org/doc/stable/reference/generated/numpy.roll.html">NumPy reference ↗</a></p>
+</section></main><footer><a class="brand" href="index.html">▦ MATRIX THINKING</a><a href="motion.html">Compare two worlds →</a><a href="privacy.html">Privacy</a></footer><script src="roll-model.js?v=20261117-1"></script><script src="roll.js?v=20261117-1"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"2eb5449b4581422e91fc6e8a7390d8d4"}'></script></body></html>
