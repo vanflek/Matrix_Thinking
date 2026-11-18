@@ -1,0 +1,21 @@
+.edge-page { max-width: 1180px; margin: auto; padding: 4rem clamp(1rem, 4vw, 3rem); }
+.edge-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin: 2rem 0; }
+.edge-tools select, .edge-direction select { font: inherit; padding: .35rem; }
+.edge-panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.edge-panels section, .edge-explain { background: white; border: 1px solid #d5e1ee; border-radius: 1rem; padding: clamp(.85rem, 2vw, 1.5rem); }
+.edge-panels h2 { font-size: 1.25rem; margin: .3rem 0 .75rem; }
+.edge-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 3px; margin-block: .7rem; }
+.edge-cell { display: grid; place-items: center; aspect-ratio: 1; border: 1px solid #d7e3f0; border-radius: 4px; padding: 0; min-width: 0; background: #edf4fc; color: #39506c; font: 600 clamp(.65rem, 1.6vw, 1rem) monospace; }
+button.edge-cell { cursor: pointer; }
+.edge-cell.on { background: #1261c9; color: white; border-color: #1261c9; }
+#edge-input .edge-cell { background: #13253e; color: #c9d8ee; }
+#edge-input .edge-cell.on { background: white; color: #13253e; border-color: #91a9c8; }
+.edge-cell.selected { outline: 2px solid #e8a600; outline-offset: -2px; }
+.edge-cell:focus-visible { outline: 3px solid #e8a600; outline-offset: 1px; z-index: 1; }
+.edge-inspect { background: #eaf3ff; border-radius: .6rem; padding: 1rem; margin-block: 1.25rem; }
+.edge-explain pre { overflow: auto; background: #eff4fa; padding: 1rem; }
+@media (max-width: 780px) {
+  .edge-panels { grid-template-columns: 1fr; }
+  .edge-grid { max-width: 24rem; }
+}
+.edge-panels section{min-width:0}.edge-index-note{font-size:.8rem;color:var(--muted)}.edge-explain code{font-family:Consolas,monospace}.edge-explain h3{font-size:1.25rem;margin-top:2rem}
