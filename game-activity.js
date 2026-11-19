@@ -2,6 +2,11 @@
 (() => {
   'use strict';
   const config = {
+    fruit: ['main', '', '', '', '', '#fruit-world,#fruit-matrix-table', '#fruit-count,#fruit-price,[data-stage],[data-example]'],
+    garden: ['main', '', '#g-lesson-next,#g-lesson-back', '', '#g-reset', '#g-world,#g-table', '#g-fence,#g-minimum,#g-width,#g-length,[data-example],[data-stage],[data-lesson],#g-best'],
+    motion: ['main', '#mo-play', '#mo-frame,#mo-capture', '', '#mo-reset', '#mo-previous,#mo-difference,#mo-mask,#mo-table', '[data-scene],#mo-threshold,#mo-row,#mo-col,#mo-probe-row,#mo-probe-col,#mo-matrix-choice,#mo-light,#mo-noise,#mo-brightness'],
+    roll: ['main', '', '[data-direction]', '', '#ro-reset,[data-preset]', '#ro-matrix button', '[data-tool]'],
+    'microbit-pycharm': ['main', '', '', '', '', '', ''],
     microbit: ['main', '', '#mb-a,#mb-b[data-mb-action="step"],[data-mb-tilt]', '', '#mb-shake,#mb-b[data-mb-action="reset"]', '#mb-matrix button', '[data-mb-lesson]'],
     life: ['main', '#life-play', '#life-generation,#life-operation', '#life-world', '#life-reset,#life-clear', '#life-shifts button', '#life-preset,#life-numbers,#life-speed'],
     sandbox: ['main', '#sand-play', '#sand-step', '#sand-world', '#sand-reset,#sand-clear', '#sand-inspect,#sand-data', '#sand-gravity,#sand-diagonals,#sand-spread,#sand-preset'],
@@ -24,7 +29,11 @@
   let first = null, last = -Infinity, lastCount = -Infinity, actions = 0, active = 0, previous = performance.now(), busy = false, failures = 0, retryAt = 0;
   const visible = () => !document.hidden && document.hasFocus();
   function queue(event) {
-    if (!sent.has(event)) { pending.add(event); flush(); }
+    queueMany([event]);
+  }
+  function queueMany(events) {
+    events.forEach(event => { if (!sent.has(event)) pending.add(event); });
+    flush();
   }
   async function flush() {
     if (busy || !pending.size || failures >= 6 || performance.now() < retryAt) return;
@@ -46,17 +55,22 @@
     if (!event.isTrusted || !visible()) return;
     const now = performance.now();
     last = now;
-    if (event.repeat || now - lastCount < 400) return;
+    if (event.repeat) return;
+    // Preserve distinct milestones even when one gesture emits multiple DOM events.
+    queueMicrotask(() => queueMany(['interacted', kind]));
+    if (now - lastCount < 400) return;
     if (first === null) { first = now; previous = now; }
     lastCount = now; actions++;
-    // Defer networking until the game's own event handler has completed.
-    queueMicrotask(() => { queue('interacted'); queue(kind); });
   }
   function matches(target, selector) { return selector && target.closest(selector); }
   root.addEventListener('click', e => {
     const target = e.target.closest ? e.target : e.target.parentElement;
     if (!target || target.closest(':disabled,[aria-disabled=true]')) return;
-    if (matches(target, cfg[1])) { if (target.closest('button').getAttribute('aria-pressed') !== 'true') action('play', e); }
+    const resource = target.closest('[data-activity-event]');
+    if (resource) { action(resource.getAttribute('data-activity-event'), e); return; }
+    const download = target.closest('a[download]');
+    if (download) { action('download_code', e); return; }
+    if (matches(target, cfg[1])) { if (target.closest('button')?.getAttribute('aria-pressed') !== 'true') action('play', e); }
     else if (matches(target, cfg[2])) action('step', e);
     else if (matches(target, cfg[3])) { if (name !== 'sandbox') action('edit', e); }
     else if (matches(target, cfg[4])) action('restart', e);
@@ -71,8 +85,14 @@
   root.addEventListener('change', e => { if (matches(e.target, cfg[6])) action('rule', e); }, true);
   root.addEventListener('input', e => { if (matches(e.target, cfg[6]) || e.target.matches('#ray-index')) action('inspect', e); }, true);
   root.addEventListener('pointerdown', e => {
-    if (e.button !== 0) return;
-    if (name === 'sandbox' && matches(e.target, cfg[3])) action('edit', e);
+    if (e.button !== 0 && !(name === 'roll' && e.button === 2)) return;
+    if (name === 'roll' && e.target.closest('#ro-world')) {
+      const inspect = root.querySelector('[data-tool="inspect"][aria-pressed="true"]');
+      action(inspect && e.button === 0 ? 'inspect' : 'edit', e);
+    }
+    else if (name === 'motion' && e.target.closest('#mo-current')) action('edit', e);
+    else if (name === 'garden' && e.target.closest('#g-handle')) action('control', e);
+    else if (name === 'sandbox' && matches(e.target, cfg[3])) action('edit', e);
     else if (e.target.closest('[data-control],[data-ray-control],[data-xon-direction]')) action('control', e);
   }, true);
   root.addEventListener('keydown', e => {
@@ -83,7 +103,11 @@
       flight: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','KeyW','KeyA','KeyS','KeyD','Space','KeyP','KeyR','Enter'],
       raycast: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','KeyW','KeyA','KeyS','KeyD','KeyP','Enter'],
       xonix: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','KeyP','KeyC','Enter'],
-      sandbox: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','KeyI']
+      sandbox: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','KeyI'],
+      roll: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','KeyC','KeyR'],
+      motion: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'],
+      fruit: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Home','End','Enter','Space'],
+      garden: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Home','End','Enter','Space']
     };
     if (allowed[name]?.includes(e.code)) action('control', e);
   }, true);

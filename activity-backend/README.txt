@@ -1,6 +1,6 @@
 Matrix Thinking game activity — deployed 2026-11-07 (America/Los_Angeles)
 
-Frontend: game-activity.js, shared by all ten published interactive pages.
+Frontend: game-activity.js, shared by all 15 published interactive pages and the micro:bit/PyCharm guide.
 Backend: matrix-game-events.vanflek.workers.dev; Cloudflare Workers Free.
 D1: matrix-game-activity, binding DB; ID e01a11b3-c4e0-438f-8ef1-546eddb0665b.
 The main book-code branch and the GitHub Pages CNAME must remain unchanged.
@@ -41,3 +41,24 @@ Never put Cloudflare API tokens, database access tokens or private reports in th
 public frontend or GitHub Pages branch. The frontend endpoint URL is public.
 
 Micro:bit added 2026-11-09: step records A and brightness B; restart records shake and shift B reset; inspect records cell selection; control records experiment selection. Each category is a per-session milestone, not a raw count of button presses. The existing engagement thresholds and privacy exclusions are unchanged.
+
+Coverage update — 2026-11-18 (America/Los_Angeles)
+Frontend now covers all 15 interactive pages and the micro:bit/PyCharm article.
+Added fruit, garden, motion, roll, microbit-pycharm to the Worker allowlist.
+Resources: download_code (download link), download_data (CSV export button),
+copy_code (copy button). These are per-page-session attempts, not completed
+transfers or confirmed clipboard writes. No file URL or clipboard data is sent.
+Run report.sql for resource counts; game_engagement remains compatible.
+No database migration is required: existing aggregate tables accept new categories.
+The collector retains DNT/GPC/automation exclusions and test=1 QA separation.
+After rebuilding a page, run activity/apply-collector.py against its output folder.
+The local build scripts for the four added laboratories also run that helper.
+
+Resource summary query (QA excluded):
+SELECT game, event, SUM(total) AS sessions FROM game_daily WHERE test=0 AND event IN ('download_code','download_data','copy_code') GROUP BY game,event ORDER BY sessions DESC;
+
+Validation from the gh-pages checkout root:
+Set ACTIVITY_RELEASE to the checkout root, then run
+node activity-backend/check-activity.cjs
+python activity-backend/check-markup.py
+For page rebuilds: python activity-backend/apply-collector.py <output-directory>
