@@ -62,3 +62,5 @@ Set ACTIVITY_RELEASE to the checkout root, then run
 node activity-backend/check-activity.cjs
 python activity-backend/check-markup.py
 For page rebuilds: python activity-backend/apply-collector.py <output-directory>
+
+Matrix repeat laboratory added 2026-11-19: scale.html uses the same milestones for factor buttons, drawing, linked cell inspection, shifts, rotation and code downloads. All 16 interactive pages and the micro:bit/PyCharm guide are covered. Test with activity_test=1; prior repeat activity is unavailable.

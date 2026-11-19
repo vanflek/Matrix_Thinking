@@ -1,5 +1,5 @@
 const ORIGINS = new Set(['https://matrixthinking.org', 'https://www.matrixthinking.org', 'https://vanflek.github.io']);
-const GAMES = new Set(['index','snake','tetris','flight','raycast','xonix','faces','life','edges','sandbox','microbit','fruit','garden','motion','roll','microbit-pycharm']);
+const GAMES = new Set(['index','snake','tetris','flight','raycast','xonix','faces','life','edges','sandbox','microbit','fruit','garden','motion','roll','microbit-pycharm','scale']);
 const EVENTS = new Set(['interacted','engaged','active30','active120','play','step','edit','restart','inspect','control','rule','question','guess','download_code','download_data','copy_code']);
 export default {
   async fetch(request, env, ctx) {
@@ -31,3 +31,4 @@ export default {
     } catch (_) { return new Response(null,{status:503,headers}); }
   }
 };
+

@@ -15,6 +15,7 @@ class P(HTMLParser):
 base=Path(os.environ['ACTIVITY_RELEASE']) if 'ACTIVITY_RELEASE' in os.environ else Path(__file__).resolve().parents[1]/'dist'
 cases={'microbit':('main','mb-a'),'life':('main','life-play'),'sandbox':('main','sand-play'),'snake':('snake-lab','snake-play'),'tetris':('tetris-lab','tetris-play'),'flight':('arena','arena-play'),'raycast':('ray-lab','ray-play'),'xonix':('xon-lab','xon-play'),'faces':('main','new-round'),'index':('main','apply')}
 cases.update({'edges':('main','edge-input'),'fruit':('main','fruit-count'),'garden':('main','g-fence'),'motion':('main','mo-play'),'roll':('main','ro-world'),'microbit-pycharm':('main','numpy')})
+cases['scale']=('main','zs-source-canvas')
 for name,(root,control) in cases.items():
     text=(base/(name+'.html')).read_text(encoding='utf-8'); p=P();p.feed(text)
     assert root in p.parents and root in p.parents[control], (name,root,control,p.parents.get(control))
@@ -24,4 +25,4 @@ for name, controls in {'fruit':['fruit-download-csv','fruit-copy-code'],'garden'
     p=P(); p.feed(text)
     for control in controls:
         assert p.attributes[control].get('data-activity-event') in ('download_data','copy_code'), (name,control)
-print('PASS: all 16 pages have a single collector and privacy link; controls are inside tracking roots; resource buttons are annotated.')
+print('PASS: all 17 pages have a single collector and privacy link; controls are inside tracking roots; resource buttons are annotated.')
