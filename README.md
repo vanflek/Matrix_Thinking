@@ -33,6 +33,7 @@ Explore the companion [micro:bit laboratories](microbit/) in MicroPython and Mak
 
 ## Website laboratories
 
+- [Repeat the matrix](labs/scale/) — enlarge a duck or your own drawing with whole-array NumPy repeat, linked matrices, buttons and no classes.
 - [Roll the whole world](labs/roll/) — control one cell, a duck or your own drawing with NumPy roll. Complete Python/Pygame example without classes.
 - [Motion detection: two frames, one matrix rule](labs/motion/) — runnable NumPy and Pygame example.
 
@@ -52,5 +53,6 @@ The author's Python code and code patches are available under the
 [MIT license](LICENSE). Book text, narrative documentation, photographs and
 illustrations are excluded. See [Licensing and permissions](LICENSING.md)
 for the precise scope and third-party exceptions.
+
 
 
