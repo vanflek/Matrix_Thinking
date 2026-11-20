@@ -33,6 +33,8 @@ Explore the companion [micro:bit laboratories](microbit/) in MicroPython and Mak
 
 ## Website laboratories
 
+- [A matrix of blocks](labs/kron/) — enlarge a duck or your own picture with the NumPy Kronecker product, inspect the block of ones and compare with repeat.
+
 - [Repeat the matrix](labs/scale/) — enlarge a duck or your own drawing with whole-array NumPy repeat, linked matrices, buttons and no classes.
 - [Roll the whole world](labs/roll/) — control one cell, a duck or your own drawing with NumPy roll. Complete Python/Pygame example without classes.
 - [Motion detection: two frames, one matrix rule](labs/motion/) — runnable NumPy and Pygame example.
