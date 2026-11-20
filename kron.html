@@ -1,0 +1,232 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Enlarge a pixel duck with the Kronecker product: one matrix stores the world, another defines its blocks. Draw, trace both matrices and compare with NumPy repeat."><title>A matrix of blocks — Matrix Thinking</title><link rel="canonical" href="https://matrixthinking.org/kron.html"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="scale.css?v=20261119-2"><link rel="stylesheet" href="kron.css?v=20261120-1"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head>
+<body><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="index.html">▦ MATRIX THINKING</a><nav aria-label="Main navigation"><a href="index.html#game-labs">All labs</a><a href="scale.html">Enlarge with repeat</a><a href="#numpy">Python &amp; GitHub</a></nav></header>
+<main id="main" class="zs-page"><section class="zs-hero"><p class="eyebrow">MATRIX THINKING / THE KRONECKER PRODUCT</p><h1>One world.<br>A <em>matrix of blocks.</em></h1><p class="lead">One matrix stores a picture. Another is a block of ones. Each source value multiplies the entire block, creating a bigger world. Draw your own picture and follow the multiplication.</p></section>
+<section id="experiment" aria-labelledby="zs-title"><h2 id="zs-title">Choose a value. Multiply a whole block.</h2>
+<div class="zs-toolbar"><fieldset><legend>Block size · keys 1 / 2 / 3</legend><div class="zs-buttons"><button type="button" data-zs-factor="1" aria-pressed="false">×1 · Original</button><button type="button" data-zs-factor="2" aria-pressed="true">×2</button><button type="button" data-zs-factor="3" aria-pressed="false">×3</button></div></fieldset><fieldset><legend>Drawing tool</legend><div class="zs-buttons"><button type="button" data-zs-tool="paint" aria-pressed="true">Paint 1</button><button type="button" data-zs-tool="erase" aria-pressed="false">Erase 0</button><button type="button" data-zs-tool="inspect" aria-pressed="false">Inspect</button></div></fieldset><div><p class="zs-label">Source world</p><div class="zs-buttons"><button type="button" data-zs-op="duck">Load duck</button><button type="button" data-zs-op="clear">Clear</button></div></div></div>
+<div class="zs-live"><div><code id="zs-operation"></code><p id="zs-pipeline"></p><p>The Kronecker product places a scaled copy of the second matrix at every position of the first.</p></div><div><strong id="zs-counts"></strong><p>Both dimensions grow by the factor. The pixel values keep their brightness.</p></div></div>
+<div class="kr-rule" role="group" aria-label="Selected scalar times the block matrix"><div><h3>The selected value</h3><div id="kr-value" class="kr-value"></div><p><code id="kr-source-address"></code></p></div><div class="kr-symbol" aria-label="times">×</div><div><h3>The block matrix</h3><div id="kr-rule-matrix" class="kr-mini" role="img" aria-label="Block of ones"></div><p><code id="kr-block-code"></code></p></div><div class="kr-symbol" aria-label="equals">=</div><div><h3>The resulting block</h3><div id="kr-product-matrix" class="kr-mini kr-product" role="img" aria-label="Selected value times the block of ones"></div><p><code id="kr-product-code"></code></p></div></div>
+<p>Select a number in either large matrix to trace the matching block. A zero multiplies the ones into zeros; a one keeps them as ones. Every source position follows this same rule.</p>
+<div class="zs-worlds"><article class="zs-panel zs-source"><div class="zs-panel-head"><h2>Source world</h2><span id="zs-source-shape"></span></div><div class="zs-views"><div class="zs-view"><h3>The picture</h3><div class="zs-scroll"><canvas id="zs-source-canvas" width="130" height="130" tabindex="0" role="application" aria-label="Editable 5 by 5 source picture. Click or drag to paint. Choose erase or inspect. Arrow keys roll; R rotates; C clears; Space loads the duck; 1, 2 and 3 change the block size."></canvas></div></div><div class="zs-view"><h3>The matrix</h3><div class="zs-scroll"><div id="zs-source-matrix" class="zs-numbers" role="group" aria-label="Source values. Select a number to trace its product block; arrow keys move the selection."></div></div></div></div><p class="zs-caption">Orange marks the source value. Drawing changes the matrix; the entire Kronecker product is recalculated.</p></article>
+<article class="zs-panel"><div class="zs-panel-head"><h2>The Kronecker world</h2><span id="zs-output-shape"></span></div><div class="zs-views"><div class="zs-view"><h3>The bigger picture</h3><div class="zs-scroll"><canvas id="zs-output-canvas" width="260" height="260" tabindex="0" role="application" aria-label="Kronecker product picture. Select a cell to find the source value and product block."></canvas></div></div><div class="zs-view"><h3>The bigger matrix</h3><div class="zs-scroll"><div id="zs-output-matrix" class="zs-numbers" role="group" aria-label="Kronecker product values. Select a number to trace its source; arrow keys move the selection."></div></div></div></div><p class="zs-caption">The orange rectangle is one source value multiplied by the whole block. Blue marks the exact result cell you selected.</p></article></div>
+<p class="zs-width-note">Both pictures use the same pixel-cell size. Wider pictures and numeric matrices scroll inside their panels on smaller screens.</p>
+<div class="zs-toolbar"><fieldset><legend>Transform the entire source matrix</legend><div class="zs-buttons"><button type="button" data-zs-op="left">Move left</button><button type="button" data-zs-op="right">Move right</button><button type="button" data-zs-op="up">Move up</button><button type="button" data-zs-op="down">Move down</button><button type="button" data-zs-op="rotate">Rotate clockwise</button></div></fieldset></div><p>Movement uses <code>np.roll</code> and wraps at the edges. Rotation uses <code>np.rot90</code>. The block multiplication is applied again after each source change.</p><pre><code id="zs-last-operation"></code></pre><p id="zs-status" class="zs-status" role="status" aria-live="polite">Try ×3, then select a zero in the result matrix.</p>
+<div class="zs-inspector"><div><h3 id="zs-selected"></h3><p id="zs-explain"></p></div><pre id="zs-block"></pre></div>
+<div class="kr-actions"><button type="button" id="kr-compare" aria-pressed="false" aria-controls="kr-comparison">Compare with np.repeat</button><a href="scale.html">Open the repeat laboratory</a></div><div id="kr-comparison" class="kr-comparison" hidden><strong id="kr-equal"></strong><p>With a square block of ones, the Kronecker product and repeating both axes give identical values. This check is recalculated for your current drawing and block size.</p><pre><code id="kr-compare-code"></code></pre></div>
+<div class="zs-note"><strong>A different view of the same enlargement.</strong><p>The world is a matrix of values. A second matrix defines a block. The Kronecker product scales that entire block by each source value. The duck's 14 lit cells become 56 at ×2 and 126 at ×3; zeros are included in the transformation.</p></div><p class="kr-warning"><code>np.kron</code> is the Kronecker product. It builds blocks. The <code>@</code> operator is matrix multiplication, which computes row–column dot products; it is a different operation.</p><p class="zs-caption">This browser is a JavaScript model of the operations. The downloadable Python program uses real NumPy.</p></section>
+<section id="numpy" class="zs-code"><p class="eyebrow">THE METHOD / REAL NUMPY</p><h2>A value times a matrix.<br>A world made of blocks.</h2><p>The source array and the block array are both explicit. No loops over source cells are needed to calculate the enlarged array in Python.</p><pre><code id="kr-core-code">import numpy as np
+
+world = np.array([
+    [0, 0, 1, 1, 0],
+    [0, 0, 1, 1, 1],
+    [1, 0, 1, 1, 0],
+    [1, 1, 1, 1, 0],
+    [0, 1, 1, 0, 0],
+], dtype=np.uint8)
+
+factor = 3
+block = np.ones((factor, factor), dtype=world.dtype)
+enlarged = np.kron(world, block)
+
+print(enlarged.shape)             # (15, 15)
+print(np.count_nonzero(enlarged)) # 126
+
+repeated = world.repeat(factor, axis=0).repeat(factor, axis=1)
+print(np.array_equal(enlarged, repeated))  # True</code></pre><button type="button" id="kr-copy" data-activity-event="copy_code">Copy NumPy example</button><p id="kr-copy-status" role="status" aria-live="polite"></p>
+<h3>Follow one value</h3><pre><code>value = world[0, 2]
+print(value * block)
+# [[1 1 1]
+#  [1 1 1]
+#  [1 1 1]]
+
+print(0 * block)
+# [[0 0 0]
+#  [0 0 0]
+#  [0 0 0]]</code></pre><p>The same idea works with other numeric values: a source value of 7 produces a block of 7s. The drawing tools here use binary values to keep the picture easy to follow.</p>
+<h3>Try the complete Python/Pygame program</h3><p>All four world views, the block of ones, selected-value multiplication, drawing tools and transformation buttons are included. No classes or image assets are needed.</p><div class="zs-downloads"><a class="button" href="kron-example.zip" download>Download complete example</a><a href="kron_numpy.py" download>Download Python file</a><a href="https://github.com/vanflek/Matrix_Thinking/tree/main/labs/kron">Code and instructions on GitHub</a></div><pre><code>python -m pip install numpy pygame
+python kron_numpy.py</code></pre><p>Click the source picture to paint; right-click to erase. Select either matrix or the result picture to inspect a product block. Arrows move the whole matrix; 1/2/3 choose a factor; R rotates; C clears; Space restores the duck; Escape closes the program.</p><details><summary>Read the complete Python program</summary><pre class="zs-source-code"><code>&quot;&quot;&quot;Matrix Thinking: draw a 5x5 world and enlarge it with the NumPy Kronecker product.
+
+Install: python -m pip install numpy pygame
+Run:     python kron_numpy.py
+No classes, image files or micro:bit are required.
+&quot;&quot;&quot;
+import numpy as np
+import pygame
+
+DUCK = np.array([
+    [0, 0, 1, 1, 0],
+    [0, 0, 1, 1, 1],
+    [1, 0, 1, 1, 0],
+    [1, 1, 1, 1, 0],
+    [0, 1, 1, 0, 0],
+], dtype=np.uint8)
+
+
+def enlarge(world, factor):
+    &quot;&quot;&quot;Each source value scales an entire block of ones.&quot;&quot;&quot;
+    if not isinstance(factor, (int, np.integer)) or factor &lt; 1:
+        raise ValueError(&quot;factor must be a positive integer&quot;)
+    block = np.ones((factor, factor), dtype=world.dtype)
+    return np.kron(world, block)
+
+
+def main():
+    pygame.init()
+    screen = pygame.display.set_mode((1190, 930))
+    pygame.display.set_caption(&quot;Matrix Thinking — a matrix of blocks&quot;)
+    font = pygame.font.SysFont(&quot;consolas&quot;, 18)
+    small = pygame.font.SysFont(&quot;consolas&quot;, 15)
+    title = pygame.font.SysFont(&quot;arial&quot;, 27, bold=True)
+    clock = pygame.time.Clock()
+    world = DUCK.copy()
+    factor = 2
+    selected = np.array([0, 2])
+    brush = 1  # 1 paint; 0 erase; None inspect
+    running = True
+    painting = False
+    undo_operation = &quot;world = DUCK.copy()&quot;
+    ink, paper, blue, yellow = (19, 45, 69), (247, 250, 253), (17, 101, 219), (255, 211, 67)
+    palette = np.array([ink, yellow], dtype=np.uint8)
+    cell = 24
+    views = [((22, 320), False, False), ((172, 320), False, True),
+             ((370, 320), True, False), ((760, 320), True, True)]
+    buttons = []
+    controls = [(&quot;x1&quot;, &quot;1&quot;), (&quot;x2&quot;, &quot;2&quot;), (&quot;x3&quot;, &quot;3&quot;), (&quot;Duck&quot;, &quot;duck&quot;),
+                (&quot;Clear&quot;, &quot;clear&quot;), (&quot;Paint&quot;, &quot;paint&quot;), (&quot;Erase&quot;, &quot;erase&quot;), (&quot;Inspect&quot;, &quot;inspect&quot;),
+                (&quot;Left&quot;, &quot;left&quot;), (&quot;Right&quot;, &quot;right&quot;), (&quot;Up&quot;, &quot;up&quot;), (&quot;Down&quot;, &quot;down&quot;), (&quot;Rotate&quot;, &quot;rotate&quot;)]
+    for i, (label, action) in enumerate(controls):
+        row, col = divmod(i, 8)
+        buttons.append((pygame.Rect(22 + col * 143, 65 + row * 46, 134, 38), label, action))
+
+    def transform(action):
+        nonlocal world, factor, brush, selected, undo_operation, painting
+        painting = False
+        if action in (&quot;1&quot;, &quot;2&quot;, &quot;3&quot;):
+            factor = int(action)
+        elif action == &quot;duck&quot;:
+            world = DUCK.copy()
+            selected = np.array([0, 2])
+            undo_operation = &quot;world = DUCK.copy()&quot;
+        elif action == &quot;clear&quot;:
+            world = np.zeros_like(world)
+            undo_operation = &quot;world = np.zeros_like(world)&quot;
+        elif action in (&quot;paint&quot;, &quot;erase&quot;, &quot;inspect&quot;):
+            brush = {&quot;paint&quot;: 1, &quot;erase&quot;: 0, &quot;inspect&quot;: None}[action]
+        elif action == &quot;rotate&quot;:
+            world = np.rot90(world, k=-1)
+            selected = np.array([selected[1], world.shape[1] - 1 - selected[0]])
+            undo_operation = &quot;world = np.rot90(world, k=-1)&quot;
+        else:
+            shift, axis = {&quot;left&quot;: (-1, 1), &quot;right&quot;: (1, 1), &quot;up&quot;: (-1, 0), &quot;down&quot;: (1, 0)}[action]
+            world = np.roll(world, shift, axis=axis)
+            selected[axis] = (selected[axis] + shift) % world.shape[axis]
+            undo_operation = f&quot;world = np.roll(world, {shift}, axis={axis})&quot;
+
+    def locate(position):
+        for origin, is_output, numbers in views:
+            shape = np.array(world.shape) * (factor if is_output else 1)
+            c = (position[0] - origin[0]) // cell
+            r = (position[1] - origin[1]) // cell
+            if 0 &lt;= r &lt; shape[0] and 0 &lt;= c &lt; shape[1]:
+                return np.array([r, c]) // (factor if is_output else 1), not is_output and not numbers
+        return None, False
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+                else:
+                    keys = {pygame.K_1: &quot;1&quot;, pygame.K_2: &quot;2&quot;, pygame.K_3: &quot;3&quot;, pygame.K_SPACE: &quot;duck&quot;,
+                            pygame.K_c: &quot;clear&quot;, pygame.K_r: &quot;rotate&quot;, pygame.K_LEFT: &quot;left&quot;, pygame.K_RIGHT: &quot;right&quot;,
+                            pygame.K_UP: &quot;up&quot;, pygame.K_DOWN: &quot;down&quot;}
+                    if event.key in keys:
+                        transform(keys[event.key])
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button in (1, 3):
+                if event.button == 1:
+                    clicked = next((action for rect, _, action in buttons if rect.collidepoint(event.pos)), None)
+                    if clicked:
+                        transform(clicked)
+                        continue
+                selected_cell, editable = locate(event.pos)
+                if selected_cell is not None:
+                    selected = selected_cell
+                    painting = editable and (brush is not None or event.button == 3)
+                    if painting:
+                        value = 0 if event.button == 3 else brush
+                        world[tuple(selected)] = value  # Matrix indexing changes the drawing.
+                        undo_operation = f&quot;world[{selected[0]}, {selected[1]}] = {value}&quot;
+            elif event.type == pygame.MOUSEMOTION and painting and (event.buttons[0] or event.buttons[2]):
+                selected_cell, editable = locate(event.pos)
+                if editable and (event.buttons[2] or brush is not None):
+                    selected = selected_cell
+                    world[tuple(selected)] = 0 if event.buttons[2] else brush
+            elif event.type == pygame.MOUSEBUTTONUP:
+                painting = False
+
+        # All changes to the image above are whole-array operations or indexing.
+        # One Kronecker product enlarges the entire state, including zeros.
+        enlarged = enlarge(world, factor)
+        source_rows, source_cols = np.indices(world.shape)
+        source_mask = (source_rows == selected[0]) &amp; (source_cols == selected[1])
+        block_mask = enlarge(source_mask, factor)
+        screen.fill(paper)
+        screen.blit(title.render(&quot;A small matrix. A bigger world.&quot;, True, ink), (22, 20))
+        for rect, label, action in buttons:
+            active = action == str(factor) or action == {1: &quot;paint&quot;, 0: &quot;erase&quot;, None: &quot;inspect&quot;}[brush]
+            pygame.draw.rect(screen, ink if active else (229, 239, 250), rect, border_radius=5)
+            text = small.render(label, True, paper if active else ink)
+            screen.blit(text, text.get_rect(center=rect.center))
+        screen.blit(font.render(&quot;enlarged = np.kron(world, block)&quot;, True, blue), (22, 175))
+        screen.blit(small.render(f&quot;Shapes: world {world.shape}, block {(factor, factor)}, result {enlarged.shape}&quot;, True, ink), (22, 203))
+        value = world[tuple(selected)]
+        block = np.ones((factor, factor), dtype=world.dtype)
+        product = value * block
+        repeated = world.repeat(factor, axis=0).repeat(factor, axis=1)
+        screen.blit(small.render(f&quot;Selected value: {value}. Each value scales a whole block.&quot;, True, ink), (22, 240))
+        screen.blit(small.render(f&quot;Same as repeat: {np.array_equal(enlarged, repeated)}&quot;, True, blue), (22, 268))
+        for array, origin, label in [(block, (610, 230), &quot;block of ones&quot;), (product, (820, 230), f&quot;{value} * block&quot;)]:
+            screen.blit(small.render(label, True, ink), (origin[0], 208))
+            for r, c in np.ndindex(array.shape):
+                rect = pygame.Rect(origin[0]+c*20, origin[1]+r*20, 20, 20)
+                pygame.draw.rect(screen, yellow if array[r,c] else ink, rect)
+                pygame.draw.rect(screen, blue, rect, 1)
+                text = small.render(str(array[r,c]), True, ink if array[r,c] else paper)
+                screen.blit(text, text.get_rect(center=rect.center))
+        labels = [&quot;SOURCE PIXELS&quot;, &quot;SOURCE MATRIX&quot;, &quot;KRONECKER PIXELS&quot;, &quot;KRONECKER MATRIX&quot;]
+        for (origin, is_output, numbers), label in zip(views, labels):
+            array = enlarged if is_output else world
+            mask = block_mask if is_output else source_mask
+            colors = palette[array]
+            screen.blit(small.render(label, True, ink), (origin[0], 298))
+            # Loops only draw the already computed matrices; they do not enlarge them.
+            for r, c in np.ndindex(array.shape):
+                rect = pygame.Rect(origin[0] + c * cell, origin[1] + r * cell, cell, cell)
+                color = tuple(int(v) for v in colors[r, c])
+                pygame.draw.rect(screen, color, rect)
+                pygame.draw.rect(screen, (120, 145, 169), rect, 1)
+                if mask[r, c]:
+                    pygame.draw.rect(screen, (255, 130, 25), rect.inflate(-2, -2), 2)
+                if numbers:
+                    text = font.render(str(array[r, c]), True, ink if array[r, c] else paper)
+                    screen.blit(text, text.get_rect(center=rect.center))
+        r, c = selected
+        for i, text in enumerate([
+            f&quot;world[{r}, {c}] = {world[r,c]} becomes enlarged[{r*factor}:{(r+1)*factor}, {c*factor}:{(c+1)*factor}]&quot;,
+            f&quot;One cell becomes {factor} x {factor} = {factor*factor} cells. Lit: {np.count_nonzero(world)} -&gt; {np.count_nonzero(enlarged)}&quot;,
+            &quot;Last source operation: &quot; + undo_operation,
+            &quot;Draw in SOURCE PIXELS. Click either matrix or the result to trace the corresponding block.&quot;,
+            &quot;Arrows: roll | R: rotate | C: clear | Space: duck | 1/2/3: block factor | Escape: close&quot;,
+        ]):
+            screen.blit(small.render(text, True, ink), (22, 715 + i * 28))
+        pygame.display.flip()
+        clock.tick(30)
+    pygame.quit()
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details>
+<h3>Predict, try, explain</h3><ul><li>What does a zero multiplied by a block of ones produce?</li><li>At ×3, how many cells come from one source cell? What happens to the total number of cells?</li><li>Draw your own pattern. Does the Kronecker product still match np.repeat?</li><li>Why does a source value of 7 create 7s rather than 1s?</li><li>What would change if the second matrix contained a pattern instead of only ones?</li></ul><p><a href="https://numpy.org/doc/stable/reference/generated/numpy.kron.html">NumPy kron documentation</a> · <a href="scale.html">Previous laboratory: repeat the whole matrix</a></p></section></main>
+<footer><a class="brand" href="index.html">▦ MATRIX THINKING</a><a href="privacy.html">Privacy &amp; activity counters</a></footer><script src="kron-model.js?v=20261120-1"></script><script src="kron.js?v=20261120-1"></script><script defer src="game-activity.js?v=20261120-kron1"></script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"2eb5449b4581422e91fc6e8a7390d8d4"}'></script></body></html>

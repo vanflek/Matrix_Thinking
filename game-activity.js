@@ -3,6 +3,7 @@
   'use strict';
   const config = {
     scale: ['main', '', '[data-zs-op="left"],[data-zs-op="right"],[data-zs-op="up"],[data-zs-op="down"]', '', '[data-zs-op="duck"],[data-zs-op="clear"]', '#zs-source-matrix button,#zs-output-matrix button,#zs-output-canvas', '[data-zs-factor],[data-zs-tool],[data-zs-op="rotate"]'],
+    kron: ['main', '', '[data-zs-op="left"],[data-zs-op="right"],[data-zs-op="up"],[data-zs-op="down"]', '', '[data-zs-op="duck"],[data-zs-op="clear"]', '#zs-source-matrix button,#zs-output-matrix button,#zs-output-canvas', '[data-zs-factor],[data-zs-tool],[data-zs-op="rotate"],#kr-compare'],
     fruit: ['main', '', '', '', '', '#fruit-world,#fruit-matrix-table', '#fruit-count,#fruit-price,[data-stage],[data-example]'],
     garden: ['main', '', '#g-lesson-next,#g-lesson-back', '', '#g-reset', '#g-world,#g-table', '#g-fence,#g-minimum,#g-width,#g-length,[data-example],[data-stage],[data-lesson],#g-best'],
     motion: ['main', '#mo-play', '#mo-frame,#mo-capture', '', '#mo-reset', '#mo-previous,#mo-difference,#mo-mask,#mo-table', '[data-scene],#mo-threshold,#mo-row,#mo-col,#mo-probe-row,#mo-probe-col,#mo-matrix-choice,#mo-light,#mo-noise,#mo-brightness'],
@@ -86,8 +87,8 @@
   root.addEventListener('change', e => { if (matches(e.target, cfg[6])) action('rule', e); }, true);
   root.addEventListener('input', e => { if (matches(e.target, cfg[6]) || e.target.matches('#ray-index')) action('inspect', e); }, true);
   root.addEventListener('pointerdown', e => {
-    if (e.button !== 0 && !(['roll','scale'].includes(name) && e.button === 2)) return;
-    if (name === 'scale' && e.target.closest('#zs-source-canvas')) {
+    if (e.button !== 0 && !(['roll','scale','kron'].includes(name) && e.button === 2)) return;
+    if (['scale','kron'].includes(name) && e.target.closest('#zs-source-canvas')) {
       const inspect = root.querySelector('[data-zs-tool="inspect"][aria-pressed="true"]');
       action(inspect && e.button === 0 ? 'inspect' : 'edit', e);
     }
@@ -101,7 +102,7 @@
     else if (e.target.closest('[data-control],[data-ray-control],[data-xon-direction]')) action('control', e);
   }, true);
   root.addEventListener('keydown', e => {
-    if (name === 'scale' && !e.ctrlKey && !e.altKey && !e.metaKey && e.target.closest('#zs-source-matrix button,#zs-output-matrix button') && ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)) { action('inspect',e); return; }
+    if (['scale','kron'].includes(name) && !e.ctrlKey && !e.altKey && !e.metaKey && e.target.closest('#zs-source-matrix button,#zs-output-matrix button') && ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)) { action('inspect',e); return; }
     if (e.ctrlKey || e.altKey || e.metaKey || e.target.closest('input,select,textarea,button,a,summary,[contenteditable=true]')) return;
     const allowed = {
       snake: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'],
@@ -111,6 +112,7 @@
       xonix: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','KeyP','KeyC','Enter'],
       sandbox: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','KeyI'],
       scale: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','KeyC','KeyR','Digit1','Digit2','Digit3'],
+      kron: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','KeyC','KeyR','Digit1','Digit2','Digit3'],
       roll: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','KeyC','KeyR'],
       motion: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'],
       fruit: ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Home','End','Enter','Space'],
@@ -128,4 +130,5 @@
   }, 1000);
   // No load event is sent: ordinary page views stay in Cloudflare Web Analytics.
 })();
+
 

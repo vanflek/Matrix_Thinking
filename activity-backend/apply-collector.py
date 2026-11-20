@@ -3,8 +3,8 @@ from pathlib import Path
 import re
 import sys
 
-VERSION = "20261119-scale1"
-PAGES = "index snake tetris flight raycast xonix faces life edges sandbox microbit fruit garden motion roll microbit-pycharm scale".split()
+VERSION = "20261120-kron1"
+PAGES = "index snake tetris flight raycast xonix faces life edges sandbox microbit fruit garden motion roll microbit-pycharm scale kron".split()
 RESOURCES = {
     "fruit": {"fruit-download-csv": "download_data", "fruit-copy-code": "copy_code"},
     "garden": {"g-csv": "download_data", "g-copy": "copy_code"},

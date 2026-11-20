@@ -53,7 +53,7 @@ const events=b=>b.requests.flatMap(r=>r.events);
   for(const option of [{navigator:{doNotTrack:'1'}},{navigator:{globalPrivacyControl:true}},{navigator:{webdriver:true}},{search:'?analytics=off'}]){
     b=browser({...option,pathname:'/microbit.html'});await b.click('#mb-a');await b.time(60);assert.equal(b.requests.length,0,'micro:bit respects privacy opt-out');
   }
-  for (const [name, controls] of Object.entries({fruit:['#fruit-count','[data-stage]','#fruit-world'],garden:['#g-fence','[data-stage]','#g-world'],motion:['#mo-col','#mo-frame','#mo-mask'],roll:['[data-direction]','[data-tool]','#ro-reset'],scale:['[data-zs-factor]','[data-zs-op="right"]','[data-zs-op="duck"]']})) {
+  for (const [name, controls] of Object.entries({fruit:['#fruit-count','[data-stage]','#fruit-world'],garden:['#g-fence','[data-stage]','#g-world'],motion:['#mo-col','#mo-frame','#mo-mask'],roll:['[data-direction]','[data-tool]','#ro-reset'],scale:['[data-zs-factor]','[data-zs-op="right"]','[data-zs-op="duck"]'],kron:['[data-zs-factor]','[data-zs-op="right"]','[data-zs-op="duck"]']})) {
     b=browser({pathname:`/${name}.html`,search:'?activity_test=1'});
     await b.time(120);assert.equal(b.requests.length,0,`${name}: loading alone is not interaction`);
     for(const id of controls){if(id.includes('count')||id.includes('fence')||id.includes('col'))await b.input(id);else await b.click(id);await b.time(2);}
@@ -64,9 +64,10 @@ const events=b=>b.requests.flatMap(r=>r.events);
     }
   }
   b=browser({pathname:'/roll.html'});await b.pointer('#ro-world',2);await b.time(1);await b.key('#ro-world','ArrowRight');assert(events(b).includes('edit'));assert(events(b).includes('control'));
+  b=browser({pathname:'/kron.html'});await b.pointer('#zs-source-canvas',2);await b.time(1);await b.key('#zs-source-canvas','ArrowRight');await b.time(1);await b.click('#kr-compare');assert(events(b).includes('edit'));assert(events(b).includes('control'));
   b=browser({pathname:'/motion.html'});await b.pointer('#mo-current');await b.time(1);assert(events(b).includes('edit'));
   b=browser({pathname:'/garden.html'});await b.pointer('#g-handle');await b.time(1);assert(events(b).includes('control'));
-  for (const name of ['fruit','garden','motion','roll','microbit-pycharm','sandbox','scale']) {
+  for (const name of ['fruit','garden','motion','roll','microbit-pycharm','sandbox','scale','kron']) {
     b=browser({pathname:`/${name}.html`});await b.click('a',false,{download:true});assert.equal(b.requests.length,0);
     await b.click('a',true,{download:true});await b.time(1);await b.click('a',true,{download:true});await b.time(1);
     assert.equal(events(b).filter(e=>e==='download_code').length,1,`${name}: one download milestone per session`);
@@ -85,7 +86,7 @@ const events=b=>b.requests.flatMap(r=>r.events);
   const payload={v:1,game:'life',session:require('crypto').randomUUID(),events:['interacted','play','play'],test:true};
   assert.equal((await worker.fetch(request(payload),{DB},{waitUntil(){}})).status,204);assert.equal(writes.length,2,'duplicate batch event removed');
   assert.deepEqual(writes[0].args.slice(1),['life',payload.session,'interacted',1]);
-  for(const game of ['fruit','garden','motion','roll','microbit-pycharm','scale']){
+  for(const game of ['fruit','garden','motion','roll','microbit-pycharm','scale','kron']){
     assert.equal((await worker.fetch(request({...payload,game,events:['download_code','copy_code','download_data']}),{DB},{waitUntil(){}})).status,204,`${game}: backend accepts new scope`);
   }
   assert.equal((await worker.fetch(request({...payload,game:'unknown'}),{DB},{waitUntil(){}})).status,400);
